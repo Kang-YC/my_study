@@ -1,0 +1,8 @@
+prefix=/home/kang/dev/VI_Loam/install
+
+Name: read_odom
+Description: Description of read_odom
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/kang/dev/VI_Loam/install/lib 
+Requires: 

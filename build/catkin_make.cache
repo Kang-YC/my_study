@@ -1,0 +1,2 @@
+LeGO-LOAM/LeGO-LOAM:LeGO-LOAM/cloud_msgs:read_odom
+-DCATKIN_DEVEL_PREFIX=/home/kang/dev/VI_Loam/devel -DCMAKE_INSTALL_PREFIX=/home/kang/dev/VI_Loam/install -G Unix Makefiles
