@@ -1,0 +1,8 @@
+prefix=/home/kang/dev/VI_Loam/devel
+
+Name: cloud_msgs
+Description: Description of cloud_msgs
+Version: 1.0.0
+Cflags: -I/home/kang/dev/VI_Loam/devel/include
+Libs: -L/home/kang/dev/VI_Loam/devel/lib 
+Requires: message_runtime message_generation geometry_msgs std_msgs nav_msgs
