@@ -1,0 +1,3 @@
+<launch>
+<node pkg="read_odom" type="odom_listener" name="odom_test_listener"/>
+</launch>
