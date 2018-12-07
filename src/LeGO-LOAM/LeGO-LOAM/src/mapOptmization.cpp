@@ -70,7 +70,7 @@ private:
     ros::Publisher pubIcpKeyFrames;
     ros::Publisher pubRecentKeyFrames;
     
-    ros::Publisher publaserCloudSel;//ori and proj point cloud
+    ros::Publisher publaserCloudOri;//ori and proj point cloud
     ros::Publisher publaserCloudProj;
 
     ros::Subscriber subLaserCloudCornerLast;
@@ -249,7 +249,7 @@ public:
         pubIcpKeyFrames = nh.advertise<sensor_msgs::PointCloud2>("/corrected_cloud", 2);
         pubRecentKeyFrames = nh.advertise<sensor_msgs::PointCloud2>("/recent_cloud", 2);
 
-        publaserCloudSel = nh.advertise<sensor_msgs::PointCloud2>("/laser_cloud_sel", 2);
+        publaserCloudOri = nh.advertise<sensor_msgs::PointCloud2>("/laser_cloud_ori", 2);
         publaserCloudProj = nh.advertise<sensor_msgs::PointCloud2>("/laser_cloud_proj", 2);
 
         downSizeFilterCorner.setLeafSize(0.2, 0.2, 0.2);
@@ -383,7 +383,7 @@ public:
 
     void transformAssociateToMap()
     {
-        float x1 = cos(transformSum[1]) * (transformBefMapped[3] - transformSum[3]) 
+        float x1 = cos(transformSum[1]) * (transformBefMapped[3] - transformSum[3]) //bef-sum < 0  
                  - sin(transformSum[1]) * (transformBefMapped[5] - transformSum[5]);
         float y1 = transformBefMapped[4] - transformSum[4];
         float z1 = sin(transformSum[1]) * (transformBefMapped[3] - transformSum[3]) 
@@ -460,7 +460,7 @@ public:
         x2 = x1;
         y2 = cos(transformTobeMapped[0]) * y1 - sin(transformTobeMapped[0]) * z1;
         z2 = sin(transformTobeMapped[0]) * y1 + cos(transformTobeMapped[0]) * z1;
-
+//Bef -Sum < 0  use "-
         transformTobeMapped[3] = transformAftMapped[3] 
                                - (cos(transformTobeMapped[1]) * x2 + sin(transformTobeMapped[1]) * z2);
         transformTobeMapped[4] = transformAftMapped[4] - y2;
@@ -561,7 +561,7 @@ public:
         cloudOut->resize(cloudSize);
 
         for (int i = 0; i < cloudSize; ++i){
-
+// rpy in loam coordinatate
             pointFrom = &cloudIn->points[i];
             float x1 = ctYaw * pointFrom->x - stYaw * pointFrom->y;
             float y1 = stYaw * pointFrom->x + ctYaw* pointFrom->y;
@@ -706,11 +706,11 @@ public:
 
     void publishOriandProjCloud(){
 
-        sensor_msgs::PointCloud2 laserCloudSel2;
-        pcl::toROSMsg(*laserCloudSel, laserCloudSel2);
-        laserCloudSel2.header.stamp = ros::Time().fromSec(timeLaserOdometry);
-        laserCloudSel2.header.frame_id = "/camera_init";
-        publaserCloudSel.publish(laserCloudSel2);
+        sensor_msgs::PointCloud2 laserCloudOri2;
+        pcl::toROSMsg(*laserCloudOri, laserCloudOri2);
+        laserCloudOri2.header.stamp = ros::Time().fromSec(timeLaserOdometry);
+        laserCloudOri2.header.frame_id = "/camera_init";
+        publaserCloudOri.publish(laserCloudOri2);
 
         sensor_msgs::PointCloud2 laserCloudProj2;
         pcl::toROSMsg(*laserCloudProj, laserCloudProj2);
@@ -957,7 +957,7 @@ public:
                 }
             }
 
-            for (int i = 0; i < recentCornerCloudKeyFrames.size(); ++i){
+            for (int i = 0; i < recentCornerCloudKeyFrames.size(); ++i){//update the map
                 *laserCloudCornerFromMap += *recentCornerCloudKeyFrames[i];
                 *laserCloudSurfFromMap   += *recentSurfCloudKeyFrames[i];
                 *laserCloudSurfFromMap   += *recentOutlierCloudKeyFrames[i];
@@ -1360,8 +1360,8 @@ public:
             	transformLast[i] = transformTobeMapped[i];
         }
         else{
-            gtsam::Pose3 poseFrom = Pose3(Rot3::RzRyRx(transformLast[2], transformLast[0], transformLast[1]),
-                                                Point3(transformLast[5], transformLast[3], transformLast[4]));
+            gtsam::Pose3 poseFrom = Pose3(Rot3::RzRyRx(transformLast[2], transformLast[0], transformLast[1]),//r p y
+                                                Point3(transformLast[5], transformLast[3], transformLast[4]));//z x y
             gtsam::Pose3 poseTo   = Pose3(Rot3::RzRyRx(transformAftMapped[2], transformAftMapped[0], transformAftMapped[1]),
                                                 Point3(transformAftMapped[5], transformAftMapped[3], transformAftMapped[4]));
             gtSAMgraph.add(BetweenFactor<Pose3>(cloudKeyPoses3D->points.size()-1, cloudKeyPoses3D->points.size(), poseFrom.between(poseTo), odometryNoise));
@@ -1424,6 +1424,8 @@ public:
         surfCloudKeyFrames.push_back(thisSurfKeyFrame);
         outlierCloudKeyFrames.push_back(thisOutlierKeyFrame);
     }
+
+
 
     void correctPoses(){
     	if (aLoopIsClosed == true){
@@ -1489,7 +1491,7 @@ public:
 
                 publishKeyPosesAndFrames();
 
-                publishOriandProjCloud();
+                publishOriandProjCloud();//publish
 
                 clearCloud();
             }

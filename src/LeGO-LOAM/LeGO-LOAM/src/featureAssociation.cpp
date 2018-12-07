@@ -1832,9 +1832,9 @@ public:
 
         updateInitialGuess();
 
-        updateTransformation();
+        updateTransformation();//transformCur  between two frame
 
-        integrateTransformation();
+        integrateTransformation();//transformSum from world frame
 
         publishOdometry();
 

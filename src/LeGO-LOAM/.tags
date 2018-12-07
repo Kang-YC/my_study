@@ -1,0 +1,482 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AccumulateIMUShiftAndRotation	LeGO-LOAM/src/featureAssociation.cpp	/^    void AccumulateIMUShiftAndRotation()$/;"	f	class:FeatureAssociation
+AccumulateRotation	LeGO-LOAM/src/featureAssociation.cpp	/^    void AccumulateRotation(float cx, float cy, float cz, float lx, float ly, float lz, $/;"	f	class:FeatureAssociation
+EIGEN_ALIGN16	LeGO-LOAM/include/utility.h	/^} EIGEN_ALIGN16;$/;"	v	typeref:struct:PointXYZIRPYT
+FeatureAssociation	LeGO-LOAM/src/featureAssociation.cpp	/^    FeatureAssociation():$/;"	f	class:FeatureAssociation
+FeatureAssociation	LeGO-LOAM/src/featureAssociation.cpp	/^class FeatureAssociation{$/;"	c	file:
+Horizon_SCAN	LeGO-LOAM/include/utility.h	/^extern const int Horizon_SCAN = 1800;$/;"	v
+ImageProjection	LeGO-LOAM/src/imageProjection.cpp	/^    ImageProjection():$/;"	f	class:ImageProjection
+ImageProjection	LeGO-LOAM/src/imageProjection.cpp	/^class ImageProjection{$/;"	c	file:
+LMOptimization	LeGO-LOAM/src/mapOptmization.cpp	/^    bool LMOptimization(int iterCount){$/;"	f	class:mapOptimization
+N_SCAN	LeGO-LOAM/include/utility.h	/^extern const int N_SCAN = 16;$/;"	v
+PCL_ADD_INTENSITY	LeGO-LOAM/include/utility.h	/^    PCL_ADD_INTENSITY;$/;"	m	struct:PointXYZIRPYT
+PI	LeGO-LOAM/include/utility.h	47;"	d
+PluginIMURotation	LeGO-LOAM/src/featureAssociation.cpp	/^    void PluginIMURotation(float bcx, float bcy, float bcz, float blx, float bly, float blz, $/;"	f	class:FeatureAssociation
+PointType	LeGO-LOAM/include/utility.h	/^typedef pcl::PointXYZI  PointType;$/;"	t
+PointTypePose	LeGO-LOAM/include/utility.h	/^typedef PointXYZIRPYT  PointTypePose;$/;"	t
+PointXYZIRPYT	LeGO-LOAM/include/utility.h	/^struct PointXYZIRPYT$/;"	s
+STDTOSTRING_H	LeGO-LOAM/include/stdtostring.h	2;"	d
+ShiftToStartIMU	LeGO-LOAM/src/featureAssociation.cpp	/^    void ShiftToStartIMU(float pointTime)$/;"	f	class:FeatureAssociation
+TransformFusion	LeGO-LOAM/src/transformFusion.cpp	/^    TransformFusion(){$/;"	f	class:TransformFusion
+TransformFusion	LeGO-LOAM/src/transformFusion.cpp	/^class TransformFusion{$/;"	c	file:
+TransformToEnd	LeGO-LOAM/src/featureAssociation.cpp	/^    void TransformToEnd(PointType const * const pi, PointType * const po)$/;"	f	class:FeatureAssociation
+TransformToStart	LeGO-LOAM/src/featureAssociation.cpp	/^    void TransformToStart(PointType const * const pi, PointType * const po)$/;"	f	class:FeatureAssociation
+TransformToStartIMU	LeGO-LOAM/src/featureAssociation.cpp	/^    void TransformToStartIMU(PointType *p)$/;"	f	class:FeatureAssociation
+VeloToStartIMU	LeGO-LOAM/src/featureAssociation.cpp	/^    void VeloToStartIMU()$/;"	f	class:FeatureAssociation
+_UTILITY_LIDAR_ODOMETRY_H_	LeGO-LOAM/include/utility.h	2;"	d
+aLoopIsClosed	LeGO-LOAM/src/mapOptmization.cpp	/^    bool aLoopIsClosed;$/;"	m	class:mapOptimization	file:
+adjustDistortion	LeGO-LOAM/src/featureAssociation.cpp	/^    void adjustDistortion()$/;"	f	class:FeatureAssociation
+adjustOutlierCloud	LeGO-LOAM/src/featureAssociation.cpp	/^    void adjustOutlierCloud(){$/;"	f	class:FeatureAssociation
+aftMappedTrans	LeGO-LOAM/src/mapOptmization.cpp	/^    tf::StampedTransform aftMappedTrans;$/;"	m	class:mapOptimization	file:
+allPushedIndX	LeGO-LOAM/src/imageProjection.cpp	/^    uint16_t *allPushedIndX;$/;"	m	class:ImageProjection	file:
+allPushedIndY	LeGO-LOAM/src/imageProjection.cpp	/^    uint16_t *allPushedIndY;$/;"	m	class:ImageProjection	file:
+allocateMemory	LeGO-LOAM/src/imageProjection.cpp	/^    void allocateMemory(){$/;"	f	class:ImageProjection
+allocateMemory	LeGO-LOAM/src/mapOptmization.cpp	/^    void allocateMemory(){$/;"	f	class:mapOptimization
+ang_bottom	LeGO-LOAM/include/utility.h	/^extern const float ang_bottom = 15.0+0.1;$/;"	v
+ang_res_x	LeGO-LOAM/include/utility.h	/^extern const float ang_res_x = 0.2;$/;"	v
+ang_res_y	LeGO-LOAM/include/utility.h	/^extern const float ang_res_y = 2.0;$/;"	v
+by_value	LeGO-LOAM/include/utility.h	/^struct by_value{ $/;"	s
+cPitch	LeGO-LOAM/src/mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+cRoll	LeGO-LOAM/src/mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+cYaw	LeGO-LOAM/src/mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+calculateSmoothness	LeGO-LOAM/src/featureAssociation.cpp	/^    void calculateSmoothness()$/;"	f	class:FeatureAssociation
+calculateTransformation	LeGO-LOAM/src/featureAssociation.cpp	/^    bool calculateTransformation(int iterCount){$/;"	f	class:FeatureAssociation
+calculateTransformationCorner	LeGO-LOAM/src/featureAssociation.cpp	/^    bool calculateTransformationCorner(int iterCount){$/;"	f	class:FeatureAssociation
+calculateTransformationSurf	LeGO-LOAM/src/featureAssociation.cpp	/^    bool calculateTransformationSurf(int iterCount){$/;"	f	class:FeatureAssociation
+camera_2_base_link_Trans	LeGO-LOAM/src/transformFusion.cpp	/^    tf::StampedTransform camera_2_base_link_Trans;$/;"	m	class:TransformFusion	file:
+checkSystemInitialization	LeGO-LOAM/src/featureAssociation.cpp	/^    void checkSystemInitialization(){$/;"	f	class:FeatureAssociation
+clearCloud	LeGO-LOAM/src/mapOptmization.cpp	/^    void clearCloud(){$/;"	f	class:mapOptimization
+closestHistoryFrameID	LeGO-LOAM/src/mapOptmization.cpp	/^    int closestHistoryFrameID;$/;"	m	class:mapOptimization	file:
+cloudCurvature	LeGO-LOAM/src/featureAssociation.cpp	/^    float cloudCurvature[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+cloudHandler	LeGO-LOAM/src/imageProjection.cpp	/^    void cloudHandler(const sensor_msgs::PointCloud2ConstPtr& laserCloudMsg){$/;"	f	class:ImageProjection
+cloudHeader	LeGO-LOAM/src/featureAssociation.cpp	/^    std_msgs::Header cloudHeader;$/;"	m	class:FeatureAssociation	file:
+cloudHeader	LeGO-LOAM/src/imageProjection.cpp	/^    std_msgs::Header cloudHeader;$/;"	m	class:ImageProjection	file:
+cloudKeyPoses3D	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr cloudKeyPoses3D;$/;"	m	class:mapOptimization	file:
+cloudKeyPoses6D	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointTypePose>::Ptr cloudKeyPoses6D;$/;"	m	class:mapOptimization	file:
+cloudLabel	LeGO-LOAM/src/featureAssociation.cpp	/^    int cloudLabel[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+cloudNeighborPicked	LeGO-LOAM/src/featureAssociation.cpp	/^    int cloudNeighborPicked[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+cloudSegmentation	LeGO-LOAM/src/imageProjection.cpp	/^    void cloudSegmentation(){$/;"	f	class:ImageProjection
+cloudSmoothness	LeGO-LOAM/src/featureAssociation.cpp	/^    std::vector<smoothness_t> cloudSmoothness;$/;"	m	class:FeatureAssociation	file:
+coeff	LeGO-LOAM/src/featureAssociation.cpp	/^    PointType pointOri, pointSel, tripod1, tripod2, tripod3, pointProj, coeff;$/;"	m	class:FeatureAssociation	file:
+coeff	LeGO-LOAM/src/mapOptmization.cpp	/^    PointType pointOri, pointSel, pointProj, coeff;$/;"	m	class:mapOptimization	file:
+coeffSel	LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr coeffSel;$/;"	m	class:FeatureAssociation	file:
+coeffSel	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr coeffSel;$/;"	m	class:mapOptimization	file:
+constraintNoise	LeGO-LOAM/src/mapOptmization.cpp	/^    noiseModel::Diagonal::shared_ptr constraintNoise;$/;"	m	class:mapOptimization	file:
+copyPointCloud	LeGO-LOAM/src/imageProjection.cpp	/^    void copyPointCloud(const sensor_msgs::PointCloud2ConstPtr& laserCloudMsg){$/;"	f	class:ImageProjection
+cornerCloudKeyFrames	LeGO-LOAM/src/mapOptmization.cpp	/^    vector<pcl::PointCloud<PointType>::Ptr> cornerCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+cornerOptimization	LeGO-LOAM/src/mapOptmization.cpp	/^    void cornerOptimization(int iterCount){$/;"	f	class:mapOptimization
+cornerPointsLessSharp	LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr cornerPointsLessSharp;$/;"	m	class:FeatureAssociation	file:
+cornerPointsSharp	LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr cornerPointsSharp;$/;"	m	class:FeatureAssociation	file:
+correctPoses	LeGO-LOAM/src/mapOptmization.cpp	/^    void correctPoses(){$/;"	f	class:mapOptimization
+cosImuPitchStart	LeGO-LOAM/src/featureAssociation.cpp	/^    float cosImuRollStart, cosImuPitchStart, cosImuYawStart, sinImuRollStart, sinImuPitchStart, sinImuYawStart;$/;"	m	class:FeatureAssociation	file:
+cosImuRollStart	LeGO-LOAM/src/featureAssociation.cpp	/^    float cosImuRollStart, cosImuPitchStart, cosImuYawStart, sinImuRollStart, sinImuPitchStart, sinImuYawStart;$/;"	m	class:FeatureAssociation	file:
+cosImuYawStart	LeGO-LOAM/src/featureAssociation.cpp	/^    float cosImuRollStart, cosImuPitchStart, cosImuYawStart, sinImuRollStart, sinImuPitchStart, sinImuYawStart;$/;"	m	class:FeatureAssociation	file:
+ctPitch	LeGO-LOAM/src/mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+ctRoll	LeGO-LOAM/src/mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+ctYaw	LeGO-LOAM/src/mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+currentHeader	LeGO-LOAM/src/transformFusion.cpp	/^    std_msgs::Header currentHeader;$/;"	m	class:TransformFusion	file:
+currentRobotPosPoint	LeGO-LOAM/src/mapOptmization.cpp	/^    PointType currentRobotPosPoint;$/;"	m	class:mapOptimization	file:
+deg2rad	LeGO-LOAM/src/featureAssociation.cpp	/^    double deg2rad(double degrees)$/;"	f	class:FeatureAssociation
+detectLoopClosure	LeGO-LOAM/src/mapOptmization.cpp	/^    bool detectLoopClosure(){$/;"	f	class:mapOptimization
+downSizeFilter	LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilter;$/;"	m	class:FeatureAssociation	file:
+downSizeFilterCorner	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilterCorner;$/;"	m	class:mapOptimization	file:
+downSizeFilterGlobalMapKeyFrames	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilterGlobalMapKeyFrames;$/;"	m	class:mapOptimization	file:
+downSizeFilterGlobalMapKeyPoses	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilterGlobalMapKeyPoses;$/;"	m	class:mapOptimization	file:
+downSizeFilterHistoryKeyFrames	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilterHistoryKeyFrames;$/;"	m	class:mapOptimization	file:
+downSizeFilterOutlier	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilterOutlier;$/;"	m	class:mapOptimization	file:
+downSizeFilterSurf	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilterSurf;$/;"	m	class:mapOptimization	file:
+downSizeFilterSurroundingKeyPoses	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilterSurroundingKeyPoses;$/;"	m	class:mapOptimization	file:
+downsampleCurrentScan	LeGO-LOAM/src/mapOptmization.cpp	/^    void downsampleCurrentScan(){$/;"	f	class:mapOptimization
+edgeFeatureNum	LeGO-LOAM/include/utility.h	/^extern const int edgeFeatureNum = 2;$/;"	v
+edgeThreshold	LeGO-LOAM/include/utility.h	/^extern const float edgeThreshold = 0.1;$/;"	v
+endOrientation	LeGO-LOAM/src/imageProjection.cpp	/^    float endOrientation;$/;"	m	class:ImageProjection	file:
+extractFeatures	LeGO-LOAM/src/featureAssociation.cpp	/^    void extractFeatures()$/;"	f	class:FeatureAssociation
+extractSurroundingKeyFrames	LeGO-LOAM/src/mapOptmization.cpp	/^    void extractSurroundingKeyFrames(){$/;"	f	class:mapOptimization
+findCorrespondingCornerFeatures	LeGO-LOAM/src/featureAssociation.cpp	/^    void findCorrespondingCornerFeatures(int iterCount){$/;"	f	class:FeatureAssociation
+findCorrespondingSurfFeatures	LeGO-LOAM/src/featureAssociation.cpp	/^    void findCorrespondingSurfFeatures(int iterCount){$/;"	f	class:FeatureAssociation
+findStartEndAngle	LeGO-LOAM/src/imageProjection.cpp	/^    void findStartEndAngle(){$/;"	f	class:ImageProjection
+frameCount	LeGO-LOAM/src/featureAssociation.cpp	/^    int frameCount;$/;"	m	class:FeatureAssociation	file:
+fullCloud	LeGO-LOAM/src/imageProjection.cpp	/^    pcl::PointCloud<PointType>::Ptr fullCloud;$/;"	m	class:ImageProjection	file:
+fullInfoCloud	LeGO-LOAM/src/imageProjection.cpp	/^    pcl::PointCloud<PointType>::Ptr fullInfoCloud;$/;"	m	class:ImageProjection	file:
+globalMapKeyFrames	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr globalMapKeyFrames;$/;"	m	class:mapOptimization	file:
+globalMapKeyFramesDS	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr globalMapKeyFramesDS;$/;"	m	class:mapOptimization	file:
+globalMapKeyPoses	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr globalMapKeyPoses;$/;"	m	class:mapOptimization	file:
+globalMapKeyPosesDS	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr globalMapKeyPosesDS;$/;"	m	class:mapOptimization	file:
+globalMapVisualizationSearchRadius	LeGO-LOAM/include/utility.h	/^extern const float globalMapVisualizationSearchRadius = 50.0;$/;"	v
+groundCloud	LeGO-LOAM/src/imageProjection.cpp	/^    pcl::PointCloud<PointType>::Ptr groundCloud;$/;"	m	class:ImageProjection	file:
+groundMat	LeGO-LOAM/src/imageProjection.cpp	/^    cv::Mat groundMat;$/;"	m	class:ImageProjection	file:
+groundRemoval	LeGO-LOAM/src/imageProjection.cpp	/^    void groundRemoval(){$/;"	f	class:ImageProjection
+groundScanInd	LeGO-LOAM/include/utility.h	/^extern const int groundScanInd = 7;$/;"	v
+gtSAMgraph	LeGO-LOAM/src/mapOptmization.cpp	/^    NonlinearFactorGraph gtSAMgraph;$/;"	m	class:mapOptimization	file:
+historyKeyframeFitnessScore	LeGO-LOAM/include/utility.h	/^extern const float historyKeyframeFitnessScore = 0.3;$/;"	v
+historyKeyframeSearchNum	LeGO-LOAM/include/utility.h	/^extern const int   historyKeyframeSearchNum = 25;$/;"	v
+historyKeyframeSearchRadius	LeGO-LOAM/include/utility.h	/^extern const float historyKeyframeSearchRadius = 5.0;$/;"	v
+imuAccX	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAccX[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAccY	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAccY[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAccZ	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAccZ[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAngularFromStartX	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularFromStartX, imuAngularFromStartY, imuAngularFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuAngularFromStartY	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularFromStartX, imuAngularFromStartY, imuAngularFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuAngularFromStartZ	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularFromStartX, imuAngularFromStartY, imuAngularFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationX	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularRotationX[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationXCur	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularRotationXCur, imuAngularRotationYCur, imuAngularRotationZCur;$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationXLast	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularRotationXLast, imuAngularRotationYLast, imuAngularRotationZLast;$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationY	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularRotationY[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationYCur	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularRotationXCur, imuAngularRotationYCur, imuAngularRotationZCur;$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationYLast	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularRotationXLast, imuAngularRotationYLast, imuAngularRotationZLast;$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationZ	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularRotationZ[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationZCur	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularRotationXCur, imuAngularRotationYCur, imuAngularRotationZCur;$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationZLast	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularRotationXLast, imuAngularRotationYLast, imuAngularRotationZLast;$/;"	m	class:FeatureAssociation	file:
+imuAngularVeloX	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularVeloX[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAngularVeloY	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularVeloY[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAngularVeloZ	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularVeloZ[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuHandler	LeGO-LOAM/src/featureAssociation.cpp	/^    void imuHandler(const sensor_msgs::Imu::ConstPtr& imuIn)$/;"	f	class:FeatureAssociation
+imuHandler	LeGO-LOAM/src/mapOptmization.cpp	/^    void imuHandler(const sensor_msgs::Imu::ConstPtr& imuIn){$/;"	f	class:mapOptimization
+imuPitch	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuPitch[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuPitch	LeGO-LOAM/src/mapOptmization.cpp	/^    float imuPitch[imuQueLength];$/;"	m	class:mapOptimization	file:
+imuPitchCur	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuRollCur, imuPitchCur, imuYawCur;$/;"	m	class:FeatureAssociation	file:
+imuPitchLast	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuRollLast, imuPitchLast, imuYawLast;$/;"	m	class:FeatureAssociation	file:
+imuPitchStart	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuRollStart, imuPitchStart, imuYawStart;$/;"	m	class:FeatureAssociation	file:
+imuPointerFront	LeGO-LOAM/src/featureAssociation.cpp	/^    int imuPointerFront;$/;"	m	class:FeatureAssociation	file:
+imuPointerFront	LeGO-LOAM/src/mapOptmization.cpp	/^    int imuPointerFront;$/;"	m	class:mapOptimization	file:
+imuPointerLast	LeGO-LOAM/src/featureAssociation.cpp	/^    int imuPointerLast;$/;"	m	class:FeatureAssociation	file:
+imuPointerLast	LeGO-LOAM/src/mapOptmization.cpp	/^    int imuPointerLast;$/;"	m	class:mapOptimization	file:
+imuPointerLastIteration	LeGO-LOAM/src/featureAssociation.cpp	/^    int imuPointerLastIteration;$/;"	m	class:FeatureAssociation	file:
+imuQueLength	LeGO-LOAM/include/utility.h	/^extern const int imuQueLength = 200;$/;"	v
+imuRoll	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuRoll[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuRoll	LeGO-LOAM/src/mapOptmization.cpp	/^    float imuRoll[imuQueLength];$/;"	m	class:mapOptimization	file:
+imuRollCur	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuRollCur, imuPitchCur, imuYawCur;$/;"	m	class:FeatureAssociation	file:
+imuRollLast	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuRollLast, imuPitchLast, imuYawLast;$/;"	m	class:FeatureAssociation	file:
+imuRollStart	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuRollStart, imuPitchStart, imuYawStart;$/;"	m	class:FeatureAssociation	file:
+imuShiftFromStartX	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftFromStartX, imuShiftFromStartY, imuShiftFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuShiftFromStartXCur	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftFromStartXCur, imuShiftFromStartYCur, imuShiftFromStartZCur;$/;"	m	class:FeatureAssociation	file:
+imuShiftFromStartY	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftFromStartX, imuShiftFromStartY, imuShiftFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuShiftFromStartYCur	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftFromStartXCur, imuShiftFromStartYCur, imuShiftFromStartZCur;$/;"	m	class:FeatureAssociation	file:
+imuShiftFromStartZ	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftFromStartX, imuShiftFromStartY, imuShiftFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuShiftFromStartZCur	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftFromStartXCur, imuShiftFromStartYCur, imuShiftFromStartZCur;$/;"	m	class:FeatureAssociation	file:
+imuShiftX	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftX[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuShiftXCur	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftXCur, imuShiftYCur, imuShiftZCur;$/;"	m	class:FeatureAssociation	file:
+imuShiftXStart	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftXStart, imuShiftYStart, imuShiftZStart;$/;"	m	class:FeatureAssociation	file:
+imuShiftY	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftY[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuShiftYCur	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftXCur, imuShiftYCur, imuShiftZCur;$/;"	m	class:FeatureAssociation	file:
+imuShiftYStart	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftXStart, imuShiftYStart, imuShiftZStart;$/;"	m	class:FeatureAssociation	file:
+imuShiftZ	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftZ[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuShiftZCur	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftXCur, imuShiftYCur, imuShiftZCur;$/;"	m	class:FeatureAssociation	file:
+imuShiftZStart	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftXStart, imuShiftYStart, imuShiftZStart;$/;"	m	class:FeatureAssociation	file:
+imuTime	LeGO-LOAM/src/featureAssociation.cpp	/^    double imuTime[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuTime	LeGO-LOAM/src/mapOptmization.cpp	/^    double imuTime[imuQueLength];$/;"	m	class:mapOptimization	file:
+imuTopic	LeGO-LOAM/include/utility.h	/^extern const string imuTopic = "\/imu\/data";$/;"	v
+imuVeloFromStartX	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloFromStartX, imuVeloFromStartY, imuVeloFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuVeloFromStartXCur	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloFromStartXCur, imuVeloFromStartYCur, imuVeloFromStartZCur;$/;"	m	class:FeatureAssociation	file:
+imuVeloFromStartY	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloFromStartX, imuVeloFromStartY, imuVeloFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuVeloFromStartYCur	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloFromStartXCur, imuVeloFromStartYCur, imuVeloFromStartZCur;$/;"	m	class:FeatureAssociation	file:
+imuVeloFromStartZ	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloFromStartX, imuVeloFromStartY, imuVeloFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuVeloFromStartZCur	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloFromStartXCur, imuVeloFromStartYCur, imuVeloFromStartZCur;$/;"	m	class:FeatureAssociation	file:
+imuVeloX	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloX[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuVeloXCur	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloXCur, imuVeloYCur, imuVeloZCur;$/;"	m	class:FeatureAssociation	file:
+imuVeloXStart	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloXStart, imuVeloYStart, imuVeloZStart;$/;"	m	class:FeatureAssociation	file:
+imuVeloY	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloY[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuVeloYCur	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloXCur, imuVeloYCur, imuVeloZCur;$/;"	m	class:FeatureAssociation	file:
+imuVeloYStart	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloXStart, imuVeloYStart, imuVeloZStart;$/;"	m	class:FeatureAssociation	file:
+imuVeloZ	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloZ[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuVeloZCur	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloXCur, imuVeloYCur, imuVeloZCur;$/;"	m	class:FeatureAssociation	file:
+imuVeloZStart	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloXStart, imuVeloYStart, imuVeloZStart;$/;"	m	class:FeatureAssociation	file:
+imuYaw	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuYaw[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuYawCur	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuRollCur, imuPitchCur, imuYawCur;$/;"	m	class:FeatureAssociation	file:
+imuYawLast	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuRollLast, imuPitchLast, imuYawLast;$/;"	m	class:FeatureAssociation	file:
+imuYawStart	LeGO-LOAM/src/featureAssociation.cpp	/^    float imuRollStart, imuPitchStart, imuYawStart;$/;"	m	class:FeatureAssociation	file:
+ind	LeGO-LOAM/include/utility.h	/^    size_t ind;$/;"	m	struct:smoothness_t
+initialEstimate	LeGO-LOAM/src/mapOptmization.cpp	/^    Values initialEstimate;$/;"	m	class:mapOptimization	file:
+initializationValue	LeGO-LOAM/src/featureAssociation.cpp	/^    void initializationValue()$/;"	f	class:FeatureAssociation
+integrateTransformation	LeGO-LOAM/src/featureAssociation.cpp	/^    void integrateTransformation(){$/;"	f	class:FeatureAssociation
+isDegenerate	LeGO-LOAM/src/featureAssociation.cpp	/^    bool isDegenerate;$/;"	m	class:FeatureAssociation	file:
+isDegenerate	LeGO-LOAM/src/mapOptmization.cpp	/^    bool isDegenerate;$/;"	m	class:mapOptimization	file:
+isam	LeGO-LOAM/src/mapOptmization.cpp	/^    ISAM2 *isam;$/;"	m	class:mapOptimization	file:
+isamCurrentEstimate	LeGO-LOAM/src/mapOptmization.cpp	/^    Values isamCurrentEstimate;$/;"	m	class:mapOptimization	file:
+kdtreeCornerFromMap	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::KdTreeFLANN<PointType>::Ptr kdtreeCornerFromMap;$/;"	m	class:mapOptimization	file:
+kdtreeCornerLast	LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::KdTreeFLANN<PointType>::Ptr kdtreeCornerLast;$/;"	m	class:FeatureAssociation	file:
+kdtreeGlobalMap	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::KdTreeFLANN<PointType>::Ptr kdtreeGlobalMap;$/;"	m	class:mapOptimization	file:
+kdtreeHistoryKeyPoses	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::KdTreeFLANN<PointType>::Ptr kdtreeHistoryKeyPoses;$/;"	m	class:mapOptimization	file:
+kdtreeSurfFromMap	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::KdTreeFLANN<PointType>::Ptr kdtreeSurfFromMap;$/;"	m	class:mapOptimization	file:
+kdtreeSurfLast	LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::KdTreeFLANN<PointType>::Ptr kdtreeSurfLast;$/;"	m	class:FeatureAssociation	file:
+kdtreeSurroundingKeyPoses	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::KdTreeFLANN<PointType>::Ptr kdtreeSurroundingKeyPoses;$/;"	m	class:mapOptimization	file:
+labelComponents	LeGO-LOAM/src/imageProjection.cpp	/^    void labelComponents(int row, int col){$/;"	f	class:ImageProjection
+labelCount	LeGO-LOAM/src/imageProjection.cpp	/^    int labelCount;$/;"	m	class:ImageProjection	file:
+labelMat	LeGO-LOAM/src/imageProjection.cpp	/^    cv::Mat labelMat;$/;"	m	class:ImageProjection	file:
+laserCloudCornerFromMap	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudCornerFromMap;$/;"	m	class:mapOptimization	file:
+laserCloudCornerFromMapDS	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudCornerFromMapDS;$/;"	m	class:mapOptimization	file:
+laserCloudCornerFromMapDSNum	LeGO-LOAM/src/mapOptmization.cpp	/^    int laserCloudCornerFromMapDSNum;$/;"	m	class:mapOptimization	file:
+laserCloudCornerLast	LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudCornerLast;$/;"	m	class:FeatureAssociation	file:
+laserCloudCornerLast	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudCornerLast;$/;"	m	class:mapOptimization	file:
+laserCloudCornerLastDS	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudCornerLastDS;$/;"	m	class:mapOptimization	file:
+laserCloudCornerLastDSNum	LeGO-LOAM/src/mapOptmization.cpp	/^    int laserCloudCornerLastDSNum;$/;"	m	class:mapOptimization	file:
+laserCloudCornerLastHandler	LeGO-LOAM/src/mapOptmization.cpp	/^    void laserCloudCornerLastHandler(const sensor_msgs::PointCloud2ConstPtr& msg){$/;"	f	class:mapOptimization
+laserCloudCornerLastNum	LeGO-LOAM/src/featureAssociation.cpp	/^    int laserCloudCornerLastNum;$/;"	m	class:FeatureAssociation	file:
+laserCloudHandler	LeGO-LOAM/src/featureAssociation.cpp	/^    void laserCloudHandler(const sensor_msgs::PointCloud2ConstPtr& laserCloudMsg){$/;"	f	class:FeatureAssociation
+laserCloudIn	LeGO-LOAM/src/imageProjection.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudIn;$/;"	m	class:ImageProjection	file:
+laserCloudInfoHandler	LeGO-LOAM/src/featureAssociation.cpp	/^    void laserCloudInfoHandler(const cloud_msgs::cloud_infoConstPtr& msgIn)$/;"	f	class:FeatureAssociation
+laserCloudOri	LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudOri;$/;"	m	class:FeatureAssociation	file:
+laserCloudOri	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudOri;$/;"	m	class:mapOptimization	file:
+laserCloudOutlierLast	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudOutlierLast;$/;"	m	class:mapOptimization	file:
+laserCloudOutlierLastDS	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudOutlierLastDS;$/;"	m	class:mapOptimization	file:
+laserCloudOutlierLastDSNum	LeGO-LOAM/src/mapOptmization.cpp	/^    int laserCloudOutlierLastDSNum;$/;"	m	class:mapOptimization	file:
+laserCloudOutlierLastHandler	LeGO-LOAM/src/mapOptmization.cpp	/^    void laserCloudOutlierLastHandler(const sensor_msgs::PointCloud2ConstPtr& msg){$/;"	f	class:mapOptimization
+laserCloudProj	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudProj;\/\/store projectoin points$/;"	m	class:mapOptimization	file:
+laserCloudSel	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSel;$/;"	m	class:mapOptimization	file:
+laserCloudSurfFromMap	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSurfFromMap;$/;"	m	class:mapOptimization	file:
+laserCloudSurfFromMapDS	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSurfFromMapDS;$/;"	m	class:mapOptimization	file:
+laserCloudSurfFromMapDSNum	LeGO-LOAM/src/mapOptmization.cpp	/^    int laserCloudSurfFromMapDSNum;$/;"	m	class:mapOptimization	file:
+laserCloudSurfLast	LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSurfLast;$/;"	m	class:FeatureAssociation	file:
+laserCloudSurfLast	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSurfLast;$/;"	m	class:mapOptimization	file:
+laserCloudSurfLastDS	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSurfLastDS;$/;"	m	class:mapOptimization	file:
+laserCloudSurfLastDSNum	LeGO-LOAM/src/mapOptmization.cpp	/^    int laserCloudSurfLastDSNum;$/;"	m	class:mapOptimization	file:
+laserCloudSurfLastHandler	LeGO-LOAM/src/mapOptmization.cpp	/^    void laserCloudSurfLastHandler(const sensor_msgs::PointCloud2ConstPtr& msg){$/;"	f	class:mapOptimization
+laserCloudSurfLastNum	LeGO-LOAM/src/featureAssociation.cpp	/^    int laserCloudSurfLastNum;$/;"	m	class:FeatureAssociation	file:
+laserCloudSurfTotalLast	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSurfTotalLast;$/;"	m	class:mapOptimization	file:
+laserCloudSurfTotalLastDS	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSurfTotalLastDS;$/;"	m	class:mapOptimization	file:
+laserCloudSurfTotalLastDSNum	LeGO-LOAM/src/mapOptmization.cpp	/^    int laserCloudSurfTotalLastDSNum;$/;"	m	class:mapOptimization	file:
+laserOdometry	LeGO-LOAM/src/featureAssociation.cpp	/^    nav_msgs::Odometry laserOdometry;$/;"	m	class:FeatureAssociation	file:
+laserOdometry2	LeGO-LOAM/src/transformFusion.cpp	/^    nav_msgs::Odometry laserOdometry2;$/;"	m	class:TransformFusion	file:
+laserOdometryHandler	LeGO-LOAM/src/mapOptmization.cpp	/^    void laserOdometryHandler(const nav_msgs::Odometry::ConstPtr& laserOdometry){$/;"	f	class:mapOptimization
+laserOdometryHandler	LeGO-LOAM/src/transformFusion.cpp	/^    void laserOdometryHandler(const nav_msgs::Odometry::ConstPtr& laserOdometry)$/;"	f	class:TransformFusion
+laserOdometryTrans	LeGO-LOAM/src/featureAssociation.cpp	/^    tf::StampedTransform laserOdometryTrans;$/;"	m	class:FeatureAssociation	file:
+laserOdometryTrans2	LeGO-LOAM/src/transformFusion.cpp	/^    tf::StampedTransform laserOdometryTrans2;$/;"	m	class:TransformFusion	file:
+latestCornerKeyFrameCloud	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr latestCornerKeyFrameCloud;$/;"	m	class:mapOptimization	file:
+latestFrameID	LeGO-LOAM/src/mapOptmization.cpp	/^    int latestFrameID;$/;"	m	class:mapOptimization	file:
+latestFrameIDLoopCloure	LeGO-LOAM/src/mapOptmization.cpp	/^    int latestFrameIDLoopCloure;$/;"	m	class:mapOptimization	file:
+latestSurfKeyFrameCloud	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr latestSurfKeyFrameCloud;$/;"	m	class:mapOptimization	file:
+latestSurfKeyFrameCloudDS	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr latestSurfKeyFrameCloudDS;$/;"	m	class:mapOptimization	file:
+loopClosureEnableFlag	LeGO-LOAM/include/utility.h	/^extern const bool loopClosureEnableFlag = false;$/;"	v
+loopClosureThread	LeGO-LOAM/src/mapOptmization.cpp	/^    void loopClosureThread(){$/;"	f	class:mapOptimization
+main	LeGO-LOAM/src/featureAssociation.cpp	/^int main(int argc, char** argv)$/;"	f
+main	LeGO-LOAM/src/imageProjection.cpp	/^int main(int argc, char** argv){$/;"	f
+main	LeGO-LOAM/src/mapOptmization.cpp	/^int main(int argc, char** argv)$/;"	f
+main	LeGO-LOAM/src/transformFusion.cpp	/^int main(int argc, char** argv)$/;"	f
+mapOptimization	LeGO-LOAM/src/mapOptmization.cpp	/^    mapOptimization():$/;"	f	class:mapOptimization
+mapOptimization	LeGO-LOAM/src/mapOptmization.cpp	/^class mapOptimization{$/;"	c	file:
+map_2_camera_init_Trans	LeGO-LOAM/src/transformFusion.cpp	/^    tf::StampedTransform map_2_camera_init_Trans;$/;"	m	class:TransformFusion	file:
+mappingProcessInterval	LeGO-LOAM/include/utility.h	/^extern const double mappingProcessInterval = 0.3;$/;"	v
+markOccludedPoints	LeGO-LOAM/src/featureAssociation.cpp	/^    void markOccludedPoints()$/;"	f	class:FeatureAssociation
+matA0	LeGO-LOAM/src/mapOptmization.cpp	/^    cv::Mat matA0;$/;"	m	class:mapOptimization	file:
+matA1	LeGO-LOAM/src/mapOptmization.cpp	/^    cv::Mat matA1;$/;"	m	class:mapOptimization	file:
+matB0	LeGO-LOAM/src/mapOptmization.cpp	/^    cv::Mat matB0;$/;"	m	class:mapOptimization	file:
+matD1	LeGO-LOAM/src/mapOptmization.cpp	/^    cv::Mat matD1;$/;"	m	class:mapOptimization	file:
+matP	LeGO-LOAM/src/featureAssociation.cpp	/^    cv::Mat matP;$/;"	m	class:FeatureAssociation	file:
+matP	LeGO-LOAM/src/mapOptmization.cpp	/^    cv::Mat matP;$/;"	m	class:mapOptimization	file:
+matV1	LeGO-LOAM/src/mapOptmization.cpp	/^    cv::Mat matV1;$/;"	m	class:mapOptimization	file:
+matX0	LeGO-LOAM/src/mapOptmization.cpp	/^    cv::Mat matX0;$/;"	m	class:mapOptimization	file:
+mtx	LeGO-LOAM/src/mapOptmization.cpp	/^    std::mutex mtx;$/;"	m	class:mapOptimization	file:
+nanPoint	LeGO-LOAM/src/imageProjection.cpp	/^    PointType nanPoint;$/;"	m	class:ImageProjection	file:
+nearHistoryCornerKeyFrameCloud	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr nearHistoryCornerKeyFrameCloud;$/;"	m	class:mapOptimization	file:
+nearHistoryCornerKeyFrameCloudDS	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr nearHistoryCornerKeyFrameCloudDS;$/;"	m	class:mapOptimization	file:
+nearHistorySurfKeyFrameCloud	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr nearHistorySurfKeyFrameCloud;$/;"	m	class:mapOptimization	file:
+nearHistorySurfKeyFrameCloudDS	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr nearHistorySurfKeyFrameCloudDS;$/;"	m	class:mapOptimization	file:
+nearestFeatureSearchSqDist	LeGO-LOAM/include/utility.h	/^extern const float nearestFeatureSearchSqDist = 25;$/;"	v
+neighborIterator	LeGO-LOAM/src/imageProjection.cpp	/^    std::vector<std::pair<uint8_t, uint8_t> > neighborIterator;$/;"	m	class:ImageProjection	file:
+newLaserCloudCornerLast	LeGO-LOAM/src/mapOptmization.cpp	/^    bool newLaserCloudCornerLast;$/;"	m	class:mapOptimization	file:
+newLaserCloudOutlierLast	LeGO-LOAM/src/mapOptmization.cpp	/^    bool newLaserCloudOutlierLast;$/;"	m	class:mapOptimization	file:
+newLaserCloudSurfLast	LeGO-LOAM/src/mapOptmization.cpp	/^    bool newLaserCloudSurfLast;$/;"	m	class:mapOptimization	file:
+newLaserOdometry	LeGO-LOAM/src/mapOptmization.cpp	/^    bool newLaserOdometry;$/;"	m	class:mapOptimization	file:
+newOutlierCloud	LeGO-LOAM/src/featureAssociation.cpp	/^    bool newOutlierCloud;$/;"	m	class:FeatureAssociation	file:
+newSegmentedCloud	LeGO-LOAM/src/featureAssociation.cpp	/^    bool newSegmentedCloud;$/;"	m	class:FeatureAssociation	file:
+newSegmentedCloudInfo	LeGO-LOAM/src/featureAssociation.cpp	/^    bool newSegmentedCloudInfo;$/;"	m	class:FeatureAssociation	file:
+nh	LeGO-LOAM/src/featureAssociation.cpp	/^	ros::NodeHandle nh;$/;"	m	class:FeatureAssociation	file:
+nh	LeGO-LOAM/src/imageProjection.cpp	/^    ros::NodeHandle nh;$/;"	m	class:ImageProjection	file:
+nh	LeGO-LOAM/src/mapOptmization.cpp	/^    ros::NodeHandle nh;$/;"	m	class:mapOptimization	file:
+nh	LeGO-LOAM/src/transformFusion.cpp	/^    ros::NodeHandle nh;$/;"	m	class:TransformFusion	file:
+odomAftMapped	LeGO-LOAM/src/mapOptmization.cpp	/^    nav_msgs::Odometry odomAftMapped;$/;"	m	class:mapOptimization	file:
+odomAftMappedHandler	LeGO-LOAM/src/transformFusion.cpp	/^    void odomAftMappedHandler(const nav_msgs::Odometry::ConstPtr& odomAftMapped)$/;"	f	class:TransformFusion
+odometryNoise	LeGO-LOAM/src/mapOptmization.cpp	/^    noiseModel::Diagonal::shared_ptr odometryNoise;$/;"	m	class:mapOptimization	file:
+operator ()	LeGO-LOAM/include/utility.h	/^    bool operator()(smoothness_t const &left, smoothness_t const &right) { $/;"	f	struct:by_value
+optimizedEstimate	LeGO-LOAM/src/mapOptmization.cpp	/^    Values optimizedEstimate;$/;"	m	class:mapOptimization	file:
+outlierCloud	LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr outlierCloud;$/;"	m	class:FeatureAssociation	file:
+outlierCloud	LeGO-LOAM/src/imageProjection.cpp	/^    pcl::PointCloud<PointType>::Ptr outlierCloud;$/;"	m	class:ImageProjection	file:
+outlierCloudHandler	LeGO-LOAM/src/featureAssociation.cpp	/^    void outlierCloudHandler(const sensor_msgs::PointCloud2ConstPtr& msgIn){$/;"	f	class:FeatureAssociation
+outlierCloudKeyFrames	LeGO-LOAM/src/mapOptmization.cpp	/^    vector<pcl::PointCloud<PointType>::Ptr> outlierCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+pclPointToAffine3fCameraToLidar	LeGO-LOAM/src/mapOptmization.cpp	/^    Eigen::Affine3f pclPointToAffine3fCameraToLidar(PointTypePose thisPoint){$/;"	f	class:mapOptimization
+pclPointTogtsamPose3	LeGO-LOAM/src/mapOptmization.cpp	/^    Pose3 pclPointTogtsamPose3(PointTypePose thisPoint){$/;"	f	class:mapOptimization
+performLoopClosure	LeGO-LOAM/src/mapOptmization.cpp	/^    void performLoopClosure(){$/;"	f	class:mapOptimization
+pitch	LeGO-LOAM/include/utility.h	/^    float pitch;$/;"	m	struct:PointXYZIRPYT
+pointAssociateToMap	LeGO-LOAM/src/mapOptmization.cpp	/^    void pointAssociateToMap(PointType const * const pi, PointType * const po)$/;"	f	class:mapOptimization
+pointOri	LeGO-LOAM/src/featureAssociation.cpp	/^    PointType pointOri, pointSel, tripod1, tripod2, tripod3, pointProj, coeff;$/;"	m	class:FeatureAssociation	file:
+pointOri	LeGO-LOAM/src/mapOptmization.cpp	/^    PointType pointOri, pointSel, pointProj, coeff;$/;"	m	class:mapOptimization	file:
+pointProj	LeGO-LOAM/src/featureAssociation.cpp	/^    PointType pointOri, pointSel, tripod1, tripod2, tripod3, pointProj, coeff;$/;"	m	class:FeatureAssociation	file:
+pointProj	LeGO-LOAM/src/mapOptmization.cpp	/^    PointType pointOri, pointSel, pointProj, coeff;$/;"	m	class:mapOptimization	file:
+pointSearchCornerInd1	LeGO-LOAM/src/featureAssociation.cpp	/^    float pointSearchCornerInd1[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+pointSearchCornerInd2	LeGO-LOAM/src/featureAssociation.cpp	/^    float pointSearchCornerInd2[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+pointSearchInd	LeGO-LOAM/src/featureAssociation.cpp	/^    std::vector<int> pointSearchInd;$/;"	m	class:FeatureAssociation	file:
+pointSearchInd	LeGO-LOAM/src/mapOptmization.cpp	/^    std::vector<int> pointSearchInd;$/;"	m	class:mapOptimization	file:
+pointSearchSqDis	LeGO-LOAM/src/featureAssociation.cpp	/^    std::vector<float> pointSearchSqDis;$/;"	m	class:FeatureAssociation	file:
+pointSearchSqDis	LeGO-LOAM/src/mapOptmization.cpp	/^    std::vector<float> pointSearchSqDis;$/;"	m	class:mapOptimization	file:
+pointSearchSurfInd1	LeGO-LOAM/src/featureAssociation.cpp	/^    float pointSearchSurfInd1[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+pointSearchSurfInd2	LeGO-LOAM/src/featureAssociation.cpp	/^    float pointSearchSurfInd2[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+pointSearchSurfInd3	LeGO-LOAM/src/featureAssociation.cpp	/^    float pointSearchSurfInd3[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+pointSel	LeGO-LOAM/src/featureAssociation.cpp	/^    PointType pointOri, pointSel, tripod1, tripod2, tripod3, pointProj, coeff;$/;"	m	class:FeatureAssociation	file:
+pointSel	LeGO-LOAM/src/mapOptmization.cpp	/^    PointType pointOri, pointSel, pointProj, coeff;$/;"	m	class:mapOptimization	file:
+pointSelCornerInd	LeGO-LOAM/src/featureAssociation.cpp	/^    int pointSelCornerInd[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+pointSelSurfInd	LeGO-LOAM/src/featureAssociation.cpp	/^    int pointSelSurfInd[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+potentialLoopFlag	LeGO-LOAM/src/mapOptmization.cpp	/^    bool potentialLoopFlag;$/;"	m	class:mapOptimization	file:
+previousRobotPosPoint	LeGO-LOAM/src/mapOptmization.cpp	/^    PointType previousRobotPosPoint;$/;"	m	class:mapOptimization	file:
+priorNoise	LeGO-LOAM/src/mapOptmization.cpp	/^    noiseModel::Diagonal::shared_ptr priorNoise;$/;"	m	class:mapOptimization	file:
+projectPointCloud	LeGO-LOAM/src/imageProjection.cpp	/^    void projectPointCloud(){$/;"	f	class:ImageProjection
+pubCornerPointsLessSharp	LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Publisher pubCornerPointsLessSharp;$/;"	m	class:FeatureAssociation	file:
+pubCornerPointsSharp	LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Publisher pubCornerPointsSharp;$/;"	m	class:FeatureAssociation	file:
+pubFullCloud	LeGO-LOAM/src/imageProjection.cpp	/^    ros::Publisher pubFullCloud;$/;"	m	class:ImageProjection	file:
+pubFullInfoCloud	LeGO-LOAM/src/imageProjection.cpp	/^    ros::Publisher pubFullInfoCloud;$/;"	m	class:ImageProjection	file:
+pubGroundCloud	LeGO-LOAM/src/imageProjection.cpp	/^    ros::Publisher pubGroundCloud;$/;"	m	class:ImageProjection	file:
+pubHistoryKeyFrames	LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Publisher pubHistoryKeyFrames;$/;"	m	class:mapOptimization	file:
+pubIcpKeyFrames	LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Publisher pubIcpKeyFrames;$/;"	m	class:mapOptimization	file:
+pubKeyPoses	LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Publisher pubKeyPoses;$/;"	m	class:mapOptimization	file:
+pubLaserCloudCornerLast	LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Publisher pubLaserCloudCornerLast;$/;"	m	class:FeatureAssociation	file:
+pubLaserCloudSurfLast	LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Publisher pubLaserCloudSurfLast;$/;"	m	class:FeatureAssociation	file:
+pubLaserCloudSurround	LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Publisher pubLaserCloudSurround;$/;"	m	class:mapOptimization	file:
+pubLaserOdometry	LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Publisher pubLaserOdometry;$/;"	m	class:FeatureAssociation	file:
+pubLaserOdometry2	LeGO-LOAM/src/transformFusion.cpp	/^    ros::Publisher pubLaserOdometry2;$/;"	m	class:TransformFusion	file:
+pubOdomAftMapped	LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Publisher pubOdomAftMapped;$/;"	m	class:mapOptimization	file:
+pubOutlierCloud	LeGO-LOAM/src/imageProjection.cpp	/^    ros::Publisher pubOutlierCloud;$/;"	m	class:ImageProjection	file:
+pubOutlierCloudLast	LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Publisher pubOutlierCloudLast;$/;"	m	class:FeatureAssociation	file:
+pubRecentKeyFrames	LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Publisher pubRecentKeyFrames;$/;"	m	class:mapOptimization	file:
+pubSegmentedCloud	LeGO-LOAM/src/imageProjection.cpp	/^    ros::Publisher pubSegmentedCloud;$/;"	m	class:ImageProjection	file:
+pubSegmentedCloudInfo	LeGO-LOAM/src/imageProjection.cpp	/^    ros::Publisher pubSegmentedCloudInfo;$/;"	m	class:ImageProjection	file:
+pubSegmentedCloudPure	LeGO-LOAM/src/imageProjection.cpp	/^    ros::Publisher pubSegmentedCloudPure;$/;"	m	class:ImageProjection	file:
+pubSurfPointsFlat	LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Publisher pubSurfPointsFlat;$/;"	m	class:FeatureAssociation	file:
+pubSurfPointsLessFlat	LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Publisher pubSurfPointsLessFlat;$/;"	m	class:FeatureAssociation	file:
+publaserCloudProj	LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Publisher publaserCloudProj;$/;"	m	class:mapOptimization	file:
+publaserCloudSel	LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Publisher publaserCloudSel;\/\/ori and proj point cloud$/;"	m	class:mapOptimization	file:
+publishCloud	LeGO-LOAM/src/featureAssociation.cpp	/^    void publishCloud()$/;"	f	class:FeatureAssociation
+publishCloud	LeGO-LOAM/src/imageProjection.cpp	/^    void publishCloud(){$/;"	f	class:ImageProjection
+publishCloudsLast	LeGO-LOAM/src/featureAssociation.cpp	/^    void publishCloudsLast(){$/;"	f	class:FeatureAssociation
+publishGlobalMap	LeGO-LOAM/src/mapOptmization.cpp	/^    void publishGlobalMap(){$/;"	f	class:mapOptimization
+publishKeyPosesAndFrames	LeGO-LOAM/src/mapOptmization.cpp	/^    void publishKeyPosesAndFrames(){$/;"	f	class:mapOptimization
+publishOdometry	LeGO-LOAM/src/featureAssociation.cpp	/^    void publishOdometry(){$/;"	f	class:FeatureAssociation
+publishOriandProjCloud	LeGO-LOAM/src/mapOptmization.cpp	/^    void publishOriandProjCloud(){$/;"	f	class:mapOptimization
+publishTF	LeGO-LOAM/src/mapOptmization.cpp	/^    void publishTF(){$/;"	f	class:mapOptimization
+queueIndX	LeGO-LOAM/src/imageProjection.cpp	/^    uint16_t *queueIndX;$/;"	m	class:ImageProjection	file:
+queueIndY	LeGO-LOAM/src/imageProjection.cpp	/^    uint16_t *queueIndY;$/;"	m	class:ImageProjection	file:
+rad2deg	LeGO-LOAM/src/featureAssociation.cpp	/^    double rad2deg(double radians)$/;"	f	class:FeatureAssociation
+rangeMat	LeGO-LOAM/src/imageProjection.cpp	/^    cv::Mat rangeMat;$/;"	m	class:ImageProjection	file:
+recentCornerCloudKeyFrames	LeGO-LOAM/src/mapOptmization.cpp	/^    deque<pcl::PointCloud<PointType>::Ptr> recentCornerCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+recentOutlierCloudKeyFrames	LeGO-LOAM/src/mapOptmization.cpp	/^    deque<pcl::PointCloud<PointType>::Ptr> recentOutlierCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+recentSurfCloudKeyFrames	LeGO-LOAM/src/mapOptmization.cpp	/^    deque<pcl::PointCloud<PointType>::Ptr> recentSurfCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+resetParameters	LeGO-LOAM/src/imageProjection.cpp	/^    void resetParameters(){$/;"	f	class:ImageProjection
+roll	LeGO-LOAM/include/utility.h	/^    float roll;$/;"	m	struct:PointXYZIRPYT
+run	LeGO-LOAM/src/mapOptmization.cpp	/^    void run(){$/;"	f	class:mapOptimization
+runFeatureAssociation	LeGO-LOAM/src/featureAssociation.cpp	/^    void runFeatureAssociation()$/;"	f	class:FeatureAssociation
+sPitch	LeGO-LOAM/src/mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+sRoll	LeGO-LOAM/src/mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+sYaw	LeGO-LOAM/src/mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+saveKeyFramesAndFactor	LeGO-LOAM/src/mapOptmization.cpp	/^    void saveKeyFramesAndFactor(){$/;"	f	class:mapOptimization
+scan2MapOptimization	LeGO-LOAM/src/mapOptmization.cpp	/^    void scan2MapOptimization(){$/;"	f	class:mapOptimization
+scanPeriod	LeGO-LOAM/include/utility.h	/^extern const float scanPeriod = 0.1;$/;"	v
+sectionsTotal	LeGO-LOAM/include/utility.h	/^extern const int sectionsTotal = 6;$/;"	v
+segInfo	LeGO-LOAM/src/featureAssociation.cpp	/^    cloud_msgs::cloud_info segInfo;$/;"	m	class:FeatureAssociation	file:
+segMsg	LeGO-LOAM/src/imageProjection.cpp	/^    cloud_msgs::cloud_info segMsg;$/;"	m	class:ImageProjection	file:
+segmentAlphaX	LeGO-LOAM/include/utility.h	/^extern const float segmentAlphaX = ang_res_x \/ 180.0 * M_PI;$/;"	v
+segmentAlphaY	LeGO-LOAM/include/utility.h	/^extern const float segmentAlphaY = ang_res_y \/ 180.0 * M_PI;$/;"	v
+segmentTheta	LeGO-LOAM/include/utility.h	/^extern const float segmentTheta = 1.0472;$/;"	v
+segmentValidLineNum	LeGO-LOAM/include/utility.h	/^extern const int segmentValidLineNum = 3;$/;"	v
+segmentValidPointNum	LeGO-LOAM/include/utility.h	/^extern const int segmentValidPointNum = 5;$/;"	v
+segmentedCloud	LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr segmentedCloud;$/;"	m	class:FeatureAssociation	file:
+segmentedCloud	LeGO-LOAM/src/imageProjection.cpp	/^    pcl::PointCloud<PointType>::Ptr segmentedCloud;$/;"	m	class:ImageProjection	file:
+segmentedCloudPure	LeGO-LOAM/src/imageProjection.cpp	/^    pcl::PointCloud<PointType>::Ptr segmentedCloudPure;$/;"	m	class:ImageProjection	file:
+sensorMountAngle	LeGO-LOAM/include/utility.h	/^extern const float sensorMountAngle = 0.0;$/;"	v
+sinImuPitchStart	LeGO-LOAM/src/featureAssociation.cpp	/^    float cosImuRollStart, cosImuPitchStart, cosImuYawStart, sinImuRollStart, sinImuPitchStart, sinImuYawStart;$/;"	m	class:FeatureAssociation	file:
+sinImuRollStart	LeGO-LOAM/src/featureAssociation.cpp	/^    float cosImuRollStart, cosImuPitchStart, cosImuYawStart, sinImuRollStart, sinImuPitchStart, sinImuYawStart;$/;"	m	class:FeatureAssociation	file:
+sinImuYawStart	LeGO-LOAM/src/featureAssociation.cpp	/^    float cosImuRollStart, cosImuPitchStart, cosImuYawStart, sinImuRollStart, sinImuPitchStart, sinImuYawStart;$/;"	m	class:FeatureAssociation	file:
+skipFrameNum	LeGO-LOAM/src/featureAssociation.cpp	/^    int skipFrameNum;$/;"	m	class:FeatureAssociation	file:
+smoothness_t	LeGO-LOAM/include/utility.h	/^struct smoothness_t{ $/;"	s
+stPitch	LeGO-LOAM/src/mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+stRoll	LeGO-LOAM/src/mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+stYaw	LeGO-LOAM/src/mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+startOrientation	LeGO-LOAM/src/imageProjection.cpp	/^    float startOrientation;$/;"	m	class:ImageProjection	file:
+std	LeGO-LOAM/include/stdtostring.h	/^    namespace std$/;"	n
+subImu	LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Subscriber subImu;$/;"	m	class:FeatureAssociation	file:
+subImu	LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Subscriber subImu;$/;"	m	class:mapOptimization	file:
+subLaserCloud	LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Subscriber subLaserCloud;$/;"	m	class:FeatureAssociation	file:
+subLaserCloud	LeGO-LOAM/src/imageProjection.cpp	/^    ros::Subscriber subLaserCloud;$/;"	m	class:ImageProjection	file:
+subLaserCloudCornerLast	LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Subscriber subLaserCloudCornerLast;$/;"	m	class:mapOptimization	file:
+subLaserCloudInfo	LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Subscriber subLaserCloudInfo;$/;"	m	class:FeatureAssociation	file:
+subLaserCloudSurfLast	LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Subscriber subLaserCloudSurfLast;$/;"	m	class:mapOptimization	file:
+subLaserOdometry	LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Subscriber subLaserOdometry;$/;"	m	class:mapOptimization	file:
+subLaserOdometry	LeGO-LOAM/src/transformFusion.cpp	/^    ros::Subscriber subLaserOdometry;$/;"	m	class:TransformFusion	file:
+subOdomAftMapped	LeGO-LOAM/src/transformFusion.cpp	/^    ros::Subscriber subOdomAftMapped;$/;"	m	class:TransformFusion	file:
+subOutlierCloud	LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Subscriber subOutlierCloud;$/;"	m	class:FeatureAssociation	file:
+subOutlierCloudLast	LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Subscriber subOutlierCloudLast;$/;"	m	class:mapOptimization	file:
+surfCloudKeyFrames	LeGO-LOAM/src/mapOptmization.cpp	/^    vector<pcl::PointCloud<PointType>::Ptr> surfCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+surfFeatureNum	LeGO-LOAM/include/utility.h	/^extern const int surfFeatureNum = 4;$/;"	v
+surfOptimization	LeGO-LOAM/src/mapOptmization.cpp	/^    void surfOptimization(int iterCount){$/;"	f	class:mapOptimization
+surfPointsFlat	LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr surfPointsFlat;$/;"	m	class:FeatureAssociation	file:
+surfPointsLessFlat	LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr surfPointsLessFlat;$/;"	m	class:FeatureAssociation	file:
+surfPointsLessFlatScan	LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr surfPointsLessFlatScan;$/;"	m	class:FeatureAssociation	file:
+surfPointsLessFlatScanDS	LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr surfPointsLessFlatScanDS;$/;"	m	class:FeatureAssociation	file:
+surfThreshold	LeGO-LOAM/include/utility.h	/^extern const float surfThreshold = 0.1;$/;"	v
+surroundingCornerCloudKeyFrames	LeGO-LOAM/src/mapOptmization.cpp	/^    deque<pcl::PointCloud<PointType>::Ptr> surroundingCornerCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+surroundingExistingKeyPosesID	LeGO-LOAM/src/mapOptmization.cpp	/^    vector<int> surroundingExistingKeyPosesID;$/;"	m	class:mapOptimization	file:
+surroundingKeyPoses	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr surroundingKeyPoses;$/;"	m	class:mapOptimization	file:
+surroundingKeyPosesDS	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr surroundingKeyPosesDS;$/;"	m	class:mapOptimization	file:
+surroundingKeyframeSearchNum	LeGO-LOAM/include/utility.h	/^extern const int   surroundingKeyframeSearchNum = 50;$/;"	v
+surroundingKeyframeSearchRadius	LeGO-LOAM/include/utility.h	/^extern const float surroundingKeyframeSearchRadius = 50.0;$/;"	v
+surroundingOutlierCloudKeyFrames	LeGO-LOAM/src/mapOptmization.cpp	/^    deque<pcl::PointCloud<PointType>::Ptr> surroundingOutlierCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+surroundingSurfCloudKeyFrames	LeGO-LOAM/src/mapOptmization.cpp	/^    deque<pcl::PointCloud<PointType>::Ptr> surroundingSurfCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+systemDelay	LeGO-LOAM/include/utility.h	/^extern const int systemDelay = 0;$/;"	v
+systemInitCount	LeGO-LOAM/src/featureAssociation.cpp	/^    int systemInitCount;$/;"	m	class:FeatureAssociation	file:
+systemInited	LeGO-LOAM/src/featureAssociation.cpp	/^    bool systemInited;$/;"	m	class:FeatureAssociation	file:
+systemInitedLM	LeGO-LOAM/src/featureAssociation.cpp	/^    bool systemInitedLM;$/;"	m	class:FeatureAssociation	file:
+tInX	LeGO-LOAM/src/mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+tInY	LeGO-LOAM/src/mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+tInZ	LeGO-LOAM/src/mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+tX	LeGO-LOAM/src/mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+tY	LeGO-LOAM/src/mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+tZ	LeGO-LOAM/src/mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+tfBroadcaster	LeGO-LOAM/src/featureAssociation.cpp	/^    tf::TransformBroadcaster tfBroadcaster;$/;"	m	class:FeatureAssociation	file:
+tfBroadcaster	LeGO-LOAM/src/mapOptmization.cpp	/^    tf::TransformBroadcaster tfBroadcaster;$/;"	m	class:mapOptimization	file:
+tfBroadcaster2	LeGO-LOAM/src/transformFusion.cpp	/^    tf::TransformBroadcaster tfBroadcaster2;$/;"	m	class:TransformFusion	file:
+tfBroadcasterCamera2Baselink	LeGO-LOAM/src/transformFusion.cpp	/^    tf::TransformBroadcaster tfBroadcasterCamera2Baselink;$/;"	m	class:TransformFusion	file:
+tfBroadcasterMap2CameraInit	LeGO-LOAM/src/transformFusion.cpp	/^    tf::TransformBroadcaster tfBroadcasterMap2CameraInit;$/;"	m	class:TransformFusion	file:
+time	LeGO-LOAM/include/utility.h	/^    double time;$/;"	m	struct:PointXYZIRPYT
+timeLaserCloudCornerLast	LeGO-LOAM/src/mapOptmization.cpp	/^    double timeLaserCloudCornerLast;$/;"	m	class:mapOptimization	file:
+timeLaserCloudOutlierLast	LeGO-LOAM/src/mapOptmization.cpp	/^    double timeLaserCloudOutlierLast;$/;"	m	class:mapOptimization	file:
+timeLaserCloudSurfLast	LeGO-LOAM/src/mapOptmization.cpp	/^    double timeLaserCloudSurfLast;$/;"	m	class:mapOptimization	file:
+timeLaserOdometry	LeGO-LOAM/src/mapOptmization.cpp	/^    double timeLaserOdometry;$/;"	m	class:mapOptimization	file:
+timeLastGloalMapPublish	LeGO-LOAM/src/mapOptmization.cpp	/^    double timeLastGloalMapPublish;$/;"	m	class:mapOptimization	file:
+timeLastProcessing	LeGO-LOAM/src/mapOptmization.cpp	/^    double timeLastProcessing;$/;"	m	class:mapOptimization	file:
+timeNewOutlierCloud	LeGO-LOAM/src/featureAssociation.cpp	/^    double timeNewOutlierCloud;$/;"	m	class:FeatureAssociation	file:
+timeNewSegmentedCloud	LeGO-LOAM/src/featureAssociation.cpp	/^    double timeNewSegmentedCloud;$/;"	m	class:FeatureAssociation	file:
+timeNewSegmentedCloudInfo	LeGO-LOAM/src/featureAssociation.cpp	/^    double timeNewSegmentedCloudInfo;$/;"	m	class:FeatureAssociation	file:
+timeSaveFirstCurrentScanForLoopClosure	LeGO-LOAM/src/mapOptmization.cpp	/^    double timeSaveFirstCurrentScanForLoopClosure;$/;"	m	class:mapOptimization	file:
+timeScanCur	LeGO-LOAM/src/featureAssociation.cpp	/^    double timeScanCur;$/;"	m	class:FeatureAssociation	file:
+to_string	LeGO-LOAM/include/stdtostring.h	/^        template < typename T > std::string to_string( const T& n )$/;"	f	namespace:std
+transformAftMapped	LeGO-LOAM/src/mapOptmization.cpp	/^    float transformAftMapped[6];$/;"	m	class:mapOptimization	file:
+transformAftMapped	LeGO-LOAM/src/transformFusion.cpp	/^    float transformAftMapped[6];$/;"	m	class:TransformFusion	file:
+transformAssociateToMap	LeGO-LOAM/src/mapOptmization.cpp	/^    void transformAssociateToMap()$/;"	f	class:mapOptimization
+transformAssociateToMap	LeGO-LOAM/src/transformFusion.cpp	/^    void transformAssociateToMap()$/;"	f	class:TransformFusion
+transformBefMapped	LeGO-LOAM/src/mapOptmization.cpp	/^    float transformBefMapped[6];$/;"	m	class:mapOptimization	file:
+transformBefMapped	LeGO-LOAM/src/transformFusion.cpp	/^    float transformBefMapped[6];$/;"	m	class:TransformFusion	file:
+transformCur	LeGO-LOAM/src/featureAssociation.cpp	/^    float transformCur[6];$/;"	m	class:FeatureAssociation	file:
+transformIncre	LeGO-LOAM/src/mapOptmization.cpp	/^    float transformIncre[6];$/;"	m	class:mapOptimization	file:
+transformIncre	LeGO-LOAM/src/transformFusion.cpp	/^    float transformIncre[6];$/;"	m	class:TransformFusion	file:
+transformLast	LeGO-LOAM/src/mapOptmization.cpp	/^    float transformLast[6];$/;"	m	class:mapOptimization	file:
+transformMapped	LeGO-LOAM/src/transformFusion.cpp	/^    float transformMapped[6];$/;"	m	class:TransformFusion	file:
+transformPointCloud	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr transformPointCloud(pcl::PointCloud<PointType>::Ptr cloudIn){$/;"	f	class:mapOptimization
+transformPointCloud	LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr transformPointCloud(pcl::PointCloud<PointType>::Ptr cloudIn, PointTypePose* transformIn){$/;"	f	class:mapOptimization
+transformSum	LeGO-LOAM/src/featureAssociation.cpp	/^    float transformSum[6];$/;"	m	class:FeatureAssociation	file:
+transformSum	LeGO-LOAM/src/mapOptmization.cpp	/^    float transformSum[6];$/;"	m	class:mapOptimization	file:
+transformSum	LeGO-LOAM/src/transformFusion.cpp	/^    float transformSum[6];$/;"	m	class:TransformFusion	file:
+transformTobeMapped	LeGO-LOAM/src/mapOptmization.cpp	/^    float transformTobeMapped[6];$/;"	m	class:mapOptimization	file:
+transformUpdate	LeGO-LOAM/src/mapOptmization.cpp	/^    void transformUpdate()$/;"	f	class:mapOptimization
+tripod1	LeGO-LOAM/src/featureAssociation.cpp	/^    PointType pointOri, pointSel, tripod1, tripod2, tripod3, pointProj, coeff;$/;"	m	class:FeatureAssociation	file:
+tripod2	LeGO-LOAM/src/featureAssociation.cpp	/^    PointType pointOri, pointSel, tripod1, tripod2, tripod3, pointProj, coeff;$/;"	m	class:FeatureAssociation	file:
+tripod3	LeGO-LOAM/src/featureAssociation.cpp	/^    PointType pointOri, pointSel, tripod1, tripod2, tripod3, pointProj, coeff;$/;"	m	class:FeatureAssociation	file:
+updateImuRollPitchYawStartSinCos	LeGO-LOAM/src/featureAssociation.cpp	/^    void updateImuRollPitchYawStartSinCos(){$/;"	f	class:FeatureAssociation
+updateInitialGuess	LeGO-LOAM/src/featureAssociation.cpp	/^    void updateInitialGuess(){$/;"	f	class:FeatureAssociation
+updatePointAssociateToMapSinCos	LeGO-LOAM/src/mapOptmization.cpp	/^    void updatePointAssociateToMapSinCos(){$/;"	f	class:mapOptimization
+updateTransformPointCloudSinCos	LeGO-LOAM/src/mapOptmization.cpp	/^    void updateTransformPointCloudSinCos(PointTypePose *tIn){$/;"	f	class:mapOptimization
+updateTransformation	LeGO-LOAM/src/featureAssociation.cpp	/^    void updateTransformation(){$/;"	f	class:FeatureAssociation
+value	LeGO-LOAM/include/utility.h	/^    float value;$/;"	m	struct:smoothness_t
+visualizeGlobalMapThread	LeGO-LOAM/src/mapOptmization.cpp	/^    void visualizeGlobalMapThread(){$/;"	f	class:mapOptimization
+yaw	LeGO-LOAM/include/utility.h	/^    float yaw;$/;"	m	struct:PointXYZIRPYT
+~ImageProjection	LeGO-LOAM/src/imageProjection.cpp	/^    ~ImageProjection(){}$/;"	f	class:ImageProjection
