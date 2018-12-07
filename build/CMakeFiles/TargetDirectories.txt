@@ -122,6 +122,7 @@
 /home/kang/dev/VI_Loam/build/LeGO-LOAM/LeGO-LOAM/CMakeFiles/tf2_msgs_generate_messages_cpp.dir
 /home/kang/dev/VI_Loam/build/LeGO-LOAM/LeGO-LOAM/CMakeFiles/pcl_msgs_generate_messages_lisp.dir
 /home/kang/dev/VI_Loam/build/LeGO-LOAM/LeGO-LOAM/CMakeFiles/actionlib_generate_messages_lisp.dir
+/home/kang/dev/VI_Loam/build/LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir
 /home/kang/dev/VI_Loam/build/LeGO-LOAM/LeGO-LOAM/CMakeFiles/actionlib_generate_messages_nodejs.dir
 /home/kang/dev/VI_Loam/build/LeGO-LOAM/LeGO-LOAM/CMakeFiles/sensor_msgs_generate_messages_eus.dir
 /home/kang/dev/VI_Loam/build/LeGO-LOAM/LeGO-LOAM/CMakeFiles/actionlib_generate_messages_py.dir

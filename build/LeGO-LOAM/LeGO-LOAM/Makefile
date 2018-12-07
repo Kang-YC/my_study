@@ -601,6 +601,21 @@ actionlib_generate_messages_lisp/fast:
 .PHONY : actionlib_generate_messages_lisp/fast
 
 # Convenience name for target.
+LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/rule:
+	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f CMakeFiles/Makefile2 LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/rule
+.PHONY : LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/rule
+
+# Convenience name for target.
+optimization: LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/rule
+
+.PHONY : optimization
+
+# fast build rule for target.
+optimization/fast:
+	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build
+.PHONY : optimization/fast
+
+# Convenience name for target.
 LeGO-LOAM/LeGO-LOAM/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule:
 	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f CMakeFiles/Makefile2 LeGO-LOAM/LeGO-LOAM/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
 .PHONY : LeGO-LOAM/LeGO-LOAM/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
@@ -1101,6 +1116,33 @@ src/mapOptmization.cpp.s:
 	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/mapOptmization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/mapOptmization.dir/src/mapOptmization.cpp.s
 .PHONY : src/mapOptmization.cpp.s
 
+src/optimization.o: src/optimization.cpp.o
+
+.PHONY : src/optimization.o
+
+# target to build an object file
+src/optimization.cpp.o:
+	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/optimization.cpp.o
+.PHONY : src/optimization.cpp.o
+
+src/optimization.i: src/optimization.cpp.i
+
+.PHONY : src/optimization.i
+
+# target to preprocess a source file
+src/optimization.cpp.i:
+	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/optimization.cpp.i
+.PHONY : src/optimization.cpp.i
+
+src/optimization.s: src/optimization.cpp.s
+
+.PHONY : src/optimization.s
+
+# target to generate assembly for a file
+src/optimization.cpp.s:
+	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/optimization.cpp.s
+.PHONY : src/optimization.cpp.s
+
 src/transformFusion.o: src/transformFusion.cpp.o
 
 .PHONY : src/transformFusion.o
@@ -1169,6 +1211,7 @@ help:
 	@echo "... tf2_msgs_generate_messages_cpp"
 	@echo "... pcl_msgs_generate_messages_lisp"
 	@echo "... actionlib_generate_messages_lisp"
+	@echo "... optimization"
 	@echo "... actionlib_generate_messages_nodejs"
 	@echo "... sensor_msgs_generate_messages_eus"
 	@echo "... actionlib_generate_messages_py"
@@ -1207,6 +1250,9 @@ help:
 	@echo "... src/mapOptmization.o"
 	@echo "... src/mapOptmization.i"
 	@echo "... src/mapOptmization.s"
+	@echo "... src/optimization.o"
+	@echo "... src/optimization.i"
+	@echo "... src/optimization.s"
 	@echo "... src/transformFusion.o"
 	@echo "... src/transformFusion.i"
 	@echo "... src/transformFusion.s"

@@ -1245,6 +1245,19 @@ actionlib_generate_messages_lisp/fast:
 .PHONY : actionlib_generate_messages_lisp/fast
 
 #=============================================================================
+# Target rules for targets named optimization
+
+# Build rule for target.
+optimization: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 optimization
+.PHONY : optimization
+
+# fast build rule for target.
+optimization/fast:
+	$(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build
+.PHONY : optimization/fast
+
+#=============================================================================
 # Target rules for targets named actionlib_generate_messages_nodejs
 
 # Build rule for target.
@@ -1704,6 +1717,7 @@ help:
 	@echo "... tf2_msgs_generate_messages_cpp"
 	@echo "... pcl_msgs_generate_messages_lisp"
 	@echo "... actionlib_generate_messages_lisp"
+	@echo "... optimization"
 	@echo "... actionlib_generate_messages_nodejs"
 	@echo "... sensor_msgs_generate_messages_eus"
 	@echo "... actionlib_generate_messages_py"
