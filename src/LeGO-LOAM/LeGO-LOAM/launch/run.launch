@@ -15,7 +15,7 @@
     <node pkg="lego_loam" type="featureAssociation" name="featureAssociation" output="screen"/>
     <node pkg="lego_loam" type="mapOptmization"     name="mapOptmization"     output="screen"/>
     <node pkg="lego_loam" type="transformFusion"    name="transformFusion"    output="screen"/>
-    <node pkg="lego_loam" type="optimization"       name="optimization"    output="screen"/>
+    <node pkg="lego_loam" type="optimization"       name="optimization"       output="screen"/>
 
  <node pkg="read_odom" type="odom_listener"    name="odom_test_listener" output="screen" /> 
 

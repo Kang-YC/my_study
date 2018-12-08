@@ -24,6 +24,11 @@ find_package(GTSAM REQUIRED QUIET)
 find_package(PCL REQUIRED QUIET)
 find_package(OpenCV REQUIRED QUIET)
 
+FIND_PACKAGE(Eigen3 REQUIRED)
+INCLUDE_DIRECTORIES(${EIGEN3_INCLUDE_DIR})
+SET(EIGEN_INCLUDE_DIR ${EIGEN3_INCLUDE_DIR}) #needed for ceres for old version of cmake/FindEigen scripts
+
+
 catkin_package(
   INCLUDE_DIRS include
   CATKIN_DEPENDS cloud_msgs
@@ -36,6 +41,7 @@ include_directories(
 	${PCL_INCLUDE_DIRS}
 	${OpenCV_INCLUDE_DIRS}
 	${GTSAM_INCLUDE_DIR}
+        
 )
 
 link_directories(

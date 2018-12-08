@@ -43,6 +43,8 @@
 #include <array>
 #include <thread>
 #include <mutex>
+#include <Eigen/Core>
+#include <Eigen/Dense>
 
 #define PI 3.14159265
 

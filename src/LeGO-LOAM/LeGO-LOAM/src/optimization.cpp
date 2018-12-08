@@ -2,10 +2,16 @@
 #include "std_msgs/String.h"
 
 #include "utility.h"
-
-
+//#include <Eigen/Core>
+//#include <Eigen/Dense>
+using namespace std;
+using namespace Eigen;
 class Optimization{
 private:
+const double optimizationProcessInterval=0.01;
+const int WINDOW_SIZE = 10;
+
+Vector3d Ps;
 ros::NodeHandle n;
 
 pcl::PointCloud<PointType>::Ptr LaserCloudOri;
@@ -17,33 +23,44 @@ pcl::PointCloud<PointTypePose>::Ptr cloudKeyPoses6D;
 double timeLaserCloudOri;
 double timeLaserCloudProj;
 double timeKeyPoses;
+double timeKeyPoses6D;
+double timeLastProcessing;
+
 
 bool newLaserCloudOri;
 bool newLaserCloudProj;
 bool newCloudKeyPoses3D;
+bool newCloudKeyPoses6D;
 
 ros::Subscriber subKeyPoses;
+ros::Subscriber subKeyPoses6D;
 ros::Subscriber subLaserCloudOri;
 ros::Subscriber subLaserCloudProj;
+
+PointTypePose thisTransformation;
+PointType currentRobotPosPoint;
 
 
 public:
   Optimization(): 
     n("~")
   {
+  subKeyPoses6D = n.subscribe<sensor_msgs::PointCloud2>("/key_pose_origin_6D", 2, &Optimization::keyPoses6DHandler, this);//?
   subKeyPoses = n.subscribe<sensor_msgs::PointCloud2>("/key_pose_origin", 2, &Optimization::keyPosesHandler, this);
   subLaserCloudOri = n.subscribe<sensor_msgs::PointCloud2>("/laser_cloud_ori", 2, &Optimization::laserCloudOriHandler, this);
   subLaserCloudProj = n.subscribe<sensor_msgs::PointCloud2>("/laser_cloud_proj", 2, &Optimization::laserCloudProjHandler, this);
-  
+ 
+
   allocateMemory();
   ROS_INFO("init success");
   }
+
 void laserCloudOriHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
         timeLaserCloudOri = msg->header.stamp.toSec();
         LaserCloudOri->clear();
         pcl::fromROSMsg(*msg, *LaserCloudOri);
         newLaserCloudOri = true;
-        ROS_INFO("Ori success");
+        //ROS_INFO("Ori success");
 }
 
 void laserCloudProjHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
@@ -51,7 +68,7 @@ void laserCloudProjHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
         LaserCloudProj->clear();
         pcl::fromROSMsg(*msg, *LaserCloudProj);
         newLaserCloudProj = true;
-        ROS_INFO("Proj success");
+        //ROS_INFO("Proj success");
 }
 
 void keyPosesHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
@@ -59,7 +76,15 @@ void keyPosesHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
         cloudKeyPoses3D->clear();
         pcl::fromROSMsg(*msg, *cloudKeyPoses3D);
         newCloudKeyPoses3D = true;
-        ROS_INFO("Keypose success");
+        //ROS_INFO("Keypose success %f",cloudKeyPoses3D->points[0].x);
+}
+
+void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
+        timeKeyPoses6D = msg->header.stamp.toSec();
+        cloudKeyPoses6D->clear();
+        pcl::fromROSMsg(*msg, *cloudKeyPoses6D);
+        newCloudKeyPoses6D = true;
+        //ROS_INFO("Keypose 6D success %f / %f /%f /%f",cloudKeyPoses6D->points[0].roll,cloudKeyPoses6D->points[0].pitch,cloudKeyPoses6D->points[0].yaw,cloudKeyPoses6D->points[0].x);
 }
 
 void allocateMemory(){
@@ -71,14 +96,42 @@ void allocateMemory(){
         LaserCloudProj.reset(new pcl::PointCloud<PointType>());       
 }
 
+void currrentPoseProcess()
+{
+
+}
+
+void imuProcess()
+{
+
+}
+
+
+void optimizationProcess()
+{
+
+}
+
+
 void run(){
 
 if (newLaserCloudOri  && std::abs(timeLaserCloudOri  - timeKeyPoses) < 0.005 &&
             newLaserCloudProj    && std::abs(timeLaserCloudProj    - timeKeyPoses) < 0.005 &&
-            newCloudKeyPoses3D ){
+            newCloudKeyPoses3D && newCloudKeyPoses6D){
   newLaserCloudOri= false;
   newLaserCloudProj= false;
   newCloudKeyPoses3D= false;
+  newCloudKeyPoses6D= false;
+  if (timeKeyPoses6D - timeLastProcessing >= optimizationProcessInterval){
+    timeLastProcessing=timeKeyPoses6D;
+
+    currrentPoseProcess();
+    imuProcess();
+    optimizationProcess();
+
+
+  }
+
 }
 }
 
@@ -105,6 +158,8 @@ int main(int argc, char **argv)
    */
   ros::init(argc, argv, "lego_loam");
 
+  ros::console::set_logger_level(ROSCONSOLE_DEFAULT_NAME,ros::console::levels::Debug);
+
   ROS_INFO("\033[1;32m---->\033[0m Lidar-IMU Optimization Started.");
   
   Optimization LIO;
@@ -125,7 +180,6 @@ int main(int argc, char **argv)
     rate.sleep();
   }
 
-  ros::spin();
 
   /**
    * The subscribe() call is how you tell ROS that you want to receive messages

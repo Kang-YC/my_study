@@ -65,6 +65,7 @@ private:
     ros::Publisher pubLaserCloudSurround;
     ros::Publisher pubOdomAftMapped;
     ros::Publisher pubKeyPoses;
+    ros::Publisher pubKeyPoses6D;
 
     ros::Publisher pubHistoryKeyFrames;
     ros::Publisher pubIcpKeyFrames;
@@ -236,6 +237,7 @@ public:
     	isam = new ISAM2(parameters);
 
         pubKeyPoses = nh.advertise<sensor_msgs::PointCloud2>("/key_pose_origin", 2);
+        pubKeyPoses6D = nh.advertise<sensor_msgs::PointCloud2>("/key_pose_origin_6D", 2);
         pubLaserCloudSurround = nh.advertise<sensor_msgs::PointCloud2>("/laser_cloud_surround", 2);
         pubOdomAftMapped = nh.advertise<nav_msgs::Odometry> ("/aft_mapped_to_init", 5);
 
@@ -694,6 +696,15 @@ public:
             cloudMsgTemp.header.frame_id = "/camera_init";
             pubKeyPoses.publish(cloudMsgTemp);
         }
+
+         if (pubKeyPoses6D.getNumSubscribers() != 0){
+            sensor_msgs::PointCloud2 cloudMsgTemp;
+            pcl::toROSMsg(*cloudKeyPoses6D, cloudMsgTemp);
+            cloudMsgTemp.header.stamp = ros::Time().fromSec(timeLaserOdometry);
+            cloudMsgTemp.header.frame_id = "/camera_init";
+            pubKeyPoses6D.publish(cloudMsgTemp);
+        }
+        ROS_INFO("pulish success");
 
         if (pubRecentKeyFrames.getNumSubscribers() != 0){
             sensor_msgs::PointCloud2 cloudMsgTemp;
@@ -1471,7 +1482,7 @@ public:
 
             std::lock_guard<std::mutex> lock(mtx);
 
-            if (timeLaserOdometry - timeLastProcessing >= mappingProcessInterval) {
+            if (timeLaserOdometry - timeLastProcessing >= mappingProcessInterval) {// mappingProcessInterval 0.3s
 
                 timeLastProcessing = timeLaserOdometry;
 
