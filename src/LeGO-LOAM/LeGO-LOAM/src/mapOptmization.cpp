@@ -50,6 +50,9 @@ class mapOptimization{
 
 private:
 
+    bool pubEnable;
+    int prePoseNum;
+
     NonlinearFactorGraph gtSAMgraph;
     Values initialEstimate;
     Values optimizedEstimate;
@@ -173,6 +176,8 @@ private:
     bool newLaserCloudSurfLast;
     bool newLaserOdometry;
     bool newLaserCloudOutlierLast;
+
+    bool saveThisKeyFrame = true;
 
 
     float transformLast[6];
@@ -381,6 +386,9 @@ public:
         aLoopIsClosed = false;
 
         latestFrameID = 0;
+
+        prePoseNum = 0;
+        pubEnable = false;
     }
 
     void transformAssociateToMap()
@@ -688,6 +696,10 @@ public:
     }
 
     void publishKeyPosesAndFrames(){
+        if (pubEnable == false )
+            return;
+        
+
 
         if (pubKeyPoses.getNumSubscribers() != 0){
             sensor_msgs::PointCloud2 cloudMsgTemp;
@@ -696,6 +708,9 @@ public:
             cloudMsgTemp.header.frame_id = "/camera_init";
             pubKeyPoses.publish(cloudMsgTemp);
         }
+        //ROS_INFO("pubEnable %d " , pubEnable);
+        //ROS_INFO("key3d pub ");
+
 
          if (pubKeyPoses6D.getNumSubscribers() != 0){
             sensor_msgs::PointCloud2 cloudMsgTemp;
@@ -704,7 +719,7 @@ public:
             cloudMsgTemp.header.frame_id = "/camera_init";
             pubKeyPoses6D.publish(cloudMsgTemp);
         }
-        ROS_INFO("pulish success");
+        //ROS_INFO("pulish success");
 
         if (pubRecentKeyFrames.getNumSubscribers() != 0){
             sensor_msgs::PointCloud2 cloudMsgTemp;
@@ -717,11 +732,16 @@ public:
 
     void publishOriandProjCloud(){
 
+      if (pubEnable == false )
+            return;
+        pubEnable = false;
+
         sensor_msgs::PointCloud2 laserCloudOri2;
         pcl::toROSMsg(*laserCloudOri, laserCloudOri2);
         laserCloudOri2.header.stamp = ros::Time().fromSec(timeLaserOdometry);
         laserCloudOri2.header.frame_id = "/camera_init";
         publaserCloudOri.publish(laserCloudOri2);
+        //ROS_INFO("Oripub ");
 
         sensor_msgs::PointCloud2 laserCloudProj2;
         pcl::toROSMsg(*laserCloudProj, laserCloudProj2);
@@ -729,7 +749,7 @@ public:
         laserCloudProj2.header.frame_id = "/camera_init";
         publaserCloudProj.publish(laserCloudProj2);
  
-        ROS_INFO("publish point success");
+        //ROS_INFO("publish point success");
     }
 
     void visualizeGlobalMapThread(){
@@ -1337,7 +1357,7 @@ public:
                     break;              
             }
 
-            transformUpdate();
+            transformUpdate();//get to be mapped fused with imu
         }
     }
 
@@ -1348,7 +1368,7 @@ public:
         currentRobotPosPoint.y = transformAftMapped[4];
         currentRobotPosPoint.z = transformAftMapped[5];
 
-        bool saveThisKeyFrame = true;
+        saveThisKeyFrame = true;
         if (sqrt((previousRobotPosPoint.x-currentRobotPosPoint.x)*(previousRobotPosPoint.x-currentRobotPosPoint.x)
                 +(previousRobotPosPoint.y-currentRobotPosPoint.y)*(previousRobotPosPoint.y-currentRobotPosPoint.y)
                 +(previousRobotPosPoint.z-currentRobotPosPoint.z)*(previousRobotPosPoint.z-currentRobotPosPoint.z)) < 0.3){
@@ -1362,7 +1382,7 @@ public:
 
         previousRobotPosPoint = currentRobotPosPoint;
 
-        if (cloudKeyPoses3D->points.empty()){
+        if (cloudKeyPoses3D->points.empty()){// first key frame
             gtSAMgraph.add(PriorFactor<Pose3>(0, Pose3(Rot3::RzRyRx(transformTobeMapped[2], transformTobeMapped[0], transformTobeMapped[1]),
                                                        		 Point3(transformTobeMapped[5], transformTobeMapped[3], transformTobeMapped[4])), priorNoise));
             initialEstimate.insert(0, Pose3(Rot3::RzRyRx(transformTobeMapped[2], transformTobeMapped[0], transformTobeMapped[1]),
@@ -1398,7 +1418,16 @@ public:
         thisPose3D.z = latestEstimate.translation().x();
         thisPose3D.intensity = cloudKeyPoses3D->points.size();
         cloudKeyPoses3D->push_back(thisPose3D);
+        int numPoses = cloudKeyPoses3D->points.size();
+        //ROS_INFO("prenumPoses Map %d", prePoseNum);
+        if(numPoses!= prePoseNum)
+            pubEnable = true;
 
+        prePoseNum = numPoses;
+        //ROS_INFO("pubEnable %d " , pubEnable);
+        ROS_INFO("numPoses Map %d", numPoses);
+        //ROS_INFO("prenumPoses Map %d", prePoseNum);
+    
         thisPose6D.x = thisPose3D.x;
         thisPose6D.y = thisPose3D.y;
         thisPose6D.z = thisPose3D.z;

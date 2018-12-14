@@ -2,16 +2,25 @@
 #include "std_msgs/String.h"
 
 #include "utility.h"
-//#include <Eigen/Core>
-//#include <Eigen/Dense>
+#include <ceres/local_parameterization.h>
+#include <ceres/autodiff_local_parameterization.h>
+#include <ceres/types.h>
+#include <ceres/rotation.h>
+#include <ceres/ceres.h>
+
+#include <ceres/loss_function.h>
+#include "CPUTimer.h"
+#include "icp-ceres.h"
+#include <Eigen/Core>
+#include <Eigen/Dense>
+
 using namespace std;
 using namespace Eigen;
 class Optimization{
 private:
 const double optimizationProcessInterval=0.01;
-const int WINDOW_SIZE = 10;
 
-Vector3d Ps;
+static const int WINDOW_SIZE = 10;
 ros::NodeHandle n;
 
 pcl::PointCloud<PointType>::Ptr LaserCloudOri;
@@ -19,6 +28,13 @@ pcl::PointCloud<PointType>::Ptr LaserCloudProj;
         
 pcl::PointCloud<PointType>::Ptr cloudKeyPoses3D;
 pcl::PointCloud<PointTypePose>::Ptr cloudKeyPoses6D;
+
+deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesOri;//
+deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesProj;//
+vector<int> CloudKeyPosesID;
+
+int laserCloudOriNum;
+int laserCloudProjNum;
 
 double timeLaserCloudOri;
 double timeLaserCloudProj;
@@ -37,8 +53,19 @@ ros::Subscriber subKeyPoses6D;
 ros::Subscriber subLaserCloudOri;
 ros::Subscriber subLaserCloudProj;
 
-PointTypePose thisTransformation;
-PointType currentRobotPosPoint;
+Eigen::Matrix3d curRx;
+Eigen::Matrix3d curRx_inverse;
+Eigen::Vector3d cur_t;
+
+
+Vector3d Ps[(WINDOW_SIZE + 1)];
+Vector3d Vs[(WINDOW_SIZE + 1)];
+Matrix3d Rs[(WINDOW_SIZE + 1)];
+Vector3d Bas[(WINDOW_SIZE + 1)];
+Vector3d Bgs[(WINDOW_SIZE + 1)];
+
+
+int frame_count;
 
 
 public:
@@ -52,6 +79,7 @@ public:
  
 
   allocateMemory();
+  clearState();
   ROS_INFO("init success");
   }
 
@@ -60,7 +88,8 @@ void laserCloudOriHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
         LaserCloudOri->clear();
         pcl::fromROSMsg(*msg, *LaserCloudOri);
         newLaserCloudOri = true;
-        //ROS_INFO("Ori success");
+        laserCloudOriNum=LaserCloudOri->points.size();
+        ROS_DEBUG("Ori sub Num %d",laserCloudOriNum);
 }
 
 void laserCloudProjHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
@@ -68,7 +97,8 @@ void laserCloudProjHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
         LaserCloudProj->clear();
         pcl::fromROSMsg(*msg, *LaserCloudProj);
         newLaserCloudProj = true;
-        //ROS_INFO("Proj success");
+        laserCloudProjNum=LaserCloudProj->points.size();
+        //ROS_INFO("Proj Num %d",laserCloudProjNum);
 }
 
 void keyPosesHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
@@ -76,6 +106,8 @@ void keyPosesHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
         cloudKeyPoses3D->clear();
         pcl::fromROSMsg(*msg, *cloudKeyPoses3D);
         newCloudKeyPoses3D = true;
+        int numPoses = cloudKeyPoses3D->points.size();
+        ROS_DEBUG("numPoses sub %d", numPoses);
         //ROS_INFO("Keypose success %f",cloudKeyPoses3D->points[0].x);
 }
 
@@ -96,10 +128,73 @@ void allocateMemory(){
         LaserCloudProj.reset(new pcl::PointCloud<PointType>());       
 }
 
-void currrentPoseProcess()
-{
+void clearState(){
+  for (int i = 0; i < WINDOW_SIZE + 1; i++)
+  {
+    Rs[i].setIdentity();
+    Ps[i].setZero();
+    Vs[i].setZero();
+    Bas[i].setZero();
+    Bgs[i].setZero();
+  }
+  frame_count=0;
+  ROS_INFO("clear success");
 
 }
+
+
+void currrentPoseProcess()
+{
+  PointTypePose currentRobotPos6D;
+  PointType currentRobotPos3D;
+  double roll,pitch,yaw,x,y,z;
+
+  int numPoses = cloudKeyPoses3D->points.size();
+  ROS_DEBUG("numPoses OP %d", numPoses);
+  if(numPoses==0)
+    return;
+
+  int currentInd    = numPoses-1;
+  currentRobotPos6D =cloudKeyPoses6D->points[currentInd];
+  
+  roll  = currentRobotPos6D.pitch;//to Cartesian coordinate system
+  pitch = currentRobotPos6D.roll;
+  yaw   = -currentRobotPos6D.yaw;
+  x     = currentRobotPos6D.z;
+  y     = currentRobotPos6D.x;
+  z     = currentRobotPos6D.y;
+
+  Eigen::AngleAxisd rollAngle(roll, Eigen::Vector3d::UnitX());
+  Eigen::AngleAxisd pitchAngle(pitch, Eigen::Vector3d::UnitY());
+  Eigen::AngleAxisd yawAngle(yaw, Eigen::Vector3d::UnitZ());
+  Eigen::Quaterniond q = yawAngle * pitchAngle * rollAngle;// indicate the orger of rotate
+
+  curRx         = q.toRotationMatrix();//from world frame (ypr)
+  curRx_inverse = curRx.inverse();
+  cur_t<< x,y,z ;
+
+  int j = currentInd;
+  Ps[j] = cur_t;
+  Rs[j] = curRx;
+
+  //ROS_INFO("frame_count %d", frame_count);
+  //ROS_INFO("currentInd %d", currentInd);
+
+ //int thisKeyInd = (int)cloudKeyPoses6D->points[j].intensity;
+ //CloudKeyPosesID.   push_back(currentInd);
+ CloudKeyFramesOri. push_back(LaserCloudOri);
+ CloudKeyFramesProj.push_back(LaserCloudProj);   
+ if(numPoses > WINDOW_SIZE+1)
+ {
+  CloudKeyFramesOri.pop_front();
+  CloudKeyFramesProj.pop_front();
+ }              
+
+
+  frame_count=currentInd;// different with thiskeyid??
+
+ }
+
 
 void imuProcess()
 {
@@ -109,31 +204,96 @@ void imuProcess()
 
 void optimizationProcess()
 {
+  if(frame_count >= WINDOW_SIZE)
+  {
 
+    solveOdometry();
+    slideWindow();
+
+  }
+ 
+
+  
+
+}
+
+void solveOdometry()
+{
+  ceres::Problem problem;
+  ceres::LossFunction *loss_function;
+  for(int i=0; i<WINDOW_SIZE;i++)
+  {
+
+    int j= i+1;
+    for(int k=0;k<CloudKeyFramesOri[i]->points.size();k++)//????????
+    {
+      
+      Vector3d ori, proj;
+
+      ori<<CloudKeyFramesOri[i]->points[k].x , CloudKeyFramesOri[i]->points[k].y,CloudKeyFramesOri[i]->points[k].z;
+
+      proj<<CloudKeyFramesProj[i]->points[k].x , CloudKeyFramesProj[i]->points[k].y,CloudKeyFramesProj[i]->points[k].z;
+      
+      ceres::CostFunction* lidar_cost_function = ICPCostFunctions::PointToPointError_EigenQuaternion::Create(proj,ori);
+      
+      //problem.AddResidualBlock(lidar_cost_function, NULL, q.coeffs().data(), t.data());
+      
+
+
+
+     // PtestCeres2 = ICP_Ceres::pointToPoint_EigenQuaternion(ori,proj);
+
+    }
+  }
+
+
+
+}
+
+void slideWindow()
+{
+  if (frame_count >= WINDOW_SIZE)
+  {
+    for (int i = 0; i < WINDOW_SIZE; i++)
+    {
+      Rs[i].swap(Rs[i + 1]);
+      //Headers[i] = Headers[i + 1];
+      Ps[i].swap(Ps[i + 1]);
+      Vs[i].swap(Vs[i + 1]);
+      Bas[i].swap(Bas[i + 1]);
+      Bgs[i].swap(Bgs[i + 1]);
+    }
+
+
+  }
 }
 
 
 void run(){
 
-if (newLaserCloudOri  && std::abs(timeLaserCloudOri  - timeKeyPoses) < 0.005 &&
-            newLaserCloudProj    && std::abs(timeLaserCloudProj    - timeKeyPoses) < 0.005 &&
-            newCloudKeyPoses3D && newCloudKeyPoses6D){
-  newLaserCloudOri= false;
-  newLaserCloudProj= false;
-  newCloudKeyPoses3D= false;
-  newCloudKeyPoses6D= false;
-  if (timeKeyPoses6D - timeLastProcessing >= optimizationProcessInterval){
+  if (newLaserCloudOri  && std::abs(timeLaserCloudOri  - timeKeyPoses) < 0.005 &&
+    newLaserCloudProj && std::abs(timeLaserCloudProj - timeKeyPoses) < 0.005 &&
+     newCloudKeyPoses3D && newCloudKeyPoses6D){
+  newLaserCloudOri   = false;
+  newLaserCloudProj  = false;
+  newCloudKeyPoses3D = false;
+  newCloudKeyPoses6D = false;
+    
+    if (timeKeyPoses6D - timeLastProcessing >= optimizationProcessInterval){
     timeLastProcessing=timeKeyPoses6D;
 
     currrentPoseProcess();
+
+    //currrentPointProcess();
+
     imuProcess();
+
     optimizationProcess();
-
-
   }
 
 }
 }
+
 
 };
 

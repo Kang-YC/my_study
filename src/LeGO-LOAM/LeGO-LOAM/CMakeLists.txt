@@ -3,6 +3,8 @@ project(lego_loam)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -O3")
 
+set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build, options are: Debug Release RelWithDebInfo MinSizeRel." FORCE)
+
 find_package(catkin REQUIRED COMPONENTS
   tf
   roscpp
@@ -24,10 +26,27 @@ find_package(GTSAM REQUIRED QUIET)
 find_package(PCL REQUIRED QUIET)
 find_package(OpenCV REQUIRED QUIET)
 
+MESSAGE("---------------Eigen-------------------")
 FIND_PACKAGE(Eigen3 REQUIRED)
 INCLUDE_DIRECTORIES(${EIGEN3_INCLUDE_DIR})
 SET(EIGEN_INCLUDE_DIR ${EIGEN3_INCLUDE_DIR}) #needed for ceres for old version of cmake/FindEigen scripts
+MESSAGE("Eigen3_INCLUDE_DIR ${EIGEN3_INCLUDE_DIR}")
 
+MESSAGE("---------------Ceres-------------------")
+FIND_PACKAGE(Ceres REQUIRED)
+INCLUDE_DIRECTORIES(${CERES_INCLUDE_DIRS})
+MESSAGE("ceres found ${Ceres_FOUND} at ${Ceres_DIR}")
+MESSAGE("Ceres_INCLUDE_DIR ${CERES_INCLUDE_DIRS}")
+MESSAGE("Ceres_LIBRARIES ${CERES_LIBRARIES}")
+
+MESSAGE("---------------Sophus-------------------")
+# use lovegroves version of sophus with ceres extensions!
+#ADD_SUBDIRECTORY(ext/sophus-ceres)
+FIND_PACKAGE(Sophus REQUIRED)
+INCLUDE_DIRECTORIES(${Sophus_INCLUDE_DIRS})
+SET(Sophus_INCLUDE_DIR ${Sophus_INCLUDE_DIR})
+#INCLUDE_DIRECTORIES(${Sophus_INCLUDE_DIR})
+MESSAGE("Sophus_INCLUDE_DIR ${Sophus_INCLUDE_DIR}")
 
 catkin_package(
   INCLUDE_DIRS include
@@ -43,6 +62,13 @@ include_directories(
 	${GTSAM_INCLUDE_DIR}
         
 )
+file(GLOB HEADERS
+    #include/glad/*.h
+    include/*.h
+    include/*.hpp
+)
+file(GLOB SOURCES src/internal/*.cpp src/internal/*.c)
+
 
 link_directories(
 	include
@@ -66,4 +92,4 @@ add_executable(transformFusion src/transformFusion.cpp)
 target_link_libraries(transformFusion ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES})
 
 add_executable(optimization src/optimization.cpp)
-target_link_libraries(optimization ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES})
+target_link_libraries(optimization ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES} ${CERES_LIBRARIES} ${Sophus_LIBRARIES})

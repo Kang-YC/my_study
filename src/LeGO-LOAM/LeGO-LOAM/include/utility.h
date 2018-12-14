@@ -43,14 +43,18 @@
 #include <array>
 #include <thread>
 #include <mutex>
-#include <Eigen/Core>
-#include <Eigen/Dense>
+
+
+
+
+//#include "common.h"
+//#include "gflags/gflags.h"
+
 
 #define PI 3.14159265
 
 using namespace std;
 
-typedef pcl::PointXYZI  PointType;
 
 extern const int N_SCAN = 16;
 extern const int Horizon_SCAN = 1800;
@@ -103,6 +107,9 @@ struct by_value{
         return left.value < right.value;
     }
 };
+
+
+typedef pcl::PointXYZI  PointType;
 
 struct PointXYZIRPYT
 {
