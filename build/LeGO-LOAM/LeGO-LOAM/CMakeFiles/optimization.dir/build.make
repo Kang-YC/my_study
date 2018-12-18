@@ -487,6 +487,8 @@ optimization_EXTERNAL_OBJECTS =
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_ximgproc3.so.3.3.1
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_xobjdetect3.so.3.3.1
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_xphoto3.so.3.3.1
+/home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/local/lib/libceres.a
+/home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /home/kang/library/Sophus/build/libSophus.so
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/x86_64-linux-gnu/libpcl_common.so
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/x86_64-linux-gnu/libpcl_kdtree.so
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/x86_64-linux-gnu/libpcl_octree.so
@@ -655,6 +657,7 @@ optimization_EXTERNAL_OBJECTS =
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /opt/ros/kinetic/lib/librostime.so
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /opt/ros/kinetic/lib/libcpp_common.so
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
+/home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /home/kang/library/Sophus/build/libSophus.so
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/x86_64-linux-gnu/libvtkxdmf2-6.2.so.6.2.0
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/x86_64-linux-gnu/libxml2.so
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/x86_64-linux-gnu/hdf5/openmpi/lib/libhdf5.so
@@ -777,6 +780,23 @@ optimization_EXTERNAL_OBJECTS =
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_objdetect3.so.3.3.1
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_imgproc3.so.3.3.1
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_core3.so.3.3.1
+/home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/x86_64-linux-gnu/libglog.so
+/home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/x86_64-linux-gnu/libspqr.so
+/home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/x86_64-linux-gnu/libtbb.so
+/home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/x86_64-linux-gnu/libtbbmalloc.so
+/home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/x86_64-linux-gnu/libcholmod.so
+/home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/x86_64-linux-gnu/libccolamd.so
+/home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/x86_64-linux-gnu/libcamd.so
+/home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/x86_64-linux-gnu/libcolamd.so
+/home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/x86_64-linux-gnu/libamd.so
+/home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/liblapack.so
+/home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/libblas.so
+/home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/x86_64-linux-gnu/libsuitesparseconfig.so
+/home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/x86_64-linux-gnu/librt.so
+/home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/liblapack.so
+/home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/libblas.so
+/home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/x86_64-linux-gnu/libsuitesparseconfig.so
+/home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/x86_64-linux-gnu/librt.so
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kang/dev/VI_Loam/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization"
 	cd /home/kang/dev/VI_Loam/build/LeGO-LOAM/LeGO-LOAM && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/optimization.dir/link.txt --verbose=$(VERBOSE)

@@ -16,11 +16,17 @@
 
 using namespace std;
 using namespace Eigen;
+
+
+
+
 class Optimization{
 private:
 const double optimizationProcessInterval=0.01;
 
 static const int WINDOW_SIZE = 10;
+static const int SIZE_POSE = 7;
+static const int SIZE_SPEEDBIAS = 9;
 ros::NodeHandle n;
 
 pcl::PointCloud<PointType>::Ptr LaserCloudOri;
@@ -52,6 +58,9 @@ ros::Subscriber subKeyPoses;
 ros::Subscriber subKeyPoses6D;
 ros::Subscriber subLaserCloudOri;
 ros::Subscriber subLaserCloudProj;
+ros::Subscriber subImu;
+
+ros::Publisher pub_odometry;
 
 Eigen::Matrix3d curRx;
 Eigen::Matrix3d curRx_inverse;
@@ -64,8 +73,13 @@ Matrix3d Rs[(WINDOW_SIZE + 1)];
 Vector3d Bas[(WINDOW_SIZE + 1)];
 Vector3d Bgs[(WINDOW_SIZE + 1)];
 
+double para_Pose[WINDOW_SIZE + 1][SIZE_POSE];
+double para_SpeedBias[WINDOW_SIZE + 1][SIZE_SPEEDBIAS];
+
 
 int frame_count;
+
+std_msgs::Header lidarHeader;
 
 
 public:
@@ -76,14 +90,19 @@ public:
   subKeyPoses = n.subscribe<sensor_msgs::PointCloud2>("/key_pose_origin", 2, &Optimization::keyPosesHandler, this);
   subLaserCloudOri = n.subscribe<sensor_msgs::PointCloud2>("/laser_cloud_ori", 2, &Optimization::laserCloudOriHandler, this);
   subLaserCloudProj = n.subscribe<sensor_msgs::PointCloud2>("/laser_cloud_proj", 2, &Optimization::laserCloudProjHandler, this);
- 
+  subImu = n.subscribe<sensor_msgs::Imu> (imuTopic, 1000, &Optimization::imuHandler, this);
+
+  pub_odometry = n.advertise<nav_msgs::Odometry>("odometry", 1000);
+
 
   allocateMemory();
   clearState();
   ROS_INFO("init success");
   }
 
+
 void laserCloudOriHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
+        lidarHeader = msg->header;
         timeLaserCloudOri = msg->header.stamp.toSec();
         LaserCloudOri->clear();
         pcl::fromROSMsg(*msg, *LaserCloudOri);
@@ -91,6 +110,7 @@ void laserCloudOriHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
         laserCloudOriNum=LaserCloudOri->points.size();
         ROS_DEBUG("Ori sub Num %d",laserCloudOriNum);
 }
+
 
 void laserCloudProjHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
         timeLaserCloudProj = msg->header.stamp.toSec();
@@ -100,6 +120,7 @@ void laserCloudProjHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
         laserCloudProjNum=LaserCloudProj->points.size();
         //ROS_INFO("Proj Num %d",laserCloudProjNum);
 }
+
 
 void keyPosesHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
         timeKeyPoses = msg->header.stamp.toSec();
@@ -111,6 +132,7 @@ void keyPosesHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
         //ROS_INFO("Keypose success %f",cloudKeyPoses3D->points[0].x);
 }
 
+
 void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
         timeKeyPoses6D = msg->header.stamp.toSec();
         cloudKeyPoses6D->clear();
@@ -118,6 +140,18 @@ void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
         newCloudKeyPoses6D = true;
         //ROS_INFO("Keypose 6D success %f / %f /%f /%f",cloudKeyPoses6D->points[0].roll,cloudKeyPoses6D->points[0].pitch,cloudKeyPoses6D->points[0].yaw,cloudKeyPoses6D->points[0].x);
 }
+
+
+ void imuHandler(const sensor_msgs::Imu::ConstPtr& imuIn){
+        
+
+        float accX = imuIn->linear_acceleration.x ;
+        float accY = imuIn->linear_acceleration.y ;
+        float accZ = imuIn->linear_acceleration.z ;
+
+        
+}
+
 
 void allocateMemory(){
 
@@ -127,6 +161,8 @@ void allocateMemory(){
         LaserCloudOri.reset(new pcl::PointCloud<PointType>());
         LaserCloudProj.reset(new pcl::PointCloud<PointType>());       
 }
+
+
 
 void clearState(){
   for (int i = 0; i < WINDOW_SIZE + 1; i++)
@@ -156,13 +192,14 @@ void currrentPoseProcess()
 
   int currentInd    = numPoses-1;
   currentRobotPos6D =cloudKeyPoses6D->points[currentInd];
-  
-  roll  = currentRobotPos6D.pitch;//to Cartesian coordinate system
+
+////initial the pose  
+  roll  = currentRobotPos6D.yaw;//to Cartesian coordinate system
   pitch = currentRobotPos6D.roll;
-  yaw   = -currentRobotPos6D.yaw;
-  x     = currentRobotPos6D.z;
-  y     = currentRobotPos6D.x;
-  z     = currentRobotPos6D.y;
+  yaw   = currentRobotPos6D.pitch;
+  x     = currentRobotPos6D.x;
+  y     = currentRobotPos6D.y;
+  z     = currentRobotPos6D.z;
 
   Eigen::AngleAxisd rollAngle(roll, Eigen::Vector3d::UnitX());
   Eigen::AngleAxisd pitchAngle(pitch, Eigen::Vector3d::UnitY());
@@ -173,9 +210,11 @@ void currrentPoseProcess()
   curRx_inverse = curRx.inverse();
   cur_t<< x,y,z ;
 
+
   int j = currentInd;
   Ps[j] = cur_t;
   Rs[j] = curRx;
+
 
   //ROS_INFO("frame_count %d", frame_count);
   //ROS_INFO("currentInd %d", currentInd);
@@ -184,6 +223,7 @@ void currrentPoseProcess()
  //CloudKeyPosesID.   push_back(currentInd);
  CloudKeyFramesOri. push_back(LaserCloudOri);
  CloudKeyFramesProj.push_back(LaserCloudProj);   
+
  if(numPoses > WINDOW_SIZE+1)
  {
   CloudKeyFramesOri.pop_front();
@@ -221,18 +261,21 @@ void solveOdometry()
 {
   ceres::Problem problem;
   ceres::LossFunction *loss_function;
+  vector2double();
+
   for(int i=0; i<WINDOW_SIZE;i++)
   {
 
     int j= i+1;
-    for(int k=0;k<CloudKeyFramesOri[i]->points.size();k++)//????????
+
+    for(int k=0;k<CloudKeyFramesOri[i]->points.size();k++)
     {
       
       Vector3d ori, proj;
 
-      ori<<CloudKeyFramesOri[i]->points[k].x , CloudKeyFramesOri[i]->points[k].y,CloudKeyFramesOri[i]->points[k].z;
+      ori<< CloudKeyFramesOri[i]->points[k].y,CloudKeyFramesOri[i]->points[k].z , CloudKeyFramesOri[i]->points[k].x;
 
-      proj<<CloudKeyFramesProj[i]->points[k].x , CloudKeyFramesProj[i]->points[k].y,CloudKeyFramesProj[i]->points[k].z;
+      proj<< CloudKeyFramesProj[i]->points[k].y,CloudKeyFramesProj[i]->points[k].z ,CloudKeyFramesProj[i]->points[k].x;
       
       ceres::CostFunction* lidar_cost_function = ICPCostFunctions::PointToPointError_EigenQuaternion::Create(proj,ori);
       
@@ -247,6 +290,33 @@ void solveOdometry()
   }
 
 
+
+}
+
+void vector2double(){
+  for (int i = 0; i <= WINDOW_SIZE; i++)
+    {
+        para_Pose[i][0] = Ps[i].x();
+        para_Pose[i][1] = Ps[i].y();
+        para_Pose[i][2] = Ps[i].z();
+        Quaterniond q{Rs[i]};
+        para_Pose[i][3] = q.x();
+        para_Pose[i][4] = q.y();
+        para_Pose[i][5] = q.z();
+        para_Pose[i][6] = q.w();
+
+        para_SpeedBias[i][0] = Vs[i].x();
+        para_SpeedBias[i][1] = Vs[i].y();
+        para_SpeedBias[i][2] = Vs[i].z();
+
+        para_SpeedBias[i][3] = Bas[i].x();
+        para_SpeedBias[i][4] = Bas[i].y();
+        para_SpeedBias[i][5] = Bas[i].z();
+
+        para_SpeedBias[i][6] = Bgs[i].x();
+        para_SpeedBias[i][7] = Bgs[i].y();
+        para_SpeedBias[i][8] = Bgs[i].z();
+    }
 
 }
 
@@ -269,6 +339,29 @@ void slideWindow()
 }
 
 
+void pubOdometry(){
+  nav_msgs::Odometry odometry;
+  odometry.header = lidarHeader;
+  odometry.header.frame_id = "world";
+  odometry.child_frame_id = "world";
+  Quaterniond tmp_Q;
+  tmp_Q = Quaterniond(Rs[WINDOW_SIZE]);
+  odometry.pose.pose.position.x = Ps[WINDOW_SIZE].x();
+  odometry.pose.pose.position.y = Ps[WINDOW_SIZE].y();
+  odometry.pose.pose.position.z = Ps[WINDOW_SIZE].z();
+  odometry.pose.pose.orientation.x = tmp_Q.x();
+  odometry.pose.pose.orientation.y = tmp_Q.y();
+  odometry.pose.pose.orientation.z = tmp_Q.z();
+  odometry.pose.pose.orientation.w = tmp_Q.w();
+  odometry.twist.twist.linear.x = Vs[WINDOW_SIZE].x();
+  odometry.twist.twist.linear.y = Vs[WINDOW_SIZE].y();
+  odometry.twist.twist.linear.z = Vs[WINDOW_SIZE].z();
+  pub_odometry.publish(odometry);
+
+}
+
+
+
 void run(){
 
   if (newLaserCloudOri  && std::abs(timeLaserCloudOri  - timeKeyPoses) < 0.005 &&
@@ -289,6 +382,8 @@ void run(){
     imuProcess();
 
     optimizationProcess();
+
+    pubOdometry();
   }
 
 }
