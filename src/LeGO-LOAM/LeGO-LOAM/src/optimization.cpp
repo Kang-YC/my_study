@@ -22,7 +22,7 @@ using namespace Eigen;
 
 class Optimization{
 private:
-const double optimizationProcessInterval=0.01;
+const double optimizationProcessInterval=0.1;
 
 static const int WINDOW_SIZE = 10;
 static const int SIZE_POSE = 7;
@@ -54,13 +54,19 @@ bool newLaserCloudProj;
 bool newCloudKeyPoses3D;
 bool newCloudKeyPoses6D;
 
+bool smallProblem=false;
+
 ros::Subscriber subKeyPoses;
 ros::Subscriber subKeyPoses6D;
 ros::Subscriber subLaserCloudOri;
 ros::Subscriber subLaserCloudProj;
 ros::Subscriber subImu;
 
-ros::Publisher pub_odometry;
+ros::Publisher pubCoupledOdometry;
+
+nav_msgs::Odometry odomCoupled;
+tf::StampedTransform aftCoupledTrans;
+tf::TransformBroadcaster tfBroadcaster;
 
 Eigen::Matrix3d curRx;
 Eigen::Matrix3d curRx_inverse;
@@ -86,13 +92,21 @@ public:
   Optimization(): 
     n("~")
   {
-  subKeyPoses6D = n.subscribe<sensor_msgs::PointCloud2>("/key_pose_origin_6D", 2, &Optimization::keyPoses6DHandler, this);//?
-  subKeyPoses = n.subscribe<sensor_msgs::PointCloud2>("/key_pose_origin", 2, &Optimization::keyPosesHandler, this);
-  subLaserCloudOri = n.subscribe<sensor_msgs::PointCloud2>("/laser_cloud_ori", 2, &Optimization::laserCloudOriHandler, this);
-  subLaserCloudProj = n.subscribe<sensor_msgs::PointCloud2>("/laser_cloud_proj", 2, &Optimization::laserCloudProjHandler, this);
+  subKeyPoses6D = n.subscribe<sensor_msgs::PointCloud2>("/key_pose_origin_6D", 5, &Optimization::keyPoses6DHandler, this);//?
+  subKeyPoses = n.subscribe<sensor_msgs::PointCloud2>("/key_pose_origin", 5, &Optimization::keyPosesHandler, this);
+  subLaserCloudOri = n.subscribe<sensor_msgs::PointCloud2>("/laser_cloud_ori", 5, &Optimization::laserCloudOriHandler, this);
+  subLaserCloudProj = n.subscribe<sensor_msgs::PointCloud2>("/laser_cloud_proj", 5, &Optimization::laserCloudProjHandler, this);
   subImu = n.subscribe<sensor_msgs::Imu> (imuTopic, 1000, &Optimization::imuHandler, this);
 
-  pub_odometry = n.advertise<nav_msgs::Odometry>("odometry", 1000);
+  pubCoupledOdometry = n.advertise<nav_msgs::Odometry>("/coupled_odometry", 1000);
+
+  
+
+  aftCoupledTrans.frame_id_ = "/camera_init";
+  aftCoupledTrans.child_frame_id_ = "/aft_coupled";
+
+  odomCoupled.header.frame_id = "/camera_init";
+  odomCoupled.child_frame_id = "/aft_coupled";
 
 
   allocateMemory();
@@ -101,18 +115,20 @@ public:
   }
 
 
-void laserCloudOriHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
+void laserCloudOriHandler(const sensor_msgs::PointCloud2ConstPtr& msg)
+{
         lidarHeader = msg->header;
         timeLaserCloudOri = msg->header.stamp.toSec();
         LaserCloudOri->clear();
         pcl::fromROSMsg(*msg, *LaserCloudOri);
         newLaserCloudOri = true;
         laserCloudOriNum=LaserCloudOri->points.size();
-        ROS_DEBUG("Ori sub Num %d",laserCloudOriNum);
+        //ROS_DEBUG("Ori sub Num %d",laserCloudOriNum);
 }
 
 
-void laserCloudProjHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
+void laserCloudProjHandler(const sensor_msgs::PointCloud2ConstPtr& msg)
+{
         timeLaserCloudProj = msg->header.stamp.toSec();
         LaserCloudProj->clear();
         pcl::fromROSMsg(*msg, *LaserCloudProj);
@@ -122,7 +138,8 @@ void laserCloudProjHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
 }
 
 
-void keyPosesHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
+void keyPosesHandler(const sensor_msgs::PointCloud2ConstPtr& msg)
+{
         timeKeyPoses = msg->header.stamp.toSec();
         cloudKeyPoses3D->clear();
         pcl::fromROSMsg(*msg, *cloudKeyPoses3D);
@@ -133,7 +150,8 @@ void keyPosesHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
 }
 
 
-void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
+void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg)
+{
         timeKeyPoses6D = msg->header.stamp.toSec();
         cloudKeyPoses6D->clear();
         pcl::fromROSMsg(*msg, *cloudKeyPoses6D);
@@ -142,7 +160,8 @@ void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
 }
 
 
- void imuHandler(const sensor_msgs::Imu::ConstPtr& imuIn){
+ void imuHandler(const sensor_msgs::Imu::ConstPtr& imuIn)
+{
         
 
         float accX = imuIn->linear_acceleration.x ;
@@ -153,7 +172,8 @@ void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg){
 }
 
 
-void allocateMemory(){
+void allocateMemory()
+{
 
         cloudKeyPoses3D.reset(new pcl::PointCloud<PointType>());
         cloudKeyPoses6D.reset(new pcl::PointCloud<PointTypePose>());
@@ -164,7 +184,8 @@ void allocateMemory(){
 
 
 
-void clearState(){
+void clearState()
+{
   for (int i = 0; i < WINDOW_SIZE + 1; i++)
   {
     Rs[i].setIdentity();
@@ -179,14 +200,79 @@ void clearState(){
 }
 
 
+
+ceres::Solver::Options getOptions()
+{
+    // Set a few options
+    ceres::Solver::Options options;
+    //options.use_nonmonotonic_steps = true;
+    //options.preconditioner_type = ceres::IDENTITY;
+    options.linear_solver_type = ceres::DENSE_QR;
+    
+    options.max_num_iterations = 50;
+
+//    options.preconditioner_type = ceres::SCHUR_JACOBI;
+//    options.linear_solver_type = ceres::DENSE_SCHUR;
+//    options.use_explicit_schur_complement=true;
+//    options.max_num_iterations = 100;
+
+    cout << "Ceres Solver getOptions()" << endl;
+    cout << "Ceres preconditioner type: " << options.preconditioner_type << endl;
+    cout << "Ceres linear algebra type: " << options.sparse_linear_algebra_library_type << endl;
+    cout << "Ceres linear solver type: " << options.linear_solver_type << endl;
+
+    return options;
+}
+
+
+ceres::Solver::Options getOptionsMedium()
+{
+    // Set a few options
+    ceres::Solver::Options options;
+
+    #ifdef _WIN32
+        options.sparse_linear_algebra_library_type = ceres::EIGEN_SPARSE;
+        options.linear_solver_type                 = ceres::ITERATIVE_SCHUR;
+        options.preconditioner_type                = ceres::SCHUR_JACOBI;
+    #else
+        //options.sparse_linear_algebra_library_type = ceres::SUITE_SPARSE;
+        options.linear_solver_type = ceres::SPARSE_NORMAL_CHOLESKY;
+    #endif // _WIN32
+
+    //If you are solving small to medium sized problems, consider setting Solver::Options::use_explicit_schur_complement to true, it can result in a substantial performance boost.
+    options.use_explicit_schur_complement=true;
+    options.max_num_iterations = 50;
+
+    cout << "Ceres Solver getOptionsMedium()" << endl;
+    cout << "Ceres preconditioner type: " << options.preconditioner_type << endl;
+    cout << "Ceres linear algebra type: " << options.sparse_linear_algebra_library_type << endl;
+    cout << "Ceres linear solver type: " << options.linear_solver_type << endl;
+
+    return options;
+}
+
+
+void solveProblem(ceres::Problem &problem)
+{
+
+  ROS_DEBUG("solveProblem %d", frame_count+1);
+    ceres::Solver::Summary summary;
+    ceres::Solve(smallProblem ? getOptions() : getOptionsMedium(), &problem, &summary);
+    if(!smallProblem) std::cout << "Final report:\n" << summary.FullReport();
+}
+
+
+
+
 void currrentPoseProcess()
 {
+
   PointTypePose currentRobotPos6D;
   PointType currentRobotPos3D;
   double roll,pitch,yaw,x,y,z;
 
   int numPoses = cloudKeyPoses3D->points.size();
-  ROS_DEBUG("numPoses OP %d", numPoses);
+  ROS_DEBUG("currrentPoseProcess  %d", numPoses);
   if(numPoses==0)
     return;
 
@@ -204,16 +290,25 @@ void currrentPoseProcess()
   Eigen::AngleAxisd rollAngle(roll, Eigen::Vector3d::UnitX());
   Eigen::AngleAxisd pitchAngle(pitch, Eigen::Vector3d::UnitY());
   Eigen::AngleAxisd yawAngle(yaw, Eigen::Vector3d::UnitZ());
-  Eigen::Quaterniond q = yawAngle * pitchAngle * rollAngle;// indicate the orger of rotate
+  Eigen::Quaterniond q = rollAngle * pitchAngle * yawAngle;// indicate the orger of rotate
 
   curRx         = q.toRotationMatrix();//from world frame (ypr)
-  curRx_inverse = curRx.inverse();
+  //curRx_inverse = curRx.inverse();
   cur_t<< x,y,z ;
 
 
-  int j = currentInd;
-  Ps[j] = cur_t;
-  Rs[j] = curRx;
+  
+  if(currentInd < WINDOW_SIZE){
+    Ps[currentInd] = cur_t;
+    Rs[currentInd] = curRx;
+  }
+  else
+  {
+     Ps[WINDOW_SIZE] = cur_t;
+     Rs[WINDOW_SIZE] = curRx;
+
+  }
+
 
 
   //ROS_INFO("frame_count %d", frame_count);
@@ -224,11 +319,11 @@ void currrentPoseProcess()
  CloudKeyFramesOri. push_back(LaserCloudOri);
  CloudKeyFramesProj.push_back(LaserCloudProj);   
 
- if(numPoses > WINDOW_SIZE+1)
- {
-  CloudKeyFramesOri.pop_front();
-  CloudKeyFramesProj.pop_front();
- }              
+ // if(currentInd >= WINDOW_SIZE)
+ // {
+ //  CloudKeyFramesOri.pop_front();
+ //  CloudKeyFramesProj.pop_front();
+ // }              
 
 
   frame_count=currentInd;// different with thiskeyid??
@@ -259,27 +354,33 @@ void optimizationProcess()
 
 void solveOdometry()
 {
+  
+  ROS_DEBUG("solveOdometry %d", frame_count+1);
   ceres::Problem problem;
-  ceres::LossFunction *loss_function;
+  ceres::LossFunction *loss_function = new ceres::CauchyLoss(1);
   vector2double();
 
   for(int i=0; i<WINDOW_SIZE;i++)
   {
 
-    int j= i+1;
+    int j   = i+1;
+    int ind = i ;
 
     for(int k=0;k<CloudKeyFramesOri[i]->points.size();k++)
     {
       
       Vector3d ori, proj;
 
-      ori<< CloudKeyFramesOri[i]->points[k].y,CloudKeyFramesOri[i]->points[k].z , CloudKeyFramesOri[i]->points[k].x;
+      //ori in body frame
+      //proj in world frame
 
-      proj<< CloudKeyFramesProj[i]->points[k].y,CloudKeyFramesProj[i]->points[k].z ,CloudKeyFramesProj[i]->points[k].x;
+      ori<< CloudKeyFramesOri[i]->points[k].z , CloudKeyFramesOri[i]->points[k].x , CloudKeyFramesOri[i]->points[k].y;
+      
+      proj<< CloudKeyFramesProj[i]->points[k].z, CloudKeyFramesProj[i]->points[k].x , CloudKeyFramesProj[i]->points[k].y;
       
       ceres::CostFunction* lidar_cost_function = ICPCostFunctions::PointToPointError_EigenQuaternion::Create(proj,ori);
       
-      //problem.AddResidualBlock(lidar_cost_function, NULL, q.coeffs().data(), t.data());
+      problem.AddResidualBlock(lidar_cost_function, loss_function, para_Pose[ind]);
       
 
 
@@ -288,13 +389,15 @@ void solveOdometry()
 
     }
   }
+  solveProblem(problem);
+  double2vector();
 
 
 
 }
 
 void vector2double(){
-  for (int i = 0; i <= WINDOW_SIZE; i++)
+  for (int i = 0; i < WINDOW_SIZE; i++)
     {
         para_Pose[i][0] = Ps[i].x();
         para_Pose[i][1] = Ps[i].y();
@@ -320,10 +423,36 @@ void vector2double(){
 
 }
 
+
+void double2vector()
+{
+    for (int i = 0; i < WINDOW_SIZE; i++)
+    {
+
+        Rs[i] =  Quaterniond(para_Pose[i][6], para_Pose[i][3], para_Pose[i][4], para_Pose[i][5]).normalized().toRotationMatrix();
+        
+        Ps[i] =  Vector3d(para_Pose[i][0], para_Pose[i][1] ,para_Pose[i][2]);
+
+        Vs[i] =  Vector3d(para_SpeedBias[i][0],
+                                    para_SpeedBias[i][1],
+                                    para_SpeedBias[i][2]);
+
+        Bas[i] = Vector3d(para_SpeedBias[i][3],
+                          para_SpeedBias[i][4],
+                          para_SpeedBias[i][5]);
+
+        Bgs[i] = Vector3d(para_SpeedBias[i][6],
+                          para_SpeedBias[i][7],
+                          para_SpeedBias[i][8]);
+    }
+}
+
+
+
 void slideWindow()
 {
-  if (frame_count >= WINDOW_SIZE)
-  {
+
+  
     for (int i = 0; i < WINDOW_SIZE; i++)
     {
       Rs[i].swap(Rs[i + 1]);
@@ -332,31 +461,49 @@ void slideWindow()
       Vs[i].swap(Vs[i + 1]);
       Bas[i].swap(Bas[i + 1]);
       Bgs[i].swap(Bgs[i + 1]);
-    }
+    }// destory the front values
+
+ 
+    CloudKeyFramesOri.pop_front();
+    CloudKeyFramesProj.pop_front();
+ 
 
 
-  }
+  
+  ROS_DEBUG("slideWindow %d", frame_count+1);
 }
 
 
 void pubOdometry(){
-  nav_msgs::Odometry odometry;
-  odometry.header = lidarHeader;
-  odometry.header.frame_id = "world";
-  odometry.child_frame_id = "world";
+  
+
+  
+  //nav_msgs::Odometry odomCoupled;
+  //odometry.header = lidarHeader;
+  odomCoupled.header.stamp = ros::Time().fromSec(timeKeyPoses);
+  odomCoupled.header.frame_id = "camera_init";
+  odomCoupled.child_frame_id = "aft_coupled";
   Quaterniond tmp_Q;
   tmp_Q = Quaterniond(Rs[WINDOW_SIZE]);
-  odometry.pose.pose.position.x = Ps[WINDOW_SIZE].x();
-  odometry.pose.pose.position.y = Ps[WINDOW_SIZE].y();
-  odometry.pose.pose.position.z = Ps[WINDOW_SIZE].z();
-  odometry.pose.pose.orientation.x = tmp_Q.x();
-  odometry.pose.pose.orientation.y = tmp_Q.y();
-  odometry.pose.pose.orientation.z = tmp_Q.z();
-  odometry.pose.pose.orientation.w = tmp_Q.w();
-  odometry.twist.twist.linear.x = Vs[WINDOW_SIZE].x();
-  odometry.twist.twist.linear.y = Vs[WINDOW_SIZE].y();
-  odometry.twist.twist.linear.z = Vs[WINDOW_SIZE].z();
-  pub_odometry.publish(odometry);
+  odomCoupled.pose.pose.position.x = Ps[WINDOW_SIZE].x();
+  odomCoupled.pose.pose.position.y = Ps[WINDOW_SIZE].y();
+  odomCoupled.pose.pose.position.z = Ps[WINDOW_SIZE].z();
+  odomCoupled.pose.pose.orientation.x = tmp_Q.x();
+  odomCoupled.pose.pose.orientation.y = tmp_Q.y();
+  odomCoupled.pose.pose.orientation.z = tmp_Q.z();
+  odomCoupled.pose.pose.orientation.w = tmp_Q.w();
+  odomCoupled.twist.twist.linear.x = Vs[WINDOW_SIZE].x();
+  odomCoupled.twist.twist.linear.y = Vs[WINDOW_SIZE].y();
+  odomCoupled.twist.twist.linear.z = Vs[WINDOW_SIZE].z();
+  pubCoupledOdometry.publish(odomCoupled);
+
+  aftCoupledTrans.stamp_ = ros::Time().fromSec(timeKeyPoses);
+  aftCoupledTrans.setRotation(tf::Quaternion(tmp_Q.x(), tmp_Q.y(),tmp_Q.z(), tmp_Q.w()));
+  aftCoupledTrans.setOrigin(tf::Vector3(Ps[WINDOW_SIZE].x(), Ps[WINDOW_SIZE].y(), Ps[WINDOW_SIZE].z()));
+  tfBroadcaster.sendTransform(aftCoupledTrans);
+  
+
+  ROS_DEBUG("pubOdometry %d %f", frame_count+1, odomCoupled.pose.pose.position.x);
 
 }
 
@@ -425,7 +572,7 @@ int main(int argc, char **argv)
    */
  
 
-  ros::Rate rate(200);
+  ros::Rate rate(100);
   while(ros::ok())
   {
     ros::spinOnce();

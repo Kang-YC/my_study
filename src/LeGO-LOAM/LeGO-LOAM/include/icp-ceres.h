@@ -355,6 +355,48 @@ struct PointToPointError_CeresAngleAxis{
     }
 };
 
+// struct PointToPointError_EigenQuaternion{
+//     const Eigen::Vector3d& p_dst;
+//     const Eigen::Vector3d& p_src;
+
+//     PointToPointError_EigenQuaternion(const Eigen::Vector3d &dst, const Eigen::Vector3d &src) :
+//         p_dst(dst), p_src(src)
+//     {
+//     }
+
+//     // Factory to hide the construction of the CostFunction object from the client code.
+//     static ceres::CostFunction* Create(const Eigen::Vector3d &observed, const Eigen::Vector3d &worldPoint) {
+//         return (new ceres::AutoDiffCostFunction<PointToPointError_EigenQuaternion, 3, 4, 3>(new PointToPointError_EigenQuaternion(observed, worldPoint)));
+//     }
+
+//     template <typename T>
+//     bool operator()(const T* const camera_rotation, const T* const camera_translation, T* residuals) const {
+
+//         //ceres::AngleAxisRotatePoint
+
+//         // Make sure the Eigen::Vector world point is using the ceres::Jet type as it's Scalar type
+//         Eigen::Matrix<T,3,1> point; point << T(p_src[0]), T(p_src[1]), T(p_src[2]);
+
+//         // Map the T* array to an Eigen Quaternion object (with appropriate Scalar type)
+//         Eigen::Quaternion<T> q = Eigen::Map<const Eigen::Quaternion<T> >(camera_rotation);
+
+//         // Rotate the point using Eigen rotations
+//         Eigen::Matrix<T,3,1> p = q * point;
+
+//         // Map T* to Eigen Vector3 with correct Scalar type
+//         Eigen::Matrix<T,3,1> t = Eigen::Map<const Eigen::Matrix<T,3,1> >(camera_translation);
+//         p += t;
+
+//         // The error is the difference between the predicted and observed position.
+//         residuals[0] = p[0] - T(p_dst[0]);
+//         residuals[1] = p[1] - T(p_dst[1]);
+//         residuals[2] = p[2] - T(p_dst[2]);
+
+//         return true;
+//     }
+// };
+// 
+// 
 struct PointToPointError_EigenQuaternion{
     const Eigen::Vector3d& p_dst;
     const Eigen::Vector3d& p_src;
@@ -363,31 +405,31 @@ struct PointToPointError_EigenQuaternion{
         p_dst(dst), p_src(src)
     {
     }
+    //dist in world    src in body
 
     // Factory to hide the construction of the CostFunction object from the client code.
     static ceres::CostFunction* Create(const Eigen::Vector3d &observed, const Eigen::Vector3d &worldPoint) {
-        return (new ceres::AutoDiffCostFunction<PointToPointError_EigenQuaternion, 3, 4, 3>(new PointToPointError_EigenQuaternion(observed, worldPoint)));
+        return (new ceres::AutoDiffCostFunction<PointToPointError_EigenQuaternion, 3, 7>(new PointToPointError_EigenQuaternion(observed, worldPoint)));
     }
 
     template <typename T>
-    bool operator()(const T* const camera_rotation, const T* const camera_translation, T* residuals) const {
+    bool operator()(const T* const para_Pose,  T* residuals) const {
 
         //ceres::AngleAxisRotatePoint
 
         // Make sure the Eigen::Vector world point is using the ceres::Jet type as it's Scalar type
-        Eigen::Matrix<T,3,1> point; point << T(p_src[0]), T(p_src[1]), T(p_src[2]);
+        //Eigen::Matrix<T,3,1> point; point << T(p_src[0]), T(p_src[1]), T(p_src[2]);
+        T point[3] = {T(p_src[0]), T(p_src[1]), T(p_src[2])};
+        T q[4] = {para_Pose[3],para_Pose[4],para_Pose[5],para_Pose[6]};
+        T p[3];
 
-        // Map the T* array to an Eigen Quaternion object (with appropriate Scalar type)
-        Eigen::Quaternion<T> q = Eigen::Map<const Eigen::Quaternion<T> >(camera_rotation);
+        ceres::QuaternionRotatePoint( q, point, p);
+      
+        p[0] += para_Pose[0];
+        p[1] += para_Pose[1];
+        p[2] += para_Pose[2];
 
-        // Rotate the point using Eigen rotations
-        Eigen::Matrix<T,3,1> p = q * point;
-
-        // Map T* to Eigen Vector3 with correct Scalar type
-        Eigen::Matrix<T,3,1> t = Eigen::Map<const Eigen::Matrix<T,3,1> >(camera_translation);
-        p += t;
-
-        // The error is the difference between the predicted and observed position.
+ 
         residuals[0] = p[0] - T(p_dst[0]);
         residuals[1] = p[1] - T(p_dst[1]);
         residuals[2] = p[2] - T(p_dst[2]);

@@ -241,8 +241,8 @@ public:
 		parameters.relinearizeSkip = 1;
     	isam = new ISAM2(parameters);
 
-        pubKeyPoses = nh.advertise<sensor_msgs::PointCloud2>("/key_pose_origin", 2);
-        pubKeyPoses6D = nh.advertise<sensor_msgs::PointCloud2>("/key_pose_origin_6D", 2);
+        pubKeyPoses = nh.advertise<sensor_msgs::PointCloud2>("/key_pose_origin", 5);
+        pubKeyPoses6D = nh.advertise<sensor_msgs::PointCloud2>("/key_pose_origin_6D", 5);
         pubLaserCloudSurround = nh.advertise<sensor_msgs::PointCloud2>("/laser_cloud_surround", 2);
         pubOdomAftMapped = nh.advertise<nav_msgs::Odometry> ("/aft_mapped_to_init", 5);
 
@@ -256,8 +256,8 @@ public:
         pubIcpKeyFrames = nh.advertise<sensor_msgs::PointCloud2>("/corrected_cloud", 2);
         pubRecentKeyFrames = nh.advertise<sensor_msgs::PointCloud2>("/recent_cloud", 2);
 
-        publaserCloudOri = nh.advertise<sensor_msgs::PointCloud2>("/laser_cloud_ori", 2);
-        publaserCloudProj = nh.advertise<sensor_msgs::PointCloud2>("/laser_cloud_proj", 2);
+        publaserCloudOri = nh.advertise<sensor_msgs::PointCloud2>("/laser_cloud_ori", 5);
+        publaserCloudProj = nh.advertise<sensor_msgs::PointCloud2>("/laser_cloud_proj", 5);
 
         downSizeFilterCorner.setLeafSize(0.2, 0.2, 0.2);
         downSizeFilterSurf.setLeafSize(0.4, 0.4, 0.4);
@@ -739,7 +739,8 @@ public:
         sensor_msgs::PointCloud2 laserCloudOri2;
         pcl::toROSMsg(*laserCloudOri, laserCloudOri2);
         laserCloudOri2.header.stamp = ros::Time().fromSec(timeLaserOdometry);
-        laserCloudOri2.header.frame_id = "/camera_init";
+        //laserCloudOri2.header.frame_id = "/camera_init";
+        laserCloudOri2.header.frame_id = "/camera";
         publaserCloudOri.publish(laserCloudOri2);
         //ROS_INFO("Oripub ");
 
