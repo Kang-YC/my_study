@@ -420,7 +420,7 @@ struct PointToPointError_EigenQuaternion{
         // Make sure the Eigen::Vector world point is using the ceres::Jet type as it's Scalar type
         //Eigen::Matrix<T,3,1> point; point << T(p_src[0]), T(p_src[1]), T(p_src[2]);
         T point[3] = {T(p_src[0]), T(p_src[1]), T(p_src[2])};
-        T q[4] = {para_Pose[3],para_Pose[4],para_Pose[5],para_Pose[6]};
+        T q[4] = {para_Pose[6],para_Pose[3],para_Pose[4],para_Pose[5]};//ORDER!!!!!!!!!!!!!!
         T p[3];
 
         ceres::QuaternionRotatePoint( q, point, p);
@@ -428,6 +428,9 @@ struct PointToPointError_EigenQuaternion{
         p[0] += para_Pose[0];
         p[1] += para_Pose[1];
         p[2] += para_Pose[2];
+
+        // cout <<"ori" <<p[0] <<p[1]<<p[2]<< endl;
+        // cout<< p_dst<<endl;
 
  
         residuals[0] = p[0] - T(p_dst[0]);

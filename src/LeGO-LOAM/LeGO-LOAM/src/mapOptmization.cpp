@@ -1008,13 +1008,13 @@ public:
             int numSurroundingPosesDS = surroundingKeyPosesDS->points.size();
             for (int i = 0; i < surroundingExistingKeyPosesID.size(); ++i){
                 bool existingFlag = false;
-                for (int j = 0; j < numSurroundingPosesDS; ++j){
+                for (int j = 0; j < numSurroundingPosesDS; ++j){//if exist before
                     if (surroundingExistingKeyPosesID[i] == (int)surroundingKeyPosesDS->points[j].intensity){
                         existingFlag = true;
                         break;
                     }
                 }
-                if (existingFlag == false){
+                if (existingFlag == false){//if not exist before erase
                     surroundingExistingKeyPosesID.   erase(surroundingExistingKeyPosesID.   begin() + i);
                     surroundingCornerCloudKeyFrames. erase(surroundingCornerCloudKeyFrames. begin() + i);
                     surroundingSurfCloudKeyFrames.   erase(surroundingSurfCloudKeyFrames.   begin() + i);
@@ -1033,7 +1033,7 @@ public:
                 }
                 if (existingFlag == true){
                     continue;
-                }else{
+                }else{//new frame
                     int thisKeyInd = (int)surroundingKeyPosesDS->points[i].intensity;
                     PointTypePose thisTransformation = cloudKeyPoses6D->points[thisKeyInd];
                     updateTransformPointCloudSinCos(&thisTransformation);
@@ -1089,7 +1089,7 @@ public:
     void cornerOptimization(int iterCount){
 
         updatePointAssociateToMapSinCos();
-        for (int i = 0; i < laserCloudCornerLastDSNum; i++) {
+        for (int i = 0; i < laserCloudCornerLastDSNum; i++) {//current scan
             pointOri = laserCloudCornerLastDS->points[i];
             pointAssociateToMap(&pointOri, &pointSel);
             kdtreeCornerFromMap->nearestKSearch(pointSel, 5, pointSearchInd, pointSearchSqDis);
@@ -1386,8 +1386,8 @@ public:
         if (cloudKeyPoses3D->points.empty()){// first key frame
             gtSAMgraph.add(PriorFactor<Pose3>(0, Pose3(Rot3::RzRyRx(transformTobeMapped[2], transformTobeMapped[0], transformTobeMapped[1]),
                                                        		 Point3(transformTobeMapped[5], transformTobeMapped[3], transformTobeMapped[4])), priorNoise));
-            initialEstimate.insert(0, Pose3(Rot3::RzRyRx(transformTobeMapped[2], transformTobeMapped[0], transformTobeMapped[1]),
-                                                  Point3(transformTobeMapped[5], transformTobeMapped[3], transformTobeMapped[4])));
+            initialEstimate.insert(0, Pose3(Rot3::RzRyRx(transformTobeMapped[2], transformTobeMapped[0], transformTobeMapped[1]),//rpy
+                                                  Point3(transformTobeMapped[5], transformTobeMapped[3], transformTobeMapped[4])));//zxy to xyz in RS
             for (int i = 0; i < 6; ++i)
             	transformLast[i] = transformTobeMapped[i];
         }

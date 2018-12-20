@@ -274,7 +274,7 @@ void currrentPoseProcess()
   int numPoses = cloudKeyPoses3D->points.size();
   ROS_DEBUG("currrentPoseProcess  %d", numPoses);
   if(numPoses==0)
-    return;
+    return;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 
   int currentInd    = numPoses-1;
   currentRobotPos6D =cloudKeyPoses6D->points[currentInd];
@@ -283,14 +283,14 @@ void currrentPoseProcess()
   roll  = currentRobotPos6D.yaw;//to Cartesian coordinate system
   pitch = currentRobotPos6D.roll;
   yaw   = currentRobotPos6D.pitch;
-  x     = currentRobotPos6D.x;
-  y     = currentRobotPos6D.y;
-  z     = currentRobotPos6D.z;
+  x     = currentRobotPos6D.z;
+  y     = currentRobotPos6D.x;
+  z     = currentRobotPos6D.y;
 
   Eigen::AngleAxisd rollAngle(roll, Eigen::Vector3d::UnitX());
   Eigen::AngleAxisd pitchAngle(pitch, Eigen::Vector3d::UnitY());
   Eigen::AngleAxisd yawAngle(yaw, Eigen::Vector3d::UnitZ());
-  Eigen::Quaterniond q = rollAngle * pitchAngle * yawAngle;// indicate the orger of rotate
+  Eigen::Quaterniond q = rollAngle * pitchAngle *  yawAngle;//!!! indicate the orger of rotate
 
   curRx         = q.toRotationMatrix();//from world frame (ypr)
   //curRx_inverse = curRx.inverse();
@@ -366,7 +366,7 @@ void solveOdometry()
     int j   = i+1;
     int ind = i ;
 
-    for(int k=0;k<CloudKeyFramesOri[i]->points.size();k++)
+    for(int k=0;k<CloudKeyFramesOri[ind]->points.size();k++)
     {
       
       Vector3d ori, proj;
@@ -374,15 +374,35 @@ void solveOdometry()
       //ori in body frame
       //proj in world frame
 
-      ori<< CloudKeyFramesOri[i]->points[k].z , CloudKeyFramesOri[i]->points[k].x , CloudKeyFramesOri[i]->points[k].y;
+      ori<< CloudKeyFramesOri[ind]->points[k].z , CloudKeyFramesOri[ind]->points[k].x , CloudKeyFramesOri[ind]->points[k].y;
       
-      proj<< CloudKeyFramesProj[i]->points[k].z, CloudKeyFramesProj[i]->points[k].x , CloudKeyFramesProj[i]->points[k].y;
+      proj<< CloudKeyFramesProj[ind]->points[k].z, CloudKeyFramesProj[ind]->points[k].x , CloudKeyFramesProj[ind]->points[k].y;
+
+      // test the rotation
+      // double point[3] = {ori[0], ori[1], ori[2]};
+      // double q[4] = {para_Pose[ind][6],para_Pose[ind][3],para_Pose[ind][4],para_Pose[ind][5]};//!!!!!w x y z 
+      // double p[3];
+
+
+      // ceres::QuaternionRotatePoint( q, point, p);
+      
+      //   p[0] += para_Pose[ind][0];
+      //   p[1] += para_Pose[ind][1];
+      //   p[2] += para_Pose[ind][2];
+      // cout << "ori"<<p[0]<<" " <<p[1]<<" "<<p[2]<< endl;
+      // cout << proj << endl;
+     
+    
+      //ROS_DEBUG("ori x y  %f %f", ori[0],ori[1]);
+      if(ori[0] > 50 ||  ori[1] > 50  || ori[2] > 50)
+        continue;
+
       
       ceres::CostFunction* lidar_cost_function = ICPCostFunctions::PointToPointError_EigenQuaternion::Create(proj,ori);
       
       problem.AddResidualBlock(lidar_cost_function, loss_function, para_Pose[ind]);
       
-
+  
 
 
      // PtestCeres2 = ICP_Ceres::pointToPoint_EigenQuaternion(ori,proj);
@@ -433,6 +453,8 @@ void double2vector()
         
         Ps[i] =  Vector3d(para_Pose[i][0], para_Pose[i][1] ,para_Pose[i][2]);
 
+        
+
         Vs[i] =  Vector3d(para_SpeedBias[i][0],
                                     para_SpeedBias[i][1],
                                     para_SpeedBias[i][2]);
@@ -445,6 +467,7 @@ void double2vector()
                           para_SpeedBias[i][7],
                           para_SpeedBias[i][8]);
     }
+    ROS_DEBUG("P %f",Ps[WINDOW_SIZE-1][0]);
 }
 
 
@@ -485,9 +508,9 @@ void pubOdometry(){
   odomCoupled.child_frame_id = "aft_coupled";
   Quaterniond tmp_Q;
   tmp_Q = Quaterniond(Rs[WINDOW_SIZE]);
-  odomCoupled.pose.pose.position.x = Ps[WINDOW_SIZE].x();
-  odomCoupled.pose.pose.position.y = Ps[WINDOW_SIZE].y();
-  odomCoupled.pose.pose.position.z = Ps[WINDOW_SIZE].z();
+  odomCoupled.pose.pose.position.x = Ps[WINDOW_SIZE-1].x();
+  odomCoupled.pose.pose.position.y = Ps[WINDOW_SIZE-1].y();
+  odomCoupled.pose.pose.position.z = Ps[WINDOW_SIZE-1].z();
   odomCoupled.pose.pose.orientation.x = tmp_Q.x();
   odomCoupled.pose.pose.orientation.y = tmp_Q.y();
   odomCoupled.pose.pose.orientation.z = tmp_Q.z();
@@ -503,7 +526,7 @@ void pubOdometry(){
   tfBroadcaster.sendTransform(aftCoupledTrans);
   
 
-  ROS_DEBUG("pubOdometry %d %f", frame_count+1, odomCoupled.pose.pose.position.x);
+  ROS_DEBUG("pubOdometry %d %f", frame_count+1, Ps[WINDOW_SIZE-1].x());
 
 }
 
