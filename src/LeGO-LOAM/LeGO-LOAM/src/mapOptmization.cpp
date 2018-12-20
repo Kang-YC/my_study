@@ -739,16 +739,55 @@ public:
         sensor_msgs::PointCloud2 laserCloudOri2;
         pcl::toROSMsg(*laserCloudOri, laserCloudOri2);
         laserCloudOri2.header.stamp = ros::Time().fromSec(timeLaserOdometry);
-        //laserCloudOri2.header.frame_id = "/camera_init";
-        laserCloudOri2.header.frame_id = "/camera";
+        laserCloudOri2.header.frame_id = "/camera_init";
+        //laserCloudOri2.header.frame_id = "/camera";
         publaserCloudOri.publish(laserCloudOri2);
-        //ROS_INFO("Oripub ");
+        
+
+        
 
         sensor_msgs::PointCloud2 laserCloudProj2;
         pcl::toROSMsg(*laserCloudProj, laserCloudProj2);
         laserCloudProj2.header.stamp = ros::Time().fromSec(timeLaserOdometry);
         laserCloudProj2.header.frame_id = "/camera_init";
         publaserCloudProj.publish(laserCloudProj2);
+
+
+        int numPoses = cloudKeyPoses3D->points.size();
+        PointTypePose thisTransformation = cloudKeyPoses6D->points[numPoses-1];
+        updateTransformPointCloudSinCos(&thisTransformation);
+
+
+        //test
+        int oriNum = laserCloudOri->points.size();
+        ROS_INFO("Oripub %d", oriNum);
+        if (oriNum == 0)
+            return;
+
+        for(int i = 0;i<3;i++){
+            pointOri=laserCloudOri->points[i];
+            pointProj=laserCloudProj -> points[i];
+            PointType *pointFrom = &pointOri;
+            PointType pointTo;
+
+            float x1 = ctYaw * pointFrom->x - stYaw * pointFrom->y;
+            float y1 = stYaw * pointFrom->x + ctYaw* pointFrom->y;
+            float z1 = pointFrom->z;
+
+            float x2 = x1;
+            float y2 = ctRoll * y1 - stRoll * z1;
+            float z2 = stRoll * y1 + ctRoll* z1;
+
+            pointTo.x = ctPitch * x2 + stPitch * z2 + tInX;
+            pointTo.y = y2 + tInY;
+            pointTo.z = -stPitch * x2 + ctPitch * z2 + tInZ;
+            pointTo.intensity = pointFrom->intensity;
+
+            ROS_DEBUG("to %f %f %f ",pointTo.x, pointTo.y,pointTo.z);
+            ROS_DEBUG("pro %f %f %f ",pointProj.x, pointProj.y,pointProj.z);
+        }
+            
+        
  
         //ROS_INFO("publish point success");
     }
@@ -1231,6 +1270,9 @@ public:
                         laserCloudSel->push_back(pointSel);
                         laserCloudProj->push_back(pointProj);//push back projection point
                         coeffSel->push_back(coeff);
+                        // ROS_DEBUG("sel %f %f %f ",pointSel.x, pointSel.y,pointSel.z);
+                        // ROS_DEBUG("pro %f %f %f ",pointProj.x, pointProj.y,pointProj.z);
+
                     }
                 }
             }
@@ -1358,7 +1400,7 @@ public:
                     break;              
             }
 
-            transformUpdate();//get to be mapped fused with imu
+            transformUpdate();//get to be mapped /aft mappedfused with imu
         }
     }
 
@@ -1368,6 +1410,7 @@ public:
         currentRobotPosPoint.x = transformAftMapped[3];
         currentRobotPosPoint.y = transformAftMapped[4];
         currentRobotPosPoint.z = transformAftMapped[5];
+        ROS_INFO("transformAftMapped[5] %f", transformAftMapped[5]);
 
         saveThisKeyFrame = true;
         if (sqrt((previousRobotPosPoint.x-currentRobotPosPoint.x)*(previousRobotPosPoint.x-currentRobotPosPoint.x)
@@ -1438,6 +1481,7 @@ public:
         thisPose6D.yaw   = latestEstimate.rotation().roll();
         thisPose6D.time = timeLaserOdometry;
         cloudKeyPoses6D->push_back(thisPose6D);
+        ROS_INFO("thisPose6D.z %f", thisPose6D.z);
 
         if (cloudKeyPoses3D->points.size() > 1){
             transformAftMapped[0] = latestEstimate.rotation().pitch();
@@ -1447,6 +1491,7 @@ public:
             transformAftMapped[4] = latestEstimate.translation().z();
             transformAftMapped[5] = latestEstimate.translation().x();
 
+           
             for (int i = 0; i < 6; ++i){
             	transformLast[i] = transformAftMapped[i];
             	transformTobeMapped[i] = transformAftMapped[i];
@@ -1544,6 +1589,8 @@ public:
 int main(int argc, char** argv)
 {
     ros::init(argc, argv, "lego_loam");
+
+    ros::console::set_logger_level(ROSCONSOLE_DEFAULT_NAME,ros::console::levels::Debug);
 
     ROS_INFO("\033[1;32m---->\033[0m Map Optimization Started.");
 

@@ -37,6 +37,7 @@ pcl::PointCloud<PointTypePose>::Ptr cloudKeyPoses6D;
 
 deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesOri;//
 deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesProj;//
+
 vector<int> CloudKeyPosesID;
 
 int laserCloudOriNum;
@@ -123,7 +124,7 @@ void laserCloudOriHandler(const sensor_msgs::PointCloud2ConstPtr& msg)
         pcl::fromROSMsg(*msg, *LaserCloudOri);
         newLaserCloudOri = true;
         laserCloudOriNum=LaserCloudOri->points.size();
-        //ROS_DEBUG("Ori sub Num %d",laserCloudOriNum);
+        ROS_DEBUG("Ori sub Num %d",laserCloudOriNum);
 }
 
 
@@ -134,7 +135,7 @@ void laserCloudProjHandler(const sensor_msgs::PointCloud2ConstPtr& msg)
         pcl::fromROSMsg(*msg, *LaserCloudProj);
         newLaserCloudProj = true;
         laserCloudProjNum=LaserCloudProj->points.size();
-        //ROS_INFO("Proj Num %d",laserCloudProjNum);
+        ROS_INFO("Proj Num %d",laserCloudProjNum);
 }
 
 
@@ -258,7 +259,7 @@ void solveProblem(ceres::Problem &problem)
   ROS_DEBUG("solveProblem %d", frame_count+1);
     ceres::Solver::Summary summary;
     ceres::Solve(smallProblem ? getOptions() : getOptionsMedium(), &problem, &summary);
-    if(!smallProblem) std::cout << "Final report:\n" << summary.FullReport();
+    //if(!smallProblem) std::cout << "Final report:\n" << summary.FullReport();
 }
 
 
@@ -273,8 +274,6 @@ void currrentPoseProcess()
 
   int numPoses = cloudKeyPoses3D->points.size();
   ROS_DEBUG("currrentPoseProcess  %d", numPoses);
-  if(numPoses==0)
-    return;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 
   int currentInd    = numPoses-1;
   currentRobotPos6D =cloudKeyPoses6D->points[currentInd];
@@ -287,6 +286,8 @@ void currrentPoseProcess()
   y     = currentRobotPos6D.x;
   z     = currentRobotPos6D.y;
 
+
+
   Eigen::AngleAxisd rollAngle(roll, Eigen::Vector3d::UnitX());
   Eigen::AngleAxisd pitchAngle(pitch, Eigen::Vector3d::UnitY());
   Eigen::AngleAxisd yawAngle(yaw, Eigen::Vector3d::UnitZ());
@@ -296,19 +297,23 @@ void currrentPoseProcess()
   //curRx_inverse = curRx.inverse();
   cur_t<< x,y,z ;
 
-
   
   if(currentInd < WINDOW_SIZE){
     Ps[currentInd] = cur_t;
     Rs[currentInd] = curRx;
+    ROS_DEBUG("Ps[currentInd] %f %f %f  ",Ps[currentInd][0], Ps[currentInd][1], Ps[currentInd][2]);
+
+
   }
   else
   {
      Ps[WINDOW_SIZE] = cur_t;
      Rs[WINDOW_SIZE] = curRx;
+    ROS_DEBUG("Ps[WINDOW_SIZE] %f %f %f  ",Ps[WINDOW_SIZE][0], Ps[WINDOW_SIZE][1], Ps[WINDOW_SIZE][2]);
+
+
 
   }
-
 
 
   //ROS_INFO("frame_count %d", frame_count);
@@ -316,8 +321,15 @@ void currrentPoseProcess()
 
  //int thisKeyInd = (int)cloudKeyPoses6D->points[j].intensity;
  //CloudKeyPosesID.   push_back(currentInd);
- CloudKeyFramesOri. push_back(LaserCloudOri);
- CloudKeyFramesProj.push_back(LaserCloudProj);   
+ 
+        pcl::PointCloud<PointType>::Ptr thisCornerKeyFrame(new pcl::PointCloud<PointType>());
+        pcl::PointCloud<PointType>::Ptr thisSurfKeyFrame(new pcl::PointCloud<PointType>());
+        pcl::copyPointCloud(*LaserCloudOri,  *thisCornerKeyFrame);
+        pcl::copyPointCloud(*LaserCloudProj,  *thisSurfKeyFrame);
+        
+        CloudKeyFramesOri. push_back(thisCornerKeyFrame);
+        CloudKeyFramesProj.push_back(thisSurfKeyFrame);   
+        ROS_DEBUG("ori size %d",CloudKeyFramesProj.size());
 
  // if(currentInd >= WINDOW_SIZE)
  // {
@@ -326,9 +338,133 @@ void currrentPoseProcess()
  // }              
 
 
-  frame_count=currentInd;// different with thiskeyid??
+  frame_count=numPoses;// different with thiskeyid??
 
- }
+
+
+
+  
+  if(frame_count >= WINDOW_SIZE){
+
+
+    float ctRoll = cos(roll);
+  float stRoll = sin(roll);
+
+  float ctPitch = cos(pitch);
+  float stPitch = sin(pitch);
+
+  float ctYaw = cos(yaw);
+  float stYaw = sin(yaw);
+
+  float tInX = x;
+  float tInY = y;
+  float tInZ = z;
+
+  vector2double();
+  // for(int kke=0; kke < CloudKeyFramesOri.size();kke++)
+  //   {
+  //   ROS_DEBUG("ori every frame %f %f %f  ",CloudKeyFramesOri.at(kke)->points[1].z , CloudKeyFramesOri.at(kke)->points[1].y);
+  // }
+
+  int ind = 2;
+
+    for(int k=0;k < CloudKeyFramesOri[ind]->points.size();k++)
+    {
+      
+      Vector3d ori, proj;
+
+      //ori in body frame
+      //proj in world frame
+
+      ori<< CloudKeyFramesOri[ind]->points[k].z , CloudKeyFramesOri[ind]->points[k].x , CloudKeyFramesOri[ind]->points[k].y;
+      //ROS_DEBUG("ori000 %f %f %f  ",ori[0], ori[1], ori[2]);
+      proj<< CloudKeyFramesProj[ind]->points[k].z, CloudKeyFramesProj[ind]->points[k].x , CloudKeyFramesProj[ind]->points[k].y;
+
+      // test the rotation
+      if(k < 3 ){
+      double point[3] = {ori[0], ori[1], ori[2]};
+      double q0[4] = {para_Pose[ind][6],para_Pose[ind][3],para_Pose[ind][4],para_Pose[ind][5]};//!!!!!w x y z 
+      double p[3];
+
+
+      ROS_DEBUG("q[4]  %f %f %f",q0[0],q0[1],q0[2]);
+
+
+     ROS_DEBUG("para_Pose0 1 2  %f %f %f",para_Pose[ind][0],para_Pose[ind][1],para_Pose[ind][2]);
+
+
+      ceres::QuaternionRotatePoint( q0, point, p);
+      
+        p[0] += para_Pose[ind][0];
+        p[1] += para_Pose[ind][1];
+        p[2] += para_Pose[ind][2];
+      cout << "ori1"<<p[0]<<" " <<p[1]<<" "<<p[2]<< endl;
+      cout << "pro1"<<proj[0]<<" " << proj[1]<<" "<<proj[2]<<endl;
+
+      }
+      else 
+        break;
+    }
+
+
+      
+    for(int i = 0;i<3;i++){
+
+            // PointType pointFrom = LaserCloudOri->points[i];
+            // PointType pointTo = LaserCloudOri -> points[i];
+            // PointType pointProj = LaserCloudProj -> points[i];
+
+            // float x1 = ctRoll * pointFrom.x - stRoll * pointFrom.y;
+            // float y1 = stRoll * pointFrom.x + ctRoll* pointFrom.y;
+            // float z1 = pointFrom.z;
+
+            // float x2 = x1;
+            // float y2 = ctPitch * y1 - stPitch * z1;
+            // float z2 = stPitch * y1 + ctPitch* z1;
+
+            // pointTo.x = ctYaw * x2 + stYaw * z2 + tInY;
+            // pointTo.y = y2 + tInZ;
+            // pointTo.z = -stYaw * x2 + ctYaw * z2 + tInX;
+
+            // ROS_DEBUG("op to  %f %f %f ",pointTo.x, pointTo.y,pointTo.z);
+            // ROS_DEBUG("op pro %f %f %f ",pointProj.x, pointProj.y,pointProj.z);
+      
+
+      Vector3d ori, proj;
+      ori<< CloudKeyFramesOri[ind]->points[i].z , CloudKeyFramesOri[ind]->points[i].x , CloudKeyFramesOri[ind]->points[i].y;
+      
+      //ROS_DEBUG("ori111 %f %f %f  ",ori[0], ori[1], ori[2]);
+      proj<< CloudKeyFramesProj[ind]->points[i].z, CloudKeyFramesProj[ind]->points[i].x , CloudKeyFramesProj[ind]->points[i].y;
+
+      // ori<< pointFrom.z , pointFrom.x , pointFrom.y;
+      
+      // proj<< pointProj.z, pointProj.x , pointProj.y;
+
+      double point[3] = {ori[0], ori[1], ori[2]};
+      
+      double q1[4] = {q.w(),q.x(),q.y(),q.z()};//!!!!!w x y z 
+
+      
+      ROS_DEBUG("q1111[4]  %f %f %f",q1[0],q1[1],q1[2]);
+      double p[3];
+      ceres::QuaternionRotatePoint( q1, point, p);
+        p[0] += tInX;
+        p[1] += tInY;
+        p[2] += tInZ;
+      cout << "ori2"<<p[0]<<" " <<p[1]<<" "<<p[2]<< endl;
+      cout << "pro2"<<proj[0]<<" " << proj[1]<<" "<<proj[2]<<endl;
+
+
+  }
+ // slideWindow();
+  
+
+        }
+
+   }
+
+
+
 
 
 void imuProcess()
@@ -379,18 +515,22 @@ void solveOdometry()
       proj<< CloudKeyFramesProj[ind]->points[k].z, CloudKeyFramesProj[ind]->points[k].x , CloudKeyFramesProj[ind]->points[k].y;
 
       // test the rotation
-      // double point[3] = {ori[0], ori[1], ori[2]};
-      // double q[4] = {para_Pose[ind][6],para_Pose[ind][3],para_Pose[ind][4],para_Pose[ind][5]};//!!!!!w x y z 
-      // double p[3];
+      if(k < 3 && ind == WINDOW_SIZE-1){
+      double point[3] = {ori[0], ori[1], ori[2]};
+      double q[4] = {para_Pose[ind][6],para_Pose[ind][3],para_Pose[ind][4],para_Pose[ind][5]};//!!!!!w x y z 
+      double p[3];
 
 
-      // ceres::QuaternionRotatePoint( q, point, p);
+      ceres::QuaternionRotatePoint( q, point, p);
       
-      //   p[0] += para_Pose[ind][0];
-      //   p[1] += para_Pose[ind][1];
-      //   p[2] += para_Pose[ind][2];
-      // cout << "ori"<<p[0]<<" " <<p[1]<<" "<<p[2]<< endl;
-      // cout << proj << endl;
+        p[0] += para_Pose[ind][0];
+        p[1] += para_Pose[ind][1];
+        p[2] += para_Pose[ind][2];
+      cout << "ori"<<p[0]<<" " <<p[1]<<" "<<p[2]<< endl;
+      cout << "pro"<<proj[0]<<" " << proj[1]<<" "<<proj[2]<<endl;
+
+      }
+      
      
     
       //ROS_DEBUG("ori x y  %f %f", ori[0],ori[1]);
@@ -417,11 +557,11 @@ void solveOdometry()
 }
 
 void vector2double(){
-  for (int i = 0; i < WINDOW_SIZE; i++)
+  for (int i = 0; i <= WINDOW_SIZE; i++)
     {
-        para_Pose[i][0] = Ps[i].x();
-        para_Pose[i][1] = Ps[i].y();
-        para_Pose[i][2] = Ps[i].z();
+        para_Pose[i][0] = Ps[i][0];
+        para_Pose[i][1] = Ps[i][1];
+        para_Pose[i][2] = Ps[i][2];
         Quaterniond q{Rs[i]};
         para_Pose[i][3] = q.x();
         para_Pose[i][4] = q.y();
@@ -446,7 +586,7 @@ void vector2double(){
 
 void double2vector()
 {
-    for (int i = 0; i < WINDOW_SIZE; i++)
+    for (int i = 0; i <= WINDOW_SIZE; i++)
     {
 
         Rs[i] =  Quaterniond(para_Pose[i][6], para_Pose[i][3], para_Pose[i][4], para_Pose[i][5]).normalized().toRotationMatrix();
@@ -487,8 +627,8 @@ void slideWindow()
     }// destory the front values
 
  
-    CloudKeyFramesOri.pop_front();
-    CloudKeyFramesProj.pop_front();
+    // CloudKeyFramesOri.pop_front();
+    // CloudKeyFramesProj.pop_front();
  
 
 
@@ -537,21 +677,19 @@ void run(){
   if (newLaserCloudOri  && std::abs(timeLaserCloudOri  - timeKeyPoses) < 0.005 &&
     newLaserCloudProj && std::abs(timeLaserCloudProj - timeKeyPoses) < 0.005 &&
      newCloudKeyPoses3D && newCloudKeyPoses6D){
-  newLaserCloudOri   = false;
-  newLaserCloudProj  = false;
-  newCloudKeyPoses3D = false;
-  newCloudKeyPoses6D = false;
+    newLaserCloudOri   = false;
+    newLaserCloudProj  = false;
+    newCloudKeyPoses3D = false;
+    newCloudKeyPoses6D = false;
     
     if (timeKeyPoses6D - timeLastProcessing >= optimizationProcessInterval){
     timeLastProcessing=timeKeyPoses6D;
 
     currrentPoseProcess();
 
-    //currrentPointProcess();
-
     imuProcess();
 
-    optimizationProcess();
+    //optimizationProcess();
 
     pubOdometry();
   }
