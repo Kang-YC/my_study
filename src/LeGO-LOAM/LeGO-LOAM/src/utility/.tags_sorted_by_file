@@ -1,0 +1,83 @@
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CameraPoseVisualization	CameraPoseVisualization.cpp	/^CameraPoseVisualization::CameraPoseVisualization(float r, float g, float b, float a)$/;"	f	class:CameraPoseVisualization
+Eigen2Point	CameraPoseVisualization.cpp	/^void Eigen2Point(const Eigen::Vector3d& v, geometry_msgs::Point& p) {$/;"	f
+add_edge	CameraPoseVisualization.cpp	/^void CameraPoseVisualization::add_edge(const Eigen::Vector3d& p0, const Eigen::Vector3d& p1){$/;"	f	class:CameraPoseVisualization
+add_loopedge	CameraPoseVisualization.cpp	/^void CameraPoseVisualization::add_loopedge(const Eigen::Vector3d& p0, const Eigen::Vector3d& p1){$/;"	f	class:CameraPoseVisualization
+add_pose	CameraPoseVisualization.cpp	/^void CameraPoseVisualization::add_pose(const Eigen::Vector3d& p, const Eigen::Quaterniond& q) {$/;"	f	class:CameraPoseVisualization
+imlb	CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::imlb = Eigen::Vector3d(-1.0,  0.5, 1.0);$/;"	m	class:CameraPoseVisualization	file:
+imlt	CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::imlt = Eigen::Vector3d(-1.0, -0.5, 1.0);$/;"	m	class:CameraPoseVisualization	file:
+imrb	CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::imrb = Eigen::Vector3d( 1.0,  0.5, 1.0);$/;"	m	class:CameraPoseVisualization	file:
+imrt	CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::imrt = Eigen::Vector3d( 1.0, -0.5, 1.0);$/;"	m	class:CameraPoseVisualization	file:
+lt0	CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::lt0 = Eigen::Vector3d(-0.7, -0.5, 1.0);$/;"	m	class:CameraPoseVisualization	file:
+lt1	CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::lt1 = Eigen::Vector3d(-0.7, -0.2, 1.0);$/;"	m	class:CameraPoseVisualization	file:
+lt2	CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::lt2 = Eigen::Vector3d(-1.0, -0.2, 1.0);$/;"	m	class:CameraPoseVisualization	file:
+oc	CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::oc = Eigen::Vector3d(0.0, 0.0, 0.0);$/;"	m	class:CameraPoseVisualization	file:
+publish_by	CameraPoseVisualization.cpp	/^void CameraPoseVisualization::publish_by( ros::Publisher &pub, const std_msgs::Header &header ) {$/;"	f	class:CameraPoseVisualization
+reset	CameraPoseVisualization.cpp	/^void CameraPoseVisualization::reset() {$/;"	f	class:CameraPoseVisualization
+setImageBoundaryColor	CameraPoseVisualization.cpp	/^void CameraPoseVisualization::setImageBoundaryColor(float r, float g, float b, float a) {$/;"	f	class:CameraPoseVisualization
+setLineWidth	CameraPoseVisualization.cpp	/^void CameraPoseVisualization::setLineWidth(double width) {$/;"	f	class:CameraPoseVisualization
+setOpticalCenterConnectorColor	CameraPoseVisualization.cpp	/^void CameraPoseVisualization::setOpticalCenterConnectorColor(float r, float g, float b, float a) {$/;"	f	class:CameraPoseVisualization
+setScale	CameraPoseVisualization.cpp	/^void CameraPoseVisualization::setScale(double s) {$/;"	f	class:CameraPoseVisualization
+CameraPoseVisualization	CameraPoseVisualization.h	/^class CameraPoseVisualization {$/;"	c
+imlb	CameraPoseVisualization.h	/^	static const Eigen::Vector3d imlb;$/;"	m	class:CameraPoseVisualization
+imlt	CameraPoseVisualization.h	/^	static const Eigen::Vector3d imlt;$/;"	m	class:CameraPoseVisualization
+imrb	CameraPoseVisualization.h	/^	static const Eigen::Vector3d imrb;$/;"	m	class:CameraPoseVisualization
+imrt	CameraPoseVisualization.h	/^	static const Eigen::Vector3d imrt;$/;"	m	class:CameraPoseVisualization
+lt0	CameraPoseVisualization.h	/^	static const Eigen::Vector3d lt0 ;$/;"	m	class:CameraPoseVisualization
+lt1	CameraPoseVisualization.h	/^	static const Eigen::Vector3d lt1 ;$/;"	m	class:CameraPoseVisualization
+lt2	CameraPoseVisualization.h	/^	static const Eigen::Vector3d lt2 ;$/;"	m	class:CameraPoseVisualization
+m_image_boundary_color	CameraPoseVisualization.h	/^	std_msgs::ColorRGBA m_image_boundary_color;$/;"	m	class:CameraPoseVisualization
+m_line_width	CameraPoseVisualization.h	/^	double m_line_width;$/;"	m	class:CameraPoseVisualization
+m_marker_ns	CameraPoseVisualization.h	/^	std::string m_marker_ns;$/;"	m	class:CameraPoseVisualization
+m_markers	CameraPoseVisualization.h	/^	std::vector<visualization_msgs::Marker> m_markers;$/;"	m	class:CameraPoseVisualization
+m_optical_center_connector_color	CameraPoseVisualization.h	/^	std_msgs::ColorRGBA m_optical_center_connector_color;$/;"	m	class:CameraPoseVisualization
+m_scale	CameraPoseVisualization.h	/^	double m_scale;$/;"	m	class:CameraPoseVisualization
+oc	CameraPoseVisualization.h	/^	static const Eigen::Vector3d oc  ;$/;"	m	class:CameraPoseVisualization
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+TicToc	tic_toc.h	/^    TicToc()$/;"	f	class:TicToc
+TicToc	tic_toc.h	/^class TicToc$/;"	c
+end	tic_toc.h	/^    std::chrono::time_point<std::chrono::system_clock> start, end;$/;"	m	class:TicToc
+start	tic_toc.h	/^    std::chrono::time_point<std::chrono::system_clock> start, end;$/;"	m	class:TicToc
+tic	tic_toc.h	/^    void tic()$/;"	f	class:TicToc
+toc	tic_toc.h	/^    double toc()$/;"	f	class:TicToc
+g2R	utility.cpp	/^Eigen::Matrix3d Utility::g2R(const Eigen::Vector3d &g)$/;"	f	class:Utility
+Qleft	utility.h	/^    static Eigen::Matrix<typename Derived::Scalar, 4, 4> Qleft(const Eigen::QuaternionBase<Derived> &q)$/;"	f	class:Utility
+Qright	utility.h	/^    static Eigen::Matrix<typename Derived::Scalar, 4, 4> Qright(const Eigen::QuaternionBase<Derived> &p)$/;"	f	class:Utility
+R2ypr	utility.h	/^    static Eigen::Vector3d R2ypr(const Eigen::Matrix3d &R)$/;"	f	class:Utility
+Utility	utility.h	/^class Utility$/;"	c
+deltaQ	utility.h	/^    static Eigen::Quaternion<typename Derived::Scalar> deltaQ(const Eigen::MatrixBase<Derived> &theta)$/;"	f	class:Utility
+normalizeAngle	utility.h	/^    static T normalizeAngle(const T& angle_degrees) {$/;"	f	class:Utility
+positify	utility.h	/^    static Eigen::Quaternion<typename Derived::Scalar> positify(const Eigen::QuaternionBase<Derived> &q)$/;"	f	class:Utility
+skewSymmetric	utility.h	/^    static Eigen::Matrix<typename Derived::Scalar, 3, 3> skewSymmetric(const Eigen::MatrixBase<Derived> &q)$/;"	f	class:Utility
+uint_	utility.h	/^    struct uint_$/;"	s	class:Utility
+unroller	utility.h	/^    void unroller(const Lambda &f, const IterT &iter, uint_<0>)$/;"	f	class:Utility
+unroller	utility.h	/^    void unroller(const Lambda &f, const IterT &iter, uint_<N>)$/;"	f	class:Utility
+ypr2R	utility.h	/^    static Eigen::Matrix<typename Derived::Scalar, 3, 3> ypr2R(const Eigen::MatrixBase<Derived> &ypr)$/;"	f	class:Utility
+path	visualization.cpp	/^nav_msgs::Path path, relo_path;$/;"	v
+printStatistics	visualization.cpp	/^void printStatistics(const Estimator &estimator, double t)$/;"	f
+pubCameraPose	visualization.cpp	/^void pubCameraPose(const Estimator &estimator, const std_msgs::Header &header)$/;"	f
+pubKeyPoses	visualization.cpp	/^void pubKeyPoses(const Estimator &estimator, const std_msgs::Header &header)$/;"	f
+pubKeyframe	visualization.cpp	/^void pubKeyframe(const Estimator &estimator)$/;"	f
+pubLatestOdometry	visualization.cpp	/^void pubLatestOdometry(const Eigen::Vector3d &P, const Eigen::Quaterniond &Q, const Eigen::Vector3d &V, const std_msgs::Header &header)$/;"	f
+pubOdometry	visualization.cpp	/^void pubOdometry(const Estimator &estimator, const std_msgs::Header &header)$/;"	f
+pubPointCloud	visualization.cpp	/^void pubPointCloud(const Estimator &estimator, const std_msgs::Header &header)$/;"	f
+pubRelocalization	visualization.cpp	/^void pubRelocalization(const Estimator &estimator)$/;"	f
+pubTF	visualization.cpp	/^void pubTF(const Estimator &estimator, const std_msgs::Header &header)$/;"	f
+pub_camera_pose	visualization.cpp	/^ros::Publisher pub_camera_pose;$/;"	v
+pub_camera_pose_visual	visualization.cpp	/^ros::Publisher pub_camera_pose_visual;$/;"	v
+pub_extrinsic	visualization.cpp	/^ros::Publisher pub_extrinsic;$/;"	v
+pub_key_poses	visualization.cpp	/^ros::Publisher pub_key_poses;$/;"	v
+pub_keyframe_point	visualization.cpp	/^ros::Publisher pub_keyframe_point;$/;"	v
+pub_keyframe_pose	visualization.cpp	/^ros::Publisher pub_keyframe_pose;$/;"	v
+pub_margin_cloud	visualization.cpp	/^ros::Publisher pub_point_cloud, pub_margin_cloud;$/;"	v
+pub_path	visualization.cpp	/^ros::Publisher pub_path, pub_relo_path;$/;"	v
+pub_point_cloud	visualization.cpp	/^ros::Publisher pub_point_cloud, pub_margin_cloud;$/;"	v
+pub_relo_path	visualization.cpp	/^ros::Publisher pub_path, pub_relo_path;$/;"	v
+pub_relo_relative_pose	visualization.cpp	/^ros::Publisher pub_relo_relative_pose;$/;"	v
+registerPub	visualization.cpp	/^void registerPub(ros::NodeHandle &n)$/;"	f
+relo_path	visualization.cpp	/^nav_msgs::Path path, relo_path;$/;"	v
+sum_of_path	visualization.cpp	/^static double sum_of_path = 0;$/;"	v	file:

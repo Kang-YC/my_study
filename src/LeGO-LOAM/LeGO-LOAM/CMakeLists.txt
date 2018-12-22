@@ -56,6 +56,8 @@ catkin_package(
 
 include_directories(
 	include
+  src/utility
+  src/factor
 	${catkin_INCLUDE_DIRS}
 	${PCL_INCLUDE_DIRS}
 	${OpenCV_INCLUDE_DIRS}
@@ -91,5 +93,11 @@ target_link_libraries(mapOptmization ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${Open
 add_executable(transformFusion src/transformFusion.cpp)
 target_link_libraries(transformFusion ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES})
 
-add_executable(optimization src/optimization.cpp)
+add_executable(optimization 
+  src/optimization.cpp
+  src/factor/pose_local_parameterization.cpp
+  src/utility/utility_rotation.cpp
+  src/parameters.cpp
+
+  )
 target_link_libraries(optimization ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES} ${CERES_LIBRARIES} ${Sophus_LIBRARIES})

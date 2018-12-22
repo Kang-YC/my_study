@@ -1,0 +1,115 @@
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+Evaluate	imu_factor.h	/^    virtual bool Evaluate(double const *const *parameters, double *residuals, double **jacobians) const$/;"	f	class:IMUFactor
+IMUFactor	imu_factor.h	/^    IMUFactor(IntegrationBase* _pre_integration):pre_integration(_pre_integration)$/;"	f	class:IMUFactor
+IMUFactor	imu_factor.h	/^class IMUFactor : public ceres::SizedCostFunction<15, 7, 9, 7, 9>$/;"	c
+pre_integration	imu_factor.h	/^    IntegrationBase* pre_integration;$/;"	m	class:IMUFactor
+IntegrationBase	integration_base.h	/^    IntegrationBase(const Eigen::Vector3d &_acc_0, const Eigen::Vector3d &_gyr_0,$/;"	f	class:IntegrationBase
+IntegrationBase	integration_base.h	/^class IntegrationBase$/;"	c
+acc_0	integration_base.h	/^    Eigen::Vector3d acc_0, gyr_0;$/;"	m	class:IntegrationBase
+acc_1	integration_base.h	/^    Eigen::Vector3d acc_1, gyr_1;$/;"	m	class:IntegrationBase
+acc_buf	integration_base.h	/^    std::vector<Eigen::Vector3d> acc_buf;$/;"	m	class:IntegrationBase
+covariance	integration_base.h	/^    Eigen::Matrix<double, 15, 15> jacobian, covariance;$/;"	m	class:IntegrationBase
+delta_p	integration_base.h	/^    Eigen::Vector3d delta_p;$/;"	m	class:IntegrationBase
+delta_q	integration_base.h	/^    Eigen::Quaterniond delta_q;$/;"	m	class:IntegrationBase
+delta_v	integration_base.h	/^    Eigen::Vector3d delta_v;$/;"	m	class:IntegrationBase
+dt	integration_base.h	/^    double dt;$/;"	m	class:IntegrationBase
+dt_buf	integration_base.h	/^    std::vector<double> dt_buf;$/;"	m	class:IntegrationBase
+evaluate	integration_base.h	/^    Eigen::Matrix<double, 15, 1> evaluate(const Eigen::Vector3d &Pi, const Eigen::Quaterniond &Qi, const Eigen::Vector3d &Vi, const Eigen::Vector3d &Bai, const Eigen::Vector3d &Bgi,$/;"	f	class:IntegrationBase
+gyr_0	integration_base.h	/^    Eigen::Vector3d acc_0, gyr_0;$/;"	m	class:IntegrationBase
+gyr_1	integration_base.h	/^    Eigen::Vector3d acc_1, gyr_1;$/;"	m	class:IntegrationBase
+gyr_buf	integration_base.h	/^    std::vector<Eigen::Vector3d> gyr_buf;$/;"	m	class:IntegrationBase
+jacobian	integration_base.h	/^    Eigen::Matrix<double, 15, 15> jacobian, covariance;$/;"	m	class:IntegrationBase
+linearized_acc	integration_base.h	/^    const Eigen::Vector3d linearized_acc, linearized_gyr;$/;"	m	class:IntegrationBase
+linearized_ba	integration_base.h	/^    Eigen::Vector3d linearized_ba, linearized_bg;$/;"	m	class:IntegrationBase
+linearized_bg	integration_base.h	/^    Eigen::Vector3d linearized_ba, linearized_bg;$/;"	m	class:IntegrationBase
+linearized_gyr	integration_base.h	/^    const Eigen::Vector3d linearized_acc, linearized_gyr;$/;"	m	class:IntegrationBase
+midPointIntegration	integration_base.h	/^    void midPointIntegration(double _dt, $/;"	f	class:IntegrationBase
+noise	integration_base.h	/^    Eigen::Matrix<double, 18, 18> noise;$/;"	m	class:IntegrationBase
+propagate	integration_base.h	/^    void propagate(double _dt, const Eigen::Vector3d &_acc_1, const Eigen::Vector3d &_gyr_1)$/;"	f	class:IntegrationBase
+push_back	integration_base.h	/^    void push_back(double dt, const Eigen::Vector3d &acc, const Eigen::Vector3d &gyr)$/;"	f	class:IntegrationBase
+repropagate	integration_base.h	/^    void repropagate(const Eigen::Vector3d &_linearized_ba, const Eigen::Vector3d &_linearized_bg)$/;"	f	class:IntegrationBase
+step_V	integration_base.h	/^    Eigen::Matrix<double, 15, 18> step_V;$/;"	m	class:IntegrationBase
+step_jacobian	integration_base.h	/^    Eigen::Matrix<double, 15, 15> step_jacobian;$/;"	m	class:IntegrationBase
+sum_dt	integration_base.h	/^    double sum_dt;$/;"	m	class:IntegrationBase
+Evaluate	marginalization_factor.cpp	/^bool MarginalizationFactor::Evaluate(double const *const *parameters, double *residuals, double **jacobians) const$/;"	f	class:MarginalizationFactor
+Evaluate	marginalization_factor.cpp	/^void ResidualBlockInfo::Evaluate()$/;"	f	class:ResidualBlockInfo
+MarginalizationFactor	marginalization_factor.cpp	/^MarginalizationFactor::MarginalizationFactor(MarginalizationInfo* _marginalization_info):marginalization_info(_marginalization_info)$/;"	f	class:MarginalizationFactor
+ThreadsConstructA	marginalization_factor.cpp	/^void* ThreadsConstructA(void* threadsstruct)$/;"	f
+addResidualBlockInfo	marginalization_factor.cpp	/^void MarginalizationInfo::addResidualBlockInfo(ResidualBlockInfo *residual_block_info)$/;"	f	class:MarginalizationInfo
+getParameterBlocks	marginalization_factor.cpp	/^std::vector<double *> MarginalizationInfo::getParameterBlocks(std::unordered_map<long, double *> &addr_shift)$/;"	f	class:MarginalizationInfo
+globalSize	marginalization_factor.cpp	/^int MarginalizationInfo::globalSize(int size) const$/;"	f	class:MarginalizationInfo
+localSize	marginalization_factor.cpp	/^int MarginalizationInfo::localSize(int size) const$/;"	f	class:MarginalizationInfo
+marginalize	marginalization_factor.cpp	/^void MarginalizationInfo::marginalize()$/;"	f	class:MarginalizationInfo
+preMarginalize	marginalization_factor.cpp	/^void MarginalizationInfo::preMarginalize()$/;"	f	class:MarginalizationInfo
+~MarginalizationInfo	marginalization_factor.cpp	/^MarginalizationInfo::~MarginalizationInfo()$/;"	f	class:MarginalizationInfo
+A	marginalization_factor.h	/^    Eigen::MatrixXd A;$/;"	m	struct:ThreadsStruct
+MarginalizationFactor	marginalization_factor.h	/^class MarginalizationFactor : public ceres::CostFunction$/;"	c
+MarginalizationInfo	marginalization_factor.h	/^class MarginalizationInfo$/;"	c
+NUM_THREADS	marginalization_factor.h	/^const int NUM_THREADS = 4;$/;"	v
+ResidualBlockInfo	marginalization_factor.h	/^    ResidualBlockInfo(ceres::CostFunction *_cost_function, ceres::LossFunction *_loss_function, std::vector<double *> _parameter_blocks, std::vector<int> _drop_set)$/;"	f	struct:ResidualBlockInfo
+ResidualBlockInfo	marginalization_factor.h	/^struct ResidualBlockInfo$/;"	s
+ThreadsStruct	marginalization_factor.h	/^struct ThreadsStruct$/;"	s
+b	marginalization_factor.h	/^    Eigen::VectorXd b;$/;"	m	struct:ThreadsStruct
+cost_function	marginalization_factor.h	/^    ceres::CostFunction *cost_function;$/;"	m	struct:ResidualBlockInfo
+drop_set	marginalization_factor.h	/^    std::vector<int> drop_set;$/;"	m	struct:ResidualBlockInfo
+eps	marginalization_factor.h	/^    const double eps = 1e-8;$/;"	m	class:MarginalizationInfo
+factors	marginalization_factor.h	/^    std::vector<ResidualBlockInfo *> factors;$/;"	m	class:MarginalizationInfo
+jacobians	marginalization_factor.h	/^    std::vector<Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>> jacobians;$/;"	m	struct:ResidualBlockInfo
+keep_block_data	marginalization_factor.h	/^    std::vector<double *> keep_block_data;$/;"	m	class:MarginalizationInfo
+keep_block_idx	marginalization_factor.h	/^    std::vector<int> keep_block_idx;  \/\/local size$/;"	m	class:MarginalizationInfo
+keep_block_size	marginalization_factor.h	/^    std::vector<int> keep_block_size; \/\/global size$/;"	m	class:MarginalizationInfo
+linearized_jacobians	marginalization_factor.h	/^    Eigen::MatrixXd linearized_jacobians;$/;"	m	class:MarginalizationInfo
+linearized_residuals	marginalization_factor.h	/^    Eigen::VectorXd linearized_residuals;$/;"	m	class:MarginalizationInfo
+localSize	marginalization_factor.h	/^    int localSize(int size)$/;"	f	struct:ResidualBlockInfo
+loss_function	marginalization_factor.h	/^    ceres::LossFunction *loss_function;$/;"	m	struct:ResidualBlockInfo
+m	marginalization_factor.h	/^    int m, n;$/;"	m	class:MarginalizationInfo
+marginalization_info	marginalization_factor.h	/^    MarginalizationInfo* marginalization_info;$/;"	m	class:MarginalizationFactor
+n	marginalization_factor.h	/^    int m, n;$/;"	m	class:MarginalizationInfo
+parameter_block_data	marginalization_factor.h	/^    std::unordered_map<long, double *> parameter_block_data;$/;"	m	class:MarginalizationInfo
+parameter_block_idx	marginalization_factor.h	/^    std::unordered_map<long, int> parameter_block_idx; \/\/local size$/;"	m	class:MarginalizationInfo
+parameter_block_idx	marginalization_factor.h	/^    std::unordered_map<long, int> parameter_block_idx; \/\/local size$/;"	m	struct:ThreadsStruct
+parameter_block_size	marginalization_factor.h	/^    std::unordered_map<long, int> parameter_block_size; \/\/global size$/;"	m	class:MarginalizationInfo
+parameter_block_size	marginalization_factor.h	/^    std::unordered_map<long, int> parameter_block_size; \/\/global size$/;"	m	struct:ThreadsStruct
+parameter_blocks	marginalization_factor.h	/^    std::vector<double *> parameter_blocks;$/;"	m	struct:ResidualBlockInfo
+raw_jacobians	marginalization_factor.h	/^    double **raw_jacobians;$/;"	m	struct:ResidualBlockInfo
+residuals	marginalization_factor.h	/^    Eigen::VectorXd residuals;$/;"	m	struct:ResidualBlockInfo
+sub_factors	marginalization_factor.h	/^    std::vector<ResidualBlockInfo *> sub_factors;$/;"	m	struct:ThreadsStruct
+sum_block_size	marginalization_factor.h	/^    int sum_block_size;$/;"	m	class:MarginalizationInfo
+ComputeJacobian	pose_local_parameterization.cpp	/^bool PoseLocalParameterization::ComputeJacobian(const double *x, double *jacobian) const$/;"	f	class:PoseLocalParameterization
+Plus	pose_local_parameterization.cpp	/^bool PoseLocalParameterization::Plus(const double *x, const double *delta, double *x_plus_delta) const$/;"	f	class:PoseLocalParameterization
+GlobalSize	pose_local_parameterization.h	/^    virtual int GlobalSize() const { return 7; };\/\/size of x$/;"	f	class:PoseLocalParameterization
+LocalSize	pose_local_parameterization.h	/^    virtual int LocalSize() const { return 6; };\/\/size of delta $/;"	f	class:PoseLocalParameterization
+PoseLocalParameterization	pose_local_parameterization.h	/^class PoseLocalParameterization : public ceres::LocalParameterization$/;"	c
+Evaluate	projection_factor.cpp	/^bool ProjectionFactor::Evaluate(double const *const *parameters, double *residuals, double **jacobians) const$/;"	f	class:ProjectionFactor
+ProjectionFactor	projection_factor.cpp	/^ProjectionFactor::ProjectionFactor(const Eigen::Vector3d &_pts_i, const Eigen::Vector3d &_pts_j) : pts_i(_pts_i), pts_j(_pts_j)$/;"	f	class:ProjectionFactor
+check	projection_factor.cpp	/^void ProjectionFactor::check(double **parameters)$/;"	f	class:ProjectionFactor
+sqrt_info	projection_factor.cpp	/^Eigen::Matrix2d ProjectionFactor::sqrt_info;$/;"	m	class:ProjectionFactor	file:
+sum_t	projection_factor.cpp	/^double ProjectionFactor::sum_t;$/;"	m	class:ProjectionFactor	file:
+ProjectionFactor	projection_factor.h	/^class ProjectionFactor : public ceres::SizedCostFunction<2, 7, 7, 7, 1>$/;"	c
+pts_i	projection_factor.h	/^    Eigen::Vector3d pts_i, pts_j;$/;"	m	class:ProjectionFactor
+pts_j	projection_factor.h	/^    Eigen::Vector3d pts_i, pts_j;$/;"	m	class:ProjectionFactor
+sqrt_info	projection_factor.h	/^    static Eigen::Matrix2d sqrt_info;$/;"	m	class:ProjectionFactor
+sum_t	projection_factor.h	/^    static double sum_t;$/;"	m	class:ProjectionFactor
+tangent_base	projection_factor.h	/^    Eigen::Matrix<double, 2, 3> tangent_base;$/;"	m	class:ProjectionFactor
+Evaluate	projection_td_factor.cpp	/^bool ProjectionTdFactor::Evaluate(double const *const *parameters, double *residuals, double **jacobians) const$/;"	f	class:ProjectionTdFactor
+ProjectionTdFactor	projection_td_factor.cpp	/^ProjectionTdFactor::ProjectionTdFactor(const Eigen::Vector3d &_pts_i, const Eigen::Vector3d &_pts_j, $/;"	f	class:ProjectionTdFactor
+check	projection_td_factor.cpp	/^void ProjectionTdFactor::check(double **parameters)$/;"	f	class:ProjectionTdFactor
+sqrt_info	projection_td_factor.cpp	/^Eigen::Matrix2d ProjectionTdFactor::sqrt_info;$/;"	m	class:ProjectionTdFactor	file:
+sum_t	projection_td_factor.cpp	/^double ProjectionTdFactor::sum_t;$/;"	m	class:ProjectionTdFactor	file:
+ProjectionTdFactor	projection_td_factor.h	/^class ProjectionTdFactor : public ceres::SizedCostFunction<2, 7, 7, 7, 1, 1>$/;"	c
+pts_i	projection_td_factor.h	/^    Eigen::Vector3d pts_i, pts_j;$/;"	m	class:ProjectionTdFactor
+pts_j	projection_td_factor.h	/^    Eigen::Vector3d pts_i, pts_j;$/;"	m	class:ProjectionTdFactor
+row_i	projection_td_factor.h	/^    double row_i, row_j;$/;"	m	class:ProjectionTdFactor
+row_j	projection_td_factor.h	/^    double row_i, row_j;$/;"	m	class:ProjectionTdFactor
+sqrt_info	projection_td_factor.h	/^    static Eigen::Matrix2d sqrt_info;$/;"	m	class:ProjectionTdFactor
+sum_t	projection_td_factor.h	/^    static double sum_t;$/;"	m	class:ProjectionTdFactor
+tangent_base	projection_td_factor.h	/^    Eigen::Matrix<double, 2, 3> tangent_base;$/;"	m	class:ProjectionTdFactor
+td_i	projection_td_factor.h	/^    double td_i, td_j;$/;"	m	class:ProjectionTdFactor
+td_j	projection_td_factor.h	/^    double td_i, td_j;$/;"	m	class:ProjectionTdFactor
+velocity_i	projection_td_factor.h	/^    Eigen::Vector3d velocity_i, velocity_j;$/;"	m	class:ProjectionTdFactor
+velocity_j	projection_td_factor.h	/^    Eigen::Vector3d velocity_i, velocity_j;$/;"	m	class:ProjectionTdFactor

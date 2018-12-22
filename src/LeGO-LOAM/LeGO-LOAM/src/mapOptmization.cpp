@@ -758,34 +758,34 @@ public:
         updateTransformPointCloudSinCos(&thisTransformation);
 
 
-        //test
+        // //test the origin
         int oriNum = laserCloudOri->points.size();
         ROS_INFO("Oripub %d", oriNum);
-        if (oriNum == 0)
-            return;
+        // if (oriNum == 0)
+        //     return;
 
-        for(int i = 0;i<3;i++){
-            pointOri=laserCloudOri->points[i];
-            pointProj=laserCloudProj -> points[i];
-            PointType *pointFrom = &pointOri;
-            PointType pointTo;
+        // for(int i = 0;i<3;i++){
+        //     pointOri=laserCloudOri->points[i];
+        //     pointProj=laserCloudProj -> points[i];
+        //     PointType *pointFrom = &pointOri;
+        //     PointType pointTo;
 
-            float x1 = ctYaw * pointFrom->x - stYaw * pointFrom->y;
-            float y1 = stYaw * pointFrom->x + ctYaw* pointFrom->y;
-            float z1 = pointFrom->z;
+        //     float x1 = ctYaw * pointFrom->x - stYaw * pointFrom->y;
+        //     float y1 = stYaw * pointFrom->x + ctYaw* pointFrom->y;
+        //     float z1 = pointFrom->z;
 
-            float x2 = x1;
-            float y2 = ctRoll * y1 - stRoll * z1;
-            float z2 = stRoll * y1 + ctRoll* z1;
+        //     float x2 = x1;
+        //     float y2 = ctRoll * y1 - stRoll * z1;
+        //     float z2 = stRoll * y1 + ctRoll* z1;
 
-            pointTo.x = ctPitch * x2 + stPitch * z2 + tInX;
-            pointTo.y = y2 + tInY;
-            pointTo.z = -stPitch * x2 + ctPitch * z2 + tInZ;
-            pointTo.intensity = pointFrom->intensity;
+        //     pointTo.x = ctPitch * x2 + stPitch * z2 + tInX;
+        //     pointTo.y = y2 + tInY;
+        //     pointTo.z = -stPitch * x2 + ctPitch * z2 + tInZ;
+        //     pointTo.intensity = pointFrom->intensity;
 
-            ROS_DEBUG("to %f %f %f ",pointTo.x, pointTo.y,pointTo.z);
-            ROS_DEBUG("pro %f %f %f ",pointProj.x, pointProj.y,pointProj.z);
-        }
+        //     ROS_DEBUG("to %f %f %f ",pointTo.x, pointTo.y,pointTo.z);
+        //     ROS_DEBUG("pro %f %f %f ",pointProj.x, pointProj.y,pointProj.z);
+        // }
             
         
  
