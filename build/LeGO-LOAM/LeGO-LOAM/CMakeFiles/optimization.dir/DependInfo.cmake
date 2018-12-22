@@ -4,7 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/factor/pose_local_parameterization.cpp" "/home/kang/dev/VI_Loam/build/LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/factor/pose_local_parameterization.cpp.o"
   "/home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/optimization.cpp" "/home/kang/dev/VI_Loam/build/LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/optimization.cpp.o"
+  "/home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/parameters.cpp" "/home/kang/dev/VI_Loam/build/LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/parameters.cpp.o"
+  "/home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/utility/utility_rotation.cpp" "/home/kang/dev/VI_Loam/build/LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/utility/utility_rotation.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -51,6 +54,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/local/include"
   "/home/kang/library/Sophus"
   "/home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/include"
+  "/home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/utility"
+  "/home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/factor"
   "/home/kang/dev/VI_Loam/devel/include"
   "/opt/ros/kinetic/include"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"

@@ -51,6 +51,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/local/include"
   "/home/kang/library/Sophus"
   "/home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/include"
+  "/home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/utility"
+  "/home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/factor"
   "/home/kang/dev/VI_Loam/devel/include"
   "/opt/ros/kinetic/include"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"

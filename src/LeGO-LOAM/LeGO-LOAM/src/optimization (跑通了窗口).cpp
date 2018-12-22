@@ -1,7 +1,5 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
-#include <queue>
-#include <stdio.h>
 
 #include "utility.h"
 #include <ceres/local_parameterization.h>
@@ -15,14 +13,6 @@
 #include "icp-ceres.h"
 #include <Eigen/Core>
 #include <Eigen/Dense>
-
-#include "utility_rotation.h"
-#include "pose_local_parameterization.h"
-#include "factor/imu_factor.h"
-
-#include <mutex>
-
-#include <condition_variable>
 
 using namespace std;
 using namespace Eigen;
@@ -60,7 +50,6 @@ double timeKeyPoses6D;
 double timeLastProcessing;
 
 
-
 bool newLaserCloudOri;
 bool newLaserCloudProj;
 bool newCloudKeyPoses3D;
@@ -74,9 +63,7 @@ ros::Subscriber subLaserCloudOri;
 ros::Subscriber subLaserCloudProj;
 ros::Subscriber subImu;
 
-
 ros::Publisher pubCoupledOdometry;
-ros::Publisher pubImuPropogate;
 
 nav_msgs::Odometry odomCoupled;
 tf::StampedTransform aftCoupledTrans;
@@ -101,37 +88,6 @@ int frame_count;
 
 std_msgs::Header lidarHeader;
 
-bool init_imu = 1;
-bool first_imu;
-double timeLastIMU = 0;
-double latest_time;
-double current_time = -1;
-
-Eigen::Vector3d tmp_P;
-Eigen::Quaterniond tmp_Q;
-Eigen::Vector3d tmp_V;
-Eigen::Vector3d tmp_Ba;
-Eigen::Vector3d tmp_Bg;
-Eigen::Vector3d acc_0;
-Eigen::Vector3d gyr_0;
-Vector3d G = {0, 0, 9.81};
-
-queue<sensor_msgs::ImuConstPtr> imu_buf;
-queue<sensor_msgs::PointCloud2ConstPtr> ori_buf;
-
-double td;
-
-IntegrationBase *pre_integrations[(WINDOW_SIZE + 1)];
-IntegrationBase *tmp_pre_integration;
-
-vector<double> dt_buf[(WINDOW_SIZE + 1)];
-vector<Vector3d> linear_acceleration_buf[(WINDOW_SIZE + 1)];
-vector<Vector3d> angular_velocity_buf[(WINDOW_SIZE + 1)];
-
-std::mutex m_buf;//m_buf
-
-std::condition_variable con;
-
 
 public:
   Optimization(): 
@@ -141,10 +97,9 @@ public:
   subKeyPoses = n.subscribe<sensor_msgs::PointCloud2>("/key_pose_origin", 5, &Optimization::keyPosesHandler, this);
   subLaserCloudOri = n.subscribe<sensor_msgs::PointCloud2>("/laser_cloud_ori", 5, &Optimization::laserCloudOriHandler, this);
   subLaserCloudProj = n.subscribe<sensor_msgs::PointCloud2>("/laser_cloud_proj", 5, &Optimization::laserCloudProjHandler, this);
- // subImu = n.subscribe<sensor_msgs::Imu> (imuTopic, 1000, &Optimization::imuHandler, this ,ros::TransportHints().tcpNoDelay());
+  subImu = n.subscribe<sensor_msgs::Imu> (imuTopic, 1000, &Optimization::imuHandler, this);
 
   pubCoupledOdometry = n.advertise<nav_msgs::Odometry>("/coupled_odometry", 1000);
-  //pubImuPropogate = n.advertise<nav_msgs::Odometry>("/imu_propagate", 1000);
 
   
 
@@ -160,78 +115,16 @@ public:
   ROS_INFO("init success");
   }
 
-void allocateMemory()
-{
-
-        cloudKeyPoses3D.reset(new pcl::PointCloud<PointType>());
-        cloudKeyPoses6D.reset(new pcl::PointCloud<PointTypePose>());
-
-        LaserCloudOri.reset(new pcl::PointCloud<PointType>());
-        LaserCloudProj.reset(new pcl::PointCloud<PointType>());       
-}
-
-
-
-void clearState()
-{
-  for (int i = 0; i < WINDOW_SIZE + 1; i++)
-  {
-    Rs[i].setIdentity();
-    Ps[i].setZero();
-    Vs[i].setZero();
-    Bas[i].setZero();
-    Bgs[i].setZero();
-    dt_buf[i].clear();
-    linear_acceleration_buf[i].clear();
-    angular_velocity_buf[i].clear();
-    // if (pre_integrations[i] != nullptr)
-    // {
-    //   delete pre_integrations[i];
-    // }
-    // pre_integrations[i] = nullptr;
-
-  }
-
-    // if (tmp_pre_integration != nullptr)
-    //   delete tmp_pre_integration;
-  
-
-  tmp_P.setZero();
-  //tmp_Q.setIdentity();
-  tmp_V.setZero();
-  tmp_Ba.setZero();
-  tmp_Bg.setZero();
-
-
-  acc_0.setZero();
-  gyr_0.setZero();
-
-  first_imu = false;
- 
-
-  frame_count=0;
-  ROS_INFO("clear success");
-
-}
 
 void laserCloudOriHandler(const sensor_msgs::PointCloud2ConstPtr& msg)
 {
-
         lidarHeader = msg->header;
         timeLaserCloudOri = msg->header.stamp.toSec();
         LaserCloudOri->clear();
         pcl::fromROSMsg(*msg, *LaserCloudOri);
         newLaserCloudOri = true;
         laserCloudOriNum=LaserCloudOri->points.size();
-
-        //m_buf.lock();
-        ori_buf.push(msg);
-        //m_buf.unlock();
-       // con.notify_one();
-
-
-      // ROS_DEBUG("Ori sub Num %d",laserCloudOriNum);
-      //  ROS_DEBUG("timeLaserCloudOri %f", timeLaserCloudOri);
+        ROS_DEBUG("Ori sub Num %d",laserCloudOriNum);
 }
 
 
@@ -242,7 +135,7 @@ void laserCloudProjHandler(const sensor_msgs::PointCloud2ConstPtr& msg)
         pcl::fromROSMsg(*msg, *LaserCloudProj);
         newLaserCloudProj = true;
         laserCloudProjNum=LaserCloudProj->points.size();
-      //  ROS_INFO("Proj Num %d",laserCloudProjNum);
+        ROS_INFO("Proj Num %d",laserCloudProjNum);
 }
 
 
@@ -270,87 +163,42 @@ void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg)
 
  void imuHandler(const sensor_msgs::Imu::ConstPtr& imuIn)
 {
-  if (imuIn->header.stamp.toSec() <= timeLastIMU)
-    {
-        ROS_WARN("imu message in disorder!");
-        return;
-    }
+        
 
-    //m_buf.lock();
-    imu_buf.push(imuIn);
-    //m_buf.unlock();
-//con.notify_one();
+        float accX = imuIn->linear_acceleration.x ;
+        float accY = imuIn->linear_acceleration.y ;
+        float accZ = imuIn->linear_acceleration.z ;
 
-    timeLastIMU = imuIn->header.stamp.toSec();
-    //ROS_DEBUG("timeLastIMU %f", timeLastIMU);
-    
-    predict(imuIn);
-    std_msgs::Header imu_header = imuIn->header;
-    imu_header.frame_id = "camera_init";
-    pubLatestOdometry(tmp_P, tmp_Q, tmp_V, imu_header);
         
 }
 
 
-void predict(const sensor_msgs::ImuConstPtr &imu_msg)// propogate
+void allocateMemory()
 {
-    double t = imu_msg->header.stamp.toSec();
-    if (init_imu)
-    {
-        latest_time = t;
-        init_imu = 0;
-        return;
-    }
-    double dt = t - latest_time;
-    latest_time = t;
 
-    double dx = imu_msg->linear_acceleration.x;
-    double dy = imu_msg->linear_acceleration.y;
-    double dz = imu_msg->linear_acceleration.z;
-    Eigen::Vector3d linear_acceleration{dx, dy, dz};
+        cloudKeyPoses3D.reset(new pcl::PointCloud<PointType>());
+        cloudKeyPoses6D.reset(new pcl::PointCloud<PointTypePose>());
 
-    double rx = imu_msg->angular_velocity.x;
-    double ry = imu_msg->angular_velocity.y;
-    double rz = imu_msg->angular_velocity.z;
-    Eigen::Vector3d angular_velocity{rx, ry, rz};
-
-    Eigen::Vector3d un_acc_0 = tmp_Q * (acc_0 - tmp_Ba) - G;//世界坐标系下 上一时刻的 un_acc_0为车加速度（消除了重力） acc_0为读到的
-    Eigen::Vector3d un_gyr = 0.5 * (gyr_0 + angular_velocity) - tmp_Bg;//角速度 un_gyr为车的
-    tmp_Q = tmp_Q * Utility::deltaQ(un_gyr * dt);//q=q*delta(w*t)
-
-    Eigen::Vector3d un_acc_1 = tmp_Q * (linear_acceleration - tmp_Ba) - G;//当前时刻加速度
-
-    Eigen::Vector3d un_acc = 0.5 * (un_acc_0 + un_acc_1);//中值 上一时刻加速度和当前时刻计算
-
-    tmp_P = tmp_P + dt * tmp_V + 0.5 * dt * dt * un_acc;//预测位置 p=p+vt+0.5*a*t2
-    tmp_V = tmp_V + dt * un_acc;//预测速度 v=v+a*t
-
-    acc_0 = linear_acceleration;
-    gyr_0 = angular_velocity;
-}
-
-void pubLatestOdometry(const Eigen::Vector3d &P, const Eigen::Quaterniond &Q, const Eigen::Vector3d &V, const std_msgs::Header &header)
-{
-    Eigen::Quaterniond quadrotor_Q = Q ;
-
-    nav_msgs::Odometry odometry;
-    odometry.header = header;
-    odometry.header.frame_id = "camera_init";
-    odometry.pose.pose.position.x = P.x();
-    odometry.pose.pose.position.y = P.y();
-    odometry.pose.pose.position.z = P.z();
-    odometry.pose.pose.orientation.x = quadrotor_Q.x();
-    odometry.pose.pose.orientation.y = quadrotor_Q.y();
-    odometry.pose.pose.orientation.z = quadrotor_Q.z();
-    odometry.pose.pose.orientation.w = quadrotor_Q.w();
-    odometry.twist.twist.linear.x = V.x();
-    odometry.twist.twist.linear.y = V.y();
-    odometry.twist.twist.linear.z = V.z();
-    pubImuPropogate.publish(odometry);
-
+        LaserCloudOri.reset(new pcl::PointCloud<PointType>());
+        LaserCloudProj.reset(new pcl::PointCloud<PointType>());       
 }
 
 
+
+void clearState()
+{
+  for (int i = 0; i < WINDOW_SIZE + 1; i++)
+  {
+    Rs[i].setIdentity();
+    Ps[i].setZero();
+    Vs[i].setZero();
+    Bas[i].setZero();
+    Bgs[i].setZero();
+  }
+  frame_count=0;
+  ROS_INFO("clear success");
+
+}
 
 
 
@@ -408,10 +256,10 @@ ceres::Solver::Options getOptionsMedium()
 void solveProblem(ceres::Problem &problem)
 {
 
-  ROS_DEBUG("solveProblem %d", frame_count);
+  ROS_DEBUG("solveProblem %d", frame_count+1);
     ceres::Solver::Summary summary;
     ceres::Solve(smallProblem ? getOptions() : getOptionsMedium(), &problem, &summary);
-    if(!smallProblem) std::cout << "Final report:\n" << summary.FullReport();
+    //if(!smallProblem) std::cout << "Final report:\n" << summary.FullReport();
 }
 
 
@@ -430,9 +278,6 @@ void currrentPoseProcess()
   int currentInd    = numPoses-1;
   currentRobotPos6D =cloudKeyPoses6D->points[currentInd];
 
-
-  frame_count=numPoses;
-
 ////initial the pose  
   roll  = currentRobotPos6D.yaw;//to Cartesian coordinate system
   pitch = currentRobotPos6D.roll;
@@ -449,19 +294,25 @@ void currrentPoseProcess()
   Eigen::Quaterniond q = rollAngle * pitchAngle *  yawAngle;//!!! indicate the orger of rotate
 
   curRx         = q.toRotationMatrix();//from world frame (ypr)
+  //curRx_inverse = curRx.inverse();
   cur_t<< x,y,z ;
 
   
-  if(frame_count <= WINDOW_SIZE){// framecount==index 0-9
+  if(currentInd < WINDOW_SIZE){
     Ps[currentInd] = cur_t;
     Rs[currentInd] = curRx;
-   // ROS_DEBUG("Ps[currentInd] %f %f %f  ",Ps[currentInd][0], Ps[currentInd][1], Ps[currentInd][2]);
+    ROS_DEBUG("Ps[currentInd] %f %f %f  ",Ps[currentInd][0], Ps[currentInd][1], Ps[currentInd][2]);
+
+
   }
   else
   {
      Ps[WINDOW_SIZE] = cur_t;
      Rs[WINDOW_SIZE] = curRx;
-   // ROS_DEBUG("Ps[WINDOW_SIZE] %f %f %f  ",Ps[WINDOW_SIZE][0], Ps[WINDOW_SIZE][1], Ps[WINDOW_SIZE][2]);
+    ROS_DEBUG("Ps[WINDOW_SIZE] %f %f %f  ",Ps[WINDOW_SIZE][0], Ps[WINDOW_SIZE][1], Ps[WINDOW_SIZE][2]);
+
+
+
   }
 
 
@@ -471,20 +322,26 @@ void currrentPoseProcess()
  //int thisKeyInd = (int)cloudKeyPoses6D->points[j].intensity;
  //CloudKeyPosesID.   push_back(currentInd);
  
-  pcl::PointCloud<PointType>::Ptr thisCornerKeyFrame(new pcl::PointCloud<PointType>());
-  pcl::PointCloud<PointType>::Ptr thisSurfKeyFrame(new pcl::PointCloud<PointType>());
-  pcl::copyPointCloud(*LaserCloudOri,  *thisCornerKeyFrame);
-  pcl::copyPointCloud(*LaserCloudProj,  *thisSurfKeyFrame);
+        pcl::PointCloud<PointType>::Ptr thisCornerKeyFrame(new pcl::PointCloud<PointType>());
+        pcl::PointCloud<PointType>::Ptr thisSurfKeyFrame(new pcl::PointCloud<PointType>());
+        pcl::copyPointCloud(*LaserCloudOri,  *thisCornerKeyFrame);
+        pcl::copyPointCloud(*LaserCloudProj,  *thisSurfKeyFrame);
         
-  CloudKeyFramesOri. push_back(thisCornerKeyFrame);
-  CloudKeyFramesProj.push_back(thisSurfKeyFrame);   
-  //ROS_DEBUG("ori size %d",CloudKeyFramesProj.size());
+        CloudKeyFramesOri. push_back(thisCornerKeyFrame);
+        CloudKeyFramesProj.push_back(thisSurfKeyFrame);   
+        ROS_DEBUG("ori size %d",CloudKeyFramesProj.size());
 
  // if(currentInd >= WINDOW_SIZE)
  // {
  //  CloudKeyFramesOri.pop_front();
  //  CloudKeyFramesProj.pop_front();
  // }              
+
+
+  frame_count=numPoses;// different with thiskeyid??
+
+
+
 
   
  //  if(frame_count >= WINDOW_SIZE){
@@ -600,73 +457,19 @@ void currrentPoseProcess()
 
  //  }
  // // slideWindow();
+  
 
-}
+        }
 
 
 
-void imuProcess(std::vector <sensor_msgs::ImuConstPtr> &IMU_Cur)
+
+
+
+void imuProcess()
 {
-  for (auto &imu_msg : IMU_Cur){
-    double dx = 0, dy = 0, dz = 0, rx = 0, ry = 0, rz = 0;
-    double imu_t = imu_msg->header.stamp.toSec();
-    double lidar_t = timeLaserCloudOri + td;//img=img+td
-    if (imu_t <= lidar_t)//imu<=img
-    { 
-      if (current_time < 0)
-        current_time = imu_t;
-        double dt = imu_t - current_time;//current: first_imu time
-        ROS_ASSERT(dt >= 0);
-        current_time = imu_t;
-        dx = imu_msg->linear_acceleration.x;
-        dy = imu_msg->linear_acceleration.y;
-        dz = imu_msg->linear_acceleration.z;
-        rx = imu_msg->angular_velocity.x;
-        ry = imu_msg->angular_velocity.y;
-        rz = imu_msg->angular_velocity.z;
-        processIMU(dt, Vector3d(dx, dy, dz), Vector3d(rx, ry, rz));//imu propogate 得位置 速度初始值 直到img时刻
-                    //printf("imu: dt:%f a: %f %f %f w: %f %f %f\n",dt, dx, dy, dz, rx, ry, rz);
 
-    }
-  }
 }
-
-void processIMU(double dt, const Vector3d &linear_acceleration, const Vector3d &angular_velocity)
-{
-    if (!first_imu)
-    {
-        first_imu = true;
-        acc_0 = linear_acceleration;
-        gyr_0 = angular_velocity;
-    }
-
-    if (!pre_integrations[frame_count])
-    {
-        pre_integrations[frame_count] = new IntegrationBase{acc_0, gyr_0, Bas[frame_count], Bgs[frame_count]};
-    }
-    if (frame_count != 0)//frame count increase  more than windowsize
-    {
-        pre_integrations[frame_count]->push_back(dt, linear_acceleration, angular_velocity);//push back 包含了误差状态预积分
-        //if(solver_flag != NON_LINEAR)
-            tmp_pre_integration->push_back(dt, linear_acceleration, angular_velocity);
-
-        dt_buf[frame_count].push_back(dt);
-        linear_acceleration_buf[frame_count].push_back(linear_acceleration);
-        angular_velocity_buf[frame_count].push_back(angular_velocity);
-
-        int j = frame_count;         
-        Vector3d un_acc_0 = Rs[j] * (acc_0 - Bas[j]) - G;//按前一帧
-        Vector3d un_gyr = 0.5 * (gyr_0 + angular_velocity) - Bgs[j];//前一帧与当前帧结合
-        Rs[j] *= Utility::deltaQ(un_gyr * dt).toRotationMatrix();
-        Vector3d un_acc_1 = Rs[j] * (linear_acceleration - Bas[j]) - G;
-        Vector3d un_acc = 0.5 * (un_acc_0 + un_acc_1);
-        Ps[j] += dt * Vs[j] + 0.5 * dt * dt * un_acc;
-        Vs[j] += dt * un_acc;//当前帧的姿态 位置 速度 
-    }
-    acc_0 = linear_acceleration;
-    gyr_0 = angular_velocity;  
-}
-
 
 
 void optimizationProcess()
@@ -675,24 +478,24 @@ void optimizationProcess()
   {
 
     solveOdometry();
-    pubOptOdometry();
     slideWindow();
-    //update();
 
   }
-  // else
-  //   frame_count++;
+ 
+
+  
+
 }
 
 void solveOdometry()
 {
   
-  ROS_DEBUG("solveOdometry %d", frame_count);
+  ROS_DEBUG("solveOdometry %d", frame_count+1);
   ceres::Problem problem;
   ceres::LossFunction *loss_function = new ceres::CauchyLoss(1);
   vector2double();
 
-  for(int i=0; i<WINDOW_SIZE;i++)
+  for(int i=0; i<WINDOW_SIZE ;i++)
   {
 
     int j   = i+1;
@@ -713,12 +516,12 @@ void solveOdometry()
       // test the rotation
       if(k < 3 && ind == WINDOW_SIZE-1){
       double point[3] = {ori[0], ori[1], ori[2]};
-      double q[4]     = {para_Pose[ind][6],para_Pose[ind][3],para_Pose[ind][4],para_Pose[ind][5]};//!!!!!w x y z 
+      double q[4] = {para_Pose[ind][6],para_Pose[ind][3],para_Pose[ind][4],para_Pose[ind][5]};//!!!!!w x y z 
       double p[3];
 
 
       ceres::QuaternionRotatePoint( q, point, p);
-        
+      
         p[0] += para_Pose[ind][0];
         p[1] += para_Pose[ind][1];
         p[2] += para_Pose[ind][2];
@@ -726,9 +529,9 @@ void solveOdometry()
       cout << "pro"<<proj[0]<<" " << proj[1]<<" "<<proj[2]<<endl;
 
       }
-  
-
-      // }  
+      
+     
+    
       //ROS_DEBUG("ori x y  %f %f", ori[0],ori[1]);
       if(ori[0] > 50 ||  ori[1] > 50  || ori[2] > 50)
         continue;
@@ -738,15 +541,22 @@ void solveOdometry()
       
       problem.AddResidualBlock(lidar_cost_function, loss_function, para_Pose[ind]);
       
-      }
-      }
+  
 
-   solveProblem(problem);
-   double2vector();
+
+     // PtestCeres2 = ICP_Ceres::pointToPoint_EigenQuaternion(ori,proj);
+
+    }
+  }
+  solveProblem(problem);
+  double2vector();
+
+
+
 }
 
 void vector2double(){
-  for (int i = 0; i < WINDOW_SIZE ; i++)
+  for (int i = 0; i < WINDOW_SIZE; i++)
     {
         para_Pose[i][0] = Ps[i][0];
         para_Pose[i][1] = Ps[i][1];
@@ -769,14 +579,13 @@ void vector2double(){
         para_SpeedBias[i][7] = Bgs[i].y();
         para_SpeedBias[i][8] = Bgs[i].z();
     }
-    ROS_DEBUG("P-origin %f",Ps[WINDOW_SIZE-1][0]);
 
 }
 
 
 void double2vector()
 {
-    for (int i = 0; i < WINDOW_SIZE ; i++)
+    for (int i = 0; i < WINDOW_SIZE; i++)
     {
 
         Rs[i] =  Quaterniond(para_Pose[i][6], para_Pose[i][3], para_Pose[i][4], para_Pose[i][5]).normalized().toRotationMatrix();
@@ -786,8 +595,8 @@ void double2vector()
         
 
         Vs[i] =  Vector3d(para_SpeedBias[i][0],
-                          para_SpeedBias[i][1],
-                          para_SpeedBias[i][2]);
+                                    para_SpeedBias[i][1],
+                                    para_SpeedBias[i][2]);
 
         Bas[i] = Vector3d(para_SpeedBias[i][3],
                           para_SpeedBias[i][4],
@@ -797,15 +606,15 @@ void double2vector()
                           para_SpeedBias[i][7],
                           para_SpeedBias[i][8]);
     }
-    ROS_DEBUG("P-coupled %f",Ps[WINDOW_SIZE-1][0]);
+    ROS_DEBUG("P %f",Ps[WINDOW_SIZE-1][0]);
 }
 
 
 
 void slideWindow()
 {
-  if(frame_count > WINDOW_SIZE)
-  {
+
+  
     for (int i = 0; i < WINDOW_SIZE; i++)
     {
       Rs[i].swap(Rs[i + 1]);
@@ -814,34 +623,23 @@ void slideWindow()
       Vs[i].swap(Vs[i + 1]);
       Bas[i].swap(Bas[i + 1]);
       Bgs[i].swap(Bgs[i + 1]);
-    // }// destory the front values
-    // Ps[WINDOW_SIZE]  = Ps[WINDOW_SIZE - 1];
-    // Vs[WINDOW_SIZE]  = Vs[WINDOW_SIZE - 1];
-    // Rs[WINDOW_SIZE]  = Rs[WINDOW_SIZE - 1];
-    // Bas[WINDOW_SIZE] = Bas[WINDOW_SIZE - 1];
-    // Bgs[WINDOW_SIZE] = Bgs[WINDOW_SIZE - 1];
+    }// destory the front values
 
-
-    // delete pre_integrations[WINDOW_SIZE];
-    // pre_integrations[WINDOW_SIZE] = new IntegrationBase{acc_0, gyr_0, Bas[WINDOW_SIZE], Bgs[WINDOW_SIZE]};
-
-    // dt_buf[WINDOW_SIZE].clear();
-    // linear_acceleration_buf[WINDOW_SIZE].clear();
-    // angular_velocity_buf[WINDOW_SIZE].clear();
-
-  }
-
-    CloudKeyFramesOri.pop_front();
-    CloudKeyFramesProj.pop_front();
-    
-
-  ROS_DEBUG("slideWindow %d", frame_count);
-}
-}
-
-
-void pubOptOdometry(){
  
+     CloudKeyFramesOri.pop_front();
+     CloudKeyFramesProj.pop_front();
+ 
+
+
+  
+  ROS_DEBUG("slideWindow %d", frame_count+1);
+}
+
+
+void pubOdometry(){
+  
+
+  
   //nav_msgs::Odometry odomCoupled;
   //odometry.header = lidarHeader;
   odomCoupled.header.stamp = ros::Time().fromSec(timeKeyPoses);
@@ -849,9 +647,9 @@ void pubOptOdometry(){
   odomCoupled.child_frame_id = "aft_coupled";
   Quaterniond tmp_Q;
   tmp_Q = Quaterniond(Rs[WINDOW_SIZE]);
-  odomCoupled.pose.pose.position.x = Ps[WINDOW_SIZE].x();
-  odomCoupled.pose.pose.position.y = Ps[WINDOW_SIZE].y();
-  odomCoupled.pose.pose.position.z = Ps[WINDOW_SIZE].z();
+  odomCoupled.pose.pose.position.x = Ps[WINDOW_SIZE-1].x();
+  odomCoupled.pose.pose.position.y = Ps[WINDOW_SIZE-1].y();
+  odomCoupled.pose.pose.position.z = Ps[WINDOW_SIZE-1].z();
   odomCoupled.pose.pose.orientation.x = tmp_Q.x();
   odomCoupled.pose.pose.orientation.y = tmp_Q.y();
   odomCoupled.pose.pose.orientation.z = tmp_Q.z();
@@ -867,87 +665,7 @@ void pubOptOdometry(){
   tfBroadcaster.sendTransform(aftCoupledTrans);
   
 
-  ROS_DEBUG("pubOdometry %d %f", frame_count, Ps[WINDOW_SIZE].x());
-
-}
-
-// std::vector<std::pair<std::vector<sensor_msgs::ImuConstPtr>, sensor_msgs::PointCloud2ConstPtr>>
-// getMeasurements()
-// {
-//   std::vector<std::pair<std::vector<sensor_msgs::ImuConstPtr>, sensor_msgs::PointCloud2ConstPtr>> measurements;//imu的容器及一帧图片 图片时间在最后
-//   while (true)
-//     {
-//       int sum_of_wait = 0;
-//         if (imu_buf.empty() || ori_buf.empty())
-//             return measurements;
-
-//         if (!(imu_buf.back()->header.stamp.toSec() > ori_buf.front()->header.stamp.toSec() + td))// latest imu back<=img+td
-//         {
-//             //ROS_WARN("wait for imu, only should happen at the beginning");
-//             sum_of_wait++;
-//             return measurements;
-//         }
-
-//         if (!(imu_buf.front()->header.stamp.toSec() < ori_buf.front()->header.stamp.toSec() + td))//imu front>=img+t throw img
-//         {
-//             ROS_WARN("throw img, only should happen at the beginning");
-//             ori_buf.pop();
-//             continue;
-//         }
-//         sensor_msgs::PointCloud2ConstPtr lidar_ori = ori_buf.front();
-//         ori_buf.pop();
-//         //feature_buf.pop();
-
-//         std::vector<sensor_msgs::ImuConstPtr> IMUs;
-//         while (imu_buf.front()->header.stamp.toSec() < ori_buf.front()->header.stamp.toSec() + td)//imu front<img+t throw imu
-//         {
-//             IMUs.emplace_back(imu_buf.front());
-//             imu_buf.pop();
-//         }
-//         IMUs.emplace_back(imu_buf.front());
-//         if (IMUs.empty())
-//             ROS_WARN("no imu between two image");
-//         measurements.emplace_back(IMUs, LaserCloudOri);//最后一帧为IMU与img时间相等  前面为之间的IMU
-//     }
-//     return measurements;
-
-// }
-
-
-std::vector<sensor_msgs::ImuConstPtr> getMeasurements()
-{
-    
-      std::vector<sensor_msgs::ImuConstPtr> IMUs;
-      int sum_of_wait = 0;
-        if (imu_buf.empty() )
-            return IMUs;
-
-        if (!(imu_buf.back()->header.stamp.toSec() > timeLaserCloudOri + td))// latest imu back<=img+td
-        {
-            //ROS_WARN("wait for imu, only should happen at the beginning");
-            sum_of_wait++;
-            return IMUs;
-        }
-
-        if (!(imu_buf.front()->header.stamp.toSec() < timeLaserCloudOri + td))//imu front>=img+t throw img
-        {
-            ROS_WARN("throw img, only should happen at the beginning");
-            return IMUs;           
-        }
-        //feature_buf.pop();
-     
-
-        
-        while (imu_buf.front()->header.stamp.toSec() < timeLaserCloudOri + td)//imu front<img+t throw imu
-        {
-            IMUs.emplace_back(imu_buf.front());
-            imu_buf.pop();
-        }
-        IMUs.emplace_back(imu_buf.front());
-        if (IMUs.empty())
-            ROS_WARN("no imu between two image");
-        //最后一帧为IMU与img时间相等  前面为之间的IMU
-    
+  ROS_DEBUG("pubOdometry %d %f", frame_count+1, Ps[WINDOW_SIZE-1].x());
 
 }
 
@@ -966,20 +684,13 @@ void run(){
     if (timeKeyPoses6D - timeLastProcessing >= optimizationProcessInterval){
     timeLastProcessing=timeKeyPoses6D;
 
-    //std::vector<std::pair<std::vector<sensor_msgs::ImuConstPtr>, sensor_msgs::PointCloud2ConstPtr>> measurements;//vector imu , pointcloud的pair组成vector
-    
-   // std::vector <sensor_msgs::ImuConstPtr> IMU_Cur = getMeasurements();
-
-    //imuProcess(IMU_Cur);
-    
-
     currrentPoseProcess();
 
-    
+    imuProcess();
 
     optimizationProcess();
 
-    
+    pubOdometry();
   }
 
 }

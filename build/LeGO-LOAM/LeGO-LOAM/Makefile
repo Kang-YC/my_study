@@ -1035,6 +1035,33 @@ std_srvs_generate_messages_eus/fast:
 	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/std_srvs_generate_messages_eus.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/std_srvs_generate_messages_eus.dir/build
 .PHONY : std_srvs_generate_messages_eus/fast
 
+src/factor/pose_local_parameterization.o: src/factor/pose_local_parameterization.cpp.o
+
+.PHONY : src/factor/pose_local_parameterization.o
+
+# target to build an object file
+src/factor/pose_local_parameterization.cpp.o:
+	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/factor/pose_local_parameterization.cpp.o
+.PHONY : src/factor/pose_local_parameterization.cpp.o
+
+src/factor/pose_local_parameterization.i: src/factor/pose_local_parameterization.cpp.i
+
+.PHONY : src/factor/pose_local_parameterization.i
+
+# target to preprocess a source file
+src/factor/pose_local_parameterization.cpp.i:
+	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/factor/pose_local_parameterization.cpp.i
+.PHONY : src/factor/pose_local_parameterization.cpp.i
+
+src/factor/pose_local_parameterization.s: src/factor/pose_local_parameterization.cpp.s
+
+.PHONY : src/factor/pose_local_parameterization.s
+
+# target to generate assembly for a file
+src/factor/pose_local_parameterization.cpp.s:
+	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/factor/pose_local_parameterization.cpp.s
+.PHONY : src/factor/pose_local_parameterization.cpp.s
+
 src/featureAssociation.o: src/featureAssociation.cpp.o
 
 .PHONY : src/featureAssociation.o
@@ -1143,6 +1170,33 @@ src/optimization.cpp.s:
 	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/optimization.cpp.s
 .PHONY : src/optimization.cpp.s
 
+src/parameters.o: src/parameters.cpp.o
+
+.PHONY : src/parameters.o
+
+# target to build an object file
+src/parameters.cpp.o:
+	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/parameters.cpp.o
+.PHONY : src/parameters.cpp.o
+
+src/parameters.i: src/parameters.cpp.i
+
+.PHONY : src/parameters.i
+
+# target to preprocess a source file
+src/parameters.cpp.i:
+	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/parameters.cpp.i
+.PHONY : src/parameters.cpp.i
+
+src/parameters.s: src/parameters.cpp.s
+
+.PHONY : src/parameters.s
+
+# target to generate assembly for a file
+src/parameters.cpp.s:
+	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/parameters.cpp.s
+.PHONY : src/parameters.cpp.s
+
 src/transformFusion.o: src/transformFusion.cpp.o
 
 .PHONY : src/transformFusion.o
@@ -1169,6 +1223,33 @@ src/transformFusion.s: src/transformFusion.cpp.s
 src/transformFusion.cpp.s:
 	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/transformFusion.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/transformFusion.dir/src/transformFusion.cpp.s
 .PHONY : src/transformFusion.cpp.s
+
+src/utility/utility_rotation.o: src/utility/utility_rotation.cpp.o
+
+.PHONY : src/utility/utility_rotation.o
+
+# target to build an object file
+src/utility/utility_rotation.cpp.o:
+	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/utility/utility_rotation.cpp.o
+.PHONY : src/utility/utility_rotation.cpp.o
+
+src/utility/utility_rotation.i: src/utility/utility_rotation.cpp.i
+
+.PHONY : src/utility/utility_rotation.i
+
+# target to preprocess a source file
+src/utility/utility_rotation.cpp.i:
+	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/utility/utility_rotation.cpp.i
+.PHONY : src/utility/utility_rotation.cpp.i
+
+src/utility/utility_rotation.s: src/utility/utility_rotation.cpp.s
+
+.PHONY : src/utility/utility_rotation.s
+
+# target to generate assembly for a file
+src/utility/utility_rotation.cpp.s:
+	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/utility/utility_rotation.cpp.s
+.PHONY : src/utility/utility_rotation.cpp.s
 
 # Help Target
 help:
@@ -1241,6 +1322,9 @@ help:
 	@echo "... pcl_msgs_generate_messages_eus"
 	@echo "... tf_generate_messages_cpp"
 	@echo "... std_srvs_generate_messages_eus"
+	@echo "... src/factor/pose_local_parameterization.o"
+	@echo "... src/factor/pose_local_parameterization.i"
+	@echo "... src/factor/pose_local_parameterization.s"
 	@echo "... src/featureAssociation.o"
 	@echo "... src/featureAssociation.i"
 	@echo "... src/featureAssociation.s"
@@ -1253,9 +1337,15 @@ help:
 	@echo "... src/optimization.o"
 	@echo "... src/optimization.i"
 	@echo "... src/optimization.s"
+	@echo "... src/parameters.o"
+	@echo "... src/parameters.i"
+	@echo "... src/parameters.s"
 	@echo "... src/transformFusion.o"
 	@echo "... src/transformFusion.i"
 	@echo "... src/transformFusion.s"
+	@echo "... src/utility/utility_rotation.o"
+	@echo "... src/utility/utility_rotation.i"
+	@echo "... src/utility/utility_rotation.s"
 .PHONY : help
 
 
