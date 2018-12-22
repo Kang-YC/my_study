@@ -141,7 +141,7 @@ public:
   subKeyPoses = n.subscribe<sensor_msgs::PointCloud2>("/key_pose_origin", 5, &Optimization::keyPosesHandler, this);
   subLaserCloudOri = n.subscribe<sensor_msgs::PointCloud2>("/laser_cloud_ori", 5, &Optimization::laserCloudOriHandler, this);
   subLaserCloudProj = n.subscribe<sensor_msgs::PointCloud2>("/laser_cloud_proj", 5, &Optimization::laserCloudProjHandler, this);
- // subImu = n.subscribe<sensor_msgs::Imu> (imuTopic, 1000, &Optimization::imuHandler, this ,ros::TransportHints().tcpNoDelay());
+  subImu = n.subscribe<sensor_msgs::Imu> (imuTopic, 1000, &Optimization::imuHandler, this ,ros::TransportHints().tcpNoDelay());
 
   pubCoupledOdometry = n.advertise<nav_msgs::Odometry>("/coupled_odometry", 1000);
   //pubImuPropogate = n.advertise<nav_msgs::Odometry>("/imu_propagate", 1000);
@@ -231,7 +231,7 @@ void laserCloudOriHandler(const sensor_msgs::PointCloud2ConstPtr& msg)
 
 
       // ROS_DEBUG("Ori sub Num %d",laserCloudOriNum);
-      //  ROS_DEBUG("timeLaserCloudOri %f", timeLaserCloudOri);
+        ROS_DEBUG("timeLaserCloudOri %f", timeLaserCloudOri);
 }
 
 
@@ -282,7 +282,7 @@ void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg)
 //con.notify_one();
 
     timeLastIMU = imuIn->header.stamp.toSec();
-    //ROS_DEBUG("timeLastIMU %f", timeLastIMU);
+    ROS_DEBUG("timeLastIMU %f", timeLastIMU);
     
     predict(imuIn);
     std_msgs::Header imu_header = imuIn->header;
@@ -327,6 +327,7 @@ void predict(const sensor_msgs::ImuConstPtr &imu_msg)// propogate
 
     acc_0 = linear_acceleration;
     gyr_0 = angular_velocity;
+    //ROS_DEBUG("tmp_P %f", tmp_P.x());
 }
 
 void pubLatestOdometry(const Eigen::Vector3d &P, const Eigen::Quaterniond &Q, const Eigen::Vector3d &V, const std_msgs::Header &header)
@@ -431,7 +432,7 @@ void currrentPoseProcess()
   currentRobotPos6D =cloudKeyPoses6D->points[currentInd];
 
 
-  frame_count=numPoses;
+  //frame_count=numPoses;
 
 ////initial the pose  
   roll  = currentRobotPos6D.yaw;//to Cartesian coordinate system
@@ -453,8 +454,8 @@ void currrentPoseProcess()
 
   
   if(frame_count <= WINDOW_SIZE){// framecount==index 0-9
-    Ps[currentInd] = cur_t;
-    Rs[currentInd] = curRx;
+    Ps[frame_count] = cur_t;
+    Rs[frame_count] = curRx;
    // ROS_DEBUG("Ps[currentInd] %f %f %f  ",Ps[currentInd][0], Ps[currentInd][1], Ps[currentInd][2]);
   }
   else
@@ -671,28 +672,29 @@ void processIMU(double dt, const Vector3d &linear_acceleration, const Vector3d &
 
 void optimizationProcess()
 {
-  if(frame_count > WINDOW_SIZE)
-  {
-
+  if(frame_count == WINDOW_SIZE){
+ 
     solveOdometry();
     pubOptOdometry();
     slideWindow();
-    //update();
-
   }
-  // else
-  //   frame_count++;
+
+ else
+  frame_count++;
 }
+
 
 void solveOdometry()
 {
+  if(frame_count < WINDOW_SIZE)
+    return;
   
   ROS_DEBUG("solveOdometry %d", frame_count);
   ceres::Problem problem;
   ceres::LossFunction *loss_function = new ceres::CauchyLoss(1);
   vector2double();
 
-  for(int i=0; i<WINDOW_SIZE;i++)
+  for(int i=0; i< WINDOW_SIZE+1 ;i++)
   {
 
     int j   = i+1;
@@ -739,14 +741,14 @@ void solveOdometry()
       problem.AddResidualBlock(lidar_cost_function, loss_function, para_Pose[ind]);
       
       }
-      }
+  }
 
    solveProblem(problem);
    double2vector();
 }
 
 void vector2double(){
-  for (int i = 0; i < WINDOW_SIZE ; i++)
+  for (int i = 0; i <= WINDOW_SIZE ; i++)
     {
         para_Pose[i][0] = Ps[i][0];
         para_Pose[i][1] = Ps[i][1];
@@ -769,14 +771,14 @@ void vector2double(){
         para_SpeedBias[i][7] = Bgs[i].y();
         para_SpeedBias[i][8] = Bgs[i].z();
     }
-    ROS_DEBUG("P-origin %f",Ps[WINDOW_SIZE-1][0]);
+    ROS_DEBUG("P-origin %f",Ps[WINDOW_SIZE][0]);
 
 }
 
 
 void double2vector()
 {
-    for (int i = 0; i < WINDOW_SIZE ; i++)
+    for (int i = 0; i <= WINDOW_SIZE ; i++)
     {
 
         Rs[i] =  Quaterniond(para_Pose[i][6], para_Pose[i][3], para_Pose[i][4], para_Pose[i][5]).normalized().toRotationMatrix();
@@ -797,14 +799,14 @@ void double2vector()
                           para_SpeedBias[i][7],
                           para_SpeedBias[i][8]);
     }
-    ROS_DEBUG("P-coupled %f",Ps[WINDOW_SIZE-1][0]);
+    ROS_DEBUG("P-coupled %f",Ps[WINDOW_SIZE][0]);
 }
 
 
 
 void slideWindow()
 {
-  if(frame_count > WINDOW_SIZE)
+  if(frame_count == WINDOW_SIZE)
   {
     for (int i = 0; i < WINDOW_SIZE; i++)
     {
@@ -814,12 +816,12 @@ void slideWindow()
       Vs[i].swap(Vs[i + 1]);
       Bas[i].swap(Bas[i + 1]);
       Bgs[i].swap(Bgs[i + 1]);
-    // }// destory the front values
-    // Ps[WINDOW_SIZE]  = Ps[WINDOW_SIZE - 1];
-    // Vs[WINDOW_SIZE]  = Vs[WINDOW_SIZE - 1];
-    // Rs[WINDOW_SIZE]  = Rs[WINDOW_SIZE - 1];
-    // Bas[WINDOW_SIZE] = Bas[WINDOW_SIZE - 1];
-    // Bgs[WINDOW_SIZE] = Bgs[WINDOW_SIZE - 1];
+    }// destory the front values
+    Ps[WINDOW_SIZE]  = Ps[WINDOW_SIZE - 1];
+    Vs[WINDOW_SIZE]  = Vs[WINDOW_SIZE - 1];
+    Rs[WINDOW_SIZE]  = Rs[WINDOW_SIZE - 1];
+    Bas[WINDOW_SIZE] = Bas[WINDOW_SIZE - 1];
+    Bgs[WINDOW_SIZE] = Bgs[WINDOW_SIZE - 1];
 
 
     // delete pre_integrations[WINDOW_SIZE];
@@ -829,13 +831,13 @@ void slideWindow()
     // linear_acceleration_buf[WINDOW_SIZE].clear();
     // angular_velocity_buf[WINDOW_SIZE].clear();
 
-  }
+  //}
 
     CloudKeyFramesOri.pop_front();
     CloudKeyFramesProj.pop_front();
     
 
-  ROS_DEBUG("slideWindow %d", frame_count);
+  ROS_DEBUG("slideWindow frame_count%d", frame_count);
 }
 }
 
