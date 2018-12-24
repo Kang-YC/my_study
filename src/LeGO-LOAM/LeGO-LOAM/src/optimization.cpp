@@ -122,6 +122,7 @@ queue<sensor_msgs::PointCloud2ConstPtr> ori_buf;
 
 double td;
 
+
 IntegrationBase *pre_integrations[(WINDOW_SIZE + 1)];
 IntegrationBase *tmp_pre_integration;
 
@@ -182,6 +183,7 @@ void clearState()
     Vs[i].setZero();
     Bas[i].setZero();
     Bgs[i].setZero();
+
     dt_buf[i].clear();
     linear_acceleration_buf[i].clear();
     angular_velocity_buf[i].clear();
@@ -189,12 +191,14 @@ void clearState()
     // {
     //    delete pre_integrations[i];
     //  }
-    //  pre_integrations[i] = nullptr;
+      pre_integrations[i] = nullptr;
 
   }
 
     // if (tmp_pre_integration != nullptr)
     //   delete tmp_pre_integration;
+
+    tmp_pre_integration = nullptr;
   
 
   tmp_P.setZero();
@@ -283,7 +287,7 @@ void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg)
 //con.notify_one();
 
     timeLastIMU = imuIn->header.stamp.toSec();
-    ROS_DEBUG("timeLastIMU %f", timeLastIMU);
+   // ROS_DEBUG("timeLastIMU %f", timeLastIMU);
     
     predict(imuIn);
     std_msgs::Header imu_header = imuIn->header;
@@ -413,7 +417,7 @@ void solveProblem(ceres::Problem &problem)
   ROS_DEBUG("solveProblem %d", frame_count);
     ceres::Solver::Summary summary;
     ceres::Solve(smallProblem ? getOptions() : getOptionsMedium(), &problem, &summary);
-    //if(!smallProblem) std::cout << "Final report:\n" << summary.FullReport();
+    if(!smallProblem) std::cout << "Final report:\n" << summary.FullReport();
 }
 
 
@@ -614,11 +618,13 @@ void imuProcess(std::vector <sensor_msgs::ImuConstPtr> &IMU_Cur)
     double imu_t = imu_msg->header.stamp.toSec();
     double lidar_t = timeLaserCloudOri + td;//img=img+td
 
-    ROS_DEBUG("imu_t lidar_t %f %f", imu_t ,lidar_t );
+    //ROS_DEBUG("imuProcess ");
+
+    //ROS_DEBUG("imu_t lidar_t %f %f", imu_t ,lidar_t );
     if (imu_t <= lidar_t)//imu<=img
     { 
-      if (current_time < 0)
-        current_time = imu_t;
+        if (current_time < 0)
+          current_time = imu_t;
         double dt = imu_t - current_time;//current: first_imu time
         ROS_ASSERT(dt >= 0);
         current_time = imu_t;
@@ -628,9 +634,28 @@ void imuProcess(std::vector <sensor_msgs::ImuConstPtr> &IMU_Cur)
         rx = imu_msg->angular_velocity.x;
         ry = imu_msg->angular_velocity.y;
         rz = imu_msg->angular_velocity.z;
-       // processIMU(dt, Vector3d(dx, dy, dz), Vector3d(rx, ry, rz));//imu propogate 得位置 速度初始值 直到img时刻
+        processIMU(dt, Vector3d(dx, dy, dz), Vector3d(rx, ry, rz));//imu propogate 得位置 速度初始值 直到img时刻
                     //printf("imu: dt:%f a: %f %f %f w: %f %f %f\n",dt, dx, dy, dz, rx, ry, rz);
 
+    }
+    else//imu>img
+    {
+        double dt_1 = lidar_t - current_time;//与上一帧IMU之间
+        double dt_2 = imu_t - lidar_t;//当前帧IMU与img之间
+        current_time = lidar_t;
+        ROS_ASSERT(dt_1 >= 0);
+        ROS_ASSERT(dt_2 >= 0);
+        ROS_ASSERT(dt_1 + dt_2 > 0);
+        double w1 = dt_2 / (dt_1 + dt_2);
+        double w2 = dt_1 / (dt_1 + dt_2);
+        dx = w1 * dx + w2 * imu_msg->linear_acceleration.x;//差值处理
+        dy = w1 * dy + w2 * imu_msg->linear_acceleration.y;
+        dz = w1 * dz + w2 * imu_msg->linear_acceleration.z;
+        rx = w1 * rx + w2 * imu_msg->angular_velocity.x;
+        ry = w1 * ry + w2 * imu_msg->angular_velocity.y;
+        rz = w1 * rz + w2 * imu_msg->angular_velocity.z;
+        processIMU(dt_1, Vector3d(dx, dy, dz), Vector3d(rx, ry, rz));
+                    //printf("dimu: dt:%f a: %f %f %f w: %f %f %f\n",dt_1, dx, dy, dz, rx, ry, rz);
     }
   }
 }
@@ -648,27 +673,31 @@ void processIMU(double dt, const Vector3d &linear_acceleration, const Vector3d &
     {
         pre_integrations[frame_count] = new IntegrationBase{acc_0, gyr_0, Bas[frame_count], Bgs[frame_count]};
     }
+    //ROS_DEBUG("Pre_integrations1111 %d" ,frame_count);
     if (frame_count != 0)//frame count increase  more than windowsize
     {
         pre_integrations[frame_count]->push_back(dt, linear_acceleration, angular_velocity);//push back 包含了误差状态预积分
         //if(solver_flag != NON_LINEAR)
-            tmp_pre_integration->push_back(dt, linear_acceleration, angular_velocity);
+           //ROS_DEBUG("Pre_integrations222 %d" ,frame_count);
+           // tmp_pre_integration->push_back(dt, linear_acceleration, angular_velocity);
 
         dt_buf[frame_count].push_back(dt);
         linear_acceleration_buf[frame_count].push_back(linear_acceleration);
         angular_velocity_buf[frame_count].push_back(angular_velocity);
 
-        int j = frame_count;         
-        Vector3d un_acc_0 = Rs[j] * (acc_0 - Bas[j]) - G;//按前一帧
-        Vector3d un_gyr = 0.5 * (gyr_0 + angular_velocity) - Bgs[j];//前一帧与当前帧结合
-        Rs[j] *= Utility::deltaQ(un_gyr * dt).toRotationMatrix();
-        Vector3d un_acc_1 = Rs[j] * (linear_acceleration - Bas[j]) - G;
-        Vector3d un_acc = 0.5 * (un_acc_0 + un_acc_1);
-        Ps[j] += dt * Vs[j] + 0.5 * dt * dt * un_acc;
-        Vs[j] += dt * un_acc;//当前帧的姿态 位置 速度 
+        // int j = frame_count;         
+        // Vector3d un_acc_0 = Rs[j] * (acc_0 - Bas[j]) - G;//按前一帧
+        // Vector3d un_gyr = 0.5 * (gyr_0 + angular_velocity) - Bgs[j];//前一帧与当前帧结合
+        // Rs[j] *= Utility::deltaQ(un_gyr * dt).toRotationMatrix();
+        // Vector3d un_acc_1 = Rs[j] * (linear_acceleration - Bas[j]) - G;
+        // Vector3d un_acc = 0.5 * (un_acc_0 + un_acc_1);
+        // Ps[j] += dt * Vs[j] + 0.5 * dt * dt * un_acc;
+        // Vs[j] += dt * un_acc;//当前帧的姿态 位置 速度 
     }
     acc_0 = linear_acceleration;
     gyr_0 = angular_velocity;  
+
+  ROS_DEBUG("Pre_integrations ");
 }
 
 
@@ -696,6 +725,13 @@ void solveOdometry()
   ceres::Problem problem;
   ceres::LossFunction *loss_function = new ceres::CauchyLoss(1);
   vector2double();
+  for (int i = 0; i < WINDOW_SIZE + 1; i++)
+    {
+        ceres::LocalParameterization *local_parameterization = new PoseLocalParameterization();
+        problem.AddParameterBlock(para_Pose[i], SIZE_POSE, local_parameterization);//SIZE_POSE = 7  SIZE_SPEEDBIAS = 9
+        problem.AddParameterBlock(para_SpeedBias[i], SIZE_SPEEDBIAS);
+    }
+
 
   for(int i=0; i< WINDOW_SIZE+1 ;i++)
   {
@@ -820,7 +856,11 @@ void slideWindow()
       Bas[i].swap(Bas[i + 1]);
       Bgs[i].swap(Bgs[i + 1]);
 
-      // std::swap(pre_integrations[i], pre_integrations[i + 1]);
+      std::swap(pre_integrations[i], pre_integrations[i + 1]);
+      dt_buf[i].swap(dt_buf[i + 1]);
+      linear_acceleration_buf[i].swap(linear_acceleration_buf[i + 1]);
+      angular_velocity_buf[i].swap(angular_velocity_buf[i + 1]);
+
     }// destory the front values
     Ps[WINDOW_SIZE]  = Ps[WINDOW_SIZE - 1];
     Vs[WINDOW_SIZE]  = Vs[WINDOW_SIZE - 1];
@@ -829,8 +869,8 @@ void slideWindow()
     Bgs[WINDOW_SIZE] = Bgs[WINDOW_SIZE - 1];
 
 
-    // delete pre_integrations[WINDOW_SIZE];
-    // pre_integrations[WINDOW_SIZE] = new IntegrationBase{acc_0, gyr_0, Bas[WINDOW_SIZE], Bgs[WINDOW_SIZE]};
+     delete pre_integrations[WINDOW_SIZE];
+     pre_integrations[WINDOW_SIZE] = new IntegrationBase{acc_0, gyr_0, Bas[WINDOW_SIZE], Bgs[WINDOW_SIZE]};
 
      dt_buf[WINDOW_SIZE].clear();
      linear_acceleration_buf[WINDOW_SIZE].clear();
@@ -925,16 +965,16 @@ std::vector<sensor_msgs::ImuConstPtr> getMeasurements()
 {
     
       std::vector<sensor_msgs::ImuConstPtr> IMUs;
-      int sum_of_wait = 0;
+      //int sum_of_wait = 0;
         if (imu_buf.empty() )
             return IMUs;
 
-        if (!(imu_buf.back()->header.stamp.toSec() > timeLaserCloudOri + td))// (latest imu) imu back<=img+td
-        {
-            //ROS_WARN("wait for imu, only should happen at the beginning");
-            sum_of_wait++;
-            return IMUs;
-        }
+        // if (!(imu_buf.back()->header.stamp.toSec() > timeLaserCloudOri + td))// (latest imu) imu back<=img+td
+        // {
+        //     //ROS_WARN("wait for imu, only should happen at the beginning");
+        //     sum_of_wait++;
+        //     return IMUs;
+        // }
 
         if (!(imu_buf.front()->header.stamp.toSec() < timeLaserCloudOri + td))//(oldest imu) imu front>=img+t throw img
         {
