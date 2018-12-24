@@ -19,6 +19,7 @@
 #include "utility_rotation.h"
 #include "pose_local_parameterization.h"
 #include "factor/imu_factor.h"
+#include "factor/integration_base.h"
 
 #include <mutex>
 
@@ -186,9 +187,9 @@ void clearState()
     angular_velocity_buf[i].clear();
     // if (pre_integrations[i] != nullptr)
     // {
-    //   delete pre_integrations[i];
-    // }
-    // pre_integrations[i] = nullptr;
+    //    delete pre_integrations[i];
+    //  }
+    //  pre_integrations[i] = nullptr;
 
   }
 
@@ -412,7 +413,7 @@ void solveProblem(ceres::Problem &problem)
   ROS_DEBUG("solveProblem %d", frame_count);
     ceres::Solver::Summary summary;
     ceres::Solve(smallProblem ? getOptions() : getOptionsMedium(), &problem, &summary);
-    if(!smallProblem) std::cout << "Final report:\n" << summary.FullReport();
+    //if(!smallProblem) std::cout << "Final report:\n" << summary.FullReport();
 }
 
 
@@ -612,6 +613,8 @@ void imuProcess(std::vector <sensor_msgs::ImuConstPtr> &IMU_Cur)
     double dx = 0, dy = 0, dz = 0, rx = 0, ry = 0, rz = 0;
     double imu_t = imu_msg->header.stamp.toSec();
     double lidar_t = timeLaserCloudOri + td;//img=img+td
+
+    ROS_DEBUG("imu_t lidar_t %f %f", imu_t ,lidar_t );
     if (imu_t <= lidar_t)//imu<=img
     { 
       if (current_time < 0)
@@ -625,7 +628,7 @@ void imuProcess(std::vector <sensor_msgs::ImuConstPtr> &IMU_Cur)
         rx = imu_msg->angular_velocity.x;
         ry = imu_msg->angular_velocity.y;
         rz = imu_msg->angular_velocity.z;
-        processIMU(dt, Vector3d(dx, dy, dz), Vector3d(rx, ry, rz));//imu propogate 得位置 速度初始值 直到img时刻
+       // processIMU(dt, Vector3d(dx, dy, dz), Vector3d(rx, ry, rz));//imu propogate 得位置 速度初始值 直到img时刻
                     //printf("imu: dt:%f a: %f %f %f w: %f %f %f\n",dt, dx, dy, dz, rx, ry, rz);
 
     }
@@ -816,6 +819,8 @@ void slideWindow()
       Vs[i].swap(Vs[i + 1]);
       Bas[i].swap(Bas[i + 1]);
       Bgs[i].swap(Bgs[i + 1]);
+
+      // std::swap(pre_integrations[i], pre_integrations[i + 1]);
     }// destory the front values
     Ps[WINDOW_SIZE]  = Ps[WINDOW_SIZE - 1];
     Vs[WINDOW_SIZE]  = Vs[WINDOW_SIZE - 1];
@@ -827,9 +832,9 @@ void slideWindow()
     // delete pre_integrations[WINDOW_SIZE];
     // pre_integrations[WINDOW_SIZE] = new IntegrationBase{acc_0, gyr_0, Bas[WINDOW_SIZE], Bgs[WINDOW_SIZE]};
 
-    // dt_buf[WINDOW_SIZE].clear();
-    // linear_acceleration_buf[WINDOW_SIZE].clear();
-    // angular_velocity_buf[WINDOW_SIZE].clear();
+     dt_buf[WINDOW_SIZE].clear();
+     linear_acceleration_buf[WINDOW_SIZE].clear();
+     angular_velocity_buf[WINDOW_SIZE].clear();
 
   //}
 
@@ -924,14 +929,14 @@ std::vector<sensor_msgs::ImuConstPtr> getMeasurements()
         if (imu_buf.empty() )
             return IMUs;
 
-        if (!(imu_buf.back()->header.stamp.toSec() > timeLaserCloudOri + td))// latest imu back<=img+td
+        if (!(imu_buf.back()->header.stamp.toSec() > timeLaserCloudOri + td))// (latest imu) imu back<=img+td
         {
             //ROS_WARN("wait for imu, only should happen at the beginning");
             sum_of_wait++;
             return IMUs;
         }
 
-        if (!(imu_buf.front()->header.stamp.toSec() < timeLaserCloudOri + td))//imu front>=img+t throw img
+        if (!(imu_buf.front()->header.stamp.toSec() < timeLaserCloudOri + td))//(oldest imu) imu front>=img+t throw img
         {
             ROS_WARN("throw img, only should happen at the beginning");
             return IMUs;           
@@ -946,6 +951,7 @@ std::vector<sensor_msgs::ImuConstPtr> getMeasurements()
             imu_buf.pop();
         }
         IMUs.emplace_back(imu_buf.front());
+
         if (IMUs.empty())
             ROS_WARN("no imu between two image");
         //最后一帧为IMU与img时间相等  前面为之间的IMU
@@ -970,9 +976,9 @@ void run(){
 
     //std::vector<std::pair<std::vector<sensor_msgs::ImuConstPtr>, sensor_msgs::PointCloud2ConstPtr>> measurements;//vector imu , pointcloud的pair组成vector
     
-   // std::vector <sensor_msgs::ImuConstPtr> IMU_Cur = getMeasurements();
+    std::vector <sensor_msgs::ImuConstPtr> IMU_Cur = getMeasurements();
 
-    //imuProcess(IMU_Cur);
+    imuProcess(IMU_Cur);
     
 
     currrentPoseProcess();
