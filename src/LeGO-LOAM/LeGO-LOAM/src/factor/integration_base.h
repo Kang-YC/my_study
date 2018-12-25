@@ -32,7 +32,7 @@ class IntegrationBase
         noise.block<3, 3>(12, 12) =  (ACC_W * ACC_W) * Eigen::Matrix3d::Identity();
         noise.block<3, 3>(15, 15) =  (GYR_W * GYR_W) * Eigen::Matrix3d::Identity();
 
-        std::cout<<"ACC_N"<<ACC_N<<endl;
+        // std::cout<<"ACC_N"<<ACC_N<<endl;
     }
 
     void push_back(double dt, const Eigen::Vector3d &acc, const Eigen::Vector3d &gyr)
@@ -134,8 +134,8 @@ class IntegrationBase
 
             // std::cout << "jacobian 1 "<<jacobian<<endl;
             // std::cout << "V 1 "<<V<<endl;
-            std::cout << "noise "<<noise<<endl;
-            std::cout << "covariance 1 "<<covariance<<endl;
+            // std::cout << "noise "<<noise<<endl;
+            // std::cout << "covariance 1 "<<covariance<<endl;
         }
 
     }
@@ -218,7 +218,7 @@ class IntegrationBase
         // std::cout << "residuals44"<<residuals.block<3, 1>(O_BA, 0)<<endl;
         // std::cout << "residuals5"<<Bgj - Bgi;
         // std::cout << "residuals55"<<residuals.block<3, 1>(O_BG, 0)<<endl;
-        std::cout << "residuals 1"<<residuals<<endl;
+        // std::cout << "residuals 1"<<residuals<<endl;
         return residuals;
         
     }

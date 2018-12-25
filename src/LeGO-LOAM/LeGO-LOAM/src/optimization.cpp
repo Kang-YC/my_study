@@ -334,7 +334,7 @@ void predict(const sensor_msgs::ImuConstPtr &imu_msg)// propogate
 
     acc_0 = linear_acceleration;
     gyr_0 = angular_velocity;
-    //ROS_DEBUG("tmp_P %f", tmp_P.x());
+    ROS_DEBUG("tmp_P %f", tmp_P.x());
 }
 
 void pubLatestOdometry(const Eigen::Vector3d &P, const Eigen::Quaterniond &Q, const Eigen::Vector3d &V, const std_msgs::Header &header)
@@ -703,7 +703,7 @@ void processIMU(double dt, const Vector3d &linear_acceleration, const Vector3d &
         Ps[j] += dt * Vs[j] + 0.5 * dt * dt * un_acc;
         Vs[j] += dt * un_acc;//当前帧的姿态 位置 速度 
 
-        //ROS_DEBUG("Ps imu %f" ,Ps[j].x());
+        ROS_DEBUG("Ps imu %f" ,Ps[j].x());
     }
     acc_0 = linear_acceleration;
     gyr_0 = angular_velocity;  
@@ -802,8 +802,7 @@ void solveOdometry()
         IMUFactor* imu_factor = new IMUFactor(pre_integrations[j]);//预积分误差
 
         problem.AddResidualBlock(imu_factor, NULL, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
-        problem.SetParameterBlockConstant(para_SpeedBias[i]);
-        problem.SetParameterBlockConstant(para_SpeedBias[j]);
+     
     }
 
    solveProblem(problem);
