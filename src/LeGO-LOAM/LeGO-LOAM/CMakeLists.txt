@@ -32,6 +32,18 @@ INCLUDE_DIRECTORIES(${EIGEN3_INCLUDE_DIR})
 SET(EIGEN_INCLUDE_DIR ${EIGEN3_INCLUDE_DIR}) #needed for ceres for old version of cmake/FindEigen scripts
 MESSAGE("Eigen3_INCLUDE_DIR ${EIGEN3_INCLUDE_DIR}")
 
+
+OPTION(SUITESPARSE "Enable SuiteSparse." OFF)
+OPTION(EIGENSPARSE
+  "Enable the use of Eigen as a sparse linear algebra library for
+   solving the nonlinear least squares problems. Enabling this
+   option will result in an LGPL licensed version of Ceres Solver
+   as the Simplicial Cholesky factorization in Eigen is licensed under the LGPL.
+   This does not affect the covariance estimation algorithm, as it
+   depends on the sparse QR factorization algorithm, which is licensed
+   under the MPL."
+  ON)
+
 MESSAGE("---------------Ceres-------------------")
 FIND_PACKAGE(Ceres REQUIRED)
 INCLUDE_DIRECTORIES(${CERES_INCLUDE_DIRS})

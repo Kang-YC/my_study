@@ -1410,7 +1410,7 @@ public:
         currentRobotPosPoint.x = transformAftMapped[3];
         currentRobotPosPoint.y = transformAftMapped[4];
         currentRobotPosPoint.z = transformAftMapped[5];
-        ROS_INFO("transformAftMapped[5] %f", transformAftMapped[5]);
+        //ROS_INFO("transformAftMapped[5] %f", transformAftMapped[5]);
 
         saveThisKeyFrame = true;
         if (sqrt((previousRobotPosPoint.x-currentRobotPosPoint.x)*(previousRobotPosPoint.x-currentRobotPosPoint.x)

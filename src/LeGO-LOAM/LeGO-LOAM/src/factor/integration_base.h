@@ -8,6 +8,12 @@ using namespace Eigen;
 
 class IntegrationBase
 {
+  private:
+  double ACC_N = 0.08;
+  double GYR_N = 0.004;
+  double ACC_W = 0.00004;
+  double GYR_W = 2.0e-6;
+
   public:
     IntegrationBase() = delete;
     IntegrationBase(const Eigen::Vector3d &_acc_0, const Eigen::Vector3d &_gyr_0,
@@ -25,6 +31,8 @@ class IntegrationBase
         noise.block<3, 3>(9, 9) =  (GYR_N * GYR_N) * Eigen::Matrix3d::Identity();
         noise.block<3, 3>(12, 12) =  (ACC_W * ACC_W) * Eigen::Matrix3d::Identity();
         noise.block<3, 3>(15, 15) =  (GYR_W * GYR_W) * Eigen::Matrix3d::Identity();
+
+        std::cout<<"ACC_N"<<ACC_N<<endl;
     }
 
     void push_back(double dt, const Eigen::Vector3d &acc, const Eigen::Vector3d &gyr)
@@ -123,6 +131,11 @@ class IntegrationBase
             //step_V = V;
             jacobian = F * jacobian;
             covariance = F * covariance * F.transpose() + V * noise * V.transpose();
+
+            // std::cout << "jacobian 1 "<<jacobian<<endl;
+            // std::cout << "V 1 "<<V<<endl;
+            std::cout << "noise "<<noise<<endl;
+            std::cout << "covariance 1 "<<covariance<<endl;
         }
 
     }
@@ -165,6 +178,10 @@ class IntegrationBase
         Eigen::Matrix3d dp_dba = jacobian.block<3, 3>(O_P, O_BA);
         Eigen::Matrix3d dp_dbg = jacobian.block<3, 3>(O_P, O_BG);
 
+        // std::cout << "dp_dba"<< dp_dba << std::endl;
+        // std::cout <<"dp_dbg"<< dp_dbg << std::endl;
+
+
         Eigen::Matrix3d dq_dbg = jacobian.block<3, 3>(O_R, O_BG);
 
         Eigen::Matrix3d dv_dba = jacobian.block<3, 3>(O_V, O_BA);
@@ -177,12 +194,33 @@ class IntegrationBase
         Eigen::Vector3d corrected_delta_v = delta_v + dv_dba * dba + dv_dbg * dbg;
         Eigen::Vector3d corrected_delta_p = delta_p + dp_dba * dba + dp_dbg * dbg;
 
+        // std::cout << "corrected_delta_q"<< corrected_delta_q.x() << std::endl;
+        // std::cout << "O_P G"<<O_P<<O_R<<G<<O_BA<<std::endl;
+
         residuals.block<3, 1>(O_P, 0) = Qi.inverse() * (0.5 * G * sum_dt * sum_dt + Pj - Pi - Vi * sum_dt) - corrected_delta_p;
         residuals.block<3, 1>(O_R, 0) = 2 * (corrected_delta_q.inverse() * (Qi.inverse() * Qj)).vec();
         residuals.block<3, 1>(O_V, 0) = Qi.inverse() * (G * sum_dt + Vj - Vi) - corrected_delta_v;
         residuals.block<3, 1>(O_BA, 0) = Baj - Bai;
         residuals.block<3, 1>(O_BG, 0) = Bgj - Bgi;
+
+
+
+
+        // std::cout << "residuals1"<<Qi.inverse() * (0.5 * G * sum_dt * sum_dt + Pj - Pi - Vi * sum_dt) - corrected_delta_p<<std::endl;
+        // std::cout << "residuals11"<<residuals.block<3, 1>(O_P, 0)<<endl;
+
+        // std::cout << "residuals2"<<2 * (corrected_delta_q.inverse() * (Qi.inverse() * Qj)).vec();
+        // std::cout << "residuals22"<<residuals.block<3, 1>(O_R, 0) <<endl;
+        
+        // std::cout << "residuals3"<<Qi.inverse() * (G * sum_dt + Vj - Vi) - corrected_delta_v;
+        // std::cout << "residuals33"<<residuals.block<3, 1>(O_V, 0)<<endl;
+        // std::cout << "residuals4"<<Baj - Bai;
+        // std::cout << "residuals44"<<residuals.block<3, 1>(O_BA, 0)<<endl;
+        // std::cout << "residuals5"<<Bgj - Bgi;
+        // std::cout << "residuals55"<<residuals.block<3, 1>(O_BG, 0)<<endl;
+        std::cout << "residuals 1"<<residuals<<endl;
         return residuals;
+        
     }
 
     double dt;

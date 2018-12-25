@@ -181,8 +181,10 @@ void clearState()
     Rs[i].setIdentity();
     Ps[i].setZero();
     Vs[i].setZero();
-    Bas[i].setZero();
-    Bgs[i].setZero();
+    // Bas[i].setZero();
+    // Bgs[i].setZero();
+    Bas[i]={0.01,0.01,0.01};
+    Bgs[i]={0.01,0.01,0.01};
 
     dt_buf[i].clear();
     linear_acceleration_buf[i].clear();
@@ -258,7 +260,7 @@ void keyPosesHandler(const sensor_msgs::PointCloud2ConstPtr& msg)
         pcl::fromROSMsg(*msg, *cloudKeyPoses3D);
         newCloudKeyPoses3D = true;
         int numPoses = cloudKeyPoses3D->points.size();
-        ROS_DEBUG("numPoses sub %d", numPoses);
+        ROS_DEBUG("numPoses sub ----->%d", numPoses);
         //ROS_INFO("Keypose success %f",cloudKeyPoses3D->points[0].x);
 }
 
@@ -362,12 +364,18 @@ void pubLatestOdometry(const Eigen::Vector3d &P, const Eigen::Quaterniond &Q, co
 
 ceres::Solver::Options getOptions()
 {
-    // Set a few options
+    // // Set a few options
     ceres::Solver::Options options;
-    //options.use_nonmonotonic_steps = true;
-    //options.preconditioner_type = ceres::IDENTITY;
-    options.linear_solver_type = ceres::DENSE_QR;
+    // //options.use_nonmonotonic_steps = true;
+    // //options.preconditioner_type = ceres::IDENTITY;
+    // options.linear_solver_type = ceres::DENSE_QR;
     
+    // options.max_num_iterations = 50;
+    // 
+    // 
+    options.linear_solver_type = ceres::DENSE_SCHUR;
+    //options.num_threads = 2;
+    options.trust_region_strategy_type = ceres::DOGLEG;
     options.max_num_iterations = 50;
 
 //    options.preconditioner_type = ceres::SCHUR_JACOBI;
@@ -417,7 +425,7 @@ void solveProblem(ceres::Problem &problem)
   ROS_DEBUG("solveProblem %d", frame_count);
     ceres::Solver::Summary summary;
     ceres::Solve(smallProblem ? getOptions() : getOptionsMedium(), &problem, &summary);
-    if(!smallProblem) std::cout << "Final report:\n" << summary.FullReport();
+    std::cout << "Final report:\n" << summary.FullReport();
 }
 
 
@@ -458,17 +466,17 @@ void currrentPoseProcess()
   cur_t<< x,y,z ;
 
   
-  if(frame_count <= WINDOW_SIZE){// framecount==index 0-9
-    Ps[frame_count] = cur_t;
-    Rs[frame_count] = curRx;
-   // ROS_DEBUG("Ps[currentInd] %f %f %f  ",Ps[currentInd][0], Ps[currentInd][1], Ps[currentInd][2]);
-  }
-  else
-  {
-     Ps[WINDOW_SIZE] = cur_t;
-     Rs[WINDOW_SIZE] = curRx;
-   // ROS_DEBUG("Ps[WINDOW_SIZE] %f %f %f  ",Ps[WINDOW_SIZE][0], Ps[WINDOW_SIZE][1], Ps[WINDOW_SIZE][2]);
-  }
+  // if(frame_count <= WINDOW_SIZE){// framecount==index 0-9
+  //   Ps[frame_count] = cur_t;
+  //   Rs[frame_count] = curRx;
+  //  // ROS_DEBUG("Ps[currentInd] %f %f %f  ",Ps[currentInd][0], Ps[currentInd][1], Ps[currentInd][2]);
+  // }
+  // else
+  // {
+  //    Ps[WINDOW_SIZE] = cur_t;
+  //    Rs[WINDOW_SIZE] = curRx;
+  //  // ROS_DEBUG("Ps[WINDOW_SIZE] %f %f %f  ",Ps[WINDOW_SIZE][0], Ps[WINDOW_SIZE][1], Ps[WINDOW_SIZE][2]);
+  // }
 
 
   //ROS_INFO("frame_count %d", frame_count);
@@ -613,12 +621,13 @@ void currrentPoseProcess()
 
 void imuProcess(std::vector <sensor_msgs::ImuConstPtr> &IMU_Cur)
 {
+   ROS_DEBUG("imuProcess %d" , frame_count);
   for (auto &imu_msg : IMU_Cur){
     double dx = 0, dy = 0, dz = 0, rx = 0, ry = 0, rz = 0;
     double imu_t = imu_msg->header.stamp.toSec();
     double lidar_t = timeLaserCloudOri + td;//img=img+td
 
-    //ROS_DEBUG("imuProcess ");
+
 
     //ROS_DEBUG("imu_t lidar_t %f %f", imu_t ,lidar_t );
     if (imu_t <= lidar_t)//imu<=img
@@ -635,7 +644,7 @@ void imuProcess(std::vector <sensor_msgs::ImuConstPtr> &IMU_Cur)
         ry = imu_msg->angular_velocity.y;
         rz = imu_msg->angular_velocity.z;
         processIMU(dt, Vector3d(dx, dy, dz), Vector3d(rx, ry, rz));//imu propogate 得位置 速度初始值 直到img时刻
-                    //printf("imu: dt:%f a: %f %f %f w: %f %f %f\n",dt, dx, dy, dz, rx, ry, rz);
+                   // printf("imu: dt:%f a: %f %f %f w: %f %f %f\n",dt, dx, dy, dz, rx, ry, rz);
 
     }
     else//imu>img
@@ -685,19 +694,21 @@ void processIMU(double dt, const Vector3d &linear_acceleration, const Vector3d &
         linear_acceleration_buf[frame_count].push_back(linear_acceleration);
         angular_velocity_buf[frame_count].push_back(angular_velocity);
 
-        // int j = frame_count;         
-        // Vector3d un_acc_0 = Rs[j] * (acc_0 - Bas[j]) - G;//按前一帧
-        // Vector3d un_gyr = 0.5 * (gyr_0 + angular_velocity) - Bgs[j];//前一帧与当前帧结合
-        // Rs[j] *= Utility::deltaQ(un_gyr * dt).toRotationMatrix();
-        // Vector3d un_acc_1 = Rs[j] * (linear_acceleration - Bas[j]) - G;
-        // Vector3d un_acc = 0.5 * (un_acc_0 + un_acc_1);
-        // Ps[j] += dt * Vs[j] + 0.5 * dt * dt * un_acc;
-        // Vs[j] += dt * un_acc;//当前帧的姿态 位置 速度 
+        int j = frame_count;         
+        Vector3d un_acc_0 = Rs[j] * (acc_0 - Bas[j]) - G;//按前一帧
+        Vector3d un_gyr = 0.5 * (gyr_0 + angular_velocity) - Bgs[j];//前一帧与当前帧结合
+        Rs[j] *= Utility::deltaQ(un_gyr * dt).toRotationMatrix();
+        Vector3d un_acc_1 = Rs[j] * (linear_acceleration - Bas[j]) - G;
+        Vector3d un_acc = 0.5 * (un_acc_0 + un_acc_1);
+        Ps[j] += dt * Vs[j] + 0.5 * dt * dt * un_acc;
+        Vs[j] += dt * un_acc;//当前帧的姿态 位置 速度 
+
+        //ROS_DEBUG("Ps imu %f" ,Ps[j].x());
     }
     acc_0 = linear_acceleration;
     gyr_0 = angular_velocity;  
 
-  ROS_DEBUG("Pre_integrations ");
+    //ROS_DEBUG("Pre_integrations %f", pre_integrations[frame_count]->delta_p[0]);
 }
 
 
@@ -725,62 +736,75 @@ void solveOdometry()
   ceres::Problem problem;
   ceres::LossFunction *loss_function = new ceres::CauchyLoss(1);
   vector2double();
-  for (int i = 0; i < WINDOW_SIZE + 1; i++)
-    {
-        ceres::LocalParameterization *local_parameterization = new PoseLocalParameterization();
-        problem.AddParameterBlock(para_Pose[i], SIZE_POSE, local_parameterization);//SIZE_POSE = 7  SIZE_SPEEDBIAS = 9
-        problem.AddParameterBlock(para_SpeedBias[i], SIZE_SPEEDBIAS);
-    }
+  // for (int i = 0; i < WINDOW_SIZE + 1; i++)
+  //   {
+  //       ceres::LocalParameterization *local_parameterization = new PoseLocalParameterization();
+  //       problem.AddParameterBlock(para_Pose[i], SIZE_POSE, local_parameterization);//SIZE_POSE = 7  SIZE_SPEEDBIAS = 9
+  //       problem.AddParameterBlock(para_SpeedBias[i], SIZE_SPEEDBIAS);
+  //   }
 
 
-  for(int i=0; i< WINDOW_SIZE+1 ;i++)
-  {
+  // for(int i=0; i< WINDOW_SIZE+1 ;i++)
+  // {
 
-    int j   = i+1;
-    int ind = i ;
+  //   int j   = i+1;
+  //   int ind = i ;
 
-    for(int k=0;k<CloudKeyFramesOri[ind]->points.size();k++)
-    {
+  //   for(int k=0;k<CloudKeyFramesOri[ind]->points.size();k++)
+  //   {
       
-      Vector3d ori, proj;
+  //     Vector3d ori, proj;
 
-      //ori in body frame
-      //proj in world frame
+  //     //ori in body frame
+  //     //proj in world frame
 
-      ori<< CloudKeyFramesOri[ind]->points[k].z , CloudKeyFramesOri[ind]->points[k].x , CloudKeyFramesOri[ind]->points[k].y;
+  //     ori<< CloudKeyFramesOri[ind]->points[k].z , CloudKeyFramesOri[ind]->points[k].x , CloudKeyFramesOri[ind]->points[k].y;
       
-      proj<< CloudKeyFramesProj[ind]->points[k].z, CloudKeyFramesProj[ind]->points[k].x , CloudKeyFramesProj[ind]->points[k].y;
+  //     proj<< CloudKeyFramesProj[ind]->points[k].z, CloudKeyFramesProj[ind]->points[k].x , CloudKeyFramesProj[ind]->points[k].y;
 
-      // test the rotation
-      if(k < 3 && ind == WINDOW_SIZE-1){
-      double point[3] = {ori[0], ori[1], ori[2]};
-      double q[4]     = {para_Pose[ind][6],para_Pose[ind][3],para_Pose[ind][4],para_Pose[ind][5]};//!!!!!w x y z 
-      double p[3];
+  //     // test the rotation
+  //     if(k < 3 && ind == WINDOW_SIZE-1){
+  //     double point[3] = {ori[0], ori[1], ori[2]};
+  //     double q[4]     = {para_Pose[ind][6],para_Pose[ind][3],para_Pose[ind][4],para_Pose[ind][5]};//!!!!!w x y z 
+  //     double p[3];
 
 
-      ceres::QuaternionRotatePoint( q, point, p);
+  //     ceres::QuaternionRotatePoint( q, point, p);
         
-        p[0] += para_Pose[ind][0];
-        p[1] += para_Pose[ind][1];
-        p[2] += para_Pose[ind][2];
-      cout << "ori"<<p[0]<<" " <<p[1]<<" "<<p[2]<< endl;
-      cout << "pro"<<proj[0]<<" " << proj[1]<<" "<<proj[2]<<endl;
+  //       p[0] += para_Pose[ind][0];
+  //       p[1] += para_Pose[ind][1];
+  //       p[2] += para_Pose[ind][2];
+  //     cout << "ori"<<p[0]<<" " <<p[1]<<" "<<p[2]<< endl;
+  //     cout << "pro"<<proj[0]<<" " << proj[1]<<" "<<proj[2]<<endl;
 
-      }
+  //     }
   
 
-      // }  
-      //ROS_DEBUG("ori x y  %f %f", ori[0],ori[1]);
-      if(ori[0] > 50 ||  ori[1] > 50  || ori[2] > 50)
-        continue;
+  //     // }  
+  //     //ROS_DEBUG("ori x y  %f %f", ori[0],ori[1]);
+  //     if(ori[0] > 50 ||  ori[1] > 50  || ori[2] > 50)
+  //       continue;
 
       
-      ceres::CostFunction* lidar_cost_function = ICPCostFunctions::PointToPointError_EigenQuaternion::Create(proj,ori);
+  //     ceres::CostFunction* lidar_cost_function = ICPCostFunctions::PointToPointError_EigenQuaternion::Create(proj,ori);
       
-      problem.AddResidualBlock(lidar_cost_function, loss_function, para_Pose[ind]);
+  //     problem.AddResidualBlock(lidar_cost_function, loss_function, para_Pose[ind]);
       
-      }
-  }
+  //     }
+  // }
+
+
+  for (int i = 0; i < WINDOW_SIZE; i++)
+    {
+        int j = i + 1;
+        if (pre_integrations[j]->sum_dt > 10.0)
+            continue;
+        IMUFactor* imu_factor = new IMUFactor(pre_integrations[j]);//预积分误差
+
+        problem.AddResidualBlock(imu_factor, NULL, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
+        problem.SetParameterBlockConstant(para_SpeedBias[i]);
+        problem.SetParameterBlockConstant(para_SpeedBias[j]);
+    }
 
    solveProblem(problem);
    double2vector();
@@ -1018,12 +1042,9 @@ void run(){
     
     std::vector <sensor_msgs::ImuConstPtr> IMU_Cur = getMeasurements();
 
-    imuProcess(IMU_Cur);
-    
-
     currrentPoseProcess();
 
-    
+    imuProcess(IMU_Cur);
 
     optimizationProcess();
 
