@@ -1,0 +1,1163 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+A	factor/marginalization_factor.h	/^    Eigen::MatrixXd A;$/;"	m	struct:ThreadsStruct
+ACC_N	factor/integration_base.h	/^  double ACC_N = 0.08;$/;"	m	class:IntegrationBase
+ACC_N	parameters.cpp	/^double ACC_N, ACC_W;$/;"	v
+ACC_N	utility/parameters.cpp	/^double ACC_N, ACC_W;$/;"	v
+ACC_W	factor/integration_base.h	/^  double ACC_W = 0.00004;$/;"	m	class:IntegrationBase
+ACC_W	parameters.cpp	/^double ACC_N, ACC_W;$/;"	v
+ACC_W	utility/parameters.cpp	/^double ACC_N, ACC_W;$/;"	v
+AccumulateIMUShiftAndRotation	featureAssociation.cpp	/^    void AccumulateIMUShiftAndRotation()$/;"	f	class:FeatureAssociation
+AccumulateRotation	featureAssociation.cpp	/^    void AccumulateRotation(float cx, float cy, float cz, float lx, float ly, float lz, $/;"	f	class:FeatureAssociation
+BIAS_ACC_THRESHOLD	parameters.cpp	/^double BIAS_ACC_THRESHOLD;$/;"	v
+BIAS_ACC_THRESHOLD	utility/parameters.cpp	/^double BIAS_ACC_THRESHOLD;$/;"	v
+BIAS_GYR_THRESHOLD	parameters.cpp	/^double BIAS_GYR_THRESHOLD;$/;"	v
+BIAS_GYR_THRESHOLD	utility/parameters.cpp	/^double BIAS_GYR_THRESHOLD;$/;"	v
+Bas	optimization (1222).cpp	/^Vector3d Bas[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Bas	optimization (copy)改了frame imu.cpp	/^Vector3d Bas[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Bas	optimization (跑通了窗口).cpp	/^Vector3d Bas[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Bas	optimization(origin)很多註釋的.cpp	/^Vector3d Bas[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Bas	optimization.cpp	/^Vector3d Bas[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Bgs	optimization (1222).cpp	/^Vector3d Bgs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Bgs	optimization (copy)改了frame imu.cpp	/^Vector3d Bgs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Bgs	optimization (跑通了窗口).cpp	/^Vector3d Bgs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Bgs	optimization(origin)很多註釋的.cpp	/^Vector3d Bgs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Bgs	optimization.cpp	/^Vector3d Bgs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+COL	parameters.cpp	/^double ROW, COL;$/;"	v
+COL	utility/parameters.cpp	/^double ROW, COL;$/;"	v
+CameraPoseVisualization	utility/CameraPoseVisualization.cpp	/^CameraPoseVisualization::CameraPoseVisualization(float r, float g, float b, float a)$/;"	f	class:CameraPoseVisualization
+CameraPoseVisualization	utility/CameraPoseVisualization.h	/^class CameraPoseVisualization {$/;"	c
+CloudKeyFramesOri	optimization (1222).cpp	/^deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesOri;\/\/$/;"	m	class:Optimization	file:
+CloudKeyFramesOri	optimization (copy)改了frame imu.cpp	/^deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesOri;\/\/$/;"	m	class:Optimization	file:
+CloudKeyFramesOri	optimization (跑通了窗口).cpp	/^deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesOri;\/\/$/;"	m	class:Optimization	file:
+CloudKeyFramesOri	optimization(origin)很多註釋的.cpp	/^deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesOri;\/\/$/;"	m	class:Optimization	file:
+CloudKeyFramesOri	optimization.cpp	/^deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesOri;\/\/$/;"	m	class:Optimization	file:
+CloudKeyFramesProj	optimization (1222).cpp	/^deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesProj;\/\/$/;"	m	class:Optimization	file:
+CloudKeyFramesProj	optimization (copy)改了frame imu.cpp	/^deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesProj;\/\/$/;"	m	class:Optimization	file:
+CloudKeyFramesProj	optimization (跑通了窗口).cpp	/^deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesProj;\/\/$/;"	m	class:Optimization	file:
+CloudKeyFramesProj	optimization(origin)很多註釋的.cpp	/^deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesProj;\/\/$/;"	m	class:Optimization	file:
+CloudKeyFramesProj	optimization.cpp	/^deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesProj;\/\/$/;"	m	class:Optimization	file:
+CloudKeyPosesID	optimization (1222).cpp	/^vector<int> CloudKeyPosesID;$/;"	m	class:Optimization	file:
+CloudKeyPosesID	optimization (copy)改了frame imu.cpp	/^vector<int> CloudKeyPosesID;$/;"	m	class:Optimization	file:
+CloudKeyPosesID	optimization (跑通了窗口).cpp	/^vector<int> CloudKeyPosesID;$/;"	m	class:Optimization	file:
+CloudKeyPosesID	optimization(origin)很多註釋的.cpp	/^vector<int> CloudKeyPosesID;$/;"	m	class:Optimization	file:
+CloudKeyPosesID	optimization.cpp	/^vector<int> CloudKeyPosesID;$/;"	m	class:Optimization	file:
+ComputeJacobian	factor/pose_local_parameterization.cpp	/^bool PoseLocalParameterization::ComputeJacobian(const double *x, double *jacobian) const$/;"	f	class:PoseLocalParameterization
+ESTIMATE_EXTRINSIC	parameters.cpp	/^int ESTIMATE_EXTRINSIC;$/;"	v
+ESTIMATE_EXTRINSIC	utility/parameters.cpp	/^int ESTIMATE_EXTRINSIC;$/;"	v
+ESTIMATE_TD	parameters.cpp	/^int ESTIMATE_TD;$/;"	v
+ESTIMATE_TD	utility/parameters.cpp	/^int ESTIMATE_TD;$/;"	v
+EX_CALIB_RESULT_PATH	parameters.cpp	/^std::string EX_CALIB_RESULT_PATH;$/;"	v
+EX_CALIB_RESULT_PATH	utility/parameters.cpp	/^std::string EX_CALIB_RESULT_PATH;$/;"	v
+Eigen2Point	utility/CameraPoseVisualization.cpp	/^void Eigen2Point(const Eigen::Vector3d& v, geometry_msgs::Point& p) {$/;"	f
+Evaluate	factor/imu_factor.h	/^    virtual bool Evaluate(double const *const *parameters, double *residuals, double **jacobians) const$/;"	f	class:IMUFactor
+Evaluate	factor/marginalization_factor.cpp	/^bool MarginalizationFactor::Evaluate(double const *const *parameters, double *residuals, double **jacobians) const$/;"	f	class:MarginalizationFactor
+Evaluate	factor/marginalization_factor.cpp	/^void ResidualBlockInfo::Evaluate()$/;"	f	class:ResidualBlockInfo
+Evaluate	factor/projection_factor.cpp	/^bool ProjectionFactor::Evaluate(double const *const *parameters, double *residuals, double **jacobians) const$/;"	f	class:ProjectionFactor
+Evaluate	factor/projection_td_factor.cpp	/^bool ProjectionTdFactor::Evaluate(double const *const *parameters, double *residuals, double **jacobians) const$/;"	f	class:ProjectionTdFactor
+FOCAL_LENGTH	parameters.h	/^const double FOCAL_LENGTH = 460.0;$/;"	v
+FOCAL_LENGTH	utility/parameters.h	/^const double FOCAL_LENGTH = 460.0;$/;"	v
+FeatureAssociation	featureAssociation.cpp	/^    FeatureAssociation():$/;"	f	class:FeatureAssociation
+FeatureAssociation	featureAssociation.cpp	/^class FeatureAssociation{$/;"	c	file:
+G	optimization (copy)改了frame imu.cpp	/^Vector3d G = {0, 0, 9.81};$/;"	m	class:Optimization	file:
+G	optimization.cpp	/^Vector3d G = {0, 0, 9.81};$/;"	m	class:Optimization	file:
+GYR_N	factor/integration_base.h	/^  double GYR_N = 0.004;$/;"	m	class:IntegrationBase
+GYR_N	parameters.cpp	/^double GYR_N, GYR_W;$/;"	v
+GYR_N	utility/parameters.cpp	/^double GYR_N, GYR_W;$/;"	v
+GYR_W	factor/integration_base.h	/^  double GYR_W = 2.0e-6;$/;"	m	class:IntegrationBase
+GYR_W	parameters.cpp	/^double GYR_N, GYR_W;$/;"	v
+GYR_W	utility/parameters.cpp	/^double GYR_N, GYR_W;$/;"	v
+GlobalSize	factor/pose_local_parameterization.h	/^    virtual int GlobalSize() const { return 7; };\/\/size of x$/;"	f	class:PoseLocalParameterization
+ICP_Ceres	internal/icp-ceres.cpp	/^namespace ICP_Ceres {$/;"	n	file:
+IMUFactor	factor/imu_factor.h	/^    IMUFactor(IntegrationBase* _pre_integration):pre_integration(_pre_integration)$/;"	f	class:IMUFactor
+IMUFactor	factor/imu_factor.h	/^class IMUFactor : public ceres::SizedCostFunction<15, 7, 9, 7, 9>$/;"	c
+IMU_TOPIC	parameters.cpp	/^std::string IMU_TOPIC;$/;"	v
+IMU_TOPIC	utility/parameters.cpp	/^std::string IMU_TOPIC;$/;"	v
+INIT_DEPTH	parameters.cpp	/^double INIT_DEPTH;$/;"	v
+INIT_DEPTH	utility/parameters.cpp	/^double INIT_DEPTH;$/;"	v
+ImageProjection	imageProjection.cpp	/^    ImageProjection():$/;"	f	class:ImageProjection
+ImageProjection	imageProjection.cpp	/^class ImageProjection{$/;"	c	file:
+IntegrationBase	factor/integration_base.h	/^    IntegrationBase(const Eigen::Vector3d &_acc_0, const Eigen::Vector3d &_gyr_0,$/;"	f	class:IntegrationBase
+IntegrationBase	factor/integration_base.h	/^class IntegrationBase$/;"	c
+LMOptimization	mapOptmization.cpp	/^    bool LMOptimization(int iterCount){$/;"	f	class:mapOptimization
+LaserCloudOri	optimization (1222).cpp	/^pcl::PointCloud<PointType>::Ptr LaserCloudOri;$/;"	m	class:Optimization	file:
+LaserCloudOri	optimization (copy)改了frame imu.cpp	/^pcl::PointCloud<PointType>::Ptr LaserCloudOri;$/;"	m	class:Optimization	file:
+LaserCloudOri	optimization (跑通了窗口).cpp	/^pcl::PointCloud<PointType>::Ptr LaserCloudOri;$/;"	m	class:Optimization	file:
+LaserCloudOri	optimization(origin)很多註釋的.cpp	/^pcl::PointCloud<PointType>::Ptr LaserCloudOri;$/;"	m	class:Optimization	file:
+LaserCloudOri	optimization.cpp	/^pcl::PointCloud<PointType>::Ptr LaserCloudOri;$/;"	m	class:Optimization	file:
+LaserCloudProj	optimization (1222).cpp	/^pcl::PointCloud<PointType>::Ptr LaserCloudProj;$/;"	m	class:Optimization	file:
+LaserCloudProj	optimization (copy)改了frame imu.cpp	/^pcl::PointCloud<PointType>::Ptr LaserCloudProj;$/;"	m	class:Optimization	file:
+LaserCloudProj	optimization (跑通了窗口).cpp	/^pcl::PointCloud<PointType>::Ptr LaserCloudProj;$/;"	m	class:Optimization	file:
+LaserCloudProj	optimization(origin)很多註釋的.cpp	/^pcl::PointCloud<PointType>::Ptr LaserCloudProj;$/;"	m	class:Optimization	file:
+LaserCloudProj	optimization.cpp	/^pcl::PointCloud<PointType>::Ptr LaserCloudProj;$/;"	m	class:Optimization	file:
+LocalSize	factor/pose_local_parameterization.h	/^    virtual int LocalSize() const { return 6; };\/\/size of delta $/;"	f	class:PoseLocalParameterization
+MIN_PARALLAX	parameters.cpp	/^double MIN_PARALLAX;$/;"	v
+MIN_PARALLAX	utility/parameters.cpp	/^double MIN_PARALLAX;$/;"	v
+MarginalizationFactor	factor/marginalization_factor.cpp	/^MarginalizationFactor::MarginalizationFactor(MarginalizationInfo* _marginalization_info):marginalization_info(_marginalization_info)$/;"	f	class:MarginalizationFactor
+MarginalizationFactor	factor/marginalization_factor.h	/^class MarginalizationFactor : public ceres::CostFunction$/;"	c
+MarginalizationInfo	factor/marginalization_factor.h	/^class MarginalizationInfo$/;"	c
+NUM_ITERATIONS	parameters.cpp	/^int NUM_ITERATIONS;$/;"	v
+NUM_ITERATIONS	utility/parameters.cpp	/^int NUM_ITERATIONS;$/;"	v
+NUM_OF_CAM	parameters.h	/^const int NUM_OF_CAM = 1;$/;"	v
+NUM_OF_CAM	utility/parameters.h	/^const int NUM_OF_CAM = 1;$/;"	v
+NUM_OF_F	parameters.h	/^const int NUM_OF_F = 1000;$/;"	v
+NUM_OF_F	utility/parameters.h	/^const int NUM_OF_F = 1000;$/;"	v
+NUM_THREADS	factor/marginalization_factor.h	/^const int NUM_THREADS = 4;$/;"	v
+NoiseOrder	parameters.h	/^enum NoiseOrder$/;"	g
+NoiseOrder	utility/parameters.h	/^enum NoiseOrder$/;"	g
+O_AN	parameters.h	/^    O_AN = 0,$/;"	e	enum:NoiseOrder
+O_AN	utility/parameters.h	/^    O_AN = 0,$/;"	e	enum:NoiseOrder
+O_AW	parameters.h	/^    O_AW = 6,$/;"	e	enum:NoiseOrder
+O_AW	utility/parameters.h	/^    O_AW = 6,$/;"	e	enum:NoiseOrder
+O_BA	parameters.h	/^    O_BA = 9,$/;"	e	enum:StateOrder
+O_BA	utility/parameters.h	/^    O_BA = 9,$/;"	e	enum:StateOrder
+O_BG	parameters.h	/^    O_BG = 12$/;"	e	enum:StateOrder
+O_BG	utility/parameters.h	/^    O_BG = 12$/;"	e	enum:StateOrder
+O_GN	parameters.h	/^    O_GN = 3,$/;"	e	enum:NoiseOrder
+O_GN	utility/parameters.h	/^    O_GN = 3,$/;"	e	enum:NoiseOrder
+O_GW	parameters.h	/^    O_GW = 9$/;"	e	enum:NoiseOrder
+O_GW	utility/parameters.h	/^    O_GW = 9$/;"	e	enum:NoiseOrder
+O_P	parameters.h	/^    O_P = 0,$/;"	e	enum:StateOrder
+O_P	utility/parameters.h	/^    O_P = 0,$/;"	e	enum:StateOrder
+O_R	parameters.h	/^    O_R = 3,$/;"	e	enum:StateOrder
+O_R	utility/parameters.h	/^    O_R = 3,$/;"	e	enum:StateOrder
+O_V	parameters.h	/^    O_V = 6,$/;"	e	enum:StateOrder
+O_V	utility/parameters.h	/^    O_V = 6,$/;"	e	enum:StateOrder
+Optimization	optimization (1222).cpp	/^  Optimization(): $/;"	f	class:Optimization
+Optimization	optimization (1222).cpp	/^class Optimization{$/;"	c	file:
+Optimization	optimization (copy)改了frame imu.cpp	/^  Optimization(): $/;"	f	class:Optimization
+Optimization	optimization (copy)改了frame imu.cpp	/^class Optimization{$/;"	c	file:
+Optimization	optimization (跑通了窗口).cpp	/^  Optimization(): $/;"	f	class:Optimization
+Optimization	optimization (跑通了窗口).cpp	/^class Optimization{$/;"	c	file:
+Optimization	optimization(origin)很多註釋的.cpp	/^  Optimization(): $/;"	f	class:Optimization
+Optimization	optimization(origin)很多註釋的.cpp	/^class Optimization{$/;"	c	file:
+Optimization	optimization.cpp	/^  Optimization(): $/;"	f	class:Optimization
+Optimization	optimization.cpp	/^class Optimization{$/;"	c	file:
+PluginIMURotation	featureAssociation.cpp	/^    void PluginIMURotation(float bcx, float bcy, float bcz, float blx, float bly, float blz, $/;"	f	class:FeatureAssociation
+Plus	factor/pose_local_parameterization.cpp	/^bool PoseLocalParameterization::Plus(const double *x, const double *delta, double *x_plus_delta) const$/;"	f	class:PoseLocalParameterization
+PoseLocalParameterization	factor/pose_local_parameterization.h	/^class PoseLocalParameterization : public ceres::LocalParameterization$/;"	c
+ProjectionFactor	factor/projection_factor.cpp	/^ProjectionFactor::ProjectionFactor(const Eigen::Vector3d &_pts_i, const Eigen::Vector3d &_pts_j) : pts_i(_pts_i), pts_j(_pts_j)$/;"	f	class:ProjectionFactor
+ProjectionFactor	factor/projection_factor.h	/^class ProjectionFactor : public ceres::SizedCostFunction<2, 7, 7, 7, 1>$/;"	c
+ProjectionTdFactor	factor/projection_td_factor.cpp	/^ProjectionTdFactor::ProjectionTdFactor(const Eigen::Vector3d &_pts_i, const Eigen::Vector3d &_pts_j, $/;"	f	class:ProjectionTdFactor
+ProjectionTdFactor	factor/projection_td_factor.h	/^class ProjectionTdFactor : public ceres::SizedCostFunction<2, 7, 7, 7, 1, 1>$/;"	c
+Ps	optimization (1222).cpp	/^Vector3d Ps[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Ps	optimization (copy)改了frame imu.cpp	/^Vector3d Ps[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Ps	optimization (跑通了窗口).cpp	/^Vector3d Ps[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Ps	optimization(origin)很多註釋的.cpp	/^Vector3d Ps[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Ps	optimization.cpp	/^Vector3d Ps[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Qleft	utility/utility_rotation.h	/^    static Eigen::Matrix<typename Derived::Scalar, 4, 4> Qleft(const Eigen::QuaternionBase<Derived> &q)$/;"	f	class:Utility
+Qright	utility/utility_rotation.h	/^    static Eigen::Matrix<typename Derived::Scalar, 4, 4> Qright(const Eigen::QuaternionBase<Derived> &p)$/;"	f	class:Utility
+R2ypr	utility/utility_rotation.h	/^    static Eigen::Vector3d R2ypr(const Eigen::Matrix3d &R)$/;"	f	class:Utility
+RIC	parameters.cpp	/^std::vector<Eigen::Matrix3d> RIC;$/;"	v
+RIC	utility/parameters.cpp	/^std::vector<Eigen::Matrix3d> RIC;$/;"	v
+ROLLING_SHUTTER	parameters.cpp	/^int ROLLING_SHUTTER;$/;"	v
+ROLLING_SHUTTER	utility/parameters.cpp	/^int ROLLING_SHUTTER;$/;"	v
+ROW	parameters.cpp	/^double ROW, COL;$/;"	v
+ROW	utility/parameters.cpp	/^double ROW, COL;$/;"	v
+ResidualBlockInfo	factor/marginalization_factor.h	/^    ResidualBlockInfo(ceres::CostFunction *_cost_function, ceres::LossFunction *_loss_function, std::vector<double *> _parameter_blocks, std::vector<int> _drop_set)$/;"	f	struct:ResidualBlockInfo
+ResidualBlockInfo	factor/marginalization_factor.h	/^struct ResidualBlockInfo$/;"	s
+Rs	optimization (1222).cpp	/^Matrix3d Rs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Rs	optimization (copy)改了frame imu.cpp	/^Matrix3d Rs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Rs	optimization (跑通了窗口).cpp	/^Matrix3d Rs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Rs	optimization(origin)很多註釋的.cpp	/^Matrix3d Rs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Rs	optimization.cpp	/^Matrix3d Rs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+SIZE_FEATURE	parameters.h	/^    SIZE_FEATURE = 1$/;"	e	enum:SIZE_PARAMETERIZATION
+SIZE_FEATURE	utility/parameters.h	/^    SIZE_FEATURE = 1$/;"	e	enum:SIZE_PARAMETERIZATION
+SIZE_PARAMETERIZATION	parameters.h	/^enum SIZE_PARAMETERIZATION$/;"	g
+SIZE_PARAMETERIZATION	utility/parameters.h	/^enum SIZE_PARAMETERIZATION$/;"	g
+SIZE_POSE	optimization (1222).cpp	/^static const int SIZE_POSE = 7;$/;"	m	class:Optimization	file:
+SIZE_POSE	optimization (copy)改了frame imu.cpp	/^static const int SIZE_POSE = 7;$/;"	m	class:Optimization	file:
+SIZE_POSE	optimization (跑通了窗口).cpp	/^static const int SIZE_POSE = 7;$/;"	m	class:Optimization	file:
+SIZE_POSE	optimization(origin)很多註釋的.cpp	/^static const int SIZE_POSE = 7;$/;"	m	class:Optimization	file:
+SIZE_POSE	optimization.cpp	/^static const int SIZE_POSE = 7;$/;"	m	class:Optimization	file:
+SIZE_POSE	parameters.h	/^    SIZE_POSE = 7,$/;"	e	enum:SIZE_PARAMETERIZATION
+SIZE_POSE	utility/parameters.h	/^    SIZE_POSE = 7,$/;"	e	enum:SIZE_PARAMETERIZATION
+SIZE_SPEEDBIAS	optimization (1222).cpp	/^static const int SIZE_SPEEDBIAS = 9;$/;"	m	class:Optimization	file:
+SIZE_SPEEDBIAS	optimization (copy)改了frame imu.cpp	/^static const int SIZE_SPEEDBIAS = 9;$/;"	m	class:Optimization	file:
+SIZE_SPEEDBIAS	optimization (跑通了窗口).cpp	/^static const int SIZE_SPEEDBIAS = 9;$/;"	m	class:Optimization	file:
+SIZE_SPEEDBIAS	optimization(origin)很多註釋的.cpp	/^static const int SIZE_SPEEDBIAS = 9;$/;"	m	class:Optimization	file:
+SIZE_SPEEDBIAS	optimization.cpp	/^static const int SIZE_SPEEDBIAS = 9;$/;"	m	class:Optimization	file:
+SIZE_SPEEDBIAS	parameters.h	/^    SIZE_SPEEDBIAS = 9,$/;"	e	enum:SIZE_PARAMETERIZATION
+SIZE_SPEEDBIAS	utility/parameters.h	/^    SIZE_SPEEDBIAS = 9,$/;"	e	enum:SIZE_PARAMETERIZATION
+SOLVER_TIME	parameters.cpp	/^double SOLVER_TIME;$/;"	v
+SOLVER_TIME	utility/parameters.cpp	/^double SOLVER_TIME;$/;"	v
+ShiftToStartIMU	featureAssociation.cpp	/^    void ShiftToStartIMU(float pointTime)$/;"	f	class:FeatureAssociation
+StateOrder	parameters.h	/^enum StateOrder$/;"	g
+StateOrder	utility/parameters.h	/^enum StateOrder$/;"	g
+TD	parameters.cpp	/^double TD, TR;$/;"	v
+TD	utility/parameters.cpp	/^double TD, TR;$/;"	v
+TIC	parameters.cpp	/^std::vector<Eigen::Vector3d> TIC;$/;"	v
+TIC	utility/parameters.cpp	/^std::vector<Eigen::Vector3d> TIC;$/;"	v
+TR	parameters.cpp	/^double TD, TR;$/;"	v
+TR	utility/parameters.cpp	/^double TD, TR;$/;"	v
+ThreadsConstructA	factor/marginalization_factor.cpp	/^void* ThreadsConstructA(void* threadsstruct)$/;"	f
+ThreadsStruct	factor/marginalization_factor.h	/^struct ThreadsStruct$/;"	s
+TicToc	utility/tic_toc.h	/^    TicToc()$/;"	f	class:TicToc
+TicToc	utility/tic_toc.h	/^class TicToc$/;"	c
+TransformFusion	transformFusion.cpp	/^    TransformFusion(){$/;"	f	class:TransformFusion
+TransformFusion	transformFusion.cpp	/^class TransformFusion{$/;"	c	file:
+TransformToEnd	featureAssociation.cpp	/^    void TransformToEnd(PointType const * const pi, PointType * const po)$/;"	f	class:FeatureAssociation
+TransformToStart	featureAssociation.cpp	/^    void TransformToStart(PointType const * const pi, PointType * const po)$/;"	f	class:FeatureAssociation
+TransformToStartIMU	featureAssociation.cpp	/^    void TransformToStartIMU(PointType *p)$/;"	f	class:FeatureAssociation
+Utility	utility/utility_rotation.h	/^class Utility$/;"	c
+VINS_RESULT_PATH	parameters.cpp	/^std::string VINS_RESULT_PATH;$/;"	v
+VINS_RESULT_PATH	utility/parameters.cpp	/^std::string VINS_RESULT_PATH;$/;"	v
+VeloToStartIMU	featureAssociation.cpp	/^    void VeloToStartIMU()$/;"	f	class:FeatureAssociation
+Visualize	internal/Visualize.cpp	/^Visualize::Visualize()$/;"	f	class:Visualize
+Vs	optimization (1222).cpp	/^Vector3d Vs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Vs	optimization (copy)改了frame imu.cpp	/^Vector3d Vs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Vs	optimization (跑通了窗口).cpp	/^Vector3d Vs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Vs	optimization(origin)很多註釋的.cpp	/^Vector3d Vs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Vs	optimization.cpp	/^Vector3d Vs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+WINDOW_SIZE	optimization (1222).cpp	/^static const int WINDOW_SIZE = 10;$/;"	m	class:Optimization	file:
+WINDOW_SIZE	optimization (copy)改了frame imu.cpp	/^static const int WINDOW_SIZE = 10;$/;"	m	class:Optimization	file:
+WINDOW_SIZE	optimization (跑通了窗口).cpp	/^static const int WINDOW_SIZE = 10;$/;"	m	class:Optimization	file:
+WINDOW_SIZE	optimization(origin)很多註釋的.cpp	/^static const int WINDOW_SIZE = 10;$/;"	m	class:Optimization	file:
+WINDOW_SIZE	optimization.cpp	/^static const int WINDOW_SIZE = 10;$/;"	m	class:Optimization	file:
+WINDOW_SIZE	parameters.h	/^const int WINDOW_SIZE = 10;$/;"	v
+WINDOW_SIZE	utility/parameters.h	/^const int WINDOW_SIZE = 10;$/;"	v
+aLoopIsClosed	mapOptmization.cpp	/^    bool aLoopIsClosed;$/;"	m	class:mapOptimization	file:
+acc_0	factor/integration_base.h	/^    Eigen::Vector3d acc_0, gyr_0;$/;"	m	class:IntegrationBase
+acc_0	optimization (copy)改了frame imu.cpp	/^Eigen::Vector3d acc_0;$/;"	m	class:Optimization	file:
+acc_0	optimization.cpp	/^Eigen::Vector3d acc_0;$/;"	m	class:Optimization	file:
+acc_1	factor/integration_base.h	/^    Eigen::Vector3d acc_1, gyr_1;$/;"	m	class:IntegrationBase
+acc_buf	factor/integration_base.h	/^    std::vector<Eigen::Vector3d> acc_buf;$/;"	m	class:IntegrationBase
+addResidualBlockInfo	factor/marginalization_factor.cpp	/^void MarginalizationInfo::addResidualBlockInfo(ResidualBlockInfo *residual_block_info)$/;"	f	class:MarginalizationInfo
+add_edge	utility/CameraPoseVisualization.cpp	/^void CameraPoseVisualization::add_edge(const Eigen::Vector3d& p0, const Eigen::Vector3d& p1){$/;"	f	class:CameraPoseVisualization
+add_loopedge	utility/CameraPoseVisualization.cpp	/^void CameraPoseVisualization::add_loopedge(const Eigen::Vector3d& p0, const Eigen::Vector3d& p1){$/;"	f	class:CameraPoseVisualization
+add_pose	utility/CameraPoseVisualization.cpp	/^void CameraPoseVisualization::add_pose(const Eigen::Vector3d& p, const Eigen::Quaterniond& q) {$/;"	f	class:CameraPoseVisualization
+adjustDistortion	featureAssociation.cpp	/^    void adjustDistortion()$/;"	f	class:FeatureAssociation
+adjustOutlierCloud	featureAssociation.cpp	/^    void adjustOutlierCloud(){$/;"	f	class:FeatureAssociation
+aftCoupledTrans	optimization (1222).cpp	/^tf::StampedTransform aftCoupledTrans;$/;"	m	class:Optimization	file:
+aftCoupledTrans	optimization (copy)改了frame imu.cpp	/^tf::StampedTransform aftCoupledTrans;$/;"	m	class:Optimization	file:
+aftCoupledTrans	optimization (跑通了窗口).cpp	/^tf::StampedTransform aftCoupledTrans;$/;"	m	class:Optimization	file:
+aftCoupledTrans	optimization(origin)很多註釋的.cpp	/^tf::StampedTransform aftCoupledTrans;$/;"	m	class:Optimization	file:
+aftCoupledTrans	optimization.cpp	/^tf::StampedTransform aftCoupledTrans;$/;"	m	class:Optimization	file:
+aftMappedTrans	mapOptmization.cpp	/^    tf::StampedTransform aftMappedTrans;$/;"	m	class:mapOptimization	file:
+allPushedIndX	imageProjection.cpp	/^    uint16_t *allPushedIndX;$/;"	m	class:ImageProjection	file:
+allPushedIndY	imageProjection.cpp	/^    uint16_t *allPushedIndY;$/;"	m	class:ImageProjection	file:
+allocateMemory	imageProjection.cpp	/^    void allocateMemory(){$/;"	f	class:ImageProjection
+allocateMemory	mapOptmization.cpp	/^    void allocateMemory(){$/;"	f	class:mapOptimization
+allocateMemory	optimization (1222).cpp	/^void allocateMemory()$/;"	f	class:Optimization
+allocateMemory	optimization (copy)改了frame imu.cpp	/^void allocateMemory()$/;"	f	class:Optimization
+allocateMemory	optimization (跑通了窗口).cpp	/^void allocateMemory()$/;"	f	class:Optimization
+allocateMemory	optimization(origin)很多註釋的.cpp	/^void allocateMemory()$/;"	f	class:Optimization
+allocateMemory	optimization.cpp	/^void allocateMemory()$/;"	f	class:Optimization
+angular_velocity_buf	optimization (copy)改了frame imu.cpp	/^vector<Vector3d> angular_velocity_buf[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+angular_velocity_buf	optimization.cpp	/^vector<Vector3d> angular_velocity_buf[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+axisAngleToIso	internal/icp-ceres.cpp	/^Isometry3d axisAngleToIso(const double* cam){$/;"	f	namespace:ICP_Ceres
+b	factor/marginalization_factor.h	/^    Eigen::VectorXd b;$/;"	m	struct:ThreadsStruct
+cPitch	mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+cRoll	mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+cYaw	mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+calculateSmoothness	featureAssociation.cpp	/^    void calculateSmoothness()$/;"	f	class:FeatureAssociation
+calculateTransformation	featureAssociation.cpp	/^    bool calculateTransformation(int iterCount){$/;"	f	class:FeatureAssociation
+calculateTransformationCorner	featureAssociation.cpp	/^    bool calculateTransformationCorner(int iterCount){$/;"	f	class:FeatureAssociation
+calculateTransformationSurf	featureAssociation.cpp	/^    bool calculateTransformationSurf(int iterCount){$/;"	f	class:FeatureAssociation
+camera_2_base_link_Trans	transformFusion.cpp	/^    tf::StampedTransform camera_2_base_link_Trans;$/;"	m	class:TransformFusion	file:
+ceresOptimizer	internal/icp-ceres.cpp	/^void ceresOptimizer(vector< std::shared_ptr<Frame> >& frames, bool pointToPlane, bool robust){$/;"	f	namespace:ICP_Ceres
+ceresOptimizer_ceresAngleAxis	internal/icp-ceres.cpp	/^void ceresOptimizer_ceresAngleAxis(vector< std::shared_ptr<Frame> >& frames, bool pointToPlane,bool robust){$/;"	f	namespace:ICP_Ceres
+check	factor/projection_factor.cpp	/^void ProjectionFactor::check(double **parameters)$/;"	f	class:ProjectionFactor
+check	factor/projection_td_factor.cpp	/^void ProjectionTdFactor::check(double **parameters)$/;"	f	class:ProjectionTdFactor
+checkSystemInitialization	featureAssociation.cpp	/^    void checkSystemInitialization(){$/;"	f	class:FeatureAssociation
+clearCloud	mapOptmization.cpp	/^    void clearCloud(){$/;"	f	class:mapOptimization
+clearState	optimization (1222).cpp	/^void clearState()$/;"	f	class:Optimization
+clearState	optimization (copy)改了frame imu.cpp	/^void clearState()$/;"	f	class:Optimization
+clearState	optimization (跑通了窗口).cpp	/^void clearState()$/;"	f	class:Optimization
+clearState	optimization(origin)很多註釋的.cpp	/^void clearState()$/;"	f	class:Optimization
+clearState	optimization.cpp	/^void clearState()$/;"	f	class:Optimization
+closestHistoryFrameID	mapOptmization.cpp	/^    int closestHistoryFrameID;$/;"	m	class:mapOptimization	file:
+cloudCurvature	featureAssociation.cpp	/^    float cloudCurvature[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+cloudHandler	imageProjection.cpp	/^    void cloudHandler(const sensor_msgs::PointCloud2ConstPtr& laserCloudMsg){$/;"	f	class:ImageProjection
+cloudHeader	featureAssociation.cpp	/^    std_msgs::Header cloudHeader;$/;"	m	class:FeatureAssociation	file:
+cloudHeader	imageProjection.cpp	/^    std_msgs::Header cloudHeader;$/;"	m	class:ImageProjection	file:
+cloudKeyPoses3D	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr cloudKeyPoses3D;$/;"	m	class:mapOptimization	file:
+cloudKeyPoses3D	optimization (1222).cpp	/^pcl::PointCloud<PointType>::Ptr cloudKeyPoses3D;$/;"	m	class:Optimization	file:
+cloudKeyPoses3D	optimization (copy)改了frame imu.cpp	/^pcl::PointCloud<PointType>::Ptr cloudKeyPoses3D;$/;"	m	class:Optimization	file:
+cloudKeyPoses3D	optimization (跑通了窗口).cpp	/^pcl::PointCloud<PointType>::Ptr cloudKeyPoses3D;$/;"	m	class:Optimization	file:
+cloudKeyPoses3D	optimization(origin)很多註釋的.cpp	/^pcl::PointCloud<PointType>::Ptr cloudKeyPoses3D;$/;"	m	class:Optimization	file:
+cloudKeyPoses3D	optimization.cpp	/^pcl::PointCloud<PointType>::Ptr cloudKeyPoses3D;$/;"	m	class:Optimization	file:
+cloudKeyPoses6D	mapOptmization.cpp	/^    pcl::PointCloud<PointTypePose>::Ptr cloudKeyPoses6D;$/;"	m	class:mapOptimization	file:
+cloudKeyPoses6D	optimization (1222).cpp	/^pcl::PointCloud<PointTypePose>::Ptr cloudKeyPoses6D;$/;"	m	class:Optimization	file:
+cloudKeyPoses6D	optimization (copy)改了frame imu.cpp	/^pcl::PointCloud<PointTypePose>::Ptr cloudKeyPoses6D;$/;"	m	class:Optimization	file:
+cloudKeyPoses6D	optimization (跑通了窗口).cpp	/^pcl::PointCloud<PointTypePose>::Ptr cloudKeyPoses6D;$/;"	m	class:Optimization	file:
+cloudKeyPoses6D	optimization(origin)很多註釋的.cpp	/^pcl::PointCloud<PointTypePose>::Ptr cloudKeyPoses6D;$/;"	m	class:Optimization	file:
+cloudKeyPoses6D	optimization.cpp	/^pcl::PointCloud<PointTypePose>::Ptr cloudKeyPoses6D;$/;"	m	class:Optimization	file:
+cloudLabel	featureAssociation.cpp	/^    int cloudLabel[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+cloudNeighborPicked	featureAssociation.cpp	/^    int cloudNeighborPicked[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+cloudSegmentation	imageProjection.cpp	/^    void cloudSegmentation(){$/;"	f	class:ImageProjection
+cloudSmoothness	featureAssociation.cpp	/^    std::vector<smoothness_t> cloudSmoothness;$/;"	m	class:FeatureAssociation	file:
+coeff	featureAssociation.cpp	/^    PointType pointOri, pointSel, tripod1, tripod2, tripod3, pointProj, coeff;$/;"	m	class:FeatureAssociation	file:
+coeff	mapOptmization.cpp	/^    PointType pointOri, pointSel, pointProj, coeff;$/;"	m	class:mapOptimization	file:
+coeffSel	featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr coeffSel;$/;"	m	class:FeatureAssociation	file:
+coeffSel	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr coeffSel;$/;"	m	class:mapOptimization	file:
+colorEdgeSel	internal/Visualize.cpp	/^GLubyte colorEdgeSel[4]={122,254,0,15};$/;"	v
+con	optimization (copy)改了frame imu.cpp	/^std::condition_variable con;$/;"	m	class:Optimization	file:
+con	optimization.cpp	/^std::condition_variable con;$/;"	m	class:Optimization	file:
+constraintNoise	mapOptmization.cpp	/^    noiseModel::Diagonal::shared_ptr constraintNoise;$/;"	m	class:mapOptimization	file:
+copyPointCloud	imageProjection.cpp	/^    void copyPointCloud(const sensor_msgs::PointCloud2ConstPtr& laserCloudMsg){$/;"	f	class:ImageProjection
+cornerCloudKeyFrames	mapOptmization.cpp	/^    vector<pcl::PointCloud<PointType>::Ptr> cornerCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+cornerOptimization	mapOptmization.cpp	/^    void cornerOptimization(int iterCount){$/;"	f	class:mapOptimization
+cornerPointsLessSharp	featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr cornerPointsLessSharp;$/;"	m	class:FeatureAssociation	file:
+cornerPointsSharp	featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr cornerPointsSharp;$/;"	m	class:FeatureAssociation	file:
+correctPoses	mapOptmization.cpp	/^    void correctPoses(){$/;"	f	class:mapOptimization
+cosImuPitchStart	featureAssociation.cpp	/^    float cosImuRollStart, cosImuPitchStart, cosImuYawStart, sinImuRollStart, sinImuPitchStart, sinImuYawStart;$/;"	m	class:FeatureAssociation	file:
+cosImuRollStart	featureAssociation.cpp	/^    float cosImuRollStart, cosImuPitchStart, cosImuYawStart, sinImuRollStart, sinImuPitchStart, sinImuYawStart;$/;"	m	class:FeatureAssociation	file:
+cosImuYawStart	featureAssociation.cpp	/^    float cosImuRollStart, cosImuPitchStart, cosImuYawStart, sinImuRollStart, sinImuPitchStart, sinImuYawStart;$/;"	m	class:FeatureAssociation	file:
+cost_function	factor/marginalization_factor.h	/^    ceres::CostFunction *cost_function;$/;"	m	struct:ResidualBlockInfo
+covariance	factor/integration_base.h	/^    Eigen::Matrix<double, 15, 15> jacobian, covariance;$/;"	m	class:IntegrationBase
+ctPitch	mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+ctRoll	mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+ctYaw	mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+curRx	optimization (1222).cpp	/^Eigen::Matrix3d curRx;$/;"	m	class:Optimization	file:
+curRx	optimization (copy)改了frame imu.cpp	/^Eigen::Matrix3d curRx;$/;"	m	class:Optimization	file:
+curRx	optimization (跑通了窗口).cpp	/^Eigen::Matrix3d curRx;$/;"	m	class:Optimization	file:
+curRx	optimization(origin)很多註釋的.cpp	/^Eigen::Matrix3d curRx;$/;"	m	class:Optimization	file:
+curRx	optimization.cpp	/^Eigen::Matrix3d curRx;$/;"	m	class:Optimization	file:
+curRx_inverse	optimization (1222).cpp	/^Eigen::Matrix3d curRx_inverse;$/;"	m	class:Optimization	file:
+curRx_inverse	optimization (copy)改了frame imu.cpp	/^Eigen::Matrix3d curRx_inverse;$/;"	m	class:Optimization	file:
+curRx_inverse	optimization (跑通了窗口).cpp	/^Eigen::Matrix3d curRx_inverse;$/;"	m	class:Optimization	file:
+curRx_inverse	optimization(origin)很多註釋的.cpp	/^Eigen::Matrix3d curRx_inverse;$/;"	m	class:Optimization	file:
+curRx_inverse	optimization.cpp	/^Eigen::Matrix3d curRx_inverse;$/;"	m	class:Optimization	file:
+cur_t	optimization (1222).cpp	/^Eigen::Vector3d cur_t;$/;"	m	class:Optimization	file:
+cur_t	optimization (copy)改了frame imu.cpp	/^Eigen::Vector3d cur_t;$/;"	m	class:Optimization	file:
+cur_t	optimization (跑通了窗口).cpp	/^Eigen::Vector3d cur_t;$/;"	m	class:Optimization	file:
+cur_t	optimization(origin)很多註釋的.cpp	/^Eigen::Vector3d cur_t;$/;"	m	class:Optimization	file:
+cur_t	optimization.cpp	/^Eigen::Vector3d cur_t;$/;"	m	class:Optimization	file:
+currentHeader	transformFusion.cpp	/^    std_msgs::Header currentHeader;$/;"	m	class:TransformFusion	file:
+currentRobotPosPoint	mapOptmization.cpp	/^    PointType currentRobotPosPoint;$/;"	m	class:mapOptimization	file:
+current_time	optimization (copy)改了frame imu.cpp	/^double current_time = -1;$/;"	m	class:Optimization	file:
+current_time	optimization.cpp	/^double current_time = -1;$/;"	m	class:Optimization	file:
+currrentPoseProcess	optimization (1222).cpp	/^void currrentPoseProcess()$/;"	f	class:Optimization
+currrentPoseProcess	optimization (copy)改了frame imu.cpp	/^void currrentPoseProcess()$/;"	f	class:Optimization
+currrentPoseProcess	optimization (跑通了窗口).cpp	/^void currrentPoseProcess()$/;"	f	class:Optimization
+currrentPoseProcess	optimization(origin)很多註釋的.cpp	/^void currrentPoseProcess()$/;"	f	class:Optimization
+currrentPoseProcess	optimization.cpp	/^void currrentPoseProcess()$/;"	f	class:Optimization
+cursor_position_callback	internal/Visualize.cpp	/^void Visualize::cursor_position_callback(GLFWwindow* window, double x, double y)$/;"	f	class:Visualize
+cursor_position_callbackW	internal/Visualize.cpp	/^void Visualize::cursor_position_callbackW(GLFWwindow* window, double x, double y){$/;"	f	class:Visualize
+deg2rad	featureAssociation.cpp	/^    double deg2rad(double degrees)$/;"	f	class:FeatureAssociation
+deltaQ	utility/utility_rotation.h	/^    static Eigen::Quaternion<typename Derived::Scalar> deltaQ(const Eigen::MatrixBase<Derived> &theta)$/;"	f	class:Utility
+delta_p	factor/integration_base.h	/^    Eigen::Vector3d delta_p;$/;"	m	class:IntegrationBase
+delta_q	factor/integration_base.h	/^    Eigen::Quaterniond delta_q;$/;"	m	class:IntegrationBase
+delta_v	factor/integration_base.h	/^    Eigen::Vector3d delta_v;$/;"	m	class:IntegrationBase
+detectLoopClosure	mapOptmization.cpp	/^    bool detectLoopClosure(){$/;"	f	class:mapOptimization
+display	internal/Visualize.cpp	/^void Visualize::display(GLFWwindow* window)$/;"	f	class:Visualize
+displayW	internal/Visualize.cpp	/^void Visualize::displayW(GLFWwindow* window){$/;"	f	class:Visualize
+double2vector	optimization (1222).cpp	/^void double2vector()$/;"	f	class:Optimization
+double2vector	optimization (copy)改了frame imu.cpp	/^void double2vector()$/;"	f	class:Optimization
+double2vector	optimization (跑通了窗口).cpp	/^void double2vector()$/;"	f	class:Optimization
+double2vector	optimization(origin)很多註釋的.cpp	/^void double2vector()$/;"	f	class:Optimization
+double2vector	optimization.cpp	/^void double2vector()$/;"	f	class:Optimization
+downSizeFilter	featureAssociation.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilter;$/;"	m	class:FeatureAssociation	file:
+downSizeFilterCorner	mapOptmization.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilterCorner;$/;"	m	class:mapOptimization	file:
+downSizeFilterGlobalMapKeyFrames	mapOptmization.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilterGlobalMapKeyFrames;$/;"	m	class:mapOptimization	file:
+downSizeFilterGlobalMapKeyPoses	mapOptmization.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilterGlobalMapKeyPoses;$/;"	m	class:mapOptimization	file:
+downSizeFilterHistoryKeyFrames	mapOptmization.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilterHistoryKeyFrames;$/;"	m	class:mapOptimization	file:
+downSizeFilterOutlier	mapOptmization.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilterOutlier;$/;"	m	class:mapOptimization	file:
+downSizeFilterSurf	mapOptmization.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilterSurf;$/;"	m	class:mapOptimization	file:
+downSizeFilterSurroundingKeyPoses	mapOptmization.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilterSurroundingKeyPoses;$/;"	m	class:mapOptimization	file:
+downsampleCurrentScan	mapOptmization.cpp	/^    void downsampleCurrentScan(){$/;"	f	class:mapOptimization
+drawCameraPose	internal/Visualize.cpp	/^void Visualize::drawCameraPose(Isometry3d& P,int i,Vector4d& colorLine,Vector4d& colorPlane){$/;"	f	class:Visualize
+drawCylinder	internal/Visualize.cpp	/^void Visualize::drawCylinder(double r, double l)$/;"	f	class:Visualize
+drawCylinderAdvanced	internal/Visualize.cpp	/^void Visualize::drawCylinderAdvanced(double r, double l, bool coverback, bool coverfront, bool normalInwards){$/;"	f	class:Visualize
+drawEdges	internal/Visualize.cpp	/^void Visualize::drawEdges(int i){$/;"	f	class:Visualize
+drawFrame	internal/Visualize.cpp	/^void Visualize::drawFrame(Frame* m, int i){$/;"	f	class:Visualize
+drawFrustumIntrinsics	internal/Visualize.cpp	/^void Visualize::drawFrustumIntrinsics(Vector4d colorLine, Vector4d colorPlane){$/;"	f	class:Visualize
+drawLines	internal/Visualize.cpp	/^void Visualize::drawLines(const vector<Vector3d>& v1, const vector<Vector3d>& v2)$/;"	f	class:Visualize
+drawNormals	internal/Visualize.cpp	/^void Visualize::drawNormals(const Frame* m, Vector3d& color){$/;"	f	class:Visualize
+drawOrigin	internal/Visualize.cpp	/^void Visualize::drawOrigin(){$/;"	f	class:Visualize
+drawPoints	internal/Visualize.cpp	/^void Visualize::drawPoints(const vector<Vector3d>& pts, const Vector3d& color, float pointSize){$/;"	f	class:Visualize
+drawPoints	internal/Visualize.cpp	/^void Visualize::drawPoints(const vector<Vector3d>& pts, const vector<Vector3d>& colors, float pointSize){$/;"	f	class:Visualize
+drawSpheres	internal/Visualize.cpp	/^void Visualize::drawSpheres(const vector<Vector3d>& pts, double radius){$/;"	f	class:Visualize
+drawText	internal/Visualize.cpp	/^void drawText(string s, Vector3d posMiddle){$/;"	f
+drop_callback	internal/Visualize.cpp	/^void Visualize::drop_callback(GLFWwindow* window, int count, const char** paths)$/;"	f	class:Visualize
+drop_callbackW	internal/Visualize.cpp	/^void Visualize::drop_callbackW(GLFWwindow* window, int count, const char** paths){$/;"	f	class:Visualize
+drop_set	factor/marginalization_factor.h	/^    std::vector<int> drop_set;$/;"	m	struct:ResidualBlockInfo
+dt	factor/integration_base.h	/^    double dt;$/;"	m	class:IntegrationBase
+dt_buf	factor/integration_base.h	/^    std::vector<double> dt_buf;$/;"	m	class:IntegrationBase
+dt_buf	optimization (copy)改了frame imu.cpp	/^vector<double> dt_buf[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+dt_buf	optimization.cpp	/^vector<double> dt_buf[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+eigenQuaternionToIso	internal/icp-ceres.cpp	/^Isometry3d eigenQuaternionToIso(const Eigen::Quaterniond& q, const Vector3d& t){$/;"	f	namespace:ICP_Ceres
+end	utility/tic_toc.h	/^    std::chrono::time_point<std::chrono::system_clock> start, end;$/;"	m	class:TicToc
+endOrientation	imageProjection.cpp	/^    float endOrientation;$/;"	m	class:ImageProjection	file:
+eps	factor/marginalization_factor.h	/^    const double eps = 1e-8;$/;"	m	class:MarginalizationInfo
+evaluate	factor/integration_base.h	/^    Eigen::Matrix<double, 15, 1> evaluate(const Eigen::Vector3d &Pi, const Eigen::Quaterniond &Qi, const Eigen::Vector3d &Vi, const Eigen::Vector3d &Bai, const Eigen::Vector3d &Bgi,$/;"	f	class:IntegrationBase
+extractFeatures	featureAssociation.cpp	/^    void extractFeatures()$/;"	f	class:FeatureAssociation
+extractSurroundingKeyFrames	mapOptmization.cpp	/^    void extractSurroundingKeyFrames(){$/;"	f	class:mapOptimization
+factors	factor/marginalization_factor.h	/^    std::vector<ResidualBlockInfo *> factors;$/;"	m	class:MarginalizationInfo
+findCorrespondingCornerFeatures	featureAssociation.cpp	/^    void findCorrespondingCornerFeatures(int iterCount){$/;"	f	class:FeatureAssociation
+findCorrespondingSurfFeatures	featureAssociation.cpp	/^    void findCorrespondingSurfFeatures(int iterCount){$/;"	f	class:FeatureAssociation
+findStartEndAngle	imageProjection.cpp	/^    void findStartEndAngle(){$/;"	f	class:ImageProjection
+first_imu	optimization (copy)改了frame imu.cpp	/^bool first_imu;$/;"	m	class:Optimization	file:
+first_imu	optimization.cpp	/^bool first_imu;$/;"	m	class:Optimization	file:
+frameCount	featureAssociation.cpp	/^    int frameCount;$/;"	m	class:FeatureAssociation	file:
+frame_count	optimization (1222).cpp	/^int frame_count;$/;"	m	class:Optimization	file:
+frame_count	optimization (copy)改了frame imu.cpp	/^int frame_count;$/;"	m	class:Optimization	file:
+frame_count	optimization (跑通了窗口).cpp	/^int frame_count;$/;"	m	class:Optimization	file:
+frame_count	optimization(origin)很多註釋的.cpp	/^int frame_count;$/;"	m	class:Optimization	file:
+frame_count	optimization.cpp	/^int frame_count;$/;"	m	class:Optimization	file:
+fullCloud	imageProjection.cpp	/^    pcl::PointCloud<PointType>::Ptr fullCloud;$/;"	m	class:ImageProjection	file:
+fullInfoCloud	imageProjection.cpp	/^    pcl::PointCloud<PointType>::Ptr fullInfoCloud;$/;"	m	class:ImageProjection	file:
+g2R	utility/utility_rotation.cpp	/^Eigen::Matrix3d Utility::g2R(const Eigen::Vector3d &g)$/;"	f	class:Utility
+getInstance	internal/Visualize.cpp	/^Visualize* Visualize::getInstance(){$/;"	f	class:Visualize
+getMeasurements	optimization (copy)改了frame imu.cpp	/^std::vector<sensor_msgs::ImuConstPtr> getMeasurements()$/;"	f	class:Optimization
+getMeasurements	optimization.cpp	/^std::vector<sensor_msgs::ImuConstPtr> getMeasurements()$/;"	f	class:Optimization
+getOptions	internal/icp-ceres.cpp	/^ceres::Solver::Options getOptions(){$/;"	f	namespace:ICP_Ceres
+getOptions	optimization (1222).cpp	/^ceres::Solver::Options getOptions()$/;"	f	class:Optimization
+getOptions	optimization (copy)改了frame imu.cpp	/^ceres::Solver::Options getOptions()$/;"	f	class:Optimization
+getOptions	optimization (跑通了窗口).cpp	/^ceres::Solver::Options getOptions()$/;"	f	class:Optimization
+getOptions	optimization(origin)很多註釋的.cpp	/^ceres::Solver::Options getOptions()$/;"	f	class:Optimization
+getOptions	optimization.cpp	/^ceres::Solver::Options getOptions()$/;"	f	class:Optimization
+getOptionsMedium	internal/icp-ceres.cpp	/^ceres::Solver::Options getOptionsMedium(){$/;"	f	namespace:ICP_Ceres
+getOptionsMedium	optimization (1222).cpp	/^ceres::Solver::Options getOptionsMedium()$/;"	f	class:Optimization
+getOptionsMedium	optimization (copy)改了frame imu.cpp	/^ceres::Solver::Options getOptionsMedium()$/;"	f	class:Optimization
+getOptionsMedium	optimization (跑通了窗口).cpp	/^ceres::Solver::Options getOptionsMedium()$/;"	f	class:Optimization
+getOptionsMedium	optimization(origin)很多註釋的.cpp	/^ceres::Solver::Options getOptionsMedium()$/;"	f	class:Optimization
+getOptionsMedium	optimization.cpp	/^ceres::Solver::Options getOptionsMedium()$/;"	f	class:Optimization
+getParameterBlocks	factor/marginalization_factor.cpp	/^std::vector<double *> MarginalizationInfo::getParameterBlocks(std::unordered_map<long, double *> &addr_shift)$/;"	f	class:MarginalizationInfo
+getRotationAngleApprox	internal/Visualize.cpp	/^double Visualize::getRotationAngleApprox(double xdiff, double ydiff, double x, double y){$/;"	f	class:Visualize
+globalMapKeyFrames	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr globalMapKeyFrames;$/;"	m	class:mapOptimization	file:
+globalMapKeyFramesDS	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr globalMapKeyFramesDS;$/;"	m	class:mapOptimization	file:
+globalMapKeyPoses	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr globalMapKeyPoses;$/;"	m	class:mapOptimization	file:
+globalMapKeyPosesDS	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr globalMapKeyPosesDS;$/;"	m	class:mapOptimization	file:
+globalSize	factor/marginalization_factor.cpp	/^int MarginalizationInfo::globalSize(int size) const$/;"	f	class:MarginalizationInfo
+gluPerspective	internal/Visualize.cpp	/^void gluPerspective( GLdouble fovY, GLdouble aspect, GLdouble zNear, GLdouble zFar )$/;"	f
+groundCloud	imageProjection.cpp	/^    pcl::PointCloud<PointType>::Ptr groundCloud;$/;"	m	class:ImageProjection	file:
+groundMat	imageProjection.cpp	/^    cv::Mat groundMat;$/;"	m	class:ImageProjection	file:
+groundRemoval	imageProjection.cpp	/^    void groundRemoval(){$/;"	f	class:ImageProjection
+gtSAMgraph	mapOptmization.cpp	/^    NonlinearFactorGraph gtSAMgraph;$/;"	m	class:mapOptimization	file:
+gyr_0	factor/integration_base.h	/^    Eigen::Vector3d acc_0, gyr_0;$/;"	m	class:IntegrationBase
+gyr_0	optimization (copy)改了frame imu.cpp	/^Eigen::Vector3d gyr_0;$/;"	m	class:Optimization	file:
+gyr_0	optimization.cpp	/^Eigen::Vector3d gyr_0;$/;"	m	class:Optimization	file:
+gyr_1	factor/integration_base.h	/^    Eigen::Vector3d acc_1, gyr_1;$/;"	m	class:IntegrationBase
+gyr_buf	factor/integration_base.h	/^    std::vector<Eigen::Vector3d> gyr_buf;$/;"	m	class:IntegrationBase
+imlb	utility/CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::imlb = Eigen::Vector3d(-1.0,  0.5, 1.0);$/;"	m	class:CameraPoseVisualization	file:
+imlb	utility/CameraPoseVisualization.h	/^	static const Eigen::Vector3d imlb;$/;"	m	class:CameraPoseVisualization
+imlt	utility/CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::imlt = Eigen::Vector3d(-1.0, -0.5, 1.0);$/;"	m	class:CameraPoseVisualization	file:
+imlt	utility/CameraPoseVisualization.h	/^	static const Eigen::Vector3d imlt;$/;"	m	class:CameraPoseVisualization
+imrb	utility/CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::imrb = Eigen::Vector3d( 1.0,  0.5, 1.0);$/;"	m	class:CameraPoseVisualization	file:
+imrb	utility/CameraPoseVisualization.h	/^	static const Eigen::Vector3d imrb;$/;"	m	class:CameraPoseVisualization
+imrt	utility/CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::imrt = Eigen::Vector3d( 1.0, -0.5, 1.0);$/;"	m	class:CameraPoseVisualization	file:
+imrt	utility/CameraPoseVisualization.h	/^	static const Eigen::Vector3d imrt;$/;"	m	class:CameraPoseVisualization
+imuAccX	featureAssociation.cpp	/^    float imuAccX[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAccY	featureAssociation.cpp	/^    float imuAccY[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAccZ	featureAssociation.cpp	/^    float imuAccZ[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAngularFromStartX	featureAssociation.cpp	/^    float imuAngularFromStartX, imuAngularFromStartY, imuAngularFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuAngularFromStartY	featureAssociation.cpp	/^    float imuAngularFromStartX, imuAngularFromStartY, imuAngularFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuAngularFromStartZ	featureAssociation.cpp	/^    float imuAngularFromStartX, imuAngularFromStartY, imuAngularFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationX	featureAssociation.cpp	/^    float imuAngularRotationX[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationXCur	featureAssociation.cpp	/^    float imuAngularRotationXCur, imuAngularRotationYCur, imuAngularRotationZCur;$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationXLast	featureAssociation.cpp	/^    float imuAngularRotationXLast, imuAngularRotationYLast, imuAngularRotationZLast;$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationY	featureAssociation.cpp	/^    float imuAngularRotationY[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationYCur	featureAssociation.cpp	/^    float imuAngularRotationXCur, imuAngularRotationYCur, imuAngularRotationZCur;$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationYLast	featureAssociation.cpp	/^    float imuAngularRotationXLast, imuAngularRotationYLast, imuAngularRotationZLast;$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationZ	featureAssociation.cpp	/^    float imuAngularRotationZ[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationZCur	featureAssociation.cpp	/^    float imuAngularRotationXCur, imuAngularRotationYCur, imuAngularRotationZCur;$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationZLast	featureAssociation.cpp	/^    float imuAngularRotationXLast, imuAngularRotationYLast, imuAngularRotationZLast;$/;"	m	class:FeatureAssociation	file:
+imuAngularVeloX	featureAssociation.cpp	/^    float imuAngularVeloX[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAngularVeloY	featureAssociation.cpp	/^    float imuAngularVeloY[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAngularVeloZ	featureAssociation.cpp	/^    float imuAngularVeloZ[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuHandler	featureAssociation.cpp	/^    void imuHandler(const sensor_msgs::Imu::ConstPtr& imuIn)$/;"	f	class:FeatureAssociation
+imuHandler	mapOptmization.cpp	/^    void imuHandler(const sensor_msgs::Imu::ConstPtr& imuIn){$/;"	f	class:mapOptimization
+imuHandler	optimization (1222).cpp	/^ void imuHandler(const sensor_msgs::Imu::ConstPtr& imuIn)$/;"	f	class:Optimization
+imuHandler	optimization (copy)改了frame imu.cpp	/^ void imuHandler(const sensor_msgs::Imu::ConstPtr& imuIn)$/;"	f	class:Optimization
+imuHandler	optimization (跑通了窗口).cpp	/^ void imuHandler(const sensor_msgs::Imu::ConstPtr& imuIn)$/;"	f	class:Optimization
+imuHandler	optimization(origin)很多註釋的.cpp	/^ void imuHandler(const sensor_msgs::Imu::ConstPtr& imuIn)$/;"	f	class:Optimization
+imuHandler	optimization.cpp	/^ void imuHandler(const sensor_msgs::Imu::ConstPtr& imuIn)$/;"	f	class:Optimization
+imuPitch	featureAssociation.cpp	/^    float imuPitch[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuPitch	mapOptmization.cpp	/^    float imuPitch[imuQueLength];$/;"	m	class:mapOptimization	file:
+imuPitchCur	featureAssociation.cpp	/^    float imuRollCur, imuPitchCur, imuYawCur;$/;"	m	class:FeatureAssociation	file:
+imuPitchLast	featureAssociation.cpp	/^    float imuRollLast, imuPitchLast, imuYawLast;$/;"	m	class:FeatureAssociation	file:
+imuPitchStart	featureAssociation.cpp	/^    float imuRollStart, imuPitchStart, imuYawStart;$/;"	m	class:FeatureAssociation	file:
+imuPointerFront	featureAssociation.cpp	/^    int imuPointerFront;$/;"	m	class:FeatureAssociation	file:
+imuPointerFront	mapOptmization.cpp	/^    int imuPointerFront;$/;"	m	class:mapOptimization	file:
+imuPointerLast	featureAssociation.cpp	/^    int imuPointerLast;$/;"	m	class:FeatureAssociation	file:
+imuPointerLast	mapOptmization.cpp	/^    int imuPointerLast;$/;"	m	class:mapOptimization	file:
+imuPointerLastIteration	featureAssociation.cpp	/^    int imuPointerLastIteration;$/;"	m	class:FeatureAssociation	file:
+imuProcess	optimization (1222).cpp	/^void imuProcess()$/;"	f	class:Optimization
+imuProcess	optimization (copy)改了frame imu.cpp	/^void imuProcess(std::vector <sensor_msgs::ImuConstPtr> &IMU_Cur)$/;"	f	class:Optimization
+imuProcess	optimization (跑通了窗口).cpp	/^void imuProcess()$/;"	f	class:Optimization
+imuProcess	optimization(origin)很多註釋的.cpp	/^void imuProcess()$/;"	f	class:Optimization
+imuProcess	optimization.cpp	/^void imuProcess(std::vector <sensor_msgs::ImuConstPtr> &IMU_Cur)$/;"	f	class:Optimization
+imuRoll	featureAssociation.cpp	/^    float imuRoll[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuRoll	mapOptmization.cpp	/^    float imuRoll[imuQueLength];$/;"	m	class:mapOptimization	file:
+imuRollCur	featureAssociation.cpp	/^    float imuRollCur, imuPitchCur, imuYawCur;$/;"	m	class:FeatureAssociation	file:
+imuRollLast	featureAssociation.cpp	/^    float imuRollLast, imuPitchLast, imuYawLast;$/;"	m	class:FeatureAssociation	file:
+imuRollStart	featureAssociation.cpp	/^    float imuRollStart, imuPitchStart, imuYawStart;$/;"	m	class:FeatureAssociation	file:
+imuShiftFromStartX	featureAssociation.cpp	/^    float imuShiftFromStartX, imuShiftFromStartY, imuShiftFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuShiftFromStartXCur	featureAssociation.cpp	/^    float imuShiftFromStartXCur, imuShiftFromStartYCur, imuShiftFromStartZCur;$/;"	m	class:FeatureAssociation	file:
+imuShiftFromStartY	featureAssociation.cpp	/^    float imuShiftFromStartX, imuShiftFromStartY, imuShiftFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuShiftFromStartYCur	featureAssociation.cpp	/^    float imuShiftFromStartXCur, imuShiftFromStartYCur, imuShiftFromStartZCur;$/;"	m	class:FeatureAssociation	file:
+imuShiftFromStartZ	featureAssociation.cpp	/^    float imuShiftFromStartX, imuShiftFromStartY, imuShiftFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuShiftFromStartZCur	featureAssociation.cpp	/^    float imuShiftFromStartXCur, imuShiftFromStartYCur, imuShiftFromStartZCur;$/;"	m	class:FeatureAssociation	file:
+imuShiftX	featureAssociation.cpp	/^    float imuShiftX[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuShiftXCur	featureAssociation.cpp	/^    float imuShiftXCur, imuShiftYCur, imuShiftZCur;$/;"	m	class:FeatureAssociation	file:
+imuShiftXStart	featureAssociation.cpp	/^    float imuShiftXStart, imuShiftYStart, imuShiftZStart;$/;"	m	class:FeatureAssociation	file:
+imuShiftY	featureAssociation.cpp	/^    float imuShiftY[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuShiftYCur	featureAssociation.cpp	/^    float imuShiftXCur, imuShiftYCur, imuShiftZCur;$/;"	m	class:FeatureAssociation	file:
+imuShiftYStart	featureAssociation.cpp	/^    float imuShiftXStart, imuShiftYStart, imuShiftZStart;$/;"	m	class:FeatureAssociation	file:
+imuShiftZ	featureAssociation.cpp	/^    float imuShiftZ[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuShiftZCur	featureAssociation.cpp	/^    float imuShiftXCur, imuShiftYCur, imuShiftZCur;$/;"	m	class:FeatureAssociation	file:
+imuShiftZStart	featureAssociation.cpp	/^    float imuShiftXStart, imuShiftYStart, imuShiftZStart;$/;"	m	class:FeatureAssociation	file:
+imuTime	featureAssociation.cpp	/^    double imuTime[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuTime	mapOptmization.cpp	/^    double imuTime[imuQueLength];$/;"	m	class:mapOptimization	file:
+imuVeloFromStartX	featureAssociation.cpp	/^    float imuVeloFromStartX, imuVeloFromStartY, imuVeloFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuVeloFromStartXCur	featureAssociation.cpp	/^    float imuVeloFromStartXCur, imuVeloFromStartYCur, imuVeloFromStartZCur;$/;"	m	class:FeatureAssociation	file:
+imuVeloFromStartY	featureAssociation.cpp	/^    float imuVeloFromStartX, imuVeloFromStartY, imuVeloFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuVeloFromStartYCur	featureAssociation.cpp	/^    float imuVeloFromStartXCur, imuVeloFromStartYCur, imuVeloFromStartZCur;$/;"	m	class:FeatureAssociation	file:
+imuVeloFromStartZ	featureAssociation.cpp	/^    float imuVeloFromStartX, imuVeloFromStartY, imuVeloFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuVeloFromStartZCur	featureAssociation.cpp	/^    float imuVeloFromStartXCur, imuVeloFromStartYCur, imuVeloFromStartZCur;$/;"	m	class:FeatureAssociation	file:
+imuVeloX	featureAssociation.cpp	/^    float imuVeloX[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuVeloXCur	featureAssociation.cpp	/^    float imuVeloXCur, imuVeloYCur, imuVeloZCur;$/;"	m	class:FeatureAssociation	file:
+imuVeloXStart	featureAssociation.cpp	/^    float imuVeloXStart, imuVeloYStart, imuVeloZStart;$/;"	m	class:FeatureAssociation	file:
+imuVeloY	featureAssociation.cpp	/^    float imuVeloY[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuVeloYCur	featureAssociation.cpp	/^    float imuVeloXCur, imuVeloYCur, imuVeloZCur;$/;"	m	class:FeatureAssociation	file:
+imuVeloYStart	featureAssociation.cpp	/^    float imuVeloXStart, imuVeloYStart, imuVeloZStart;$/;"	m	class:FeatureAssociation	file:
+imuVeloZ	featureAssociation.cpp	/^    float imuVeloZ[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuVeloZCur	featureAssociation.cpp	/^    float imuVeloXCur, imuVeloYCur, imuVeloZCur;$/;"	m	class:FeatureAssociation	file:
+imuVeloZStart	featureAssociation.cpp	/^    float imuVeloXStart, imuVeloYStart, imuVeloZStart;$/;"	m	class:FeatureAssociation	file:
+imuYaw	featureAssociation.cpp	/^    float imuYaw[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuYawCur	featureAssociation.cpp	/^    float imuRollCur, imuPitchCur, imuYawCur;$/;"	m	class:FeatureAssociation	file:
+imuYawLast	featureAssociation.cpp	/^    float imuRollLast, imuPitchLast, imuYawLast;$/;"	m	class:FeatureAssociation	file:
+imuYawStart	featureAssociation.cpp	/^    float imuRollStart, imuPitchStart, imuYawStart;$/;"	m	class:FeatureAssociation	file:
+imu_buf	optimization (copy)改了frame imu.cpp	/^queue<sensor_msgs::ImuConstPtr> imu_buf;$/;"	m	class:Optimization	file:
+imu_buf	optimization.cpp	/^queue<sensor_msgs::ImuConstPtr> imu_buf;$/;"	m	class:Optimization	file:
+init_imu	optimization (copy)改了frame imu.cpp	/^bool init_imu = 1;$/;"	m	class:Optimization	file:
+init_imu	optimization.cpp	/^bool init_imu = 1;$/;"	m	class:Optimization	file:
+initialEstimate	mapOptmization.cpp	/^    Values initialEstimate;$/;"	m	class:mapOptimization	file:
+initializationValue	featureAssociation.cpp	/^    void initializationValue()$/;"	f	class:FeatureAssociation
+instance	internal/Visualize.cpp	/^Visualize* Visualize::instance = 0;$/;"	m	class:Visualize	file:
+integrateTransformation	featureAssociation.cpp	/^    void integrateTransformation(){$/;"	f	class:FeatureAssociation
+isDegenerate	featureAssociation.cpp	/^    bool isDegenerate;$/;"	m	class:FeatureAssociation	file:
+isDegenerate	mapOptmization.cpp	/^    bool isDegenerate;$/;"	m	class:mapOptimization	file:
+isam	mapOptmization.cpp	/^    ISAM2 *isam;$/;"	m	class:mapOptimization	file:
+isamCurrentEstimate	mapOptmization.cpp	/^    Values isamCurrentEstimate;$/;"	m	class:mapOptimization	file:
+isoToAngleAxis	internal/icp-ceres.cpp	/^void isoToAngleAxis(const Isometry3d& pose, double* cam){$/;"	f	namespace:ICP_Ceres
+jacobian	factor/integration_base.h	/^    Eigen::Matrix<double, 15, 15> jacobian, covariance;$/;"	m	class:IntegrationBase
+jacobians	factor/marginalization_factor.h	/^    std::vector<Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>> jacobians;$/;"	m	struct:ResidualBlockInfo
+kdtreeCornerFromMap	mapOptmization.cpp	/^    pcl::KdTreeFLANN<PointType>::Ptr kdtreeCornerFromMap;$/;"	m	class:mapOptimization	file:
+kdtreeCornerLast	featureAssociation.cpp	/^    pcl::KdTreeFLANN<PointType>::Ptr kdtreeCornerLast;$/;"	m	class:FeatureAssociation	file:
+kdtreeGlobalMap	mapOptmization.cpp	/^    pcl::KdTreeFLANN<PointType>::Ptr kdtreeGlobalMap;$/;"	m	class:mapOptimization	file:
+kdtreeHistoryKeyPoses	mapOptmization.cpp	/^    pcl::KdTreeFLANN<PointType>::Ptr kdtreeHistoryKeyPoses;$/;"	m	class:mapOptimization	file:
+kdtreeSurfFromMap	mapOptmization.cpp	/^    pcl::KdTreeFLANN<PointType>::Ptr kdtreeSurfFromMap;$/;"	m	class:mapOptimization	file:
+kdtreeSurfLast	featureAssociation.cpp	/^    pcl::KdTreeFLANN<PointType>::Ptr kdtreeSurfLast;$/;"	m	class:FeatureAssociation	file:
+kdtreeSurroundingKeyPoses	mapOptmization.cpp	/^    pcl::KdTreeFLANN<PointType>::Ptr kdtreeSurroundingKeyPoses;$/;"	m	class:mapOptimization	file:
+keep_block_data	factor/marginalization_factor.h	/^    std::vector<double *> keep_block_data;$/;"	m	class:MarginalizationInfo
+keep_block_idx	factor/marginalization_factor.h	/^    std::vector<int> keep_block_idx;  \/\/local size$/;"	m	class:MarginalizationInfo
+keep_block_size	factor/marginalization_factor.h	/^    std::vector<int> keep_block_size; \/\/global size$/;"	m	class:MarginalizationInfo
+keyPoses6DHandler	optimization (1222).cpp	/^void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+keyPoses6DHandler	optimization (copy)改了frame imu.cpp	/^void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+keyPoses6DHandler	optimization (跑通了窗口).cpp	/^void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+keyPoses6DHandler	optimization(origin)很多註釋的.cpp	/^void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+keyPoses6DHandler	optimization.cpp	/^void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+keyPosesHandler	optimization (1222).cpp	/^void keyPosesHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+keyPosesHandler	optimization (copy)改了frame imu.cpp	/^void keyPosesHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+keyPosesHandler	optimization (跑通了窗口).cpp	/^void keyPosesHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+keyPosesHandler	optimization(origin)很多註釋的.cpp	/^void keyPosesHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+keyPosesHandler	optimization.cpp	/^void keyPosesHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+keyboard	internal/Visualize.cpp	/^void Visualize::keyboard(GLFWwindow* window, int keyInt, int scancode, int action, int modifiers)$/;"	f	class:Visualize
+keyboardW	internal/Visualize.cpp	/^void Visualize::keyboardW (GLFWwindow* window, int key, int scancode, int action, int modifiers){$/;"	f	class:Visualize
+labelComponents	imageProjection.cpp	/^    void labelComponents(int row, int col){$/;"	f	class:ImageProjection
+labelCount	imageProjection.cpp	/^    int labelCount;$/;"	m	class:ImageProjection	file:
+labelMat	imageProjection.cpp	/^    cv::Mat labelMat;$/;"	m	class:ImageProjection	file:
+laserCloudCornerFromMap	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudCornerFromMap;$/;"	m	class:mapOptimization	file:
+laserCloudCornerFromMapDS	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudCornerFromMapDS;$/;"	m	class:mapOptimization	file:
+laserCloudCornerFromMapDSNum	mapOptmization.cpp	/^    int laserCloudCornerFromMapDSNum;$/;"	m	class:mapOptimization	file:
+laserCloudCornerLast	featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudCornerLast;$/;"	m	class:FeatureAssociation	file:
+laserCloudCornerLast	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudCornerLast;$/;"	m	class:mapOptimization	file:
+laserCloudCornerLastDS	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudCornerLastDS;$/;"	m	class:mapOptimization	file:
+laserCloudCornerLastDSNum	mapOptmization.cpp	/^    int laserCloudCornerLastDSNum;$/;"	m	class:mapOptimization	file:
+laserCloudCornerLastHandler	mapOptmization.cpp	/^    void laserCloudCornerLastHandler(const sensor_msgs::PointCloud2ConstPtr& msg){$/;"	f	class:mapOptimization
+laserCloudCornerLastNum	featureAssociation.cpp	/^    int laserCloudCornerLastNum;$/;"	m	class:FeatureAssociation	file:
+laserCloudHandler	featureAssociation.cpp	/^    void laserCloudHandler(const sensor_msgs::PointCloud2ConstPtr& laserCloudMsg){$/;"	f	class:FeatureAssociation
+laserCloudIn	imageProjection.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudIn;$/;"	m	class:ImageProjection	file:
+laserCloudInfoHandler	featureAssociation.cpp	/^    void laserCloudInfoHandler(const cloud_msgs::cloud_infoConstPtr& msgIn)$/;"	f	class:FeatureAssociation
+laserCloudOri	featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudOri;$/;"	m	class:FeatureAssociation	file:
+laserCloudOri	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudOri;$/;"	m	class:mapOptimization	file:
+laserCloudOriHandler	optimization (1222).cpp	/^void laserCloudOriHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+laserCloudOriHandler	optimization (copy)改了frame imu.cpp	/^void laserCloudOriHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+laserCloudOriHandler	optimization (跑通了窗口).cpp	/^void laserCloudOriHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+laserCloudOriHandler	optimization(origin)很多註釋的.cpp	/^void laserCloudOriHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+laserCloudOriHandler	optimization.cpp	/^void laserCloudOriHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+laserCloudOriNum	optimization (1222).cpp	/^int laserCloudOriNum;$/;"	m	class:Optimization	file:
+laserCloudOriNum	optimization (copy)改了frame imu.cpp	/^int laserCloudOriNum;$/;"	m	class:Optimization	file:
+laserCloudOriNum	optimization (跑通了窗口).cpp	/^int laserCloudOriNum;$/;"	m	class:Optimization	file:
+laserCloudOriNum	optimization(origin)很多註釋的.cpp	/^int laserCloudOriNum;$/;"	m	class:Optimization	file:
+laserCloudOriNum	optimization.cpp	/^int laserCloudOriNum;$/;"	m	class:Optimization	file:
+laserCloudOutlierLast	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudOutlierLast;$/;"	m	class:mapOptimization	file:
+laserCloudOutlierLastDS	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudOutlierLastDS;$/;"	m	class:mapOptimization	file:
+laserCloudOutlierLastDSNum	mapOptmization.cpp	/^    int laserCloudOutlierLastDSNum;$/;"	m	class:mapOptimization	file:
+laserCloudOutlierLastHandler	mapOptmization.cpp	/^    void laserCloudOutlierLastHandler(const sensor_msgs::PointCloud2ConstPtr& msg){$/;"	f	class:mapOptimization
+laserCloudProj	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudProj;\/\/store projectoin points$/;"	m	class:mapOptimization	file:
+laserCloudProjHandler	optimization (1222).cpp	/^void laserCloudProjHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+laserCloudProjHandler	optimization (copy)改了frame imu.cpp	/^void laserCloudProjHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+laserCloudProjHandler	optimization (跑通了窗口).cpp	/^void laserCloudProjHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+laserCloudProjHandler	optimization(origin)很多註釋的.cpp	/^void laserCloudProjHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+laserCloudProjHandler	optimization.cpp	/^void laserCloudProjHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+laserCloudProjNum	optimization (1222).cpp	/^int laserCloudProjNum;$/;"	m	class:Optimization	file:
+laserCloudProjNum	optimization (copy)改了frame imu.cpp	/^int laserCloudProjNum;$/;"	m	class:Optimization	file:
+laserCloudProjNum	optimization (跑通了窗口).cpp	/^int laserCloudProjNum;$/;"	m	class:Optimization	file:
+laserCloudProjNum	optimization(origin)很多註釋的.cpp	/^int laserCloudProjNum;$/;"	m	class:Optimization	file:
+laserCloudProjNum	optimization.cpp	/^int laserCloudProjNum;$/;"	m	class:Optimization	file:
+laserCloudSel	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSel;$/;"	m	class:mapOptimization	file:
+laserCloudSurfFromMap	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSurfFromMap;$/;"	m	class:mapOptimization	file:
+laserCloudSurfFromMapDS	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSurfFromMapDS;$/;"	m	class:mapOptimization	file:
+laserCloudSurfFromMapDSNum	mapOptmization.cpp	/^    int laserCloudSurfFromMapDSNum;$/;"	m	class:mapOptimization	file:
+laserCloudSurfLast	featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSurfLast;$/;"	m	class:FeatureAssociation	file:
+laserCloudSurfLast	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSurfLast;$/;"	m	class:mapOptimization	file:
+laserCloudSurfLastDS	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSurfLastDS;$/;"	m	class:mapOptimization	file:
+laserCloudSurfLastDSNum	mapOptmization.cpp	/^    int laserCloudSurfLastDSNum;$/;"	m	class:mapOptimization	file:
+laserCloudSurfLastHandler	mapOptmization.cpp	/^    void laserCloudSurfLastHandler(const sensor_msgs::PointCloud2ConstPtr& msg){$/;"	f	class:mapOptimization
+laserCloudSurfLastNum	featureAssociation.cpp	/^    int laserCloudSurfLastNum;$/;"	m	class:FeatureAssociation	file:
+laserCloudSurfTotalLast	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSurfTotalLast;$/;"	m	class:mapOptimization	file:
+laserCloudSurfTotalLastDS	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSurfTotalLastDS;$/;"	m	class:mapOptimization	file:
+laserCloudSurfTotalLastDSNum	mapOptmization.cpp	/^    int laserCloudSurfTotalLastDSNum;$/;"	m	class:mapOptimization	file:
+laserOdometry	featureAssociation.cpp	/^    nav_msgs::Odometry laserOdometry;$/;"	m	class:FeatureAssociation	file:
+laserOdometry2	transformFusion.cpp	/^    nav_msgs::Odometry laserOdometry2;$/;"	m	class:TransformFusion	file:
+laserOdometryHandler	mapOptmization.cpp	/^    void laserOdometryHandler(const nav_msgs::Odometry::ConstPtr& laserOdometry){$/;"	f	class:mapOptimization
+laserOdometryHandler	transformFusion.cpp	/^    void laserOdometryHandler(const nav_msgs::Odometry::ConstPtr& laserOdometry)$/;"	f	class:TransformFusion
+laserOdometryTrans	featureAssociation.cpp	/^    tf::StampedTransform laserOdometryTrans;$/;"	m	class:FeatureAssociation	file:
+laserOdometryTrans2	transformFusion.cpp	/^    tf::StampedTransform laserOdometryTrans2;$/;"	m	class:TransformFusion	file:
+latestCornerKeyFrameCloud	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr latestCornerKeyFrameCloud;$/;"	m	class:mapOptimization	file:
+latestFrameID	mapOptmization.cpp	/^    int latestFrameID;$/;"	m	class:mapOptimization	file:
+latestFrameIDLoopCloure	mapOptmization.cpp	/^    int latestFrameIDLoopCloure;$/;"	m	class:mapOptimization	file:
+latestSurfKeyFrameCloud	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr latestSurfKeyFrameCloud;$/;"	m	class:mapOptimization	file:
+latestSurfKeyFrameCloudDS	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr latestSurfKeyFrameCloudDS;$/;"	m	class:mapOptimization	file:
+latest_time	optimization (copy)改了frame imu.cpp	/^double latest_time;$/;"	m	class:Optimization	file:
+latest_time	optimization.cpp	/^double latest_time;$/;"	m	class:Optimization	file:
+lidarHeader	optimization (1222).cpp	/^std_msgs::Header lidarHeader;$/;"	m	class:Optimization	file:
+lidarHeader	optimization (copy)改了frame imu.cpp	/^std_msgs::Header lidarHeader;$/;"	m	class:Optimization	file:
+lidarHeader	optimization (跑通了窗口).cpp	/^std_msgs::Header lidarHeader;$/;"	m	class:Optimization	file:
+lidarHeader	optimization(origin)很多註釋的.cpp	/^std_msgs::Header lidarHeader;$/;"	m	class:Optimization	file:
+lidarHeader	optimization.cpp	/^std_msgs::Header lidarHeader;$/;"	m	class:Optimization	file:
+linear_acceleration_buf	optimization (copy)改了frame imu.cpp	/^vector<Vector3d> linear_acceleration_buf[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+linear_acceleration_buf	optimization.cpp	/^vector<Vector3d> linear_acceleration_buf[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+linearized_acc	factor/integration_base.h	/^    const Eigen::Vector3d linearized_acc, linearized_gyr;$/;"	m	class:IntegrationBase
+linearized_ba	factor/integration_base.h	/^    Eigen::Vector3d linearized_ba, linearized_bg;$/;"	m	class:IntegrationBase
+linearized_bg	factor/integration_base.h	/^    Eigen::Vector3d linearized_ba, linearized_bg;$/;"	m	class:IntegrationBase
+linearized_gyr	factor/integration_base.h	/^    const Eigen::Vector3d linearized_acc, linearized_gyr;$/;"	m	class:IntegrationBase
+linearized_jacobians	factor/marginalization_factor.h	/^    Eigen::MatrixXd linearized_jacobians;$/;"	m	class:MarginalizationInfo
+linearized_residuals	factor/marginalization_factor.h	/^    Eigen::VectorXd linearized_residuals;$/;"	m	class:MarginalizationInfo
+localSize	factor/marginalization_factor.cpp	/^int MarginalizationInfo::localSize(int size) const$/;"	f	class:MarginalizationInfo
+localSize	factor/marginalization_factor.h	/^    int localSize(int size)$/;"	f	struct:ResidualBlockInfo
+loopClosureThread	mapOptmization.cpp	/^    void loopClosureThread(){$/;"	f	class:mapOptimization
+loss_function	factor/marginalization_factor.h	/^    ceres::LossFunction *loss_function;$/;"	m	struct:ResidualBlockInfo
+lt0	utility/CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::lt0 = Eigen::Vector3d(-0.7, -0.5, 1.0);$/;"	m	class:CameraPoseVisualization	file:
+lt0	utility/CameraPoseVisualization.h	/^	static const Eigen::Vector3d lt0 ;$/;"	m	class:CameraPoseVisualization
+lt1	utility/CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::lt1 = Eigen::Vector3d(-0.7, -0.2, 1.0);$/;"	m	class:CameraPoseVisualization	file:
+lt1	utility/CameraPoseVisualization.h	/^	static const Eigen::Vector3d lt1 ;$/;"	m	class:CameraPoseVisualization
+lt2	utility/CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::lt2 = Eigen::Vector3d(-1.0, -0.2, 1.0);$/;"	m	class:CameraPoseVisualization	file:
+lt2	utility/CameraPoseVisualization.h	/^	static const Eigen::Vector3d lt2 ;$/;"	m	class:CameraPoseVisualization
+m	factor/marginalization_factor.h	/^    int m, n;$/;"	m	class:MarginalizationInfo
+m_buf	optimization (copy)改了frame imu.cpp	/^std::mutex m_buf;\/\/m_buf$/;"	m	class:Optimization	file:
+m_buf	optimization.cpp	/^std::mutex m_buf;\/\/m_buf$/;"	m	class:Optimization	file:
+m_image_boundary_color	utility/CameraPoseVisualization.h	/^	std_msgs::ColorRGBA m_image_boundary_color;$/;"	m	class:CameraPoseVisualization
+m_line_width	utility/CameraPoseVisualization.h	/^	double m_line_width;$/;"	m	class:CameraPoseVisualization
+m_marker_ns	utility/CameraPoseVisualization.h	/^	std::string m_marker_ns;$/;"	m	class:CameraPoseVisualization
+m_markers	utility/CameraPoseVisualization.h	/^	std::vector<visualization_msgs::Marker> m_markers;$/;"	m	class:CameraPoseVisualization
+m_optical_center_connector_color	utility/CameraPoseVisualization.h	/^	std_msgs::ColorRGBA m_optical_center_connector_color;$/;"	m	class:CameraPoseVisualization
+m_scale	utility/CameraPoseVisualization.h	/^	double m_scale;$/;"	m	class:CameraPoseVisualization
+main	featureAssociation.cpp	/^int main(int argc, char** argv)$/;"	f
+main	imageProjection.cpp	/^int main(int argc, char** argv){$/;"	f
+main	mapOptmization.cpp	/^int main(int argc, char** argv)$/;"	f
+main	optimization (1222).cpp	/^int main(int argc, char **argv)$/;"	f
+main	optimization (copy)改了frame imu.cpp	/^int main(int argc, char **argv)$/;"	f
+main	optimization (跑通了窗口).cpp	/^int main(int argc, char **argv)$/;"	f
+main	optimization(origin)很多註釋的.cpp	/^int main(int argc, char **argv)$/;"	f
+main	optimization.cpp	/^int main(int argc, char **argv)$/;"	f
+main	transformFusion.cpp	/^int main(int argc, char** argv)$/;"	f
+mapOptimization	mapOptmization.cpp	/^    mapOptimization():$/;"	f	class:mapOptimization
+mapOptimization	mapOptmization.cpp	/^class mapOptimization{$/;"	c	file:
+map_2_camera_init_Trans	transformFusion.cpp	/^    tf::StampedTransform map_2_camera_init_Trans;$/;"	m	class:TransformFusion	file:
+marginalization_info	factor/marginalization_factor.h	/^    MarginalizationInfo* marginalization_info;$/;"	m	class:MarginalizationFactor
+marginalize	factor/marginalization_factor.cpp	/^void MarginalizationInfo::marginalize()$/;"	f	class:MarginalizationInfo
+markOccludedPoints	featureAssociation.cpp	/^    void markOccludedPoints()$/;"	f	class:FeatureAssociation
+matA0	mapOptmization.cpp	/^    cv::Mat matA0;$/;"	m	class:mapOptimization	file:
+matA1	mapOptmization.cpp	/^    cv::Mat matA1;$/;"	m	class:mapOptimization	file:
+matB0	mapOptmization.cpp	/^    cv::Mat matB0;$/;"	m	class:mapOptimization	file:
+matD1	mapOptmization.cpp	/^    cv::Mat matD1;$/;"	m	class:mapOptimization	file:
+matP	featureAssociation.cpp	/^    cv::Mat matP;$/;"	m	class:FeatureAssociation	file:
+matP	mapOptmization.cpp	/^    cv::Mat matP;$/;"	m	class:mapOptimization	file:
+matV1	mapOptmization.cpp	/^    cv::Mat matV1;$/;"	m	class:mapOptimization	file:
+matX0	mapOptmization.cpp	/^    cv::Mat matX0;$/;"	m	class:mapOptimization	file:
+midPointIntegration	factor/integration_base.h	/^    void midPointIntegration(double _dt, $/;"	f	class:IntegrationBase
+mouse_button_callback	internal/Visualize.cpp	/^void Visualize::mouse_button_callback(GLFWwindow* window, int button, int action, int mods)$/;"	f	class:Visualize
+mouse_button_callbackW	internal/Visualize.cpp	/^void Visualize::mouse_button_callbackW(GLFWwindow* window, int button, int action, int mods){$/;"	f	class:Visualize
+mtx	mapOptmization.cpp	/^    std::mutex mtx;$/;"	m	class:mapOptimization	file:
+n	factor/marginalization_factor.h	/^    int m, n;$/;"	m	class:MarginalizationInfo
+n	optimization (1222).cpp	/^ros::NodeHandle n;$/;"	m	class:Optimization	file:
+n	optimization (copy)改了frame imu.cpp	/^ros::NodeHandle n;$/;"	m	class:Optimization	file:
+n	optimization (跑通了窗口).cpp	/^ros::NodeHandle n;$/;"	m	class:Optimization	file:
+n	optimization(origin)很多註釋的.cpp	/^ros::NodeHandle n;$/;"	m	class:Optimization	file:
+n	optimization.cpp	/^ros::NodeHandle n;$/;"	m	class:Optimization	file:
+nanPoint	imageProjection.cpp	/^    PointType nanPoint;$/;"	m	class:ImageProjection	file:
+nearHistoryCornerKeyFrameCloud	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr nearHistoryCornerKeyFrameCloud;$/;"	m	class:mapOptimization	file:
+nearHistoryCornerKeyFrameCloudDS	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr nearHistoryCornerKeyFrameCloudDS;$/;"	m	class:mapOptimization	file:
+nearHistorySurfKeyFrameCloud	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr nearHistorySurfKeyFrameCloud;$/;"	m	class:mapOptimization	file:
+nearHistorySurfKeyFrameCloudDS	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr nearHistorySurfKeyFrameCloudDS;$/;"	m	class:mapOptimization	file:
+neighborIterator	imageProjection.cpp	/^    std::vector<std::pair<uint8_t, uint8_t> > neighborIterator;$/;"	m	class:ImageProjection	file:
+newCloudKeyPoses3D	optimization (1222).cpp	/^bool newCloudKeyPoses3D;$/;"	m	class:Optimization	file:
+newCloudKeyPoses3D	optimization (copy)改了frame imu.cpp	/^bool newCloudKeyPoses3D;$/;"	m	class:Optimization	file:
+newCloudKeyPoses3D	optimization (跑通了窗口).cpp	/^bool newCloudKeyPoses3D;$/;"	m	class:Optimization	file:
+newCloudKeyPoses3D	optimization(origin)很多註釋的.cpp	/^bool newCloudKeyPoses3D;$/;"	m	class:Optimization	file:
+newCloudKeyPoses3D	optimization.cpp	/^bool newCloudKeyPoses3D;$/;"	m	class:Optimization	file:
+newCloudKeyPoses6D	optimization (1222).cpp	/^bool newCloudKeyPoses6D;$/;"	m	class:Optimization	file:
+newCloudKeyPoses6D	optimization (copy)改了frame imu.cpp	/^bool newCloudKeyPoses6D;$/;"	m	class:Optimization	file:
+newCloudKeyPoses6D	optimization (跑通了窗口).cpp	/^bool newCloudKeyPoses6D;$/;"	m	class:Optimization	file:
+newCloudKeyPoses6D	optimization(origin)很多註釋的.cpp	/^bool newCloudKeyPoses6D;$/;"	m	class:Optimization	file:
+newCloudKeyPoses6D	optimization.cpp	/^bool newCloudKeyPoses6D;$/;"	m	class:Optimization	file:
+newLaserCloudCornerLast	mapOptmization.cpp	/^    bool newLaserCloudCornerLast;$/;"	m	class:mapOptimization	file:
+newLaserCloudOri	optimization (1222).cpp	/^bool newLaserCloudOri;$/;"	m	class:Optimization	file:
+newLaserCloudOri	optimization (copy)改了frame imu.cpp	/^bool newLaserCloudOri;$/;"	m	class:Optimization	file:
+newLaserCloudOri	optimization (跑通了窗口).cpp	/^bool newLaserCloudOri;$/;"	m	class:Optimization	file:
+newLaserCloudOri	optimization(origin)很多註釋的.cpp	/^bool newLaserCloudOri;$/;"	m	class:Optimization	file:
+newLaserCloudOri	optimization.cpp	/^bool newLaserCloudOri;$/;"	m	class:Optimization	file:
+newLaserCloudOutlierLast	mapOptmization.cpp	/^    bool newLaserCloudOutlierLast;$/;"	m	class:mapOptimization	file:
+newLaserCloudProj	optimization (1222).cpp	/^bool newLaserCloudProj;$/;"	m	class:Optimization	file:
+newLaserCloudProj	optimization (copy)改了frame imu.cpp	/^bool newLaserCloudProj;$/;"	m	class:Optimization	file:
+newLaserCloudProj	optimization (跑通了窗口).cpp	/^bool newLaserCloudProj;$/;"	m	class:Optimization	file:
+newLaserCloudProj	optimization(origin)很多註釋的.cpp	/^bool newLaserCloudProj;$/;"	m	class:Optimization	file:
+newLaserCloudProj	optimization.cpp	/^bool newLaserCloudProj;$/;"	m	class:Optimization	file:
+newLaserCloudSurfLast	mapOptmization.cpp	/^    bool newLaserCloudSurfLast;$/;"	m	class:mapOptimization	file:
+newLaserOdometry	mapOptmization.cpp	/^    bool newLaserOdometry;$/;"	m	class:mapOptimization	file:
+newOutlierCloud	featureAssociation.cpp	/^    bool newOutlierCloud;$/;"	m	class:FeatureAssociation	file:
+newSegmentedCloud	featureAssociation.cpp	/^    bool newSegmentedCloud;$/;"	m	class:FeatureAssociation	file:
+newSegmentedCloudInfo	featureAssociation.cpp	/^    bool newSegmentedCloudInfo;$/;"	m	class:FeatureAssociation	file:
+nh	featureAssociation.cpp	/^	ros::NodeHandle nh;$/;"	m	class:FeatureAssociation	file:
+nh	imageProjection.cpp	/^    ros::NodeHandle nh;$/;"	m	class:ImageProjection	file:
+nh	mapOptmization.cpp	/^    ros::NodeHandle nh;$/;"	m	class:mapOptimization	file:
+nh	transformFusion.cpp	/^    ros::NodeHandle nh;$/;"	m	class:TransformFusion	file:
+noise	factor/integration_base.h	/^    Eigen::Matrix<double, 18, 18> noise;$/;"	m	class:IntegrationBase
+normalizeAngle	utility/utility_rotation.h	/^    static T normalizeAngle(const T& angle_degrees) {$/;"	f	class:Utility
+oc	utility/CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::oc = Eigen::Vector3d(0.0, 0.0, 0.0);$/;"	m	class:CameraPoseVisualization	file:
+oc	utility/CameraPoseVisualization.h	/^	static const Eigen::Vector3d oc  ;$/;"	m	class:CameraPoseVisualization
+odomAftMapped	mapOptmization.cpp	/^    nav_msgs::Odometry odomAftMapped;$/;"	m	class:mapOptimization	file:
+odomAftMappedHandler	transformFusion.cpp	/^    void odomAftMappedHandler(const nav_msgs::Odometry::ConstPtr& odomAftMapped)$/;"	f	class:TransformFusion
+odomCoupled	optimization (1222).cpp	/^nav_msgs::Odometry odomCoupled;$/;"	m	class:Optimization	file:
+odomCoupled	optimization (copy)改了frame imu.cpp	/^nav_msgs::Odometry odomCoupled;$/;"	m	class:Optimization	file:
+odomCoupled	optimization (跑通了窗口).cpp	/^nav_msgs::Odometry odomCoupled;$/;"	m	class:Optimization	file:
+odomCoupled	optimization(origin)很多註釋的.cpp	/^nav_msgs::Odometry odomCoupled;$/;"	m	class:Optimization	file:
+odomCoupled	optimization.cpp	/^nav_msgs::Odometry odomCoupled;$/;"	m	class:Optimization	file:
+odometryNoise	mapOptmization.cpp	/^    noiseModel::Diagonal::shared_ptr odometryNoise;$/;"	m	class:mapOptimization	file:
+optimizationProcess	optimization (1222).cpp	/^void optimizationProcess()$/;"	f	class:Optimization
+optimizationProcess	optimization (copy)改了frame imu.cpp	/^void optimizationProcess()$/;"	f	class:Optimization
+optimizationProcess	optimization (跑通了窗口).cpp	/^void optimizationProcess()$/;"	f	class:Optimization
+optimizationProcess	optimization(origin)很多註釋的.cpp	/^void optimizationProcess()$/;"	f	class:Optimization
+optimizationProcess	optimization.cpp	/^void optimizationProcess()$/;"	f	class:Optimization
+optimizationProcessInterval	optimization (1222).cpp	/^const double optimizationProcessInterval=0.1;$/;"	m	class:Optimization	file:
+optimizationProcessInterval	optimization (copy)改了frame imu.cpp	/^const double optimizationProcessInterval=0.1;$/;"	m	class:Optimization	file:
+optimizationProcessInterval	optimization (跑通了窗口).cpp	/^const double optimizationProcessInterval=0.1;$/;"	m	class:Optimization	file:
+optimizationProcessInterval	optimization(origin)很多註釋的.cpp	/^const double optimizationProcessInterval=0.1;$/;"	m	class:Optimization	file:
+optimizationProcessInterval	optimization.cpp	/^const double optimizationProcessInterval=0.1;$/;"	m	class:Optimization	file:
+optimizedEstimate	mapOptmization.cpp	/^    Values optimizedEstimate;$/;"	m	class:mapOptimization	file:
+ori_buf	optimization (copy)改了frame imu.cpp	/^queue<sensor_msgs::PointCloud2ConstPtr> ori_buf;$/;"	m	class:Optimization	file:
+ori_buf	optimization.cpp	/^queue<sensor_msgs::PointCloud2ConstPtr> ori_buf;$/;"	m	class:Optimization	file:
+outlierCloud	featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr outlierCloud;$/;"	m	class:FeatureAssociation	file:
+outlierCloud	imageProjection.cpp	/^    pcl::PointCloud<PointType>::Ptr outlierCloud;$/;"	m	class:ImageProjection	file:
+outlierCloudHandler	featureAssociation.cpp	/^    void outlierCloudHandler(const sensor_msgs::PointCloud2ConstPtr& msgIn){$/;"	f	class:FeatureAssociation
+outlierCloudKeyFrames	mapOptmization.cpp	/^    vector<pcl::PointCloud<PointType>::Ptr> outlierCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+para_Pose	optimization (1222).cpp	/^double para_Pose[WINDOW_SIZE + 1][SIZE_POSE];$/;"	m	class:Optimization	file:
+para_Pose	optimization (copy)改了frame imu.cpp	/^double para_Pose[WINDOW_SIZE + 1][SIZE_POSE];$/;"	m	class:Optimization	file:
+para_Pose	optimization (跑通了窗口).cpp	/^double para_Pose[WINDOW_SIZE + 1][SIZE_POSE];$/;"	m	class:Optimization	file:
+para_Pose	optimization(origin)很多註釋的.cpp	/^double para_Pose[WINDOW_SIZE + 1][SIZE_POSE];$/;"	m	class:Optimization	file:
+para_Pose	optimization.cpp	/^double para_Pose[WINDOW_SIZE + 1][SIZE_POSE];$/;"	m	class:Optimization	file:
+para_SpeedBias	optimization (1222).cpp	/^double para_SpeedBias[WINDOW_SIZE + 1][SIZE_SPEEDBIAS];$/;"	m	class:Optimization	file:
+para_SpeedBias	optimization (copy)改了frame imu.cpp	/^double para_SpeedBias[WINDOW_SIZE + 1][SIZE_SPEEDBIAS];$/;"	m	class:Optimization	file:
+para_SpeedBias	optimization (跑通了窗口).cpp	/^double para_SpeedBias[WINDOW_SIZE + 1][SIZE_SPEEDBIAS];$/;"	m	class:Optimization	file:
+para_SpeedBias	optimization(origin)很多註釋的.cpp	/^double para_SpeedBias[WINDOW_SIZE + 1][SIZE_SPEEDBIAS];$/;"	m	class:Optimization	file:
+para_SpeedBias	optimization.cpp	/^double para_SpeedBias[WINDOW_SIZE + 1][SIZE_SPEEDBIAS];$/;"	m	class:Optimization	file:
+parameter_block_data	factor/marginalization_factor.h	/^    std::unordered_map<long, double *> parameter_block_data;$/;"	m	class:MarginalizationInfo
+parameter_block_idx	factor/marginalization_factor.h	/^    std::unordered_map<long, int> parameter_block_idx; \/\/local size$/;"	m	class:MarginalizationInfo
+parameter_block_idx	factor/marginalization_factor.h	/^    std::unordered_map<long, int> parameter_block_idx; \/\/local size$/;"	m	struct:ThreadsStruct
+parameter_block_size	factor/marginalization_factor.h	/^    std::unordered_map<long, int> parameter_block_size; \/\/global size$/;"	m	class:MarginalizationInfo
+parameter_block_size	factor/marginalization_factor.h	/^    std::unordered_map<long, int> parameter_block_size; \/\/global size$/;"	m	struct:ThreadsStruct
+parameter_blocks	factor/marginalization_factor.h	/^    std::vector<double *> parameter_blocks;$/;"	m	struct:ResidualBlockInfo
+path	utility/visualization.cpp	/^nav_msgs::Path path, relo_path;$/;"	v
+pclPointToAffine3fCameraToLidar	mapOptmization.cpp	/^    Eigen::Affine3f pclPointToAffine3fCameraToLidar(PointTypePose thisPoint){$/;"	f	class:mapOptimization
+pclPointTogtsamPose3	mapOptmization.cpp	/^    Pose3 pclPointTogtsamPose3(PointTypePose thisPoint){$/;"	f	class:mapOptimization
+performLoopClosure	mapOptmization.cpp	/^    void performLoopClosure(){$/;"	f	class:mapOptimization
+pointAssociateToMap	mapOptmization.cpp	/^    void pointAssociateToMap(PointType const * const pi, PointType * const po)$/;"	f	class:mapOptimization
+pointOri	featureAssociation.cpp	/^    PointType pointOri, pointSel, tripod1, tripod2, tripod3, pointProj, coeff;$/;"	m	class:FeatureAssociation	file:
+pointOri	mapOptmization.cpp	/^    PointType pointOri, pointSel, pointProj, coeff;$/;"	m	class:mapOptimization	file:
+pointProj	featureAssociation.cpp	/^    PointType pointOri, pointSel, tripod1, tripod2, tripod3, pointProj, coeff;$/;"	m	class:FeatureAssociation	file:
+pointProj	mapOptmization.cpp	/^    PointType pointOri, pointSel, pointProj, coeff;$/;"	m	class:mapOptimization	file:
+pointSearchCornerInd1	featureAssociation.cpp	/^    float pointSearchCornerInd1[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+pointSearchCornerInd2	featureAssociation.cpp	/^    float pointSearchCornerInd2[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+pointSearchInd	featureAssociation.cpp	/^    std::vector<int> pointSearchInd;$/;"	m	class:FeatureAssociation	file:
+pointSearchInd	mapOptmization.cpp	/^    std::vector<int> pointSearchInd;$/;"	m	class:mapOptimization	file:
+pointSearchSqDis	featureAssociation.cpp	/^    std::vector<float> pointSearchSqDis;$/;"	m	class:FeatureAssociation	file:
+pointSearchSqDis	mapOptmization.cpp	/^    std::vector<float> pointSearchSqDis;$/;"	m	class:mapOptimization	file:
+pointSearchSurfInd1	featureAssociation.cpp	/^    float pointSearchSurfInd1[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+pointSearchSurfInd2	featureAssociation.cpp	/^    float pointSearchSurfInd2[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+pointSearchSurfInd3	featureAssociation.cpp	/^    float pointSearchSurfInd3[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+pointSel	featureAssociation.cpp	/^    PointType pointOri, pointSel, tripod1, tripod2, tripod3, pointProj, coeff;$/;"	m	class:FeatureAssociation	file:
+pointSel	mapOptmization.cpp	/^    PointType pointOri, pointSel, pointProj, coeff;$/;"	m	class:mapOptimization	file:
+pointSelCornerInd	featureAssociation.cpp	/^    int pointSelCornerInd[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+pointSelSurfInd	featureAssociation.cpp	/^    int pointSelSurfInd[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+pointToPlane_CeresAngleAxis	internal/icp-ceres.cpp	/^Isometry3d pointToPlane_CeresAngleAxis(vector<Vector3d> &src,vector<Vector3d> &dst,vector<Vector3d> &nor){$/;"	f	namespace:ICP_Ceres
+pointToPlane_EigenQuaternion	internal/icp-ceres.cpp	/^Isometry3d pointToPlane_EigenQuaternion(vector<Vector3d>&src,vector<Vector3d>&dst,vector<Vector3d> &nor){$/;"	f	namespace:ICP_Ceres
+pointToPoint_CeresAngleAxis	internal/icp-ceres.cpp	/^Isometry3d pointToPoint_CeresAngleAxis(vector<Vector3d>&src,vector<Vector3d>&dst){$/;"	f	namespace:ICP_Ceres
+pointToPoint_EigenQuaternion	internal/icp-ceres.cpp	/^Isometry3d pointToPoint_EigenQuaternion(vector<Vector3d>&src,vector<Vector3d>&dst){$/;"	f	namespace:ICP_Ceres
+positify	utility/utility_rotation.h	/^    static Eigen::Quaternion<typename Derived::Scalar> positify(const Eigen::QuaternionBase<Derived> &q)$/;"	f	class:Utility
+potentialLoopFlag	mapOptmization.cpp	/^    bool potentialLoopFlag;$/;"	m	class:mapOptimization	file:
+preMarginalize	factor/marginalization_factor.cpp	/^void MarginalizationInfo::preMarginalize()$/;"	f	class:MarginalizationInfo
+prePoseNum	mapOptmization.cpp	/^    int prePoseNum;$/;"	m	class:mapOptimization	file:
+pre_integration	factor/imu_factor.h	/^    IntegrationBase* pre_integration;$/;"	m	class:IMUFactor
+pre_integrations	optimization (copy)改了frame imu.cpp	/^IntegrationBase *pre_integrations[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+pre_integrations	optimization.cpp	/^IntegrationBase *pre_integrations[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+predict	optimization (copy)改了frame imu.cpp	/^void predict(const sensor_msgs::ImuConstPtr &imu_msg)\/\/ propogate$/;"	f	class:Optimization
+predict	optimization.cpp	/^void predict(const sensor_msgs::ImuConstPtr &imu_msg)\/\/ propogate$/;"	f	class:Optimization
+previousRobotPosPoint	mapOptmization.cpp	/^    PointType previousRobotPosPoint;$/;"	m	class:mapOptimization	file:
+printAllTimings	internal/CPUTimer.cpp	/^void CPUTimer::printAllTimings(){$/;"	f	class:CPUTimer
+printStatistics	utility/visualization.cpp	/^void printStatistics(const Estimator &estimator, double t)$/;"	f
+priorNoise	mapOptmization.cpp	/^    noiseModel::Diagonal::shared_ptr priorNoise;$/;"	m	class:mapOptimization	file:
+processIMU	optimization (copy)改了frame imu.cpp	/^void processIMU(double dt, const Vector3d &linear_acceleration, const Vector3d &angular_velocity)$/;"	f	class:Optimization
+processIMU	optimization.cpp	/^void processIMU(double dt, const Vector3d &linear_acceleration, const Vector3d &angular_velocity)$/;"	f	class:Optimization
+projectPointCloud	imageProjection.cpp	/^    void projectPointCloud(){$/;"	f	class:ImageProjection
+propagate	factor/integration_base.h	/^    void propagate(double _dt, const Eigen::Vector3d &_acc_1, const Eigen::Vector3d &_gyr_1)$/;"	f	class:IntegrationBase
+pts_i	factor/projection_factor.h	/^    Eigen::Vector3d pts_i, pts_j;$/;"	m	class:ProjectionFactor
+pts_i	factor/projection_td_factor.h	/^    Eigen::Vector3d pts_i, pts_j;$/;"	m	class:ProjectionTdFactor
+pts_j	factor/projection_factor.h	/^    Eigen::Vector3d pts_i, pts_j;$/;"	m	class:ProjectionFactor
+pts_j	factor/projection_td_factor.h	/^    Eigen::Vector3d pts_i, pts_j;$/;"	m	class:ProjectionTdFactor
+pubCameraPose	utility/visualization.cpp	/^void pubCameraPose(const Estimator &estimator, const std_msgs::Header &header)$/;"	f
+pubCornerPointsLessSharp	featureAssociation.cpp	/^    ros::Publisher pubCornerPointsLessSharp;$/;"	m	class:FeatureAssociation	file:
+pubCornerPointsSharp	featureAssociation.cpp	/^    ros::Publisher pubCornerPointsSharp;$/;"	m	class:FeatureAssociation	file:
+pubCoupledOdometry	optimization (1222).cpp	/^ros::Publisher pubCoupledOdometry;$/;"	m	class:Optimization	file:
+pubCoupledOdometry	optimization (copy)改了frame imu.cpp	/^ros::Publisher pubCoupledOdometry;$/;"	m	class:Optimization	file:
+pubCoupledOdometry	optimization (跑通了窗口).cpp	/^ros::Publisher pubCoupledOdometry;$/;"	m	class:Optimization	file:
+pubCoupledOdometry	optimization(origin)很多註釋的.cpp	/^ros::Publisher pubCoupledOdometry;$/;"	m	class:Optimization	file:
+pubCoupledOdometry	optimization.cpp	/^ros::Publisher pubCoupledOdometry;$/;"	m	class:Optimization	file:
+pubEnable	mapOptmization.cpp	/^    bool pubEnable;$/;"	m	class:mapOptimization	file:
+pubFullCloud	imageProjection.cpp	/^    ros::Publisher pubFullCloud;$/;"	m	class:ImageProjection	file:
+pubFullInfoCloud	imageProjection.cpp	/^    ros::Publisher pubFullInfoCloud;$/;"	m	class:ImageProjection	file:
+pubGroundCloud	imageProjection.cpp	/^    ros::Publisher pubGroundCloud;$/;"	m	class:ImageProjection	file:
+pubHistoryKeyFrames	mapOptmization.cpp	/^    ros::Publisher pubHistoryKeyFrames;$/;"	m	class:mapOptimization	file:
+pubIcpKeyFrames	mapOptmization.cpp	/^    ros::Publisher pubIcpKeyFrames;$/;"	m	class:mapOptimization	file:
+pubImuPropogate	optimization (copy)改了frame imu.cpp	/^ros::Publisher pubImuPropogate;$/;"	m	class:Optimization	file:
+pubImuPropogate	optimization.cpp	/^ros::Publisher pubImuPropogate;$/;"	m	class:Optimization	file:
+pubKeyPoses	mapOptmization.cpp	/^    ros::Publisher pubKeyPoses;$/;"	m	class:mapOptimization	file:
+pubKeyPoses	utility/visualization.cpp	/^void pubKeyPoses(const Estimator &estimator, const std_msgs::Header &header)$/;"	f
+pubKeyPoses6D	mapOptmization.cpp	/^    ros::Publisher pubKeyPoses6D;$/;"	m	class:mapOptimization	file:
+pubKeyframe	utility/visualization.cpp	/^void pubKeyframe(const Estimator &estimator)$/;"	f
+pubLaserCloudCornerLast	featureAssociation.cpp	/^    ros::Publisher pubLaserCloudCornerLast;$/;"	m	class:FeatureAssociation	file:
+pubLaserCloudSurfLast	featureAssociation.cpp	/^    ros::Publisher pubLaserCloudSurfLast;$/;"	m	class:FeatureAssociation	file:
+pubLaserCloudSurround	mapOptmization.cpp	/^    ros::Publisher pubLaserCloudSurround;$/;"	m	class:mapOptimization	file:
+pubLaserOdometry	featureAssociation.cpp	/^    ros::Publisher pubLaserOdometry;$/;"	m	class:FeatureAssociation	file:
+pubLaserOdometry2	transformFusion.cpp	/^    ros::Publisher pubLaserOdometry2;$/;"	m	class:TransformFusion	file:
+pubLatestOdometry	optimization (copy)改了frame imu.cpp	/^void pubLatestOdometry(const Eigen::Vector3d &P, const Eigen::Quaterniond &Q, const Eigen::Vector3d &V, const std_msgs::Header &header)$/;"	f	class:Optimization
+pubLatestOdometry	optimization.cpp	/^void pubLatestOdometry(const Eigen::Vector3d &P, const Eigen::Quaterniond &Q, const Eigen::Vector3d &V, const std_msgs::Header &header)$/;"	f	class:Optimization
+pubLatestOdometry	utility/visualization.cpp	/^void pubLatestOdometry(const Eigen::Vector3d &P, const Eigen::Quaterniond &Q, const Eigen::Vector3d &V, const std_msgs::Header &header)$/;"	f
+pubOdomAftMapped	mapOptmization.cpp	/^    ros::Publisher pubOdomAftMapped;$/;"	m	class:mapOptimization	file:
+pubOdometry	optimization (1222).cpp	/^void pubOdometry(){$/;"	f	class:Optimization
+pubOdometry	optimization (跑通了窗口).cpp	/^void pubOdometry(){$/;"	f	class:Optimization
+pubOdometry	optimization(origin)很多註釋的.cpp	/^void pubOdometry(){$/;"	f	class:Optimization
+pubOdometry	utility/visualization.cpp	/^void pubOdometry(const Estimator &estimator, const std_msgs::Header &header)$/;"	f
+pubOptOdometry	optimization (copy)改了frame imu.cpp	/^void pubOptOdometry(){$/;"	f	class:Optimization
+pubOptOdometry	optimization.cpp	/^void pubOptOdometry(){$/;"	f	class:Optimization
+pubOutlierCloud	imageProjection.cpp	/^    ros::Publisher pubOutlierCloud;$/;"	m	class:ImageProjection	file:
+pubOutlierCloudLast	featureAssociation.cpp	/^    ros::Publisher pubOutlierCloudLast;$/;"	m	class:FeatureAssociation	file:
+pubPointCloud	utility/visualization.cpp	/^void pubPointCloud(const Estimator &estimator, const std_msgs::Header &header)$/;"	f
+pubRecentKeyFrames	mapOptmization.cpp	/^    ros::Publisher pubRecentKeyFrames;$/;"	m	class:mapOptimization	file:
+pubRelocalization	utility/visualization.cpp	/^void pubRelocalization(const Estimator &estimator)$/;"	f
+pubSegmentedCloud	imageProjection.cpp	/^    ros::Publisher pubSegmentedCloud;$/;"	m	class:ImageProjection	file:
+pubSegmentedCloudInfo	imageProjection.cpp	/^    ros::Publisher pubSegmentedCloudInfo;$/;"	m	class:ImageProjection	file:
+pubSegmentedCloudPure	imageProjection.cpp	/^    ros::Publisher pubSegmentedCloudPure;$/;"	m	class:ImageProjection	file:
+pubSurfPointsFlat	featureAssociation.cpp	/^    ros::Publisher pubSurfPointsFlat;$/;"	m	class:FeatureAssociation	file:
+pubSurfPointsLessFlat	featureAssociation.cpp	/^    ros::Publisher pubSurfPointsLessFlat;$/;"	m	class:FeatureAssociation	file:
+pubTF	utility/visualization.cpp	/^void pubTF(const Estimator &estimator, const std_msgs::Header &header)$/;"	f
+pub_camera_pose	utility/visualization.cpp	/^ros::Publisher pub_camera_pose;$/;"	v
+pub_camera_pose_visual	utility/visualization.cpp	/^ros::Publisher pub_camera_pose_visual;$/;"	v
+pub_extrinsic	utility/visualization.cpp	/^ros::Publisher pub_extrinsic;$/;"	v
+pub_key_poses	utility/visualization.cpp	/^ros::Publisher pub_key_poses;$/;"	v
+pub_keyframe_point	utility/visualization.cpp	/^ros::Publisher pub_keyframe_point;$/;"	v
+pub_keyframe_pose	utility/visualization.cpp	/^ros::Publisher pub_keyframe_pose;$/;"	v
+pub_margin_cloud	utility/visualization.cpp	/^ros::Publisher pub_point_cloud, pub_margin_cloud;$/;"	v
+pub_path	utility/visualization.cpp	/^ros::Publisher pub_path, pub_relo_path;$/;"	v
+pub_point_cloud	utility/visualization.cpp	/^ros::Publisher pub_point_cloud, pub_margin_cloud;$/;"	v
+pub_relo_path	utility/visualization.cpp	/^ros::Publisher pub_path, pub_relo_path;$/;"	v
+pub_relo_relative_pose	utility/visualization.cpp	/^ros::Publisher pub_relo_relative_pose;$/;"	v
+publaserCloudOri	mapOptmization.cpp	/^    ros::Publisher publaserCloudOri;\/\/ori and proj point cloud$/;"	m	class:mapOptimization	file:
+publaserCloudProj	mapOptmization.cpp	/^    ros::Publisher publaserCloudProj;$/;"	m	class:mapOptimization	file:
+publishCloud	featureAssociation.cpp	/^    void publishCloud()$/;"	f	class:FeatureAssociation
+publishCloud	imageProjection.cpp	/^    void publishCloud(){$/;"	f	class:ImageProjection
+publishCloudsLast	featureAssociation.cpp	/^    void publishCloudsLast(){$/;"	f	class:FeatureAssociation
+publishGlobalMap	mapOptmization.cpp	/^    void publishGlobalMap(){$/;"	f	class:mapOptimization
+publishKeyPosesAndFrames	mapOptmization.cpp	/^    void publishKeyPosesAndFrames(){$/;"	f	class:mapOptimization
+publishOdometry	featureAssociation.cpp	/^    void publishOdometry(){$/;"	f	class:FeatureAssociation
+publishOriandProjCloud	mapOptmization.cpp	/^    void publishOriandProjCloud(){$/;"	f	class:mapOptimization
+publishTF	mapOptmization.cpp	/^    void publishTF(){$/;"	f	class:mapOptimization
+publish_by	utility/CameraPoseVisualization.cpp	/^void CameraPoseVisualization::publish_by( ros::Publisher &pub, const std_msgs::Header &header ) {$/;"	f	class:CameraPoseVisualization
+push_back	factor/integration_base.h	/^    void push_back(double dt, const Eigen::Vector3d &acc, const Eigen::Vector3d &gyr)$/;"	f	class:IntegrationBase
+queueIndX	imageProjection.cpp	/^    uint16_t *queueIndX;$/;"	m	class:ImageProjection	file:
+queueIndY	imageProjection.cpp	/^    uint16_t *queueIndY;$/;"	m	class:ImageProjection	file:
+rad2deg	featureAssociation.cpp	/^    double rad2deg(double radians)$/;"	f	class:FeatureAssociation
+rangeMat	imageProjection.cpp	/^    cv::Mat rangeMat;$/;"	m	class:ImageProjection	file:
+raw_jacobians	factor/marginalization_factor.h	/^    double **raw_jacobians;$/;"	m	struct:ResidualBlockInfo
+readParam	parameters.cpp	/^T readParam(ros::NodeHandle &n, std::string name)$/;"	f
+readParam	utility/parameters.cpp	/^T readParam(ros::NodeHandle &n, std::string name)$/;"	f
+readParameters	parameters.cpp	/^void readParameters(ros::NodeHandle &n)$/;"	f
+readParameters	utility/parameters.cpp	/^void readParameters(ros::NodeHandle &n)$/;"	f
+recentCornerCloudKeyFrames	mapOptmization.cpp	/^    deque<pcl::PointCloud<PointType>::Ptr> recentCornerCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+recentOutlierCloudKeyFrames	mapOptmization.cpp	/^    deque<pcl::PointCloud<PointType>::Ptr> recentOutlierCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+recentSurfCloudKeyFrames	mapOptmization.cpp	/^    deque<pcl::PointCloud<PointType>::Ptr> recentSurfCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+registerPub	utility/visualization.cpp	/^void registerPub(ros::NodeHandle &n)$/;"	f
+relo_path	utility/visualization.cpp	/^nav_msgs::Path path, relo_path;$/;"	v
+repropagate	factor/integration_base.h	/^    void repropagate(const Eigen::Vector3d &_linearized_ba, const Eigen::Vector3d &_linearized_bg)$/;"	f	class:IntegrationBase
+reset	utility/CameraPoseVisualization.cpp	/^void CameraPoseVisualization::reset() {$/;"	f	class:CameraPoseVisualization
+resetParameters	imageProjection.cpp	/^    void resetParameters(){$/;"	f	class:ImageProjection
+residuals	factor/marginalization_factor.h	/^    Eigen::VectorXd residuals;$/;"	m	struct:ResidualBlockInfo
+row_i	factor/projection_td_factor.h	/^    double row_i, row_j;$/;"	m	class:ProjectionTdFactor
+row_j	factor/projection_td_factor.h	/^    double row_i, row_j;$/;"	m	class:ProjectionTdFactor
+run	mapOptmization.cpp	/^    void run(){$/;"	f	class:mapOptimization
+run	optimization (1222).cpp	/^void run(){$/;"	f	class:Optimization
+run	optimization (copy)改了frame imu.cpp	/^void run(){$/;"	f	class:Optimization
+run	optimization (跑通了窗口).cpp	/^void run(){$/;"	f	class:Optimization
+run	optimization(origin)很多註釋的.cpp	/^void run(){$/;"	f	class:Optimization
+run	optimization.cpp	/^void run(){$/;"	f	class:Optimization
+runFeatureAssociation	featureAssociation.cpp	/^    void runFeatureAssociation()$/;"	f	class:FeatureAssociation
+sPitch	mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+sRoll	mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+sYaw	mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+saveKeyFramesAndFactor	mapOptmization.cpp	/^    void saveKeyFramesAndFactor(){$/;"	f	class:mapOptimization
+saveThisKeyFrame	mapOptmization.cpp	/^    bool saveThisKeyFrame = true;$/;"	m	class:mapOptimization	file:
+scan2MapOptimization	mapOptmization.cpp	/^    void scan2MapOptimization(){$/;"	f	class:mapOptimization
+scroll_callback	internal/Visualize.cpp	/^void Visualize::scroll_callback(GLFWwindow* window, double xoffset, double yoffset)$/;"	f	class:Visualize
+scroll_callbackW	internal/Visualize.cpp	/^void Visualize::scroll_callbackW(GLFWwindow* window, double xoffset, double yoffset){$/;"	f	class:Visualize
+segInfo	featureAssociation.cpp	/^    cloud_msgs::cloud_info segInfo;$/;"	m	class:FeatureAssociation	file:
+segMsg	imageProjection.cpp	/^    cloud_msgs::cloud_info segMsg;$/;"	m	class:ImageProjection	file:
+segmentedCloud	featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr segmentedCloud;$/;"	m	class:FeatureAssociation	file:
+segmentedCloud	imageProjection.cpp	/^    pcl::PointCloud<PointType>::Ptr segmentedCloud;$/;"	m	class:ImageProjection	file:
+segmentedCloudPure	imageProjection.cpp	/^    pcl::PointCloud<PointType>::Ptr segmentedCloudPure;$/;"	m	class:ImageProjection	file:
+setCallbackForKey	internal/Visualize.cpp	/^void Visualize::setCallbackForKey(char key, std::function<void ()> f){$/;"	f	class:Visualize
+setCentroid	internal/Visualize.cpp	/^void Visualize::setCentroid(Vector3d cent){$/;"	f	class:Visualize
+setClouds	internal/Visualize.cpp	/^void Visualize::setClouds(vector< shared_ptr<Frame> >* mypair){$/;"	f	class:Visualize
+setImageBoundaryColor	utility/CameraPoseVisualization.cpp	/^void CameraPoseVisualization::setImageBoundaryColor(float r, float g, float b, float a) {$/;"	f	class:CameraPoseVisualization
+setLineWidth	utility/CameraPoseVisualization.cpp	/^void CameraPoseVisualization::setLineWidth(double width) {$/;"	f	class:CameraPoseVisualization
+setOpticalCenterConnectorColor	utility/CameraPoseVisualization.cpp	/^void CameraPoseVisualization::setOpticalCenterConnectorColor(float r, float g, float b, float a) {$/;"	f	class:CameraPoseVisualization
+setScale	utility/CameraPoseVisualization.cpp	/^void CameraPoseVisualization::setScale(double s) {$/;"	f	class:CameraPoseVisualization
+setSelectedIndex	internal/Visualize.cpp	/^void Visualize::setSelectedIndex(int i){$/;"	f	class:Visualize
+setWindowFPS	internal/Visualize.cpp	/^void Visualize::setWindowFPS ()$/;"	f	class:Visualize
+sinImuPitchStart	featureAssociation.cpp	/^    float cosImuRollStart, cosImuPitchStart, cosImuYawStart, sinImuRollStart, sinImuPitchStart, sinImuYawStart;$/;"	m	class:FeatureAssociation	file:
+sinImuRollStart	featureAssociation.cpp	/^    float cosImuRollStart, cosImuPitchStart, cosImuYawStart, sinImuRollStart, sinImuPitchStart, sinImuYawStart;$/;"	m	class:FeatureAssociation	file:
+sinImuYawStart	featureAssociation.cpp	/^    float cosImuRollStart, cosImuPitchStart, cosImuYawStart, sinImuRollStart, sinImuPitchStart, sinImuYawStart;$/;"	m	class:FeatureAssociation	file:
+skewSymmetric	utility/utility_rotation.h	/^    static Eigen::Matrix<typename Derived::Scalar, 3, 3> skewSymmetric(const Eigen::MatrixBase<Derived> &q)$/;"	f	class:Utility
+skipFrameNum	featureAssociation.cpp	/^    int skipFrameNum;$/;"	m	class:FeatureAssociation	file:
+slideWindow	optimization (1222).cpp	/^void slideWindow()$/;"	f	class:Optimization
+slideWindow	optimization (copy)改了frame imu.cpp	/^void slideWindow()$/;"	f	class:Optimization
+slideWindow	optimization (跑通了窗口).cpp	/^void slideWindow()$/;"	f	class:Optimization
+slideWindow	optimization(origin)很多註釋的.cpp	/^void slideWindow()$/;"	f	class:Optimization
+slideWindow	optimization.cpp	/^void slideWindow()$/;"	f	class:Optimization
+smallProblem	optimization (1222).cpp	/^bool smallProblem=false;$/;"	m	class:Optimization	file:
+smallProblem	optimization (copy)改了frame imu.cpp	/^bool smallProblem=false;$/;"	m	class:Optimization	file:
+smallProblem	optimization (跑通了窗口).cpp	/^bool smallProblem=false;$/;"	m	class:Optimization	file:
+smallProblem	optimization(origin)很多註釋的.cpp	/^bool smallProblem=false;$/;"	m	class:Optimization	file:
+smallProblem	optimization.cpp	/^bool smallProblem=false;$/;"	m	class:Optimization	file:
+solve	internal/icp-ceres.cpp	/^void solve(ceres::Problem &problem, bool smallProblem=false){$/;"	f	namespace:ICP_Ceres
+solveOdometry	optimization (1222).cpp	/^void solveOdometry()$/;"	f	class:Optimization
+solveOdometry	optimization (copy)改了frame imu.cpp	/^void solveOdometry()$/;"	f	class:Optimization
+solveOdometry	optimization (跑通了窗口).cpp	/^void solveOdometry()$/;"	f	class:Optimization
+solveOdometry	optimization(origin)很多註釋的.cpp	/^void solveOdometry()$/;"	f	class:Optimization
+solveOdometry	optimization.cpp	/^void solveOdometry()$/;"	f	class:Optimization
+solveProblem	optimization (1222).cpp	/^void solveProblem(ceres::Problem &problem)$/;"	f	class:Optimization
+solveProblem	optimization (copy)改了frame imu.cpp	/^void solveProblem(ceres::Problem &problem)$/;"	f	class:Optimization
+solveProblem	optimization (跑通了窗口).cpp	/^void solveProblem(ceres::Problem &problem)$/;"	f	class:Optimization
+solveProblem	optimization(origin)很多註釋的.cpp	/^void solveProblem(ceres::Problem &problem)$/;"	f	class:Optimization
+solveProblem	optimization.cpp	/^void solveProblem(ceres::Problem &problem)$/;"	f	class:Optimization
+spin	internal/Visualize.cpp	/^void Visualize::spin(){$/;"	f	class:Visualize
+spin	internal/Visualize.cpp	/^void Visualize::spin(int i){$/;"	f	class:Visualize
+spinLast	internal/Visualize.cpp	/^void Visualize::spinLast(){$/;"	f	class:Visualize
+spinToggle	internal/Visualize.cpp	/^void Visualize::spinToggle(int i){$/;"	f	class:Visualize
+sqrt_info	factor/projection_factor.cpp	/^Eigen::Matrix2d ProjectionFactor::sqrt_info;$/;"	m	class:ProjectionFactor	file:
+sqrt_info	factor/projection_factor.h	/^    static Eigen::Matrix2d sqrt_info;$/;"	m	class:ProjectionFactor
+sqrt_info	factor/projection_td_factor.cpp	/^Eigen::Matrix2d ProjectionTdFactor::sqrt_info;$/;"	m	class:ProjectionTdFactor	file:
+sqrt_info	factor/projection_td_factor.h	/^    static Eigen::Matrix2d sqrt_info;$/;"	m	class:ProjectionTdFactor
+stPitch	mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+stRoll	mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+stYaw	mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+start	utility/tic_toc.h	/^    std::chrono::time_point<std::chrono::system_clock> start, end;$/;"	m	class:TicToc
+startOrientation	imageProjection.cpp	/^    float startOrientation;$/;"	m	class:ImageProjection	file:
+step_V	factor/integration_base.h	/^    Eigen::Matrix<double, 15, 18> step_V;$/;"	m	class:IntegrationBase
+step_jacobian	factor/integration_base.h	/^    Eigen::Matrix<double, 15, 15> step_jacobian;$/;"	m	class:IntegrationBase
+subImu	featureAssociation.cpp	/^    ros::Subscriber subImu;$/;"	m	class:FeatureAssociation	file:
+subImu	mapOptmization.cpp	/^    ros::Subscriber subImu;$/;"	m	class:mapOptimization	file:
+subImu	optimization (1222).cpp	/^ros::Subscriber subImu;$/;"	m	class:Optimization	file:
+subImu	optimization (copy)改了frame imu.cpp	/^ros::Subscriber subImu;$/;"	m	class:Optimization	file:
+subImu	optimization (跑通了窗口).cpp	/^ros::Subscriber subImu;$/;"	m	class:Optimization	file:
+subImu	optimization(origin)很多註釋的.cpp	/^ros::Subscriber subImu;$/;"	m	class:Optimization	file:
+subImu	optimization.cpp	/^ros::Subscriber subImu;$/;"	m	class:Optimization	file:
+subKeyPoses	optimization (1222).cpp	/^ros::Subscriber subKeyPoses;$/;"	m	class:Optimization	file:
+subKeyPoses	optimization (copy)改了frame imu.cpp	/^ros::Subscriber subKeyPoses;$/;"	m	class:Optimization	file:
+subKeyPoses	optimization (跑通了窗口).cpp	/^ros::Subscriber subKeyPoses;$/;"	m	class:Optimization	file:
+subKeyPoses	optimization(origin)很多註釋的.cpp	/^ros::Subscriber subKeyPoses;$/;"	m	class:Optimization	file:
+subKeyPoses	optimization.cpp	/^ros::Subscriber subKeyPoses;$/;"	m	class:Optimization	file:
+subKeyPoses6D	optimization (1222).cpp	/^ros::Subscriber subKeyPoses6D;$/;"	m	class:Optimization	file:
+subKeyPoses6D	optimization (copy)改了frame imu.cpp	/^ros::Subscriber subKeyPoses6D;$/;"	m	class:Optimization	file:
+subKeyPoses6D	optimization (跑通了窗口).cpp	/^ros::Subscriber subKeyPoses6D;$/;"	m	class:Optimization	file:
+subKeyPoses6D	optimization(origin)很多註釋的.cpp	/^ros::Subscriber subKeyPoses6D;$/;"	m	class:Optimization	file:
+subKeyPoses6D	optimization.cpp	/^ros::Subscriber subKeyPoses6D;$/;"	m	class:Optimization	file:
+subLaserCloud	featureAssociation.cpp	/^    ros::Subscriber subLaserCloud;$/;"	m	class:FeatureAssociation	file:
+subLaserCloud	imageProjection.cpp	/^    ros::Subscriber subLaserCloud;$/;"	m	class:ImageProjection	file:
+subLaserCloudCornerLast	mapOptmization.cpp	/^    ros::Subscriber subLaserCloudCornerLast;$/;"	m	class:mapOptimization	file:
+subLaserCloudInfo	featureAssociation.cpp	/^    ros::Subscriber subLaserCloudInfo;$/;"	m	class:FeatureAssociation	file:
+subLaserCloudOri	optimization (1222).cpp	/^ros::Subscriber subLaserCloudOri;$/;"	m	class:Optimization	file:
+subLaserCloudOri	optimization (copy)改了frame imu.cpp	/^ros::Subscriber subLaserCloudOri;$/;"	m	class:Optimization	file:
+subLaserCloudOri	optimization (跑通了窗口).cpp	/^ros::Subscriber subLaserCloudOri;$/;"	m	class:Optimization	file:
+subLaserCloudOri	optimization(origin)很多註釋的.cpp	/^ros::Subscriber subLaserCloudOri;$/;"	m	class:Optimization	file:
+subLaserCloudOri	optimization.cpp	/^ros::Subscriber subLaserCloudOri;$/;"	m	class:Optimization	file:
+subLaserCloudProj	optimization (1222).cpp	/^ros::Subscriber subLaserCloudProj;$/;"	m	class:Optimization	file:
+subLaserCloudProj	optimization (copy)改了frame imu.cpp	/^ros::Subscriber subLaserCloudProj;$/;"	m	class:Optimization	file:
+subLaserCloudProj	optimization (跑通了窗口).cpp	/^ros::Subscriber subLaserCloudProj;$/;"	m	class:Optimization	file:
+subLaserCloudProj	optimization(origin)很多註釋的.cpp	/^ros::Subscriber subLaserCloudProj;$/;"	m	class:Optimization	file:
+subLaserCloudProj	optimization.cpp	/^ros::Subscriber subLaserCloudProj;$/;"	m	class:Optimization	file:
+subLaserCloudSurfLast	mapOptmization.cpp	/^    ros::Subscriber subLaserCloudSurfLast;$/;"	m	class:mapOptimization	file:
+subLaserOdometry	mapOptmization.cpp	/^    ros::Subscriber subLaserOdometry;$/;"	m	class:mapOptimization	file:
+subLaserOdometry	transformFusion.cpp	/^    ros::Subscriber subLaserOdometry;$/;"	m	class:TransformFusion	file:
+subOdomAftMapped	transformFusion.cpp	/^    ros::Subscriber subOdomAftMapped;$/;"	m	class:TransformFusion	file:
+subOutlierCloud	featureAssociation.cpp	/^    ros::Subscriber subOutlierCloud;$/;"	m	class:FeatureAssociation	file:
+subOutlierCloudLast	mapOptmization.cpp	/^    ros::Subscriber subOutlierCloudLast;$/;"	m	class:mapOptimization	file:
+sub_factors	factor/marginalization_factor.h	/^    std::vector<ResidualBlockInfo *> sub_factors;$/;"	m	struct:ThreadsStruct
+sum_block_size	factor/marginalization_factor.h	/^    int sum_block_size;$/;"	m	class:MarginalizationInfo
+sum_dt	factor/integration_base.h	/^    double sum_dt;$/;"	m	class:IntegrationBase
+sum_of_path	utility/visualization.cpp	/^static double sum_of_path = 0;$/;"	v	file:
+sum_t	factor/projection_factor.cpp	/^double ProjectionFactor::sum_t;$/;"	m	class:ProjectionFactor	file:
+sum_t	factor/projection_factor.h	/^    static double sum_t;$/;"	m	class:ProjectionFactor
+sum_t	factor/projection_td_factor.cpp	/^double ProjectionTdFactor::sum_t;$/;"	m	class:ProjectionTdFactor	file:
+sum_t	factor/projection_td_factor.h	/^    static double sum_t;$/;"	m	class:ProjectionTdFactor
+surfCloudKeyFrames	mapOptmization.cpp	/^    vector<pcl::PointCloud<PointType>::Ptr> surfCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+surfOptimization	mapOptmization.cpp	/^    void surfOptimization(int iterCount){$/;"	f	class:mapOptimization
+surfPointsFlat	featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr surfPointsFlat;$/;"	m	class:FeatureAssociation	file:
+surfPointsLessFlat	featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr surfPointsLessFlat;$/;"	m	class:FeatureAssociation	file:
+surfPointsLessFlatScan	featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr surfPointsLessFlatScan;$/;"	m	class:FeatureAssociation	file:
+surfPointsLessFlatScanDS	featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr surfPointsLessFlatScanDS;$/;"	m	class:FeatureAssociation	file:
+surroundingCornerCloudKeyFrames	mapOptmization.cpp	/^    deque<pcl::PointCloud<PointType>::Ptr> surroundingCornerCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+surroundingExistingKeyPosesID	mapOptmization.cpp	/^    vector<int> surroundingExistingKeyPosesID;$/;"	m	class:mapOptimization	file:
+surroundingKeyPoses	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr surroundingKeyPoses;$/;"	m	class:mapOptimization	file:
+surroundingKeyPosesDS	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr surroundingKeyPosesDS;$/;"	m	class:mapOptimization	file:
+surroundingOutlierCloudKeyFrames	mapOptmization.cpp	/^    deque<pcl::PointCloud<PointType>::Ptr> surroundingOutlierCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+surroundingSurfCloudKeyFrames	mapOptmization.cpp	/^    deque<pcl::PointCloud<PointType>::Ptr> surroundingSurfCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+systemInitCount	featureAssociation.cpp	/^    int systemInitCount;$/;"	m	class:FeatureAssociation	file:
+systemInited	featureAssociation.cpp	/^    bool systemInited;$/;"	m	class:FeatureAssociation	file:
+systemInitedLM	featureAssociation.cpp	/^    bool systemInitedLM;$/;"	m	class:FeatureAssociation	file:
+tInX	mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+tInY	mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+tInZ	mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+tX	mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+tY	mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+tZ	mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+tangent_base	factor/projection_factor.h	/^    Eigen::Matrix<double, 2, 3> tangent_base;$/;"	m	class:ProjectionFactor
+tangent_base	factor/projection_td_factor.h	/^    Eigen::Matrix<double, 2, 3> tangent_base;$/;"	m	class:ProjectionTdFactor
+td	optimization (copy)改了frame imu.cpp	/^double td;$/;"	m	class:Optimization	file:
+td	optimization.cpp	/^double td;$/;"	m	class:Optimization	file:
+td_i	factor/projection_td_factor.h	/^    double td_i, td_j;$/;"	m	class:ProjectionTdFactor
+td_j	factor/projection_td_factor.h	/^    double td_i, td_j;$/;"	m	class:ProjectionTdFactor
+tfBroadcaster	featureAssociation.cpp	/^    tf::TransformBroadcaster tfBroadcaster;$/;"	m	class:FeatureAssociation	file:
+tfBroadcaster	mapOptmization.cpp	/^    tf::TransformBroadcaster tfBroadcaster;$/;"	m	class:mapOptimization	file:
+tfBroadcaster	optimization (1222).cpp	/^tf::TransformBroadcaster tfBroadcaster;$/;"	m	class:Optimization	file:
+tfBroadcaster	optimization (copy)改了frame imu.cpp	/^tf::TransformBroadcaster tfBroadcaster;$/;"	m	class:Optimization	file:
+tfBroadcaster	optimization (跑通了窗口).cpp	/^tf::TransformBroadcaster tfBroadcaster;$/;"	m	class:Optimization	file:
+tfBroadcaster	optimization(origin)很多註釋的.cpp	/^tf::TransformBroadcaster tfBroadcaster;$/;"	m	class:Optimization	file:
+tfBroadcaster	optimization.cpp	/^tf::TransformBroadcaster tfBroadcaster;$/;"	m	class:Optimization	file:
+tfBroadcaster2	transformFusion.cpp	/^    tf::TransformBroadcaster tfBroadcaster2;$/;"	m	class:TransformFusion	file:
+tfBroadcasterCamera2Baselink	transformFusion.cpp	/^    tf::TransformBroadcaster tfBroadcasterCamera2Baselink;$/;"	m	class:TransformFusion	file:
+tfBroadcasterMap2CameraInit	transformFusion.cpp	/^    tf::TransformBroadcaster tfBroadcasterMap2CameraInit;$/;"	m	class:TransformFusion	file:
+tic	internal/CPUTimer.cpp	/^void CPUTimer::tic() {$/;"	f	class:CPUTimer
+tic	utility/tic_toc.h	/^    void tic()$/;"	f	class:TicToc
+timeKeyPoses	optimization (1222).cpp	/^double timeKeyPoses;$/;"	m	class:Optimization	file:
+timeKeyPoses	optimization (copy)改了frame imu.cpp	/^double timeKeyPoses;$/;"	m	class:Optimization	file:
+timeKeyPoses	optimization (跑通了窗口).cpp	/^double timeKeyPoses;$/;"	m	class:Optimization	file:
+timeKeyPoses	optimization(origin)很多註釋的.cpp	/^double timeKeyPoses;$/;"	m	class:Optimization	file:
+timeKeyPoses	optimization.cpp	/^double timeKeyPoses;$/;"	m	class:Optimization	file:
+timeKeyPoses6D	optimization (1222).cpp	/^double timeKeyPoses6D;$/;"	m	class:Optimization	file:
+timeKeyPoses6D	optimization (copy)改了frame imu.cpp	/^double timeKeyPoses6D;$/;"	m	class:Optimization	file:
+timeKeyPoses6D	optimization (跑通了窗口).cpp	/^double timeKeyPoses6D;$/;"	m	class:Optimization	file:
+timeKeyPoses6D	optimization(origin)很多註釋的.cpp	/^double timeKeyPoses6D;$/;"	m	class:Optimization	file:
+timeKeyPoses6D	optimization.cpp	/^double timeKeyPoses6D;$/;"	m	class:Optimization	file:
+timeLaserCloudCornerLast	mapOptmization.cpp	/^    double timeLaserCloudCornerLast;$/;"	m	class:mapOptimization	file:
+timeLaserCloudOri	optimization (1222).cpp	/^double timeLaserCloudOri;$/;"	m	class:Optimization	file:
+timeLaserCloudOri	optimization (copy)改了frame imu.cpp	/^double timeLaserCloudOri;$/;"	m	class:Optimization	file:
+timeLaserCloudOri	optimization (跑通了窗口).cpp	/^double timeLaserCloudOri;$/;"	m	class:Optimization	file:
+timeLaserCloudOri	optimization(origin)很多註釋的.cpp	/^double timeLaserCloudOri;$/;"	m	class:Optimization	file:
+timeLaserCloudOri	optimization.cpp	/^double timeLaserCloudOri;$/;"	m	class:Optimization	file:
+timeLaserCloudOutlierLast	mapOptmization.cpp	/^    double timeLaserCloudOutlierLast;$/;"	m	class:mapOptimization	file:
+timeLaserCloudProj	optimization (1222).cpp	/^double timeLaserCloudProj;$/;"	m	class:Optimization	file:
+timeLaserCloudProj	optimization (copy)改了frame imu.cpp	/^double timeLaserCloudProj;$/;"	m	class:Optimization	file:
+timeLaserCloudProj	optimization (跑通了窗口).cpp	/^double timeLaserCloudProj;$/;"	m	class:Optimization	file:
+timeLaserCloudProj	optimization(origin)很多註釋的.cpp	/^double timeLaserCloudProj;$/;"	m	class:Optimization	file:
+timeLaserCloudProj	optimization.cpp	/^double timeLaserCloudProj;$/;"	m	class:Optimization	file:
+timeLaserCloudSurfLast	mapOptmization.cpp	/^    double timeLaserCloudSurfLast;$/;"	m	class:mapOptimization	file:
+timeLaserOdometry	mapOptmization.cpp	/^    double timeLaserOdometry;$/;"	m	class:mapOptimization	file:
+timeLastGloalMapPublish	mapOptmization.cpp	/^    double timeLastGloalMapPublish;$/;"	m	class:mapOptimization	file:
+timeLastIMU	optimization (copy)改了frame imu.cpp	/^double timeLastIMU = 0;$/;"	m	class:Optimization	file:
+timeLastIMU	optimization.cpp	/^double timeLastIMU = 0;$/;"	m	class:Optimization	file:
+timeLastProcessing	mapOptmization.cpp	/^    double timeLastProcessing;$/;"	m	class:mapOptimization	file:
+timeLastProcessing	optimization (1222).cpp	/^double timeLastProcessing;$/;"	m	class:Optimization	file:
+timeLastProcessing	optimization (copy)改了frame imu.cpp	/^double timeLastProcessing;$/;"	m	class:Optimization	file:
+timeLastProcessing	optimization (跑通了窗口).cpp	/^double timeLastProcessing;$/;"	m	class:Optimization	file:
+timeLastProcessing	optimization(origin)很多註釋的.cpp	/^double timeLastProcessing;$/;"	m	class:Optimization	file:
+timeLastProcessing	optimization.cpp	/^double timeLastProcessing;$/;"	m	class:Optimization	file:
+timeNewOutlierCloud	featureAssociation.cpp	/^    double timeNewOutlierCloud;$/;"	m	class:FeatureAssociation	file:
+timeNewSegmentedCloud	featureAssociation.cpp	/^    double timeNewSegmentedCloud;$/;"	m	class:FeatureAssociation	file:
+timeNewSegmentedCloudInfo	featureAssociation.cpp	/^    double timeNewSegmentedCloudInfo;$/;"	m	class:FeatureAssociation	file:
+timeSaveFirstCurrentScanForLoopClosure	mapOptmization.cpp	/^    double timeSaveFirstCurrentScanForLoopClosure;$/;"	m	class:mapOptimization	file:
+timeScanCur	featureAssociation.cpp	/^    double timeScanCur;$/;"	m	class:FeatureAssociation	file:
+tmp_Ba	optimization (copy)改了frame imu.cpp	/^Eigen::Vector3d tmp_Ba;$/;"	m	class:Optimization	file:
+tmp_Ba	optimization.cpp	/^Eigen::Vector3d tmp_Ba;$/;"	m	class:Optimization	file:
+tmp_Bg	optimization (copy)改了frame imu.cpp	/^Eigen::Vector3d tmp_Bg;$/;"	m	class:Optimization	file:
+tmp_Bg	optimization.cpp	/^Eigen::Vector3d tmp_Bg;$/;"	m	class:Optimization	file:
+tmp_P	optimization (copy)改了frame imu.cpp	/^Eigen::Vector3d tmp_P;$/;"	m	class:Optimization	file:
+tmp_P	optimization.cpp	/^Eigen::Vector3d tmp_P;$/;"	m	class:Optimization	file:
+tmp_Q	optimization (copy)改了frame imu.cpp	/^Eigen::Quaterniond tmp_Q;$/;"	m	class:Optimization	file:
+tmp_Q	optimization.cpp	/^Eigen::Quaterniond tmp_Q;$/;"	m	class:Optimization	file:
+tmp_V	optimization (copy)改了frame imu.cpp	/^Eigen::Vector3d tmp_V;$/;"	m	class:Optimization	file:
+tmp_V	optimization.cpp	/^Eigen::Vector3d tmp_V;$/;"	m	class:Optimization	file:
+tmp_pre_integration	optimization (copy)改了frame imu.cpp	/^IntegrationBase *tmp_pre_integration;$/;"	m	class:Optimization	file:
+tmp_pre_integration	optimization.cpp	/^IntegrationBase *tmp_pre_integration;$/;"	m	class:Optimization	file:
+toc	internal/CPUTimer.cpp	/^void CPUTimer::toc(std::string name){$/;"	f	class:CPUTimer
+toc	utility/tic_toc.h	/^    double toc()$/;"	f	class:TicToc
+transformAftMapped	mapOptmization.cpp	/^    float transformAftMapped[6];$/;"	m	class:mapOptimization	file:
+transformAftMapped	transformFusion.cpp	/^    float transformAftMapped[6];$/;"	m	class:TransformFusion	file:
+transformAssociateToMap	mapOptmization.cpp	/^    void transformAssociateToMap()$/;"	f	class:mapOptimization
+transformAssociateToMap	transformFusion.cpp	/^    void transformAssociateToMap()$/;"	f	class:TransformFusion
+transformBefMapped	mapOptmization.cpp	/^    float transformBefMapped[6];$/;"	m	class:mapOptimization	file:
+transformBefMapped	transformFusion.cpp	/^    float transformBefMapped[6];$/;"	m	class:TransformFusion	file:
+transformCur	featureAssociation.cpp	/^    float transformCur[6];$/;"	m	class:FeatureAssociation	file:
+transformIncre	mapOptmization.cpp	/^    float transformIncre[6];$/;"	m	class:mapOptimization	file:
+transformIncre	transformFusion.cpp	/^    float transformIncre[6];$/;"	m	class:TransformFusion	file:
+transformLast	mapOptmization.cpp	/^    float transformLast[6];$/;"	m	class:mapOptimization	file:
+transformMapped	transformFusion.cpp	/^    float transformMapped[6];$/;"	m	class:TransformFusion	file:
+transformPointCloud	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr transformPointCloud(pcl::PointCloud<PointType>::Ptr cloudIn){$/;"	f	class:mapOptimization
+transformPointCloud	mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr transformPointCloud(pcl::PointCloud<PointType>::Ptr cloudIn, PointTypePose* transformIn){$/;"	f	class:mapOptimization
+transformSum	featureAssociation.cpp	/^    float transformSum[6];$/;"	m	class:FeatureAssociation	file:
+transformSum	mapOptmization.cpp	/^    float transformSum[6];$/;"	m	class:mapOptimization	file:
+transformSum	transformFusion.cpp	/^    float transformSum[6];$/;"	m	class:TransformFusion	file:
+transformTobeMapped	mapOptmization.cpp	/^    float transformTobeMapped[6];$/;"	m	class:mapOptimization	file:
+transformUpdate	mapOptmization.cpp	/^    void transformUpdate()$/;"	f	class:mapOptimization
+tripod1	featureAssociation.cpp	/^    PointType pointOri, pointSel, tripod1, tripod2, tripod3, pointProj, coeff;$/;"	m	class:FeatureAssociation	file:
+tripod2	featureAssociation.cpp	/^    PointType pointOri, pointSel, tripod1, tripod2, tripod3, pointProj, coeff;$/;"	m	class:FeatureAssociation	file:
+tripod3	featureAssociation.cpp	/^    PointType pointOri, pointSel, tripod1, tripod2, tripod3, pointProj, coeff;$/;"	m	class:FeatureAssociation	file:
+uint_	utility/utility_rotation.h	/^    struct uint_$/;"	s	class:Utility
+unroller	utility/utility_rotation.h	/^    void unroller(const Lambda &f, const IterT &iter, uint_<0>)$/;"	f	class:Utility
+unroller	utility/utility_rotation.h	/^    void unroller(const Lambda &f, const IterT &iter, uint_<N>)$/;"	f	class:Utility
+updateImuRollPitchYawStartSinCos	featureAssociation.cpp	/^    void updateImuRollPitchYawStartSinCos(){$/;"	f	class:FeatureAssociation
+updateInitialGuess	featureAssociation.cpp	/^    void updateInitialGuess(){$/;"	f	class:FeatureAssociation
+updatePointAssociateToMapSinCos	mapOptmization.cpp	/^    void updatePointAssociateToMapSinCos(){$/;"	f	class:mapOptimization
+updateTransformPointCloudSinCos	mapOptmization.cpp	/^    void updateTransformPointCloudSinCos(PointTypePose *tIn){$/;"	f	class:mapOptimization
+updateTransformation	featureAssociation.cpp	/^    void updateTransformation(){$/;"	f	class:FeatureAssociation
+useLocalParam	internal/icp-ceres.cpp	19;"	d	file:
+vector2double	optimization (1222).cpp	/^void vector2double(){$/;"	f	class:Optimization
+vector2double	optimization (copy)改了frame imu.cpp	/^void vector2double(){$/;"	f	class:Optimization
+vector2double	optimization (跑通了窗口).cpp	/^void vector2double(){$/;"	f	class:Optimization
+vector2double	optimization(origin)很多註釋的.cpp	/^void vector2double(){$/;"	f	class:Optimization
+vector2double	optimization.cpp	/^void vector2double(){$/;"	f	class:Optimization
+velocity_i	factor/projection_td_factor.h	/^    Eigen::Vector3d velocity_i, velocity_j;$/;"	m	class:ProjectionTdFactor
+velocity_j	factor/projection_td_factor.h	/^    Eigen::Vector3d velocity_i, velocity_j;$/;"	m	class:ProjectionTdFactor
+visualizeGlobalMapThread	mapOptmization.cpp	/^    void visualizeGlobalMapThread(){$/;"	f	class:mapOptimization
+waitKey	internal/Visualize.cpp	/^bool Visualize::waitKey(unsigned char key){$/;"	f	class:Visualize
+waitKeyInst	internal/Visualize.cpp	/^bool Visualize::waitKeyInst(unsigned char key){$/;"	f	class:Visualize
+ypr2R	utility/utility_rotation.h	/^    static Eigen::Matrix<typename Derived::Scalar, 3, 3> ypr2R(const Eigen::MatrixBase<Derived> &ypr)$/;"	f	class:Utility
+~ImageProjection	imageProjection.cpp	/^    ~ImageProjection(){}$/;"	f	class:ImageProjection
+~MarginalizationInfo	factor/marginalization_factor.cpp	/^MarginalizationInfo::~MarginalizationInfo()$/;"	f	class:MarginalizationInfo

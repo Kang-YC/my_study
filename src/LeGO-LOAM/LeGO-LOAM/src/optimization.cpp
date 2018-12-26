@@ -183,8 +183,8 @@ void clearState()
     Vs[i].setZero();
     // Bas[i].setZero();
     // Bgs[i].setZero();
-    Bas[i]={0.01,0.01,0.01};
-    Bgs[i]={0.01,0.01,0.01};
+    Bas[i].setZero();
+    Bgs[i].setZero();
 
     dt_buf[i].clear();
     linear_acceleration_buf[i].clear();
@@ -377,6 +377,8 @@ ceres::Solver::Options getOptions()
     //options.num_threads = 2;
     options.trust_region_strategy_type = ceres::DOGLEG;
     options.max_num_iterations = 50;
+    options.num_threads = 2;
+    options.function_tolerance = 1e-7;
 
 //    options.preconditioner_type = ceres::SCHUR_JACOBI;
 //    options.linear_solver_type = ceres::DENSE_SCHUR;
@@ -409,6 +411,10 @@ ceres::Solver::Options getOptionsMedium()
     //If you are solving small to medium sized problems, consider setting Solver::Options::use_explicit_schur_complement to true, it can result in a substantial performance boost.
     options.use_explicit_schur_complement=true;
     options.max_num_iterations = 50;
+
+    options.num_threads = 3;
+
+    options.function_tolerance = 1e-7;
 
     cout << "Ceres Solver getOptionsMedium()" << endl;
     cout << "Ceres preconditioner type: " << options.preconditioner_type << endl;
@@ -466,17 +472,17 @@ void currrentPoseProcess()
   cur_t<< x,y,z ;
 
   
-  // if(frame_count <= WINDOW_SIZE){// framecount==index 0-9
-  //   Ps[frame_count] = cur_t;
-  //   Rs[frame_count] = curRx;
-  //  // ROS_DEBUG("Ps[currentInd] %f %f %f  ",Ps[currentInd][0], Ps[currentInd][1], Ps[currentInd][2]);
-  // }
-  // else
-  // {
-  //    Ps[WINDOW_SIZE] = cur_t;
-  //    Rs[WINDOW_SIZE] = curRx;
-  //  // ROS_DEBUG("Ps[WINDOW_SIZE] %f %f %f  ",Ps[WINDOW_SIZE][0], Ps[WINDOW_SIZE][1], Ps[WINDOW_SIZE][2]);
-  // }
+  if(frame_count <= WINDOW_SIZE){// framecount==index 0-9
+    Ps[frame_count] = cur_t;
+    Rs[frame_count] = curRx;
+   // ROS_DEBUG("Ps[currentInd] %f %f %f  ",Ps[currentInd][0], Ps[currentInd][1], Ps[currentInd][2]);
+  }
+  else
+  {
+     Ps[WINDOW_SIZE] = cur_t;
+     Rs[WINDOW_SIZE] = curRx;
+   // ROS_DEBUG("Ps[WINDOW_SIZE] %f %f %f  ",Ps[WINDOW_SIZE][0], Ps[WINDOW_SIZE][1], Ps[WINDOW_SIZE][2]);
+  }
 
 
   //ROS_INFO("frame_count %d", frame_count);
@@ -669,6 +675,7 @@ void imuProcess(std::vector <sensor_msgs::ImuConstPtr> &IMU_Cur)
   }
 }
 
+
 void processIMU(double dt, const Vector3d &linear_acceleration, const Vector3d &angular_velocity)
 {
     if (!first_imu)
@@ -694,16 +701,16 @@ void processIMU(double dt, const Vector3d &linear_acceleration, const Vector3d &
         linear_acceleration_buf[frame_count].push_back(linear_acceleration);
         angular_velocity_buf[frame_count].push_back(angular_velocity);
 
-        int j = frame_count;         
-        Vector3d un_acc_0 = Rs[j] * (acc_0 - Bas[j]) - G;//按前一帧
-        Vector3d un_gyr = 0.5 * (gyr_0 + angular_velocity) - Bgs[j];//前一帧与当前帧结合
-        Rs[j] *= Utility::deltaQ(un_gyr * dt).toRotationMatrix();
-        Vector3d un_acc_1 = Rs[j] * (linear_acceleration - Bas[j]) - G;
-        Vector3d un_acc = 0.5 * (un_acc_0 + un_acc_1);
-        Ps[j] += dt * Vs[j] + 0.5 * dt * dt * un_acc;
-        Vs[j] += dt * un_acc;//当前帧的姿态 位置 速度 
+        // int j = frame_count;         
+        // Vector3d un_acc_0 = Rs[j] * (acc_0 - Bas[j]) - G;//按前一帧
+        // Vector3d un_gyr = 0.5 * (gyr_0 + angular_velocity) - Bgs[j];//前一帧与当前帧结合
+        // Rs[j] *= Utility::deltaQ(un_gyr * dt).toRotationMatrix();
+        // Vector3d un_acc_1 = Rs[j] * (linear_acceleration - Bas[j]) - G;
+        // Vector3d un_acc = 0.5 * (un_acc_0 + un_acc_1);
+        // Ps[j] += dt * Vs[j] + 0.5 * dt * dt * un_acc;
+        // Vs[j] += dt * un_acc;//当前帧的姿态 位置 速度 
 
-        ROS_DEBUG("Ps imu %f" ,Ps[j].x());
+        //ROS_DEBUG("Ps imu %f" ,Ps[frame_count].x());
     }
     acc_0 = linear_acceleration;
     gyr_0 = angular_velocity;  
@@ -711,6 +718,25 @@ void processIMU(double dt, const Vector3d &linear_acceleration, const Vector3d &
     //ROS_DEBUG("Pre_integrations %f", pre_integrations[frame_count]->delta_p[0]);
 }
 
+
+void update()
+{
+  latest_time = current_time;
+  tmp_P = Ps[WINDOW_SIZE];
+  tmp_Q = Rs[WINDOW_SIZE];
+  tmp_V = Vs[WINDOW_SIZE];
+  tmp_Ba = Bas[WINDOW_SIZE];
+  tmp_Bg = Bgs[WINDOW_SIZE];
+  acc_0 = acc_0;
+  gyr_0 = gyr_0;
+
+  queue<sensor_msgs::ImuConstPtr> tmp_imu_buf = imu_buf;
+  for (sensor_msgs::ImuConstPtr tmp_imu_msg; !tmp_imu_buf.empty(); tmp_imu_buf.pop())
+        predict(tmp_imu_buf.front());
+
+      ROS_DEBUG("update ");
+
+}
 
 
 void optimizationProcess()
@@ -744,54 +770,54 @@ void solveOdometry()
   //   }
 
 
-  // for(int i=0; i< WINDOW_SIZE+1 ;i++)
-  // {
+  for(int i=0; i< WINDOW_SIZE+1 ;i++)
+  {
 
-  //   int j   = i+1;
-  //   int ind = i ;
+    int j   = i+1;
+    int ind = i ;
 
-  //   for(int k=0;k<CloudKeyFramesOri[ind]->points.size();k++)
-  //   {
+    for(int k=0;k<CloudKeyFramesOri[ind]->points.size();k++)
+    {
       
-  //     Vector3d ori, proj;
+      Vector3d ori, proj;
 
-  //     //ori in body frame
-  //     //proj in world frame
+      //ori in body frame
+      //proj in world frame
 
-  //     ori<< CloudKeyFramesOri[ind]->points[k].z , CloudKeyFramesOri[ind]->points[k].x , CloudKeyFramesOri[ind]->points[k].y;
+      ori<< CloudKeyFramesOri[ind]->points[k].z , CloudKeyFramesOri[ind]->points[k].x , CloudKeyFramesOri[ind]->points[k].y;
       
-  //     proj<< CloudKeyFramesProj[ind]->points[k].z, CloudKeyFramesProj[ind]->points[k].x , CloudKeyFramesProj[ind]->points[k].y;
+      proj<< CloudKeyFramesProj[ind]->points[k].z, CloudKeyFramesProj[ind]->points[k].x , CloudKeyFramesProj[ind]->points[k].y;
 
-  //     // test the rotation
-  //     if(k < 3 && ind == WINDOW_SIZE-1){
-  //     double point[3] = {ori[0], ori[1], ori[2]};
-  //     double q[4]     = {para_Pose[ind][6],para_Pose[ind][3],para_Pose[ind][4],para_Pose[ind][5]};//!!!!!w x y z 
-  //     double p[3];
+      // test the rotation
+      if(k < 3 && ind == WINDOW_SIZE-1){
+      double point[3] = {ori[0], ori[1], ori[2]};
+      double q[4]     = {para_Pose[ind][6],para_Pose[ind][3],para_Pose[ind][4],para_Pose[ind][5]};//!!!!!w x y z 
+      double p[3];
 
 
-  //     ceres::QuaternionRotatePoint( q, point, p);
+      ceres::QuaternionRotatePoint( q, point, p);
         
-  //       p[0] += para_Pose[ind][0];
-  //       p[1] += para_Pose[ind][1];
-  //       p[2] += para_Pose[ind][2];
-  //     cout << "ori"<<p[0]<<" " <<p[1]<<" "<<p[2]<< endl;
-  //     cout << "pro"<<proj[0]<<" " << proj[1]<<" "<<proj[2]<<endl;
+        p[0] += para_Pose[ind][0];
+        p[1] += para_Pose[ind][1];
+        p[2] += para_Pose[ind][2];
+      cout << "ori"<<p[0]<<" " <<p[1]<<" "<<p[2]<< endl;
+      cout << "pro"<<proj[0]<<" " << proj[1]<<" "<<proj[2]<<endl;
 
-  //     }
+      }
   
 
-  //     // }  
-  //     //ROS_DEBUG("ori x y  %f %f", ori[0],ori[1]);
-  //     if(ori[0] > 50 ||  ori[1] > 50  || ori[2] > 50)
-  //       continue;
+      // }  
+      //ROS_DEBUG("ori x y  %f %f", ori[0],ori[1]);
+      if(ori[0] > 50 ||  ori[1] > 50  || ori[2] > 50)
+        continue;
 
       
-  //     ceres::CostFunction* lidar_cost_function = ICPCostFunctions::PointToPointError_EigenQuaternion::Create(proj,ori);
+      ceres::CostFunction* lidar_cost_function = ICPCostFunctions::PointToPointError_EigenQuaternion::Create(proj,ori);
       
-  //     problem.AddResidualBlock(lidar_cost_function, loss_function, para_Pose[ind]);
+      problem.AddResidualBlock(lidar_cost_function, loss_function, para_Pose[ind]);
       
-  //     }
-  // }
+      }
+  }
 
 
   for (int i = 0; i < WINDOW_SIZE; i++)
@@ -834,6 +860,9 @@ void vector2double(){
         para_SpeedBias[i][8] = Bgs[i].z();
     }
     ROS_DEBUG("P-origin %f",Ps[WINDOW_SIZE][0]);
+    ROS_DEBUG("V-origin %f",Vs[WINDOW_SIZE][0]);
+    ROS_DEBUG("Bas-origin %f",Bas[WINDOW_SIZE][0]);
+    ROS_DEBUG("Bgs-origin %f",Bgs[WINDOW_SIZE][0]);
 
 }
 
@@ -862,6 +891,10 @@ void double2vector()
                           para_SpeedBias[i][8]);
     }
     ROS_DEBUG("P-coupled %f",Ps[WINDOW_SIZE][0]);
+    ROS_DEBUG("V-coupled %f",Vs[WINDOW_SIZE][0]);
+    ROS_DEBUG("Bas-origin %f",Bas[WINDOW_SIZE][0]);
+    ROS_DEBUG("Bgs-coupled %f",Bgs[WINDOW_SIZE][0]);
+
 }
 
 
@@ -1046,6 +1079,8 @@ void run(){
     imuProcess(IMU_Cur);
 
     optimizationProcess();
+
+    update();
 
     
   }
