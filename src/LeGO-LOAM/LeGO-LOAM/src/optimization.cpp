@@ -67,7 +67,7 @@ bool newLaserCloudProj;
 bool newCloudKeyPoses3D;
 bool newCloudKeyPoses6D;
 
-bool smallProblem=false;
+bool smallProblem=true;
 
 ros::Subscriber subKeyPoses;
 ros::Subscriber subKeyPoses6D;
@@ -103,6 +103,7 @@ int frame_count;
 std_msgs::Header lidarHeader;
 
 bool init_imu = 1;
+bool initial_flag = false;
 bool first_imu;
 double timeLastIMU = 0;
 double latest_time;
@@ -181,10 +182,10 @@ void clearState()
     Rs[i].setIdentity();
     Ps[i].setZero();
     Vs[i].setZero();
-    // Bas[i].setZero();
-    // Bgs[i].setZero();
     Bas[i].setZero();
     Bgs[i].setZero();
+    // Bas[i] = {0.2,-0.01,0.05};
+    // Bgs[i].setZero();
 
     dt_buf[i].clear();
     linear_acceleration_buf[i].clear();
@@ -377,12 +378,12 @@ ceres::Solver::Options getOptions()
     //options.num_threads = 2;
     options.trust_region_strategy_type = ceres::DOGLEG;
     options.max_num_iterations = 50;
-    options.num_threads = 2;
-    options.function_tolerance = 1e-7;
+    options.num_threads = 3;
+    options.function_tolerance = 1e-5;
 
 //    options.preconditioner_type = ceres::SCHUR_JACOBI;
 //    options.linear_solver_type = ceres::DENSE_SCHUR;
-//    options.use_explicit_schur_complement=true;
+  options.use_explicit_schur_complement=true;
 //    options.max_num_iterations = 100;
 
     cout << "Ceres Solver getOptions()" << endl;
@@ -414,7 +415,7 @@ ceres::Solver::Options getOptionsMedium()
 
     options.num_threads = 3;
 
-    options.function_tolerance = 1e-7;
+    options.function_tolerance = 1e-5;
 
     cout << "Ceres Solver getOptionsMedium()" << endl;
     cout << "Ceres preconditioner type: " << options.preconditioner_type << endl;
@@ -701,14 +702,14 @@ void processIMU(double dt, const Vector3d &linear_acceleration, const Vector3d &
         linear_acceleration_buf[frame_count].push_back(linear_acceleration);
         angular_velocity_buf[frame_count].push_back(angular_velocity);
 
-        // int j = frame_count;         
-        // Vector3d un_acc_0 = Rs[j] * (acc_0 - Bas[j]) - G;//按前一帧
-        // Vector3d un_gyr = 0.5 * (gyr_0 + angular_velocity) - Bgs[j];//前一帧与当前帧结合
-        // Rs[j] *= Utility::deltaQ(un_gyr * dt).toRotationMatrix();
-        // Vector3d un_acc_1 = Rs[j] * (linear_acceleration - Bas[j]) - G;
-        // Vector3d un_acc = 0.5 * (un_acc_0 + un_acc_1);
-        // Ps[j] += dt * Vs[j] + 0.5 * dt * dt * un_acc;
-        // Vs[j] += dt * un_acc;//当前帧的姿态 位置 速度 
+        int j = frame_count;         
+        Vector3d un_acc_0 = Rs[j] * (acc_0 - Bas[j]) - G;//按前一帧
+        Vector3d un_gyr = 0.5 * (gyr_0 + angular_velocity) - Bgs[j];//前一帧与当前帧结合
+        //Rs[j] *= Utility::deltaQ(un_gyr * dt).toRotationMatrix();
+        Vector3d un_acc_1 = Rs[j] * (linear_acceleration - Bas[j]) - G;
+        Vector3d un_acc = 0.5 * (un_acc_0 + un_acc_1);
+        //Ps[j] += dt * Vs[j] + 0.5 * dt * dt * un_acc;
+        Vs[j] += dt * un_acc;//当前帧的姿态 位置 速度 
 
         //ROS_DEBUG("Ps imu %f" ,Ps[frame_count].x());
     }
@@ -741,15 +742,72 @@ void update()
 
 void optimizationProcess()
 {
-  if(frame_count == WINDOW_SIZE){
- 
+  if(initial_flag==false)
+  {
+    if(frame_count == WINDOW_SIZE)
+    {
+      vector2double();
+      initialization();
+
+      initial_flag = true;
+      solveOdometry();
+      double2vector();
+      pubOptOdometry();
+      slideWindow();
+
+    }
+    else
+      frame_count++;
+    
+  }
+  else
+  {
+    vector2double();
     solveOdometry();
+    double2vector();
     pubOptOdometry();
     slideWindow();
+
   }
 
- else
-  frame_count++;
+}
+
+
+
+void initialization()
+{
+  if(frame_count < WINDOW_SIZE)
+    return;
+
+  ROS_DEBUG("initialization %d", frame_count);
+  ceres::Problem problem;
+  ceres::LossFunction *loss_function = new ceres::CauchyLoss(1);
+  
+  for (int i = 0; i < WINDOW_SIZE + 1; i++)
+    {
+        ceres::LocalParameterization *local_parameterization = new PoseLocalParameterization();
+        problem.AddParameterBlock(para_Pose[i], SIZE_POSE, local_parameterization);//SIZE_POSE = 7  SIZE_SPEEDBIAS = 9
+        problem.AddParameterBlock(para_SpeedBias[i], SIZE_SPEEDBIAS);
+        problem.SetParameterBlockConstant(para_Pose[i]);
+    }
+  for (int i = 0; i < WINDOW_SIZE; i++)
+    {
+        int j = i + 1;
+        if (pre_integrations[j]->sum_dt > 10.0)
+            continue;
+        IMUFactor* imu_factor = new IMUFactor(pre_integrations[j]);//预积分误差
+
+        problem.AddResidualBlock(imu_factor, loss_function, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
+     
+    }
+
+
+
+    solveProblem(problem);
+
+
+
+
 }
 
 
@@ -761,63 +819,66 @@ void solveOdometry()
   ROS_DEBUG("solveOdometry %d", frame_count);
   ceres::Problem problem;
   ceres::LossFunction *loss_function = new ceres::CauchyLoss(1);
-  vector2double();
-  // for (int i = 0; i < WINDOW_SIZE + 1; i++)
-  //   {
-  //       ceres::LocalParameterization *local_parameterization = new PoseLocalParameterization();
-  //       problem.AddParameterBlock(para_Pose[i], SIZE_POSE, local_parameterization);//SIZE_POSE = 7  SIZE_SPEEDBIAS = 9
-  //       problem.AddParameterBlock(para_SpeedBias[i], SIZE_SPEEDBIAS);
-  //   }
-
-
-  for(int i=0; i< WINDOW_SIZE+1 ;i++)
-  {
-
-    int j   = i+1;
-    int ind = i ;
-
-    for(int k=0;k<CloudKeyFramesOri[ind]->points.size();k++)
+  //vector2double();
+  
+  for (int i = 0; i < WINDOW_SIZE + 1; i++)
     {
+        ceres::LocalParameterization *local_parameterization = new PoseLocalParameterization();
+        problem.AddParameterBlock(para_Pose[i], SIZE_POSE, local_parameterization);//SIZE_POSE = 7  SIZE_SPEEDBIAS = 9
+        problem.AddParameterBlock(para_SpeedBias[i], SIZE_SPEEDBIAS);
+      // problem.SetParameterBlockConstant(para_Pose[i]);
+    }
+
+
+
+  // for(int i=0; i< WINDOW_SIZE+1 ;i++)
+  // {
+
+  //   int j   = i+1;
+  //   int ind = i ;
+
+  //   for(int k=0;k<CloudKeyFramesOri[ind]->points.size();k++)
+  //   {
       
-      Vector3d ori, proj;
+  //     Vector3d ori, proj;
 
-      //ori in body frame
-      //proj in world frame
+  //     //ori in body frame
+  //     //proj in world frame
 
-      ori<< CloudKeyFramesOri[ind]->points[k].z , CloudKeyFramesOri[ind]->points[k].x , CloudKeyFramesOri[ind]->points[k].y;
+  //     ori<< CloudKeyFramesOri[ind]->points[k].z , CloudKeyFramesOri[ind]->points[k].x , CloudKeyFramesOri[ind]->points[k].y;
       
-      proj<< CloudKeyFramesProj[ind]->points[k].z, CloudKeyFramesProj[ind]->points[k].x , CloudKeyFramesProj[ind]->points[k].y;
+  //     proj<< CloudKeyFramesProj[ind]->points[k].z, CloudKeyFramesProj[ind]->points[k].x , CloudKeyFramesProj[ind]->points[k].y;
 
-      // test the rotation
-      if(k < 3 && ind == WINDOW_SIZE-1){
-      double point[3] = {ori[0], ori[1], ori[2]};
-      double q[4]     = {para_Pose[ind][6],para_Pose[ind][3],para_Pose[ind][4],para_Pose[ind][5]};//!!!!!w x y z 
-      double p[3];
+  //     // test the rotation
+  //     if(k < 3 && ind == WINDOW_SIZE-1){
+  //     double point[3] = {ori[0], ori[1], ori[2]};
+  //     double q[4]     = {para_Pose[ind][6],para_Pose[ind][3],para_Pose[ind][4],para_Pose[ind][5]};//!!!!!w x y z 
+  //     double p[3];
 
 
-      ceres::QuaternionRotatePoint( q, point, p);
+  //     ceres::QuaternionRotatePoint( q, point, p);
         
-        p[0] += para_Pose[ind][0];
-        p[1] += para_Pose[ind][1];
-        p[2] += para_Pose[ind][2];
-      cout << "ori"<<p[0]<<" " <<p[1]<<" "<<p[2]<< endl;
-      cout << "pro"<<proj[0]<<" " << proj[1]<<" "<<proj[2]<<endl;
+  //       p[0] += para_Pose[ind][0];
+  //       p[1] += para_Pose[ind][1];
+  //       p[2] += para_Pose[ind][2];
+  //     cout << "ori"<<p[0]<<" " <<p[1]<<" "<<p[2]<< endl;
+  //     cout << "pro"<<proj[0]<<" " << proj[1]<<" "<<proj[2]<<endl;
 
-      }
+  //     }
   
 
-      // }  
-      //ROS_DEBUG("ori x y  %f %f", ori[0],ori[1]);
-      if(ori[0] > 50 ||  ori[1] > 50  || ori[2] > 50)
-        continue;
+  //     // }  
+  //     //ROS_DEBUG("ori x y  %f %f", ori[0],ori[1]);
+  //     if(ori[0] > 50 ||  ori[1] > 50  || ori[2] > 50)
+  //       continue;
 
       
-      ceres::CostFunction* lidar_cost_function = ICPCostFunctions::PointToPointError_EigenQuaternion::Create(proj,ori);
+  //     ceres::CostFunction* lidar_cost_function = ICPCostFunctions::PointToPointError_EigenQuaternion::Create(proj,ori);
       
-      problem.AddResidualBlock(lidar_cost_function, loss_function, para_Pose[ind]);
+  //     problem.AddResidualBlock(lidar_cost_function, loss_function, para_Pose[ind]);
       
-      }
-  }
+  //     }
+  // }
 
 
   for (int i = 0; i < WINDOW_SIZE; i++)
@@ -827,12 +888,12 @@ void solveOdometry()
             continue;
         IMUFactor* imu_factor = new IMUFactor(pre_integrations[j]);//预积分误差
 
-        problem.AddResidualBlock(imu_factor, NULL, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
+        problem.AddResidualBlock(imu_factor, loss_function, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
      
     }
 
    solveProblem(problem);
-   double2vector();
+   
 }
 
 void vector2double(){
@@ -859,10 +920,10 @@ void vector2double(){
         para_SpeedBias[i][7] = Bgs[i].y();
         para_SpeedBias[i][8] = Bgs[i].z();
     }
-    ROS_DEBUG("P-origin %f",Ps[WINDOW_SIZE][0]);
-    ROS_DEBUG("V-origin %f",Vs[WINDOW_SIZE][0]);
-    ROS_DEBUG("Bas-origin %f",Bas[WINDOW_SIZE][0]);
-    ROS_DEBUG("Bgs-origin %f",Bgs[WINDOW_SIZE][0]);
+    ROS_DEBUG("P-origin %f %f %f",Ps[WINDOW_SIZE][0],Ps[WINDOW_SIZE][1],Ps[WINDOW_SIZE][2]);
+    ROS_DEBUG("V-origin %f %f %f",Vs[WINDOW_SIZE][0],Vs[WINDOW_SIZE][1],Vs[WINDOW_SIZE][2]);
+    ROS_DEBUG("Bas-origin %f %f %f",Bas[WINDOW_SIZE][0],Bas[WINDOW_SIZE][1],Bas[WINDOW_SIZE][2]);
+    ROS_DEBUG("Bgs-origin %f %f %f",Bgs[WINDOW_SIZE][0],Bgs[WINDOW_SIZE][1],Bgs[WINDOW_SIZE][2]);
 
 }
 
@@ -890,10 +951,10 @@ void double2vector()
                           para_SpeedBias[i][7],
                           para_SpeedBias[i][8]);
     }
-    ROS_DEBUG("P-coupled %f",Ps[WINDOW_SIZE][0]);
-    ROS_DEBUG("V-coupled %f",Vs[WINDOW_SIZE][0]);
-    ROS_DEBUG("Bas-origin %f",Bas[WINDOW_SIZE][0]);
-    ROS_DEBUG("Bgs-coupled %f",Bgs[WINDOW_SIZE][0]);
+    ROS_DEBUG("P-coupled %f %f %f",Ps[WINDOW_SIZE][0],Ps[WINDOW_SIZE][1],Ps[WINDOW_SIZE][2]);
+    ROS_DEBUG("V-coupled %f %f %f",Vs[WINDOW_SIZE][0],Vs[WINDOW_SIZE][1],Vs[WINDOW_SIZE][2]);
+    ROS_DEBUG("Bas-coupled %f %f %f",Bas[WINDOW_SIZE][0],Bas[WINDOW_SIZE][1],Bas[WINDOW_SIZE][2]);
+    ROS_DEBUG("Bgs-coupled %f %f %f",Bgs[WINDOW_SIZE][0],Bgs[WINDOW_SIZE][1],Bgs[WINDOW_SIZE][2]);
 
 }
 

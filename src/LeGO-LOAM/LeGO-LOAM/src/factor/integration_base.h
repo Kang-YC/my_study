@@ -9,7 +9,7 @@ using namespace Eigen;
 class IntegrationBase
 {
   private:
-  double ACC_N = 0.04;
+  double ACC_N = 0.01;
   double GYR_N = 0.004;
   double ACC_W = 0.00004;
   double GYR_W = 2.0e-6;

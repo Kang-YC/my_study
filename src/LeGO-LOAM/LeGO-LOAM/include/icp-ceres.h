@@ -433,9 +433,9 @@ struct PointToPointError_EigenQuaternion{
         // cout<< p_dst<<endl;
 
  
-        residuals[0] = p[0] - T(p_dst[0]);
-        residuals[1] = p[1] - T(p_dst[1]);
-        residuals[2] = p[2] - T(p_dst[2]);
+        residuals[0] = 0.2 *(p[0] - T(p_dst[0]));
+        residuals[1] = 0.2 * (p[1] - T(p_dst[1]));
+        residuals[2] = 0.1 * (p[2] - T(p_dst[2]));
 
         return true;
     }
