@@ -377,9 +377,10 @@ ceres::Solver::Options getOptions()
     options.linear_solver_type = ceres::DENSE_SCHUR;
     //options.num_threads = 2;
     options.trust_region_strategy_type = ceres::DOGLEG;
-    options.max_num_iterations = 50;
-    options.num_threads = 3;
-    options.function_tolerance = 1e-5;
+    options.preconditioner_type        = ceres::SCHUR_JACOBI;
+    options.max_num_iterations         = 50;
+    options.num_threads                = 3;
+    options.function_tolerance         = 1e-5;
 
 //    options.preconditioner_type = ceres::SCHUR_JACOBI;
 //    options.linear_solver_type = ceres::DENSE_SCHUR;
@@ -393,6 +394,7 @@ ceres::Solver::Options getOptions()
 
     return options;
 }
+
 
 
 ceres::Solver::Options getOptionsMedium()
@@ -412,6 +414,7 @@ ceres::Solver::Options getOptionsMedium()
     //If you are solving small to medium sized problems, consider setting Solver::Options::use_explicit_schur_complement to true, it can result in a substantial performance boost.
     options.use_explicit_schur_complement=true;
     options.max_num_iterations = 50;
+   // options.initial_trust_region_radius = options.max_trust_region_radius;
 
     options.num_threads = 3;
 
@@ -424,6 +427,7 @@ ceres::Solver::Options getOptionsMedium()
 
     return options;
 }
+
 
 
 void solveProblem(ceres::Problem &problem)
@@ -781,15 +785,16 @@ void initialization()
 
   ROS_DEBUG("initialization %d", frame_count);
   ceres::Problem problem;
-  ceres::LossFunction *loss_function = new ceres::CauchyLoss(1);
-  
+  ceres::LossFunction *loss_function_initial = new ceres::CauchyLoss(3);
+
   for (int i = 0; i < WINDOW_SIZE + 1; i++)
     {
         ceres::LocalParameterization *local_parameterization = new PoseLocalParameterization();
         problem.AddParameterBlock(para_Pose[i], SIZE_POSE, local_parameterization);//SIZE_POSE = 7  SIZE_SPEEDBIAS = 9
-        problem.AddParameterBlock(para_SpeedBias[i], SIZE_SPEEDBIAS);
         problem.SetParameterBlockConstant(para_Pose[i]);
+        problem.AddParameterBlock(para_SpeedBias[i], SIZE_SPEEDBIAS);
     }
+
   for (int i = 0; i < WINDOW_SIZE; i++)
     {
         int j = i + 1;
@@ -797,18 +802,37 @@ void initialization()
             continue;
         IMUFactor* imu_factor = new IMUFactor(pre_integrations[j]);//预积分误差
 
-        problem.AddResidualBlock(imu_factor, loss_function, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
+        problem.AddResidualBlock(imu_factor, loss_function_initial, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
      
     }
 
-
-
     solveProblem(problem);
 
+    for (int i = 0; i <= WINDOW_SIZE ; i++)
+    {
 
+        Vs[i] =  Vector3d(para_SpeedBias[i][0],
+                          para_SpeedBias[i][1],
+                          para_SpeedBias[i][2]);
+
+        Bas[i] = Vector3d(para_SpeedBias[i][3],
+                          para_SpeedBias[i][4],
+                          para_SpeedBias[i][5]);
+
+        Bgs[i] = Vector3d(para_SpeedBias[i][6],
+                          para_SpeedBias[i][7],
+                          para_SpeedBias[i][8]);
+
+        pre_integrations[i]->repropagate(Bas[i], Bgs[i]);
+        ROS_DEBUG("repropagate %d", frame_count);
+
+
+    }
 
 
 }
+
+
 
 
 void solveOdometry()
@@ -818,16 +842,18 @@ void solveOdometry()
   
   ROS_DEBUG("solveOdometry %d", frame_count);
   ceres::Problem problem;
-  ceres::LossFunction *loss_function = new ceres::CauchyLoss(1);
+  ceres::LossFunction *loss_function_imu = new ceres::CauchyLoss(5);
+
+  ceres::LossFunction *loss_function_lidar = new ceres::CauchyLoss(0.5);
   //vector2double();
   
-  for (int i = 0; i < WINDOW_SIZE + 1; i++)
-    {
-        ceres::LocalParameterization *local_parameterization = new PoseLocalParameterization();
-        problem.AddParameterBlock(para_Pose[i], SIZE_POSE, local_parameterization);//SIZE_POSE = 7  SIZE_SPEEDBIAS = 9
-        problem.AddParameterBlock(para_SpeedBias[i], SIZE_SPEEDBIAS);
-      // problem.SetParameterBlockConstant(para_Pose[i]);
-    }
+  // for (int i = 0; i < WINDOW_SIZE + 1; i++)
+  //   {
+  //       ceres::LocalParameterization *local_parameterization = new PoseLocalParameterization();
+  //       problem.AddParameterBlock(para_Pose[i], SIZE_POSE, local_parameterization);//SIZE_POSE = 7  SIZE_SPEEDBIAS = 9
+  //       problem.AddParameterBlock(para_SpeedBias[i], SIZE_SPEEDBIAS);
+  //     // problem.SetParameterBlockConstant(para_Pose[i]);
+  //   }
 
 
 
@@ -875,21 +901,39 @@ void solveOdometry()
       
   //     ceres::CostFunction* lidar_cost_function = ICPCostFunctions::PointToPointError_EigenQuaternion::Create(proj,ori);
       
-  //     problem.AddResidualBlock(lidar_cost_function, loss_function, para_Pose[ind]);
+  //     problem.AddResidualBlock(lidar_cost_function, loss_function_lidar, para_Pose[ind]);
       
   //     }
   // }
+  
 
 
+
+
+  // for (int i = 0; i < WINDOW_SIZE; i++)
+  //   {
+
+  //       int j = i + 1;
+  //       if (pre_integrations[j]->sum_dt > 10.0)
+  //           continue;
+  //       IMUFactor* imu_factor = new IMUFactor(pre_integrations[j]);//预积分误差
+
+  //       problem.AddResidualBlock(imu_factor, loss_function_imu, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
+     
+  //   }
+  //   
+  //   
+  //   
+  //imu autodiff
   for (int i = 0; i < WINDOW_SIZE; i++)
     {
+
         int j = i + 1;
         if (pre_integrations[j]->sum_dt > 10.0)
             continue;
-        IMUFactor* imu_factor = new IMUFactor(pre_integrations[j]);//预积分误差
-
-        problem.AddResidualBlock(imu_factor, loss_function, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
-     
+        ceres::CostFunction* imu_function = ICPCostFunctions::IMUFactor::Create(pre_integrations[j]);
+        problem.AddResidualBlock(imu_function, NULL, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
+      
     }
 
    solveProblem(problem);

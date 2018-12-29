@@ -15,6 +15,8 @@
 #include <ceres/rotation.h>
 #include "eigen_quaternion.h"
 //#include "sophus_se3.h"
+#include "../src/factor/integration_base.h"
+
 
 using namespace Eigen;
 using namespace std;
@@ -433,13 +435,370 @@ struct PointToPointError_EigenQuaternion{
         // cout<< p_dst<<endl;
 
  
-        residuals[0] = 0.2 *(p[0] - T(p_dst[0]));
-        residuals[1] = 0.2 * (p[1] - T(p_dst[1]));
-        residuals[2] = 0.1 * (p[2] - T(p_dst[2]));
+        // residuals[0] = p[0] - T(p_dst[0]);
+        // residuals[1] = p[1] - T(p_dst[1]);
+        // residuals[2] = p[2] - T(p_dst[2]);
+
+
+ 
+        residuals[0] = 0.2*(p[0] - T(p_dst[0]));
+        residuals[1] = 0.1*(p[1] - T(p_dst[1]));
+        residuals[2] = 0.1*(p[2] - T(p_dst[2]));
 
         return true;
     }
 };
+
+//use double
+
+// struct IMUFactor{
+//     const IntegrationBase* pre_integration;
+
+//     IMUFactor(const IntegrationBase* _pre_integration) :pre_integration(_pre_integration)     
+//     {
+//     }
+
+//     // Factory to hide the construction of the CostFunction object from the client code.
+//     static ceres::CostFunction* Create(const IntegrationBase* pre_integration) {
+//         return (new ceres::AutoDiffCostFunction<IMUFactor, 15, 7, 9, 7, 9>(new IMUFactor(pre_integration)));
+//     }
+
+//     template <typename T>
+//     bool operator()(const T* const para_Pose_i, const T* const para_Speedbias_i, const T* const para_Pose_j ,const T* const para_Speedbias_j, T* residuals) const 
+//     {
+
+//         Eigen::Map<Eigen::Matrix<T, 15, 1>> residual(residuals);
+
+
+//         Eigen::Vector3d Pi(para_Pose_i[0], para_Pose_i[1], para_Pose_i[2]);
+//         Eigen::Quaterniond Qi(para_Pose_i[6], para_Pose_i[3], para_Pose_i[4], para_Pose_i[5]);
+
+//         Eigen::Vector3d Vi(para_Speedbias_i[0], para_Speedbias_i[1], para_Speedbias_i[2]);
+//         Eigen::Vector3d Bai(para_Speedbias_i[3], para_Speedbias_i[4], para_Speedbias_i[5]);
+//         Eigen::Vector3d Bgi(para_Speedbias_i[6], para_Speedbias_i[7], para_Speedbias_i[8]);
+
+//         Eigen::Vector3d Pj(para_Pose_j[0], para_Pose_j[1], para_Pose_j[2]);
+//         Eigen::Quaterniond  Qj(para_Pose_j[6], para_Pose_j[3], para_Pose_j[4], para_Pose_j[5]);
+//         Eigen::Quaterniond  Qj_inverse = Qi.inverse();
+
+//         Eigen::Vector3d Vj(para_Speedbias_j[0], para_Speedbias_j[1], para_Speedbias_j[2]);
+//         Eigen::Vector3d Baj(para_Speedbias_j[3], para_Speedbias_j[4], para_Speedbias_j[5]);
+//         Eigen::Vector3d Bgj(para_Speedbias_j[3], para_Speedbias_j[4], para_Speedbias_j[5]);
+
+
+        
+//         // Eigen::Matrix<T,3,1> Pi(para_Pose_i[0], para_Pose_i[1], para_Pose_i[2]);
+//         // Eigen::Quaternion<T> Qi(para_Pose_i[6], para_Pose_i[3], para_Pose_i[4], para_Pose_i[5]);
+
+//         // Eigen::Matrix<T,3,1> Vi(para_Speedbias_i[0], para_Speedbias_i[1], para_Speedbias_i[2]);
+//         // Eigen::Matrix<T,3,1> Bai(para_Speedbias_i[3], para_Speedbias_i[4], para_Speedbias_i[5]);
+//         // Eigen::Matrix<T,3,1> Bgi(para_Speedbias_i[6], para_Speedbias_i[7], para_Speedbias_i[8]);
+
+//         // Eigen::Matrix<T,3,1> Pj(para_Pose_j[0], para_Pose_j[1], para_Pose_j[2]);
+//         // Eigen::Quaternion<T>  Qj(para_Pose_j[6], para_Pose_j[3], para_Pose_j[4], para_Pose_j[5]);
+//         // Eigen::Quaternion<T>  Qj_inverse = Qi.inverse();
+
+//         // Eigen::Matrix<T,3,1> Vj(para_Speedbias_j[0], para_Speedbias_j[1], para_Speedbias_j[2]);
+//         // Eigen::Matrix<T,3,1> Baj(para_Speedbias_j[3], para_Speedbias_j[4], para_Speedbias_j[5]);
+//         // Eigen::Matrix<T,3,1> Bgj(para_Speedbias_j[3], para_Speedbias_j[4], para_Speedbias_j[5]);
+
+        
+//         // Eigen::Matrix3d dp_dba = pre_integration->jacobian.block<3, 3>(O_P, O_BA);
+//         // Eigen::Matrix3d dp_dbg = pre_integration->jacobian.block<3, 3>(O_P, O_BG);
+//         // Eigen::Matrix3d dq_dbg = pre_integration->jacobian.block<3, 3>(O_R, O_BG);
+//         // Eigen::Matrix3d dv_dba = pre_integration->jacobian.block<3, 3>(O_V, O_BA);
+//         // Eigen::Matrix3d dv_dbg = pre_integration->jacobian.block<3, 3>(O_V, O_BG);
+//         // 
+//       //   Eigen::Matrix<T,3,3> dp_dba = pre_integration->jacobian.block<3, 3>(O_P, O_BA).cast<T>();
+//       //   Eigen::Matrix<T,3,3> dp_dbg = pre_integration->jacobian.block<3, 3>(O_P, O_BG).cast<T>();
+//       //   Eigen::Matrix<T,3,3> dq_dbg = pre_integration->jacobian.block<3, 3>(O_R, O_BG).cast<T>();
+//       //   Eigen::Matrix<T,3,3> dv_dba = pre_integration->jacobian.block<3, 3>(O_V, O_BA).cast<T>();
+//       //   Eigen::Matrix<T,3,3> dv_dbg = pre_integration->jacobian.block<3, 3>(O_V, O_BG).cast<T>();//scale convet
+
+
+//       // //  Eigen::Matrix<T,3,3> dp_dbg1 = dp_dba.cast<T>();
+
+//       //   // // Eigen::Matrix<T,3,3> dp_dbg = pre_integration->jacobian.block<3, 3>(O_P, O_BG);
+//       //   // // Eigen::Matrix<T,3,3> dq_dbg = pre_integration->jacobian.block<3, 3>(O_R, O_BG);
+//       //   // // Eigen::Matrix<T,3,3> dv_dba = pre_integration->jacobian.block<3, 3>(O_V, O_BA);
+//       //   // // Eigen::Matrix<T,3,3> dv_dbg = pre_integration->jacobian.block<3, 3>(O_V, O_BG);
+//       //   // // 
+//       //   // // 
+//       //  // Eigen::Vector3d dba (static_cast<double>(Bai[0])-pre_integration->linearized_ba[0],static_cast<double>(Bai[1])-pre_integration->linearized_ba[1],static_const<double>(Bai[2])-pre_integration->linearized_ba[2]);
+//       //   //Eigen::Vector3d dbg = double(Bgi) - pre_integration->linearized_bg;
+
+//       //   // Eigen::Matrix<T,3,1> dba(Bai[0]-T(pre_integration->linearized_ba[0]),Bai[1]-T(pre_integration->linearized_ba[1]),Bai[2]-T(pre_integration->linearized_ba[2]));
+//       //   // Eigen::Matrix<T,3,1> dbg(Bai[0]-T(pre_integration->linearized_bg[0]),Bai[1]-T(pre_integration->linearized_bg[1]),Bai[2]-T(pre_integration->linearized_bg[2]));
+
+
+//       //   Eigen::Matrix<T,3,1> dba = Bai - pre_integration->linearized_ba.cast<T>();
+//       //   Eigen::Matrix<T,3,1> dbg = Bgi - pre_integration->linearized_bg.cast<T>();
+
+        
+//       //   Eigen::Matrix<T,3,1> theta  = dq_dbg * dbg;
+//       //   //Eigen::Vector3d theta  = dq_dbg * dbg;
+//       //   T delta_theta[4] = {T(1) , T(theta[0]),T(theta[1]),T(theta[2])};
+//       //   T delta_q1[4] = {T(pre_integration->delta_q.w()),T(pre_integration->delta_q.x()),T(pre_integration->delta_q.y()),T(pre_integration->delta_q.z())};
+//       //   T corrected_delta_q[4] ;
+//       //   ceres::QuaternionProduct( delta_q1, delta_theta, corrected_delta_q);
+
+//       //   // // //Eigen::Quaterniond corrected_delta_q = pre_integration->delta_q * Utility::deltaQ(dq_dbg * dbg);
+//       //   // Eigen::Vector3d corrected_delta_v = pre_integration->delta_v + dv_dba * dba + dv_dbg * dbg;
+//       //   // Eigen::Vector3d corrected_delta_p = pre_integration->delta_p + dp_dba * dba + dp_dbg * dbg;
+
+//       //   Eigen::Matrix<T,3,1> corrected_delta_v = pre_integration->delta_v.cast<T>() + dv_dba * dba + dv_dbg * dbg;
+//       //   Eigen::Matrix<T,3,1> corrected_delta_p = pre_integration->delta_p.cast<T>() + dp_dba * dba + dp_dbg * dbg;
+
+//       //   // cout <<"corrected_delta_v" <<corrected_delta_v[0] <<corrected_delta_v[1]<<corrected_delta_v[2]<< endl;
+//       //   // cout <<"corrected_delta_q" <<corrected_delta_q[0] <<corrected_delta_q[1]<<corrected_delta_q[2]<< endl;
+//       //   // T t = T(pre_integration->sum_dt);
+
+//       //   Eigen::Vector3d temp_P =0.5 * G * pre_integration->sum_dt ;
+
+//       //    // Eigen::Matrix<T,3,1> temp_P =(0.5 * G.cast<T>() * t * t + Pj - Pi - Vi * t) - corrected_delta_p;
+        
+        
+
+        
+
+
+//         //residual.block<3, 1>(O_P, 0) = Qi.inverse() * (0.5 * G * T(pre_integration->sum_dt) * T(pre_integration->sum_dt) + Pj - Pi - Vi * T(pre_integration->sum_dt)) - corrected_delta_p;
+//         // residuals.block<3, 1>(O_R, 0) = 2 * (corrected_delta_q.inverse() * (Qi.inverse() * Qj)).vec();
+//         // residuals.block<3, 1>(O_V, 0) = Qi.inverse() * (G * sum_dt + Vj - Vi) - corrected_delta_v;
+//         // residuals.block<3, 1>(O_BA, 0) = Baj - Bai;
+//         // residuals.block<3, 1>(O_BG, 0) = Bgj - Bgi;
+
+
+
+
+
+//         // Eigen::Vector3d dba = Bai - linearized_ba;
+//         // Eigen::Vector3d dbg = Bgi - linearized_bg;
+
+    
+//         // ceres::QuaternionRotatePoint( q, point, p);
+    
+
+//         return true;
+//     }
+// // };
+
+
+
+// use template T
+struct IMUFactor{
+    const IntegrationBase* pre_integration;
+
+    IMUFactor(const IntegrationBase* _pre_integration) :pre_integration(_pre_integration)     
+    {
+    }
+
+    // Factory to hide the construction of the CostFunction object from the client code.
+    static ceres::CostFunction* Create(const IntegrationBase* pre_integration) {
+        return (new ceres::AutoDiffCostFunction<IMUFactor, 15, 7, 9, 7, 9>(new IMUFactor(pre_integration)));
+    }
+
+    template <typename T>
+    bool operator()(const T* const para_Pose_i, const T* const para_Speedbias_i, const T* const para_Pose_j ,const T* const para_Speedbias_j, T* residuals) const 
+    {
+        Eigen::Map<Eigen::Matrix<T, 15, 1>> residual(residuals);
+
+       // Eigen::Map<Eigen::Matrix<T, 15, 1>> residual(residuals);
+
+
+        // Eigen::Vector3d Pi(para_Pose_i[0], para_Pose_i[1], para_Pose_i[2]);
+        // Eigen::Quaterniond Qi(para_Pose_i[6], para_Pose_i[3], para_Pose_i[4], para_Pose_i[5]);
+
+        // Eigen::Vector3d Vi(para_Speedbias_i[0], para_Speedbias_i[1], para_Speedbias_i[2]);
+        // Eigen::Vector3d Bai(para_Speedbias_i[3], para_Speedbias_i[4], para_Speedbias_i[5]);
+        // Eigen::Vector3d Bgi(para_Speedbias_i[6], para_Speedbias_i[7], para_Speedbias_i[8]);
+
+        // Eigen::Vector3d Pj(para_Pose_j[0], para_Pose_j[1], para_Pose_j[2]);
+        // Eigen::Quaterniond  Qj(para_Pose_j[6], para_Pose_j[3], para_Pose_j[4], para_Pose_j[5]);
+        // Eigen::Quaterniond  Qj_inverse = Qi.inverse();
+
+        // Eigen::Vector3d Vj(para_Speedbias_j[0], para_Speedbias_j[1], para_Speedbias_j[2]);
+        // Eigen::Vector3d Baj(para_Speedbias_j[3], para_Speedbias_j[4], para_Speedbias_j[5]);
+        // Eigen::Vector3d Bgj(para_Speedbias_j[3], para_Speedbias_j[4], para_Speedbias_j[5]);
+
+
+        
+        Eigen::Matrix<T,3,1> Pi(para_Pose_i[0], para_Pose_i[1], para_Pose_i[2]);
+        Eigen::Quaternion<T> Qi(para_Pose_i[6], para_Pose_i[3], para_Pose_i[4], para_Pose_i[5]);
+        Eigen::Quaternion<T> Qi_inverse = Qi.inverse();
+        //cout<<"Pi"<<Pi<<endl;
+
+        Eigen::Matrix<T,3,1> Vi(para_Speedbias_i[0], para_Speedbias_i[1], para_Speedbias_i[2]);
+        Eigen::Matrix<T,3,1> Bai(para_Speedbias_i[3], para_Speedbias_i[4], para_Speedbias_i[5]);
+        Eigen::Matrix<T,3,1> Bgi(para_Speedbias_i[6], para_Speedbias_i[7], para_Speedbias_i[8]);
+
+        Eigen::Matrix<T,3,1> Pj(para_Pose_j[0], para_Pose_j[1], para_Pose_j[2]);
+        Eigen::Quaternion<T>  Qj(para_Pose_j[6], para_Pose_j[3], para_Pose_j[4], para_Pose_j[5]);
+        Eigen::Quaternion<T>  Qj_inverse = Qj.inverse();
+
+        Eigen::Matrix<T,3,1> Vj(para_Speedbias_j[0], para_Speedbias_j[1], para_Speedbias_j[2]);
+        Eigen::Matrix<T,3,1> Baj(para_Speedbias_j[3], para_Speedbias_j[4], para_Speedbias_j[5]);
+        Eigen::Matrix<T,3,1> Bgj(para_Speedbias_j[3], para_Speedbias_j[4], para_Speedbias_j[5]);
+
+        
+        // Eigen::Matrix3d dp_dba = pre_integration->jacobian.block<3, 3>(O_P, O_BA);
+        // Eigen::Matrix3d dp_dbg = pre_integration->jacobian.block<3, 3>(O_P, O_BG);
+        // Eigen::Matrix3d dq_dbg = pre_integration->jacobian.block<3, 3>(O_R, O_BG);
+        // Eigen::Matrix3d dv_dba = pre_integration->jacobian.block<3, 3>(O_V, O_BA);
+        // Eigen::Matrix3d dv_dbg = pre_integration->jacobian.block<3, 3>(O_V, O_BG);
+        // 
+        Eigen::Matrix<T,3,3> dp_dba = pre_integration->jacobian.block<3, 3>(O_P, O_BA).cast<T>();
+        Eigen::Matrix<T,3,3> dp_dbg = pre_integration->jacobian.block<3, 3>(O_P, O_BG).cast<T>();
+        Eigen::Matrix<T,3,3> dq_dbg = pre_integration->jacobian.block<3, 3>(O_R, O_BG).cast<T>();
+        Eigen::Matrix<T,3,3> dv_dba = pre_integration->jacobian.block<3, 3>(O_V, O_BA).cast<T>();
+        Eigen::Matrix<T,3,3> dv_dbg = pre_integration->jacobian.block<3, 3>(O_V, O_BG).cast<T>();//scale convet
+
+
+      //  Eigen::Matrix<T,3,3> dp_dbg1 = dp_dba.cast<T>();
+
+        // // Eigen::Matrix<T,3,3> dp_dbg = pre_integration->jacobian.block<3, 3>(O_P, O_BG);
+        // // Eigen::Matrix<T,3,3> dq_dbg = pre_integration->jacobian.block<3, 3>(O_R, O_BG);
+        // // Eigen::Matrix<T,3,3> dv_dba = pre_integration->jacobian.block<3, 3>(O_V, O_BA);
+        // // Eigen::Matrix<T,3,3> dv_dbg = pre_integration->jacobian.block<3, 3>(O_V, O_BG);
+        // // 
+        // // 
+       // Eigen::Vector3d dba (static_cast<double>(Bai[0])-pre_integration->linearized_ba[0],static_cast<double>(Bai[1])-pre_integration->linearized_ba[1],static_const<double>(Bai[2])-pre_integration->linearized_ba[2]);
+        //Eigen::Vector3d dbg = double(Bgi) - pre_integration->linearized_bg;
+
+        // Eigen::Matrix<T,3,1> dba(Bai[0]-T(pre_integration->linearized_ba[0]),Bai[1]-T(pre_integration->linearized_ba[1]),Bai[2]-T(pre_integration->linearized_ba[2]));
+        // Eigen::Matrix<T,3,1> dbg(Bai[0]-T(pre_integration->linearized_bg[0]),Bai[1]-T(pre_integration->linearized_bg[1]),Bai[2]-T(pre_integration->linearized_bg[2]));
+
+
+        Eigen::Matrix<T,3,1> dba = Bai - pre_integration->linearized_ba.cast<T>();
+        Eigen::Matrix<T,3,1> dbg = Bgi - pre_integration->linearized_bg.cast<T>();
+
+        
+        Eigen::Matrix<T,3,1> theta  = dq_dbg * dbg;
+        //Eigen::Vector3d theta  = dq_dbg * dbg;
+        T delta_theta[4] = {T(1) , T(theta[0]/T(2)),T(theta[1]/T(2)),T(theta[2]/T(2))};
+        T delta_q1[4] = {T(pre_integration->delta_q.w()),T(pre_integration->delta_q.x()),T(pre_integration->delta_q.y()),T(pre_integration->delta_q.z())};
+        T corrected_delta_q_temp[4] ;
+        ceres::QuaternionProduct( delta_q1, delta_theta, corrected_delta_q_temp);
+        Eigen::Quaternion<T>  corrected_delta_q(corrected_delta_q_temp[3], corrected_delta_q_temp[0], corrected_delta_q_temp[1], corrected_delta_q_temp[2]);
+
+        // // //Eigen::Quaterniond corrected_delta_q = pre_integration->delta_q * Utility::deltaQ(dq_dbg * dbg);
+        // Eigen::Vector3d corrected_delta_v = pre_integration->delta_v + dv_dba * dba + dv_dbg * dbg;
+        // Eigen::Vector3d corrected_delta_p = pre_integration->delta_p + dp_dba * dba + dp_dbg * dbg;
+
+        Eigen::Matrix<T,3,1> corrected_delta_v = pre_integration->delta_v.cast<T>() + dv_dba * dba + dv_dbg * dbg;
+        Eigen::Matrix<T,3,1> corrected_delta_p = pre_integration->delta_p.cast<T>() + dp_dba * dba + dp_dbg * dbg;
+
+        // cout <<"corrected_delta_v" <<corrected_delta_v[0] <<corrected_delta_v[1]<<corrected_delta_v[2]<< endl;
+        // cout <<"corrected_delta_q" <<corrected_delta_q[0] <<corrected_delta_q[1]<<corrected_delta_q[2]<< endl;
+        T sumt = T(pre_integration->sum_dt);
+
+        //Eigen::Vector3d temp_P =0.5 * G * pre_integration->sum_dt ;
+
+        Eigen::Matrix<T,3,1> temp_P = G.cast<T>() * sumt * sumt  / T(2)+ Pj - Pi - Vi * sumt - corrected_delta_p;
+
+        T p1[3] = {temp_P[0],temp_P[1],temp_P[2]};
+
+        T qi_inverse[4] = {Qi_inverse.w() , Qi_inverse.x() ,Qi_inverse.y() ,Qi_inverse.z()};
+
+        T r1[3];
+
+        ceres::QuaternionRotatePoint(qi_inverse ,p1 , r1 );
+
+        residual[0] = r1[0];
+        residual[1] = r1[1];
+        residual[2] = r1[2];
+
+
+
+
+        Eigen::Quaternion<T>  corrected_delta_q_inverse = corrected_delta_q.inverse();
+
+        T corrected_delta_q_inverse_temp[4] = {T(corrected_delta_q_inverse.w()), T(corrected_delta_q_inverse.x()), T(corrected_delta_q_inverse.y()), T(corrected_delta_q_inverse.z())};
+        T qj[4] = {T(Qj.w()),T(Qj.x()),T(Qj.y()),T(Qj.z())};
+        T temp_q1[4];
+        ceres::QuaternionProduct(corrected_delta_q_inverse_temp , qi_inverse , temp_q1 );
+        T temp_q2[4];
+        ceres::QuaternionProduct(temp_q1 , qj , temp_q2 );
+        
+
+        residual[3] = T(2)*temp_q2[1];
+        residual[4] = T(2)*temp_q2[2];
+        residual[5] = T(2)*temp_q2[3];
+
+        // T r2[3];
+        
+        // ceres::QuaternionToAngleAxis(temp_q2, r2);
+
+        // residual[3] = T(2)*r2[0];
+        // residual[4] = T(2)*r2[1];
+        // residual[5] = T(2)*r2[2];
+
+        // cout<<"temp_q2"<<temp_q2[0]<<temp_q2[1]<<temp_q2[2]<<endl;
+
+
+        // cout<<"3 4 5"<<residual[3]<<residual[4]<<residual[5]<<endl;
+
+
+
+
+        Eigen::Matrix<T,3,1> temp_V = G.cast<T>() * sumt + Vj - Vi;
+        T v1[3] = {temp_V[0], temp_V[1], temp_V[2]};
+        T temp_v1[3] ;
+        ceres::QuaternionRotatePoint(qi_inverse ,v1 , temp_v1 );
+        T r3[3] = {temp_v1[0] - corrected_delta_v[0], temp_v1[1] - T(corrected_delta_v[1]), temp_v1[2] - T(corrected_delta_v[2])};
+        residual[6] = r3[6];
+        residual[7] = r3[7];
+        residual[8] = r3[8];
+
+
+
+        T r4[3] = {Baj[0] - Bai[0], Baj[1] - Bai[1], Baj[2] - Bai[2]};
+        residual[9] = r3[9];
+        residual[10] = r3[10];
+        residual[11] = r3[11];
+
+
+        T r5[3] = {Bgj[0] - Bgi[0], Bgj[1] - Bgi[1], Bgj[2] - Bgi[2]};
+        residual[12] = r3[12];
+        residual[13] = r3[13];
+        residual[14] = r3[14];
+
+        
+
+
+        Eigen::Matrix<double, 15, 15> sqrt_info = Eigen::LLT<Eigen::Matrix<double, 15, 15>>(pre_integration->covariance.inverse()).matrixL().transpose();
+
+        Eigen::Matrix<T, 15, 15> sqrt_info_T = sqrt_info.cast<T>();
+
+
+        residual = sqrt_info_T * residual;
+
+        //cout<<"sqrt_info"<<sqrt_info<<endl;
+        // cout<<"residual:"<<residuals[3]<<endl;
+
+
+        //residual.block<3, 1>(O_P, 0) = Qi.inverse() * (0.5 * G * T(pre_integration->sum_dt) * T(pre_integration->sum_dt) + Pj - Pi - Vi * T(pre_integration->sum_dt)) - corrected_delta_p;
+         //residuals.block<3, 1>(O_R, 0) = 2 * (corrected_delta_q.inverse() * (Qi.inverse() * Qj)).vec();
+        // residuals.block<3, 1>(O_V, 0) = Qi.inverse() * (G * sum_dt + Vj - Vi) - corrected_delta_v;
+        // residuals.block<3, 1>(O_BA, 0) = Baj - Bai;
+        // residuals.block<3, 1>(O_BG, 0) = Bgj - Bgi;
+
+
+
+
+
+        // Eigen::Vector3d dba = Bai - linearized_ba;
+        // Eigen::Vector3d dbg = Bgi - linearized_bg;
+
+    
+        // ceres::QuaternionRotatePoint( q, point, p);
+    
+
+        return true;
+    }
+};
+
+
 /*
 struct PointToPointError_SophusSE3{
     const Eigen::Vector3d& p_dst;
