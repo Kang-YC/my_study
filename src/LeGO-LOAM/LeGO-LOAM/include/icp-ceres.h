@@ -402,6 +402,7 @@ struct PointToPointError_CeresAngleAxis{
 struct PointToPointError_EigenQuaternion{
     const Eigen::Vector3d& p_dst;
     const Eigen::Vector3d& p_src;
+    double LIDAR_N =1000;
 
     PointToPointError_EigenQuaternion(const Eigen::Vector3d &dst, const Eigen::Vector3d &src) :
         p_dst(dst), p_src(src)
@@ -421,6 +422,8 @@ struct PointToPointError_EigenQuaternion{
 
         // Make sure the Eigen::Vector world point is using the ceres::Jet type as it's Scalar type
         //Eigen::Matrix<T,3,1> point; point << T(p_src[0]), T(p_src[1]), T(p_src[2]);
+        //Eigen::Map<Eigen::Matrix<T, 3, 1>> residual(residuals);
+
         T point[3] = {T(p_src[0]), T(p_src[1]), T(p_src[2])};
         T q[4] = {para_Pose[6],para_Pose[3],para_Pose[4],para_Pose[5]};//ORDER!!!!!!!!!!!!!!
         T p[3];
@@ -435,15 +438,20 @@ struct PointToPointError_EigenQuaternion{
         // cout<< p_dst<<endl;
 
  
-        // residuals[0] = p[0] - T(p_dst[0]);
-        // residuals[1] = p[1] - T(p_dst[1]);
-        // residuals[2] = p[2] - T(p_dst[2]);
+        residuals[0] = LIDAR_N*(p[0] - T(p_dst[0]));
+        residuals[1] = LIDAR_N*(p[1] - T(p_dst[1]));
+        residuals[2] = LIDAR_N*(p[2] - T(p_dst[2]));
+
+
+        // Eigen::Matrix<T, 3, 3> sqrt_info_lidar = LIDAR_N * Eigen::Matrix3d::Identity();
+
+        // residual = sqrt_info_lidar *residual ;
 
 
  
-        residuals[0] = 0.2*(p[0] - T(p_dst[0]));
-        residuals[1] = 0.1*(p[1] - T(p_dst[1]));
-        residuals[2] = 0.1*(p[2] - T(p_dst[2]));
+        // residuals[0] = 0.2*(p[0] - T(p_dst[0]));
+        // residuals[1] = 0.1*(p[1] - T(p_dst[1]));
+        // residuals[2] = 0.1*(p[2] - T(p_dst[2]));
 
         return true;
     }
@@ -638,7 +646,7 @@ struct IMUFactor{
 
         Eigen::Matrix<T,3,1> Vj(para_Speedbias_j[0], para_Speedbias_j[1], para_Speedbias_j[2]);
         Eigen::Matrix<T,3,1> Baj(para_Speedbias_j[3], para_Speedbias_j[4], para_Speedbias_j[5]);
-        Eigen::Matrix<T,3,1> Bgj(para_Speedbias_j[3], para_Speedbias_j[4], para_Speedbias_j[5]);
+        Eigen::Matrix<T,3,1> Bgj(para_Speedbias_j[6], para_Speedbias_j[7], para_Speedbias_j[8]);
 
         
         // Eigen::Matrix3d dp_dba = pre_integration->jacobian.block<3, 3>(O_P, O_BA);
@@ -679,7 +687,8 @@ struct IMUFactor{
         T delta_q1[4] = {T(pre_integration->delta_q.w()),T(pre_integration->delta_q.x()),T(pre_integration->delta_q.y()),T(pre_integration->delta_q.z())};
         T corrected_delta_q_temp[4] ;
         ceres::QuaternionProduct( delta_q1, delta_theta, corrected_delta_q_temp);
-        Eigen::Quaternion<T>  corrected_delta_q(corrected_delta_q_temp[3], corrected_delta_q_temp[0], corrected_delta_q_temp[1], corrected_delta_q_temp[2]);
+       // Eigen::Quaternion<T>  corrected_delta_q(corrected_delta_q_temp[3], corrected_delta_q_temp[0], corrected_delta_q_temp[1], corrected_delta_q_temp[2]);
+        Eigen::Quaternion<T>  corrected_delta_q(corrected_delta_q_temp[0], corrected_delta_q_temp[1], corrected_delta_q_temp[2],corrected_delta_q_temp[3]);
 
         // // //Eigen::Quaterniond corrected_delta_q = pre_integration->delta_q * Utility::deltaQ(dq_dbg * dbg);
         // Eigen::Vector3d corrected_delta_v = pre_integration->delta_v + dv_dba * dba + dv_dbg * dbg;
@@ -694,19 +703,23 @@ struct IMUFactor{
 
         //Eigen::Vector3d temp_P =0.5 * G * pre_integration->sum_dt ;
 
-        Eigen::Matrix<T,3,1> temp_P = G.cast<T>() * sumt * sumt  / T(2)+ Pj - Pi - Vi * sumt - corrected_delta_p;
+        Eigen::Matrix<T,3,1> temp_P = G.cast<T>() * sumt * sumt  / T(2)+ Pj - Pi - Vi * sumt ;
 
         T p1[3] = {temp_P[0],temp_P[1],temp_P[2]};
 
         T qi_inverse[4] = {Qi_inverse.w() , Qi_inverse.x() ,Qi_inverse.y() ,Qi_inverse.z()};
 
+        T corrected_delta_p_temp[3] = {corrected_delta_p[0], corrected_delta_p[1], corrected_delta_p[2]};
+
         T r1[3];
 
         ceres::QuaternionRotatePoint(qi_inverse ,p1 , r1 );
 
-        residual[0] = r1[0];
-        residual[1] = r1[1];
-        residual[2] = r1[2];
+
+
+        residual[0] = r1[0] - corrected_delta_p[0];
+        residual[1] = r1[1]- corrected_delta_p[1];
+        residual[2] = r1[2]- corrected_delta_p[2];
 
 
 
@@ -716,9 +729,9 @@ struct IMUFactor{
         T corrected_delta_q_inverse_temp[4] = {T(corrected_delta_q_inverse.w()), T(corrected_delta_q_inverse.x()), T(corrected_delta_q_inverse.y()), T(corrected_delta_q_inverse.z())};
         T qj[4] = {T(Qj.w()),T(Qj.x()),T(Qj.y()),T(Qj.z())};
         T temp_q1[4];
-        ceres::QuaternionProduct(corrected_delta_q_inverse_temp , qi_inverse , temp_q1 );
+        ceres::QuaternionProduct(qi_inverse, qj, temp_q1 );
         T temp_q2[4];
-        ceres::QuaternionProduct(temp_q1 , qj , temp_q2 );
+        ceres::QuaternionProduct(corrected_delta_q_inverse_temp ,  temp_q1 , temp_q2 );
         
 
         residual[3] = T(2)*temp_q2[1];
@@ -746,22 +759,22 @@ struct IMUFactor{
         T temp_v1[3] ;
         ceres::QuaternionRotatePoint(qi_inverse ,v1 , temp_v1 );
         T r3[3] = {temp_v1[0] - corrected_delta_v[0], temp_v1[1] - T(corrected_delta_v[1]), temp_v1[2] - T(corrected_delta_v[2])};
-        residual[6] = r3[6];
-        residual[7] = r3[7];
-        residual[8] = r3[8];
+        residual[6] = r3[0];
+        residual[7] = r3[1];
+        residual[8] = r3[2];
 
 
 
         T r4[3] = {Baj[0] - Bai[0], Baj[1] - Bai[1], Baj[2] - Bai[2]};
-        residual[9] = r3[9];
-        residual[10] = r3[10];
-        residual[11] = r3[11];
+        residual[9] = r4[0];
+        residual[10] = r4[1];
+        residual[11] = r4[2];
 
 
         T r5[3] = {Bgj[0] - Bgi[0], Bgj[1] - Bgi[1], Bgj[2] - Bgi[2]};
-        residual[12] = r3[12];
-        residual[13] = r3[13];
-        residual[14] = r3[14];
+        residual[12] = r5[0];
+        residual[13] = r5[1];
+        residual[14] = r5[2];
 
         
 
@@ -773,8 +786,15 @@ struct IMUFactor{
 
         residual = sqrt_info_T * residual;
 
-        //cout<<"sqrt_info"<<sqrt_info<<endl;
-        // cout<<"residual:"<<residuals[3]<<endl;
+       // cout<<"sqrt_info"<<sqrt_info<<endl;
+        //
+        // for(int i=0; i<15; i++)
+        // {
+
+        // cout<<"residual"<<i<<": "<<residual[i]<<endl;
+
+        // }
+        
 
 
         //residual.block<3, 1>(O_P, 0) = Qi.inverse() * (0.5 * G * T(pre_integration->sum_dt) * T(pre_integration->sum_dt) + Pj - Pi - Vi * T(pre_integration->sum_dt)) - corrected_delta_p;

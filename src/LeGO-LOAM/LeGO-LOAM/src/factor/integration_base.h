@@ -9,10 +9,10 @@ using namespace Eigen;
 class IntegrationBase
 {
   private:
-  double ACC_N = 0.01;
-  double GYR_N = 0.004;
-  double ACC_W = 0.00004;
-  double GYR_W = 2.0e-6;
+  double ACC_N = 0.2;// accelerometer measurement noise standard deviation. #0.2   0.04
+  double GYR_N = 0.01;//gyroscope measurement noise standard deviation.     #0.05  0.004
+  double ACC_W = 1e-2 ;//accelerometer bias random work noise standard deviation.  #0.02
+  double GYR_W = 1e-3;//gyroscope bias random work noise standard deviation.     #4.0e-5
 
   public:
     IntegrationBase() = delete;
@@ -218,7 +218,7 @@ class IntegrationBase
         // std::cout << "residuals44"<<residuals.block<3, 1>(O_BA, 0)<<endl;
         // std::cout << "residuals5"<<Bgj - Bgi;
         // std::cout << "residuals55"<<residuals.block<3, 1>(O_BG, 0)<<endl;
-        // std::cout << "residuals 1"<<residuals<<endl;
+         //std::cout << "residuals 1"<<residuals<<endl;
         return residuals;
         
     }

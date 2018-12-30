@@ -70,7 +70,7 @@ class IMUFactor : public ceres::SizedCostFunction<15, 7, 9, 7, 9>
         // std::cout << "sqrt_info"<< sqrt_info << std::endl;
 
 
-       // std::cout << "sqrt_info residual"<< residual << std::endl;
+        //std::cout << "sqrt_info residual"<< residual << std::endl;
         // std::cout <<"jacobian"<< pre_integration->jacobian << std::endl;
 
         if (jacobians)
