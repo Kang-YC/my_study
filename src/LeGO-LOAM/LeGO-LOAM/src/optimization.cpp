@@ -32,7 +32,9 @@ using namespace Eigen;
 
 
 class Optimization{
+  
 private:
+
 const double optimizationProcessInterval=0.1;
 
 static const int WINDOW_SIZE = 5;
@@ -80,6 +82,7 @@ ros::Subscriber subImu;
 
 ros::Publisher pubCoupledOdometry;
 ros::Publisher pubImuPropogate;
+ros::Publisher pubCoupledPoses6D;
 
 nav_msgs::Odometry odomCoupled;
 tf::StampedTransform aftCoupledTrans;
@@ -146,18 +149,19 @@ public:
   subKeyPoses = n.subscribe<sensor_msgs::PointCloud2>("/key_pose_origin", 5, &Optimization::keyPosesHandler, this);
   subLaserCloudOri = n.subscribe<sensor_msgs::PointCloud2>("/laser_cloud_ori", 5, &Optimization::laserCloudOriHandler, this);
   subLaserCloudProj = n.subscribe<sensor_msgs::PointCloud2>("/laser_cloud_proj", 5, &Optimization::laserCloudProjHandler, this);
-  subImu = n.subscribe<sensor_msgs::Imu> (imuTopic, 1000, &Optimization::imuHandler, this ,ros::TransportHints().tcpNoDelay());
+  subImu = n.subscribe<sensor_msgs::Imu> ("/mti/sensor/imu", 1000, &Optimization::imuHandler, this ,ros::TransportHints().tcpNoDelay());
+  //subImu = n.subscribe<sensor_msgs::Imu> (imuTopic, 1000, &Optimization::imuHandler, this ,ros::TransportHints().tcpNoDelay());
 
-  pubCoupledOdometry = n.advertise<nav_msgs::Odometry>("/coupled_odometry", 1000);
+  pubCoupledOdometry = n.advertise<nav_msgs::Odometry>("/coupled_odometry", 10);
   //pubImuPropogate = n.advertise<nav_msgs::Odometry>("/imu_propagate", 1000);
 
-  
+  odomCoupled.header.frame_id = "/camera_init";
+  odomCoupled.child_frame_id = "/aft_coupled";
 
   aftCoupledTrans.frame_id_ = "/camera_init";
   aftCoupledTrans.child_frame_id_ = "/aft_coupled";
 
-  odomCoupled.header.frame_id = "/camera_init";
-  odomCoupled.child_frame_id = "/aft_coupled";
+
 
 
   allocateMemory();
@@ -322,7 +326,7 @@ void predict(const sensor_msgs::ImuConstPtr &imu_msg)// propogate
     double dz = imu_msg->linear_acceleration.z;
     Eigen::Vector3d linear_acceleration{dx, dy, dz};
 
-  // ROS_DEBUG("linear_acceleration %f %f %f", dx, dy, dz);
+    ROS_DEBUG("linear_acceleration %f %f %f", dx, dy, dz);
 
     double rx = imu_msg->angular_velocity.x;
     double ry = imu_msg->angular_velocity.y;
@@ -342,7 +346,7 @@ void predict(const sensor_msgs::ImuConstPtr &imu_msg)// propogate
 
     acc_0 = linear_acceleration;
     gyr_0 = angular_velocity;
-    // ROS_DEBUG("tmp_P %f %f %f", tmp_P.x(), tmp_P.y(), tmp_P.z());
+    ROS_DEBUG("tmp_P %f %f %f", tmp_P.x(), tmp_P.y(), tmp_P.z());
     // ROS_DEBUG("tmp_V %f %f %f", tmp_V.x(), tmp_V.y(), tmp_V.z());
 }
 
@@ -387,7 +391,7 @@ ceres::Solver::Options getOptions()
     options.trust_region_strategy_type = ceres::DOGLEG;
     options.preconditioner_type        = ceres::SCHUR_JACOBI;
     options.max_num_iterations         = 50;
-    options.num_threads                = 3;
+    options.num_threads                = 4;
     options.function_tolerance         = 1e-5;
 
 //    options.preconditioner_type = ceres::SCHUR_JACOBI;
@@ -879,9 +883,9 @@ void solveOdometry()
   
   ROS_DEBUG("solveOdometry %d", frame_count);
   ceres::Problem problem;
-  ceres::LossFunction *loss_function_imu = new ceres::CauchyLoss(1);
+  ceres::LossFunction *loss_function_imu = new ceres::CauchyLoss(1.5);
 
-  ceres::LossFunction *loss_function_lidar = new ceres::CauchyLoss(5);
+  ceres::LossFunction *loss_function_lidar = new ceres::CauchyLoss(3);
   //vector2double();
   
   // for (int i = 0; i < WINDOW_SIZE + 1; i++)
@@ -964,16 +968,16 @@ void solveOdometry()
   //imu autodiff
   //
   
-  for (int i = 0; i < WINDOW_SIZE; i++)
-    {
+  // for (int i = 0; i < WINDOW_SIZE; i++)
+  //   {
 
-        int j = i + 1;
-        if (pre_integrations[j]->sum_dt > 10.0)
-            continue;
-        ceres::CostFunction* imu_function = ICPCostFunctions::IMUFactor::Create(pre_integrations[j]);
-        problem.AddResidualBlock(imu_function, loss_function_imu, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
+  //       int j = i + 1;
+  //       if (pre_integrations[j]->sum_dt > 10.0)
+  //           continue;
+  //       ceres::CostFunction* imu_function = ICPCostFunctions::IMUFactor::Create(pre_integrations[j]);
+  //       problem.AddResidualBlock(imu_function, loss_function_imu, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
       
-    }
+  //   }
 
 
 
@@ -1094,13 +1098,16 @@ void pubOptOdometry(){
   //nav_msgs::Odometry odomCoupled;
   //odometry.header = lidarHeader;
   odomCoupled.header.stamp = ros::Time().fromSec(timeKeyPoses);
-  odomCoupled.header.frame_id = "camera_init";
-  odomCoupled.child_frame_id = "aft_coupled";
+  // odomCoupled.header.frame_id = "camera_init";
+  // odomCoupled.child_frame_id = "aft_coupled";
   Quaterniond tmp_Q;
   tmp_Q = Quaterniond(Rs[WINDOW_SIZE]);
-  odomCoupled.pose.pose.position.x = Ps[WINDOW_SIZE].x();
-  odomCoupled.pose.pose.position.y = Ps[WINDOW_SIZE].y();
-  odomCoupled.pose.pose.position.z = Ps[WINDOW_SIZE].z();
+  // odomCoupled.pose.pose.position.x = Ps[WINDOW_SIZE].x();
+  // odomCoupled.pose.pose.position.y = Ps[WINDOW_SIZE].y();
+  // odomCoupled.pose.pose.position.z = Ps[WINDOW_SIZE].z();
+  odomCoupled.pose.pose.position.x = Ps[WINDOW_SIZE].y();
+  odomCoupled.pose.pose.position.y = Ps[WINDOW_SIZE].z();
+  odomCoupled.pose.pose.position.z = Ps[WINDOW_SIZE].x();
   odomCoupled.pose.pose.orientation.x = tmp_Q.x();
   odomCoupled.pose.pose.orientation.y = tmp_Q.y();
   odomCoupled.pose.pose.orientation.z = tmp_Q.z();
@@ -1112,7 +1119,7 @@ void pubOptOdometry(){
 
   aftCoupledTrans.stamp_ = ros::Time().fromSec(timeKeyPoses);
   aftCoupledTrans.setRotation(tf::Quaternion(tmp_Q.x(), tmp_Q.y(),tmp_Q.z(), tmp_Q.w()));
-  aftCoupledTrans.setOrigin(tf::Vector3(Ps[WINDOW_SIZE].x(), Ps[WINDOW_SIZE].y(), Ps[WINDOW_SIZE].z()));
+  aftCoupledTrans.setOrigin(tf::Vector3(Ps[WINDOW_SIZE][0], Ps[WINDOW_SIZE][1], Ps[WINDOW_SIZE][2]));
   tfBroadcaster.sendTransform(aftCoupledTrans);
   
 
@@ -1226,7 +1233,7 @@ void run(){
 
     optimizationProcess();
 
-   // update();
+    update();
 
     
   }
