@@ -43,6 +43,7 @@ Visualization Manager:
         Value: true
       Axis: Z
       Channel Name: intensity
+
       Class: rviz/PointCloud2
       Color: 0; 255; 0
       Color Transformer: FlatColor
@@ -74,6 +75,7 @@ Visualization Manager:
         Value: true
       Axis: Z
       Channel Name: intensity
+
       Class: rviz/PointCloud2
       Color: 255; 170; 255
       Color Transformer: FlatColor
@@ -105,6 +107,7 @@ Visualization Manager:
         Value: true
       Axis: Y
       Channel Name: intensity
+
       Class: rviz/PointCloud2
       Color: 255; 255; 255
       Color Transformer: AxisColor
@@ -153,12 +156,43 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.200000003
       Style: Flat Squares
-
       Topic: /key_pose_origin
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
+
+    - Angle Tolerance: 0.1
+      Class: rviz/Odometry
+      Shape:
+        Color: 255; 25; 0
+        Shaft Radius: 0.1
+        Head Radius: 0.3
+      Enabled: true
+      Keep: 10000
+      Length: 2
+      Name: Odometry
+      Position Tolerance: 0.1
+      Topic: /coupled_odometry
+      Value: true
+      
+    - Angle Tolerance: 0.1
+      Class: rviz/Odometry
+      Shape:
+        Color: 255; 0; 255
+        Shaft Radius: 0.1
+        Head Radius: 0.3
+      Enabled: true
+      Keep: 10000
+      Length: 2
+      Name: Odometry
+      Position Tolerance: 0.1
+      Topic: /imu_propagate
+      Value: true
+      
+
+
+
   Enabled: true
   Global Options:
     Background Color: 0; 0; 0

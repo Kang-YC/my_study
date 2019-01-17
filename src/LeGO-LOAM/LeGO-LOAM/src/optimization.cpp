@@ -153,7 +153,7 @@ public:
   //subImu = n.subscribe<sensor_msgs::Imu> (imuTopic, 1000, &Optimization::imuHandler, this ,ros::TransportHints().tcpNoDelay());
 
   pubCoupledOdometry = n.advertise<nav_msgs::Odometry>("/coupled_odometry", 10);
-  //pubImuPropogate = n.advertise<nav_msgs::Odometry>("/imu_propagate", 1000);
+  pubImuPropogate = n.advertise<nav_msgs::Odometry>("/imu_propagate", 1000);
 
   odomCoupled.header.frame_id = "/camera_init";
   odomCoupled.child_frame_id = "/aft_coupled";
@@ -258,7 +258,8 @@ void laserCloudProjHandler(const sensor_msgs::PointCloud2ConstPtr& msg)
         LaserCloudProj->clear();
         pcl::fromROSMsg(*msg, *LaserCloudProj);
         newLaserCloudProj = true;
-        laserCloudProjNum=LaserCloudProj->points.size();
+
+        //laserCloudProjNum=LaserCloudProj->points.size();
       //  ROS_INFO("Proj Num %d",laserCloudProjNum);
 }
 
@@ -326,7 +327,7 @@ void predict(const sensor_msgs::ImuConstPtr &imu_msg)// propogate
     double dz = imu_msg->linear_acceleration.z;
     Eigen::Vector3d linear_acceleration{dx, dy, dz};
 
-    ROS_DEBUG("linear_acceleration %f %f %f", dx, dy, dz);
+    //ROS_DEBUG("linear_acceleration %f %f %f", dx, dy, dz);
 
     double rx = imu_msg->angular_velocity.x;
     double ry = imu_msg->angular_velocity.y;
@@ -348,6 +349,10 @@ void predict(const sensor_msgs::ImuConstPtr &imu_msg)// propogate
     gyr_0 = angular_velocity;
     ROS_DEBUG("tmp_P %f %f %f", tmp_P.x(), tmp_P.y(), tmp_P.z());
     // ROS_DEBUG("tmp_V %f %f %f", tmp_V.x(), tmp_V.y(), tmp_V.z());
+    // 
+    std_msgs::Header imu_header = imu_msg->header;
+    imu_header.frame_id = "camera_init";
+    pubLatestOdometry(tmp_P, tmp_Q, tmp_V, imu_header);
 }
 
 void pubLatestOdometry(const Eigen::Vector3d &P, const Eigen::Quaterniond &Q, const Eigen::Vector3d &V, const std_msgs::Header &header)
@@ -357,9 +362,9 @@ void pubLatestOdometry(const Eigen::Vector3d &P, const Eigen::Quaterniond &Q, co
     nav_msgs::Odometry odometry;
     odometry.header = header;
     odometry.header.frame_id = "camera_init";
-    odometry.pose.pose.position.x = P.x();
-    odometry.pose.pose.position.y = P.y();
-    odometry.pose.pose.position.z = P.z();
+    odometry.pose.pose.position.x = P.y();
+    odometry.pose.pose.position.y = P.z();
+    odometry.pose.pose.position.z = P.x();
     odometry.pose.pose.orientation.x = quadrotor_Q.x();
     odometry.pose.pose.orientation.y = quadrotor_Q.y();
     odometry.pose.pose.orientation.z = quadrotor_Q.z();
@@ -368,6 +373,9 @@ void pubLatestOdometry(const Eigen::Vector3d &P, const Eigen::Quaterniond &Q, co
     odometry.twist.twist.linear.y = V.y();
     odometry.twist.twist.linear.z = V.z();
     pubImuPropogate.publish(odometry);
+
+    odometry.header.frame_id = "/camera_init";
+    odometry.child_frame_id = "/aft_coupled";
 
 }
 
@@ -790,7 +798,7 @@ void optimizationProcess()
     if(frame_count == WINDOW_SIZE)
     {
       vector2double();
-      initialization();
+      //initialization();
 
       initial_flag = true;
       solveOdometry();
@@ -916,8 +924,14 @@ void solveOdometry()
       
       proj<< CloudKeyFramesProj[ind]->points[k].z, CloudKeyFramesProj[ind]->points[k].x , CloudKeyFramesProj[ind]->points[k].y;
 
+      float s = CloudKeyFramesProj[ind]->points[k].intensity;
+
+      if (s < 0.8)
+        continue;
+      // cout<<"dis:"<<dis<<endl;
+
       // test the rotation
-      if(k < 3 && ind == WINDOW_SIZE-1){
+      if(k < 3 && ind == WINDOW_SIZE){
       double point[3] = {ori[0], ori[1], ori[2]};
       double q[4]     = {para_Pose[ind][6],para_Pose[ind][3],para_Pose[ind][4],para_Pose[ind][5]};//!!!!!w x y z 
       double p[3];
@@ -939,8 +953,9 @@ void solveOdometry()
       if(ori[0] > 50 ||  ori[1] > 50  || ori[2] > 50)
         continue;
 
+
       
-      ceres::CostFunction* lidar_cost_function = ICPCostFunctions::PointToPointError_EigenQuaternion::Create(proj,ori);
+      ceres::CostFunction* lidar_cost_function = ICPCostFunctions::PointToPointError_EigenQuaternion::Create(proj,ori,s);
       
       problem.AddResidualBlock(lidar_cost_function, loss_function_lidar, para_Pose[ind]);
       

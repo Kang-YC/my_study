@@ -1192,13 +1192,16 @@ public:
 
                     float ld2 = a012 / l12;
 
+             
+
+                    float s = 1 - 0.9 * fabs(ld2);
+
                     //store projection corner point
                     pointProj = pointSel;
                     pointProj.x -= la * ld2;
                     pointProj.y -= lb * ld2;
                     pointProj.z -= lc * ld2;
-
-                    float s = 1 - 0.9 * fabs(ld2);
+                    pointProj.intensity = s;
 
                     coeff.x = s * la;
                     coeff.y = s * lb;
@@ -1264,6 +1267,7 @@ public:
                     pointProj.x -= pa * pd2;
                     pointProj.y -= pb * pd2;
                     pointProj.z -= pc * pd2;
+                    pointProj.intensity = s;
 
                     if (s > 0.1) {
                         laserCloudOri->push_back(pointOri);

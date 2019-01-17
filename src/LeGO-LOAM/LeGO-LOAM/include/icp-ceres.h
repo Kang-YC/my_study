@@ -402,17 +402,18 @@ struct PointToPointError_CeresAngleAxis{
 struct PointToPointError_EigenQuaternion{
     const Eigen::Vector3d& p_dst;
     const Eigen::Vector3d& p_src;
-    double LIDAR_N =1000;
+    const float s;
+    double LIDAR_N =1;
 
-    PointToPointError_EigenQuaternion(const Eigen::Vector3d &dst, const Eigen::Vector3d &src) :
-        p_dst(dst), p_src(src)
+    PointToPointError_EigenQuaternion(const Eigen::Vector3d &dst, const Eigen::Vector3d &src, const float &s_) :
+        p_dst(dst), p_src(src),s(s_)
     {
     }
     //dist in world    src in body
 
     // Factory to hide the construction of the CostFunction object from the client code.
-    static ceres::CostFunction* Create(const Eigen::Vector3d &observed, const Eigen::Vector3d &worldPoint) {
-        return (new ceres::AutoDiffCostFunction<PointToPointError_EigenQuaternion, 3, 7>(new PointToPointError_EigenQuaternion(observed, worldPoint)));
+    static ceres::CostFunction* Create(const Eigen::Vector3d &observed, const Eigen::Vector3d &worldPoint, const float &s1) {
+        return (new ceres::AutoDiffCostFunction<PointToPointError_EigenQuaternion, 1, 7>(new PointToPointError_EigenQuaternion(observed, worldPoint, s1)));
     }
 
     template <typename T>
@@ -427,6 +428,7 @@ struct PointToPointError_EigenQuaternion{
         T point[3] = {T(p_src[0]), T(p_src[1]), T(p_src[2])};
         T q[4] = {para_Pose[6],para_Pose[3],para_Pose[4],para_Pose[5]};//ORDER!!!!!!!!!!!!!!
         T p[3];
+        //cout<<s<<endl;
 
         ceres::QuaternionRotatePoint( q, point, p);
       
@@ -438,10 +440,11 @@ struct PointToPointError_EigenQuaternion{
         // cout<< p_dst<<endl;
 
  
-        residuals[0] = LIDAR_N*(p[0] - T(p_dst[0]));
-        residuals[1] = LIDAR_N*(p[1] - T(p_dst[1]));
-        residuals[2] = LIDAR_N*(p[2] - T(p_dst[2]));
-
+        residuals[0] = LIDAR_N*s*(p[0] - T(p_dst[0]));
+        residuals[1] = LIDAR_N*s*(p[1] - T(p_dst[1]));
+        residuals[2] = 0.1*LIDAR_N*s*(p[2] - T(p_dst[2]));
+        
+        // residuals[0] = (sqrt(pow((p[0] - T(p_dst[0])),2)+pow((p[1] - T(p_dst[1])),2)+ pow(p[2] - T(p_dst[2]),2))) ;
 
         // Eigen::Matrix<T, 3, 3> sqrt_info_lidar = LIDAR_N * Eigen::Matrix3d::Identity();
 

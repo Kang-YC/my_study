@@ -6,11 +6,17 @@
 #include <tf/transform_datatypes.h>
 #include <string>
 #include <iomanip>
+
+
+#include "sensor_msgs/Imu.h"
+#include "std_msgs/String.h"
 using namespace std;
 
 
 ofstream myfile1;
 ofstream myfile2;
+ofstream myfile3;
+ofstream myfile4;
 /**
  * This tutorial demonstrates simple receipt of position and speed of the Evarobot over the ROS system.
  */
@@ -30,13 +36,15 @@ double roll, pitch, yaw;
   ROS_INFO_NAMED("odomrec", "Vel-> Linear: [%f], Angular: [%f]", msg->twist.twist.linear.x,msg->twist.twist.angular.z);*/
   //ROS_INFO_NAMED("odomrec", "Position-> x: %f, y: %f, z: %f ", msg->pose.pose.position.x,msg->pose.pose.position.y, msg->pose.pose.position.z);
   //ROS_INFO_NAMED("odomrec", "Orientation-> roll: %f, pitch: %f, yaw: %f ", roll, pitch, yaw);
-  myfile1<< msg-> header.stamp<<";";
-	myfile1 <<msg->pose.pose.position.x << ";" << msg->pose.pose.position.y << ";" << msg->pose.pose.position.z<<";";
-        myfile1 << roll << ";" << pitch << ";" <<yaw;
+  myfile1<< msg-> header.stamp<<",";
+  myfile1 <<msg->pose.pose.position.x << "," << msg->pose.pose.position.y << "," << msg->pose.pose.position.z;
+ 
 	//myfile << msg->pose.pose.orientation.x << ";" << msg->pose.pose.orientation.y << ";" << msg->pose.pose.orientation.z << ";" << msg->pose.pose.orientation.w;
 	//myfile << msg->twist.twist.linear.x,msg->twist.twist.angular.z;
 	myfile1<< "\n";
 }
+
+
 
 void chatterCallback_gps(const sensor_msgs::NavSatFix::ConstPtr& msg)
 {
@@ -51,6 +59,62 @@ void chatterCallback_gps(const sensor_msgs::NavSatFix::ConstPtr& msg)
   myfile2 << msg->latitude<< ";" <<msg->longitude;
   myfile2 << "\n";
 }
+
+
+
+void chatterCallback_odom(const nav_msgs::Odometry::ConstPtr& msg)
+{
+  double odom_roll,odom_pitch,odom_yaw;
+  geometry_msgs::Quaternion geoQuat = msg->pose.pose.orientation;
+  tf::Matrix3x3(tf::Quaternion(geoQuat.z, -geoQuat.x, -geoQuat.y, geoQuat.w)).getRPY(odom_roll, odom_roll, odom_roll);
+  //ROS_INFO_NAMED("Odom", "Orientation-> roll: %f, pitch: %f, yaw: %f ", odom_roll, odom_pitch, odom_yaw);
+  ROS_DEBUG("odom success");
+ 
+  //myfile3<<"Odom;";
+  myfile3<< msg-> header.stamp<<",";
+  myfile3 <<msg->pose.pose.position.x<< "," <<msg->pose.pose.position.y<< ","<<msg->pose.pose.position.z;
+  myfile3 <<","<< odom_roll << "," << odom_pitch << "," << odom_yaw;
+  myfile3 << "\n";
+}
+
+
+
+
+void chatterCallback_status(const std_msgs::String::ConstPtr& msg)
+{
+    //ROS_INFO_NAMED("Odom", "Orientation-> roll: %f, pitch: %f, yaw: %f ", odom_roll, odom_pitch, odom_yaw);
+  ROS_DEBUG("status success");
+ 
+ // myfile4<< msg-> header.stamp<<";";
+  myfile2<<"Status;";
+  myfile2 << msg->data;
+  myfile2 << "\n";
+}
+
+
+
+
+
+
+void chatterCallback_coupled(const nav_msgs::Odometry::ConstPtr& msg)
+{
+double roll, pitch, yaw;
+  geometry_msgs::Quaternion geoQuat = msg->pose.pose.orientation;
+  tf::Matrix3x3(tf::Quaternion(geoQuat.z, -geoQuat.x, -geoQuat.y, geoQuat.w)).getRPY(roll, pitch, yaw);
+  /*ROS_INFO_NAMED("odomrec", "Seq: %d ", msg->header.seq);
+  ROS_INFO_NAMED("odomrec", "Position-> x: %f , y: %f , z: %f ", msg->pose.pose.position.x,msg->pose.pose.position.y, msg->pose.pose.position.z);
+  ROS_INFO_NAMED("odomrec", "Orientation-> x: [%f], y: [%f], z: [%f], w: [%f]", msg->pose.pose.orientation.x, msg->pose.pose.orientation.y, msg->pose.pose.orientation.z, msg->pose.pose.orientation.w);
+  ROS_INFO_NAMED("odomrec", "Vel-> Linear: [%f], Angular: [%f]", msg->twist.twist.linear.x,msg->twist.twist.angular.z);*/
+  //ROS_INFO_NAMED("odomrec", "Position-> x: %f, y: %f, z: %f ", msg->pose.pose.position.x,msg->pose.pose.position.y, msg->pose.pose.position.z);
+  //ROS_INFO_NAMED("odomrec", "Orientation-> roll: %f, pitch: %f, yaw: %f ", roll, pitch, yaw);
+  myfile4<< msg-> header.stamp<<",";
+  myfile4 <<msg->pose.pose.position.x << "," << msg->pose.pose.position.y << "," << msg->pose.pose.position.z;
+ 
+  //myfile << msg->pose.pose.orientation.x << ";" << msg->pose.pose.orientation.y << ";" << msg->pose.pose.orientation.z << ";" << msg->pose.pose.orientation.w;
+  //myfile << msg->twist.twist.linear.x,msg->twist.twist.angular.z;
+  myfile4<< "\n";
+}
+
 
 int main(int argc, char **argv)
 {
@@ -73,10 +137,14 @@ int main(int argc, char **argv)
    */
   ros::NodeHandle n;
 
-	myfile1.open("/home/kang/data/lidar.csv");
+	myfile1.open("/home/kang/data/lidar.txt");
   myfile1.precision(10);
   myfile2.open("/home/kang/data/gps.csv");
   myfile2.precision(10);
+  myfile3.open("/home/kang/data/odom.txt");
+  myfile3.precision(10);
+  myfile4.open("/home/kang/data/coupled.txt");
+  myfile4.precision(10);
   /**
    * The subscribe() call is how you tell ROS that you want to receive messages
    * on a given topic.  This invokes a call to the ROS
@@ -96,6 +164,9 @@ int main(int argc, char **argv)
   //ros::Subscriber sub = n.subscribe("gps/odom", 1000, chatterCallback);
   ros::Subscriber sub_lidar = n.subscribe("integrated_to_init", 1000, chatterCallback_lidar);
   ros::Subscriber sub_gps = n.subscribe("gps/fix", 1000, chatterCallback_gps);
+  ros::Subscriber sub_odom = n.subscribe("gps/odom", 1000, chatterCallback_odom);
+  ros::Subscriber gps_status = n.subscribe("gps/pos_type", 1000, chatterCallback_status);
+  ros::Subscriber sub_coupled = n.subscribe("coupled_odometry", 1000, chatterCallback_coupled);
 
   /**
    * ros::spin() will enter a loop, pumping callbacks.  With this version, all
