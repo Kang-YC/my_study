@@ -409,12 +409,21 @@ struct PointToPointError_EigenQuaternion{
         p_dst(dst), p_src(src),s(s_)
     {
     }
+    
+    // 
+    //  PointToPointError_EigenQuaternion(const Eigen::Vector3d &dst, const Eigen::Vector3d &src) :
+    //     p_dst(dst), p_src(src)
+    // {
+    // }
     //dist in world    src in body
 
     // Factory to hide the construction of the CostFunction object from the client code.
     static ceres::CostFunction* Create(const Eigen::Vector3d &observed, const Eigen::Vector3d &worldPoint, const float &s1) {
-        return (new ceres::AutoDiffCostFunction<PointToPointError_EigenQuaternion, 1, 7>(new PointToPointError_EigenQuaternion(observed, worldPoint, s1)));
+        return (new ceres::AutoDiffCostFunction<PointToPointError_EigenQuaternion, 3, 7>(new PointToPointError_EigenQuaternion(observed, worldPoint, s1)));
     }
+    // static ceres::CostFunction* Create(const Eigen::Vector3d &observed, const Eigen::Vector3d &worldPoint) {
+    //     return (new ceres::AutoDiffCostFunction<PointToPointError_EigenQuaternion, 3, 7>(new PointToPointError_EigenQuaternion(observed, worldPoint)));
+    // }
 
     template <typename T>
     bool operator()(const T* const para_Pose,  T* residuals) const {
@@ -442,8 +451,10 @@ struct PointToPointError_EigenQuaternion{
  
         residuals[0] = LIDAR_N*s*(p[0] - T(p_dst[0]));
         residuals[1] = LIDAR_N*s*(p[1] - T(p_dst[1]));
-        residuals[2] = 0.1*LIDAR_N*s*(p[2] - T(p_dst[2]));
-        
+        residuals[2] = LIDAR_N*s*(p[2] - T(p_dst[2]));
+        // residuals[0] = LIDAR_N*(p[0] - T(p_dst[0]));
+        // residuals[1] = LIDAR_N*(p[1] - T(p_dst[1]));
+        // residuals[2] = LIDAR_N*(p[2] - T(p_dst[2]));
         // residuals[0] = (sqrt(pow((p[0] - T(p_dst[0])),2)+pow((p[1] - T(p_dst[1])),2)+ pow(p[2] - T(p_dst[2]),2))) ;
 
         // Eigen::Matrix<T, 3, 3> sqrt_info_lidar = LIDAR_N * Eigen::Matrix3d::Identity();

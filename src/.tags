@@ -1,0 +1,1353 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+A	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    Eigen::MatrixXd A;$/;"	m	struct:ThreadsStruct
+ACC_N	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^  double ACC_N = 0.2;\/\/ accelerometer measurement noise standard deviation. #0.2   0.04$/;"	m	class:IntegrationBase
+ACC_N	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^double ACC_N, ACC_W;$/;"	v
+ACC_N	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^double ACC_N, ACC_W;$/;"	v
+ACC_W	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^  double ACC_W = 1e-2 ;\/\/accelerometer bias random work noise standard deviation.  #0.02$/;"	m	class:IntegrationBase
+ACC_W	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^double ACC_N, ACC_W;$/;"	v
+ACC_W	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^double ACC_N, ACC_W;$/;"	v
+AccumulateIMUShiftAndRotation	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void AccumulateIMUShiftAndRotation()$/;"	f	class:FeatureAssociation
+AccumulateRotation	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void AccumulateRotation(float cx, float cy, float cz, float lx, float ly, float lz, $/;"	f	class:FeatureAssociation
+BIAS_ACC_THRESHOLD	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^double BIAS_ACC_THRESHOLD;$/;"	v
+BIAS_ACC_THRESHOLD	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^double BIAS_ACC_THRESHOLD;$/;"	v
+BIAS_GYR_THRESHOLD	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^double BIAS_GYR_THRESHOLD;$/;"	v
+BIAS_GYR_THRESHOLD	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^double BIAS_GYR_THRESHOLD;$/;"	v
+BLUE1	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^static Vector3d BLUE1=Vector3d(0.0,0,0.5);$/;"	m	namespace:Colormap
+BLUE2	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^static Vector3d BLUE2=Vector3d(0.0,0,0.8);$/;"	m	namespace:Colormap
+Bas	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^Vector3d Bas[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Bas	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^Vector3d Bas[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Bas	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^Vector3d Bas[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Bas	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^Vector3d Bas[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Bas	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^Vector3d Bas[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Bgs	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^Vector3d Bgs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Bgs	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^Vector3d Bgs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Bgs	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^Vector3d Bgs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Bgs	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^Vector3d Bgs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Bgs	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^Vector3d Bgs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Bundle_Adjust_Test_ceres_extensions_h	LeGO-LOAM/LeGO-LOAM/include/eigen_quaternion.h	11;"	d
+COL	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^double ROW, COL;$/;"	v
+COL	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^double ROW, COL;$/;"	v
+CPUTimer	LeGO-LOAM/LeGO-LOAM/include/CPUTimer.h	/^class CPUTimer {$/;"	c
+CPU_TIMER_H	LeGO-LOAM/LeGO-LOAM/include/CPUTimer.h	2;"	d
+CameraPoseVisualization	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.cpp	/^CameraPoseVisualization::CameraPoseVisualization(float r, float g, float b, float a)$/;"	f	class:CameraPoseVisualization
+CameraPoseVisualization	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.h	/^class CameraPoseVisualization {$/;"	c
+Clock	LeGO-LOAM/LeGO-LOAM/include/CPUTimer.h	/^typedef std::chrono::steady_clock Clock;$/;"	t
+CloudKeyFramesOri	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesOri;\/\/$/;"	m	class:Optimization	file:
+CloudKeyFramesOri	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesOri;\/\/$/;"	m	class:Optimization	file:
+CloudKeyFramesOri	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesOri;\/\/$/;"	m	class:Optimization	file:
+CloudKeyFramesOri	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesOri;\/\/$/;"	m	class:Optimization	file:
+CloudKeyFramesOri	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesOri;\/\/$/;"	m	class:Optimization	file:
+CloudKeyFramesProj	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesProj;\/\/$/;"	m	class:Optimization	file:
+CloudKeyFramesProj	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesProj;\/\/$/;"	m	class:Optimization	file:
+CloudKeyFramesProj	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesProj;\/\/$/;"	m	class:Optimization	file:
+CloudKeyFramesProj	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesProj;\/\/$/;"	m	class:Optimization	file:
+CloudKeyFramesProj	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^deque<pcl::PointCloud<PointType>::Ptr> CloudKeyFramesProj;\/\/$/;"	m	class:Optimization	file:
+CloudKeyPosesID	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^vector<int> CloudKeyPosesID;$/;"	m	class:Optimization	file:
+CloudKeyPosesID	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^vector<int> CloudKeyPosesID;$/;"	m	class:Optimization	file:
+CloudKeyPosesID	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^vector<int> CloudKeyPosesID;$/;"	m	class:Optimization	file:
+CloudKeyPosesID	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^vector<int> CloudKeyPosesID;$/;"	m	class:Optimization	file:
+CloudKeyPosesID	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^vector<int> CloudKeyPosesID;$/;"	m	class:Optimization	file:
+Colormap	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^namespace Colormap {$/;"	n
+ColumnMajorAdapter4x3	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^ceres::MatrixAdapter<T, 1, 4> ColumnMajorAdapter4x3(T* pointer) {$/;"	f	namespace:ICP_Ceres
+ComputeJacobian	LeGO-LOAM/LeGO-LOAM/include/eigen_quaternion.h	/^        virtual bool ComputeJacobian(const double* x, double* jacobian) const {$/;"	f	class:eigen_quaternion::EigenQuaternionParameterization
+ComputeJacobian	LeGO-LOAM/LeGO-LOAM/src/factor/pose_local_parameterization.cpp	/^bool PoseLocalParameterization::ComputeJacobian(const double *x, double *jacobian) const$/;"	f	class:PoseLocalParameterization
+Create	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    static ceres::CostFunction* Create(const Eigen::Vector3d &observed, const Eigen::Vector3d &worldPoint) {$/;"	f	struct:ICPCostFunctions::PointToPointErrorGlobal_CeresAngleAxis
+Create	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    static ceres::CostFunction* Create(const Eigen::Vector3d &observed, const Eigen::Vector3d &worldPoint) {$/;"	f	struct:ICPCostFunctions::PointToPointError_CeresAngleAxis
+Create	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    static ceres::CostFunction* Create(const Eigen::Vector3d &observed, const Eigen::Vector3d &worldPoint, const float &s1) {$/;"	f	struct:ICPCostFunctions::PointToPointError_EigenQuaternion
+Create	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    static ceres::CostFunction* Create(const Eigen::Vector3d& dst, const Eigen::Vector3d& src) {$/;"	f	struct:ICPCostFunctions::PointToPointErrorGlobal
+Create	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    static ceres::CostFunction* Create(const Eigen::Vector3d& dst, const Eigen::Vector3d& src, const Eigen::Vector3d& nor) {$/;"	f	struct:ICPCostFunctions::PointToPlaneErrorGlobal
+Create	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    static ceres::CostFunction* Create(const Eigen::Vector3d& dst, const Eigen::Vector3d& src, const Eigen::Vector3d& nor) {$/;"	f	struct:ICPCostFunctions::PointToPlaneErrorGlobal_CeresAngleAxis
+Create	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    static ceres::CostFunction* Create(const Eigen::Vector3d& observed, const Eigen::Vector3d& worldPoint, const Eigen::Vector3d& normal) {$/;"	f	struct:ICPCostFunctions::PointToPlaneError_CeresAngleAxis
+Create	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    static ceres::CostFunction* Create(const Eigen::Vector3d& observed, const Eigen::Vector3d& worldPoint, const Eigen::Vector3d& normal) {$/;"	f	struct:ICPCostFunctions::PointToPlaneError_EigenQuaternion
+Create	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    static ceres::CostFunction* Create(const IntegrationBase* pre_integration) {$/;"	f	struct:ICPCostFunctions::IMUFactor
+EIGEN_ALIGN16	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^} EIGEN_ALIGN16;$/;"	v	typeref:struct:PointXYZIRPYT
+ESTIMATE_EXTRINSIC	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^int ESTIMATE_EXTRINSIC;$/;"	v
+ESTIMATE_EXTRINSIC	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^int ESTIMATE_EXTRINSIC;$/;"	v
+ESTIMATE_TD	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^int ESTIMATE_TD;$/;"	v
+ESTIMATE_TD	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^int ESTIMATE_TD;$/;"	v
+EX_CALIB_RESULT_PATH	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^std::string EX_CALIB_RESULT_PATH;$/;"	v
+EX_CALIB_RESULT_PATH	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^std::string EX_CALIB_RESULT_PATH;$/;"	v
+Eigen2Point	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.cpp	/^void Eigen2Point(const Eigen::Vector3d& v, geometry_msgs::Point& p) {$/;"	f
+EigenQuaternionParameterization	LeGO-LOAM/LeGO-LOAM/include/eigen_quaternion.h	/^    class EigenQuaternionParameterization : public ceres::LocalParameterization {$/;"	c	namespace:eigen_quaternion
+EigenQuaternionProduct	LeGO-LOAM/LeGO-LOAM/include/eigen_quaternion.h	/^    void EigenQuaternionProduct(const T z[4], const T w[4], T zw[4]) {$/;"	f	namespace:eigen_quaternion
+EigenQuaternionRotatePoint	LeGO-LOAM/LeGO-LOAM/include/eigen_quaternion.h	/^    void EigenQuaternionRotatePoint(const T q[4], const T pt[3], T result[3]) {$/;"	f	namespace:eigen_quaternion
+EigenQuaternionToRotation	LeGO-LOAM/LeGO-LOAM/include/eigen_quaternion.h	/^    void EigenQuaternionToRotation(const T q[4], T R[3 * 3]) {$/;"	f	namespace:eigen_quaternion
+EigenQuaternionToRotation	LeGO-LOAM/LeGO-LOAM/include/eigen_quaternion.h	/^    void EigenQuaternionToRotation(const T q[4],$/;"	f	namespace:eigen_quaternion
+EigenQuaternionToScaledRotation	LeGO-LOAM/LeGO-LOAM/include/eigen_quaternion.h	/^    void EigenQuaternionToScaledRotation(const T q[4], T R[3 * 3]) {$/;"	f	namespace:eigen_quaternion
+EigenQuaternionToScaledRotation	LeGO-LOAM/LeGO-LOAM/include/eigen_quaternion.h	/^    void EigenQuaternionToScaledRotation(const T q[4],$/;"	f	namespace:eigen_quaternion
+EigenUnitQuaternionRotatePoint	LeGO-LOAM/LeGO-LOAM/include/eigen_quaternion.h	/^    void EigenUnitQuaternionRotatePoint(const T q[4], const T pt[3], T result[3]) {$/;"	f	namespace:eigen_quaternion
+Evaluate	LeGO-LOAM/LeGO-LOAM/src/factor/imu_factor.h	/^    virtual bool Evaluate(double const *const *parameters, double *residuals, double **jacobians) const$/;"	f	class:IMUFactor
+Evaluate	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.cpp	/^bool MarginalizationFactor::Evaluate(double const *const *parameters, double *residuals, double **jacobians) const$/;"	f	class:MarginalizationFactor
+Evaluate	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.cpp	/^void ResidualBlockInfo::Evaluate()$/;"	f	class:ResidualBlockInfo
+Evaluate	LeGO-LOAM/LeGO-LOAM/src/factor/projection_factor.cpp	/^bool ProjectionFactor::Evaluate(double const *const *parameters, double *residuals, double **jacobians) const$/;"	f	class:ProjectionFactor
+Evaluate	LeGO-LOAM/LeGO-LOAM/src/factor/projection_td_factor.cpp	/^bool ProjectionTdFactor::Evaluate(double const *const *parameters, double *residuals, double **jacobians) const$/;"	f	class:ProjectionTdFactor
+FOCAL_LENGTH	LeGO-LOAM/LeGO-LOAM/src/parameters.h	/^const double FOCAL_LENGTH = 460.0;$/;"	v
+FOCAL_LENGTH	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.h	/^const double FOCAL_LENGTH = 460.0;$/;"	v
+FeatureAssociation	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    FeatureAssociation():$/;"	f	class:FeatureAssociation
+FeatureAssociation	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^class FeatureAssociation{$/;"	c	file:
+G	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^Vector3d G = {0, 0, 9.8};$/;"	m	class:Optimization	file:
+G	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^Vector3d G = {0, 0, 9.81};$/;"	m	class:Optimization	file:
+GLFW_INCLUDE_GLU	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	4;"	d
+GREEN1	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^static Vector4d GREEN1=Vector4d(0.0,1.0,0.5,1);$/;"	m	namespace:Colormap
+GREEN2	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^static Vector4d GREEN2=Vector4d(0.0,.4,0.1,0.5);$/;"	m	namespace:Colormap
+GYR_N	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^  double GYR_N = 0.01;\/\/gyroscope measurement noise standard deviation.     #0.05  0.004$/;"	m	class:IntegrationBase
+GYR_N	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^double GYR_N, GYR_W;$/;"	v
+GYR_N	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^double GYR_N, GYR_W;$/;"	v
+GYR_W	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^  double GYR_W = 1e-3;\/\/gyroscope bias random work noise standard deviation.     #4.0e-5$/;"	m	class:IntegrationBase
+GYR_W	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^double GYR_N, GYR_W;$/;"	v
+GYR_W	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^double GYR_N, GYR_W;$/;"	v
+GlobalSize	LeGO-LOAM/LeGO-LOAM/include/eigen_quaternion.h	/^        virtual int GlobalSize() const { return 4; }$/;"	f	class:eigen_quaternion::EigenQuaternionParameterization
+GlobalSize	LeGO-LOAM/LeGO-LOAM/src/factor/pose_local_parameterization.h	/^    virtual int GlobalSize() const { return 7; };\/\/size of x$/;"	f	class:PoseLocalParameterization
+Horizon_SCAN	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const int Horizon_SCAN = 1800;$/;"	v
+ICPCERES	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	2;"	d
+ICPCostFunctions	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^namespace ICPCostFunctions{$/;"	n
+ICP_Ceres	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^namespace ICP_Ceres {$/;"	n
+ICP_Ceres	LeGO-LOAM/LeGO-LOAM/src/internal/icp-ceres.cpp	/^namespace ICP_Ceres {$/;"	n	file:
+IMUFactor	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    IMUFactor(const IntegrationBase* _pre_integration) :pre_integration(_pre_integration)     $/;"	f	struct:ICPCostFunctions::IMUFactor
+IMUFactor	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^struct IMUFactor{$/;"	s	namespace:ICPCostFunctions
+IMUFactor	LeGO-LOAM/LeGO-LOAM/src/factor/imu_factor.h	/^    IMUFactor(IntegrationBase* _pre_integration):pre_integration(_pre_integration)$/;"	f	class:IMUFactor
+IMUFactor	LeGO-LOAM/LeGO-LOAM/src/factor/imu_factor.h	/^class IMUFactor : public ceres::SizedCostFunction<15, 7, 9, 7, 9>$/;"	c
+IMU_TOPIC	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^std::string IMU_TOPIC;$/;"	v
+IMU_TOPIC	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^std::string IMU_TOPIC;$/;"	v
+INIT_DEPTH	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^double INIT_DEPTH;$/;"	v
+INIT_DEPTH	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^double INIT_DEPTH;$/;"	v
+ImageProjection	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    ImageProjection():$/;"	f	class:ImageProjection
+ImageProjection	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^class ImageProjection{$/;"	c	file:
+IntegrationBase	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    IntegrationBase(const Eigen::Vector3d &_acc_0, const Eigen::Vector3d &_gyr_0,$/;"	f	class:IntegrationBase
+IntegrationBase	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^class IntegrationBase$/;"	c
+LIDAR_N	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    double LIDAR_N =1;$/;"	m	struct:ICPCostFunctions::PointToPointError_EigenQuaternion
+LMOptimization	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    bool LMOptimization(int iterCount){$/;"	f	class:mapOptimization
+LaserCloudOri	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^pcl::PointCloud<PointType>::Ptr LaserCloudOri;$/;"	m	class:Optimization	file:
+LaserCloudOri	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^pcl::PointCloud<PointType>::Ptr LaserCloudOri;$/;"	m	class:Optimization	file:
+LaserCloudOri	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^pcl::PointCloud<PointType>::Ptr LaserCloudOri;$/;"	m	class:Optimization	file:
+LaserCloudOri	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^pcl::PointCloud<PointType>::Ptr LaserCloudOri;$/;"	m	class:Optimization	file:
+LaserCloudOri	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^pcl::PointCloud<PointType>::Ptr LaserCloudOri;$/;"	m	class:Optimization	file:
+LaserCloudProj	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^pcl::PointCloud<PointType>::Ptr LaserCloudProj;$/;"	m	class:Optimization	file:
+LaserCloudProj	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^pcl::PointCloud<PointType>::Ptr LaserCloudProj;$/;"	m	class:Optimization	file:
+LaserCloudProj	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^pcl::PointCloud<PointType>::Ptr LaserCloudProj;$/;"	m	class:Optimization	file:
+LaserCloudProj	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^pcl::PointCloud<PointType>::Ptr LaserCloudProj;$/;"	m	class:Optimization	file:
+LaserCloudProj	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^pcl::PointCloud<PointType>::Ptr LaserCloudProj;$/;"	m	class:Optimization	file:
+LocalSize	LeGO-LOAM/LeGO-LOAM/include/eigen_quaternion.h	/^        virtual int LocalSize() const { return 3; }$/;"	f	class:eigen_quaternion::EigenQuaternionParameterization
+LocalSize	LeGO-LOAM/LeGO-LOAM/src/factor/pose_local_parameterization.h	/^    virtual int LocalSize() const { return 6; };\/\/size of delta $/;"	f	class:PoseLocalParameterization
+MAG1	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^static Vector4d MAG1=Vector4d(0.3,0,0.8,1);$/;"	m	namespace:Colormap
+MAG2	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^static Vector4d MAG2=Vector4d(0.1,0.0,0.5,0.5);$/;"	m	namespace:Colormap
+MIN_PARALLAX	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^double MIN_PARALLAX;$/;"	v
+MIN_PARALLAX	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^double MIN_PARALLAX;$/;"	v
+MarginalizationFactor	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.cpp	/^MarginalizationFactor::MarginalizationFactor(MarginalizationInfo* _marginalization_info):marginalization_info(_marginalization_info)$/;"	f	class:MarginalizationFactor
+MarginalizationFactor	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^class MarginalizationFactor : public ceres::CostFunction$/;"	c
+MarginalizationInfo	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^class MarginalizationInfo$/;"	c
+NUM_ITERATIONS	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^int NUM_ITERATIONS;$/;"	v
+NUM_ITERATIONS	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^int NUM_ITERATIONS;$/;"	v
+NUM_OF_CAM	LeGO-LOAM/LeGO-LOAM/src/parameters.h	/^const int NUM_OF_CAM = 1;$/;"	v
+NUM_OF_CAM	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.h	/^const int NUM_OF_CAM = 1;$/;"	v
+NUM_OF_F	LeGO-LOAM/LeGO-LOAM/src/parameters.h	/^const int NUM_OF_F = 1000;$/;"	v
+NUM_OF_F	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.h	/^const int NUM_OF_F = 1000;$/;"	v
+NUM_THREADS	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^const int NUM_THREADS = 4;$/;"	v
+N_SCAN	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const int N_SCAN = 16;$/;"	v
+NoiseOrder	LeGO-LOAM/LeGO-LOAM/src/parameters.h	/^enum NoiseOrder$/;"	g
+NoiseOrder	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.h	/^enum NoiseOrder$/;"	g
+ORANGE1	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^static Vector3d ORANGE1=Vector3d(1,0.6,0);$/;"	m	namespace:Colormap
+ORANGE2	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^static Vector3d ORANGE2=Vector3d(1,0.6,0);$/;"	m	namespace:Colormap
+O_AN	LeGO-LOAM/LeGO-LOAM/src/parameters.h	/^    O_AN = 0,$/;"	e	enum:NoiseOrder
+O_AN	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.h	/^    O_AN = 0,$/;"	e	enum:NoiseOrder
+O_AW	LeGO-LOAM/LeGO-LOAM/src/parameters.h	/^    O_AW = 6,$/;"	e	enum:NoiseOrder
+O_AW	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.h	/^    O_AW = 6,$/;"	e	enum:NoiseOrder
+O_BA	LeGO-LOAM/LeGO-LOAM/src/parameters.h	/^    O_BA = 9,$/;"	e	enum:StateOrder
+O_BA	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.h	/^    O_BA = 9,$/;"	e	enum:StateOrder
+O_BG	LeGO-LOAM/LeGO-LOAM/src/parameters.h	/^    O_BG = 12$/;"	e	enum:StateOrder
+O_BG	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.h	/^    O_BG = 12$/;"	e	enum:StateOrder
+O_GN	LeGO-LOAM/LeGO-LOAM/src/parameters.h	/^    O_GN = 3,$/;"	e	enum:NoiseOrder
+O_GN	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.h	/^    O_GN = 3,$/;"	e	enum:NoiseOrder
+O_GW	LeGO-LOAM/LeGO-LOAM/src/parameters.h	/^    O_GW = 9$/;"	e	enum:NoiseOrder
+O_GW	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.h	/^    O_GW = 9$/;"	e	enum:NoiseOrder
+O_P	LeGO-LOAM/LeGO-LOAM/src/parameters.h	/^    O_P = 0,$/;"	e	enum:StateOrder
+O_P	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.h	/^    O_P = 0,$/;"	e	enum:StateOrder
+O_R	LeGO-LOAM/LeGO-LOAM/src/parameters.h	/^    O_R = 3,$/;"	e	enum:StateOrder
+O_R	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.h	/^    O_R = 3,$/;"	e	enum:StateOrder
+O_V	LeGO-LOAM/LeGO-LOAM/src/parameters.h	/^    O_V = 6,$/;"	e	enum:StateOrder
+O_V	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.h	/^    O_V = 6,$/;"	e	enum:StateOrder
+Optimization	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^  Optimization(): $/;"	f	class:Optimization
+Optimization	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^class Optimization{$/;"	c	file:
+Optimization	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^  Optimization(): $/;"	f	class:Optimization
+Optimization	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^class Optimization{$/;"	c	file:
+Optimization	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^  Optimization(): $/;"	f	class:Optimization
+Optimization	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^class Optimization{$/;"	c	file:
+Optimization	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^  Optimization(): $/;"	f	class:Optimization
+Optimization	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^class Optimization{$/;"	c	file:
+Optimization	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^  Optimization(): $/;"	f	class:Optimization
+Optimization	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^class Optimization{$/;"	c	file:
+PCL_ADD_INTENSITY	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^    PCL_ADD_INTENSITY;$/;"	m	struct:PointXYZIRPYT
+PI	LeGO-LOAM/LeGO-LOAM/include/utility.h	54;"	d
+PluginIMURotation	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void PluginIMURotation(float bcx, float bcy, float bcz, float blx, float bly, float blz, $/;"	f	class:FeatureAssociation
+Plus	LeGO-LOAM/LeGO-LOAM/include/eigen_quaternion.h	/^        virtual bool Plus(const double* x_raw, const double* delta_raw, double* x_plus_delta_raw) const {$/;"	f	class:eigen_quaternion::EigenQuaternionParameterization
+Plus	LeGO-LOAM/LeGO-LOAM/src/factor/pose_local_parameterization.cpp	/^bool PoseLocalParameterization::Plus(const double *x, const double *delta, double *x_plus_delta) const$/;"	f	class:PoseLocalParameterization
+PointToPlaneErrorGlobal	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    PointToPlaneErrorGlobal(const Eigen::Vector3d& dst, const Eigen::Vector3d& src, const Eigen::Vector3d& nor) :$/;"	f	struct:ICPCostFunctions::PointToPlaneErrorGlobal
+PointToPlaneErrorGlobal	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^struct PointToPlaneErrorGlobal{$/;"	s	namespace:ICPCostFunctions
+PointToPlaneErrorGlobal_CeresAngleAxis	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    PointToPlaneErrorGlobal_CeresAngleAxis(const Eigen::Vector3d& dst, const Eigen::Vector3d& src, const Eigen::Vector3d& nor) :$/;"	f	struct:ICPCostFunctions::PointToPlaneErrorGlobal_CeresAngleAxis
+PointToPlaneErrorGlobal_CeresAngleAxis	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^struct PointToPlaneErrorGlobal_CeresAngleAxis{$/;"	s	namespace:ICPCostFunctions
+PointToPlaneError_CeresAngleAxis	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    PointToPlaneError_CeresAngleAxis(const Eigen::Vector3d& dst, const Eigen::Vector3d& src, const Eigen::Vector3d& nor) :$/;"	f	struct:ICPCostFunctions::PointToPlaneError_CeresAngleAxis
+PointToPlaneError_CeresAngleAxis	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^struct PointToPlaneError_CeresAngleAxis{$/;"	s	namespace:ICPCostFunctions
+PointToPlaneError_EigenQuaternion	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    PointToPlaneError_EigenQuaternion(const Eigen::Vector3d& dst, const Eigen::Vector3d& src, const Eigen::Vector3d& nor) :$/;"	f	struct:ICPCostFunctions::PointToPlaneError_EigenQuaternion
+PointToPlaneError_EigenQuaternion	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^struct PointToPlaneError_EigenQuaternion{$/;"	s	namespace:ICPCostFunctions
+PointToPointErrorGlobal	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    PointToPointErrorGlobal(const Eigen::Vector3d &dst, const Eigen::Vector3d &src) :$/;"	f	struct:ICPCostFunctions::PointToPointErrorGlobal
+PointToPointErrorGlobal	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^struct PointToPointErrorGlobal{$/;"	s	namespace:ICPCostFunctions
+PointToPointErrorGlobal_CeresAngleAxis	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    PointToPointErrorGlobal_CeresAngleAxis(const Eigen::Vector3d &dst, const Eigen::Vector3d &src) :$/;"	f	struct:ICPCostFunctions::PointToPointErrorGlobal_CeresAngleAxis
+PointToPointErrorGlobal_CeresAngleAxis	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^struct PointToPointErrorGlobal_CeresAngleAxis{$/;"	s	namespace:ICPCostFunctions
+PointToPointError_CeresAngleAxis	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    PointToPointError_CeresAngleAxis(const Eigen::Vector3d &dst, const Eigen::Vector3d &src) :$/;"	f	struct:ICPCostFunctions::PointToPointError_CeresAngleAxis
+PointToPointError_CeresAngleAxis	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^struct PointToPointError_CeresAngleAxis{$/;"	s	namespace:ICPCostFunctions
+PointToPointError_EigenQuaternion	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    PointToPointError_EigenQuaternion(const Eigen::Vector3d &dst, const Eigen::Vector3d &src, const float &s_) :$/;"	f	struct:ICPCostFunctions::PointToPointError_EigenQuaternion
+PointToPointError_EigenQuaternion	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^struct PointToPointError_EigenQuaternion{$/;"	s	namespace:ICPCostFunctions
+PointType	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^typedef pcl::PointXYZI  PointType;$/;"	t
+PointTypePose	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^typedef PointXYZIRPYT  PointTypePose;$/;"	t
+PointXYZIRPYT	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^struct PointXYZIRPYT$/;"	s
+PoseLocalParameterization	LeGO-LOAM/LeGO-LOAM/src/factor/pose_local_parameterization.h	/^class PoseLocalParameterization : public ceres::LocalParameterization$/;"	c
+ProjectionFactor	LeGO-LOAM/LeGO-LOAM/src/factor/projection_factor.cpp	/^ProjectionFactor::ProjectionFactor(const Eigen::Vector3d &_pts_i, const Eigen::Vector3d &_pts_j) : pts_i(_pts_i), pts_j(_pts_j)$/;"	f	class:ProjectionFactor
+ProjectionFactor	LeGO-LOAM/LeGO-LOAM/src/factor/projection_factor.h	/^class ProjectionFactor : public ceres::SizedCostFunction<2, 7, 7, 7, 1>$/;"	c
+ProjectionTdFactor	LeGO-LOAM/LeGO-LOAM/src/factor/projection_td_factor.cpp	/^ProjectionTdFactor::ProjectionTdFactor(const Eigen::Vector3d &_pts_i, const Eigen::Vector3d &_pts_j, $/;"	f	class:ProjectionTdFactor
+ProjectionTdFactor	LeGO-LOAM/LeGO-LOAM/src/factor/projection_td_factor.h	/^class ProjectionTdFactor : public ceres::SizedCostFunction<2, 7, 7, 7, 1, 1>$/;"	c
+Ps	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^Vector3d Ps[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Ps	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^Vector3d Ps[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Ps	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^Vector3d Ps[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Ps	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^Vector3d Ps[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Ps	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^Vector3d Ps[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Qleft	LeGO-LOAM/LeGO-LOAM/src/utility/utility_rotation.h	/^    static Eigen::Matrix<typename Derived::Scalar, 4, 4> Qleft(const Eigen::QuaternionBase<Derived> &q)$/;"	f	class:Utility
+Qright	LeGO-LOAM/LeGO-LOAM/src/utility/utility_rotation.h	/^    static Eigen::Matrix<typename Derived::Scalar, 4, 4> Qright(const Eigen::QuaternionBase<Derived> &p)$/;"	f	class:Utility
+R2ypr	LeGO-LOAM/LeGO-LOAM/src/utility/utility_rotation.h	/^    static Eigen::Vector3d R2ypr(const Eigen::Matrix3d &R)$/;"	f	class:Utility
+RED1	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^static Vector4d RED1=Vector4d(0.8,0,0.4,1);$/;"	m	namespace:Colormap
+RED2	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^static Vector4d RED2=Vector4d(0.4,0.0,0.1,0.5);$/;"	m	namespace:Colormap
+RIC	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^std::vector<Eigen::Matrix3d> RIC;$/;"	v
+RIC	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^std::vector<Eigen::Matrix3d> RIC;$/;"	v
+ROLLING_SHUTTER	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^int ROLLING_SHUTTER;$/;"	v
+ROLLING_SHUTTER	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^int ROLLING_SHUTTER;$/;"	v
+ROW	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^double ROW, COL;$/;"	v
+ROW	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^double ROW, COL;$/;"	v
+ResidualBlockInfo	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    ResidualBlockInfo(ceres::CostFunction *_cost_function, ceres::LossFunction *_loss_function, std::vector<double *> _parameter_blocks, std::vector<int> _drop_set)$/;"	f	struct:ResidualBlockInfo
+ResidualBlockInfo	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^struct ResidualBlockInfo$/;"	s
+Rs	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^Matrix3d Rs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Rs	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^Matrix3d Rs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Rs	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^Matrix3d Rs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Rs	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^Matrix3d Rs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Rs	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^Matrix3d Rs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+SIZE_FEATURE	LeGO-LOAM/LeGO-LOAM/src/parameters.h	/^    SIZE_FEATURE = 1$/;"	e	enum:SIZE_PARAMETERIZATION
+SIZE_FEATURE	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.h	/^    SIZE_FEATURE = 1$/;"	e	enum:SIZE_PARAMETERIZATION
+SIZE_PARAMETERIZATION	LeGO-LOAM/LeGO-LOAM/src/parameters.h	/^enum SIZE_PARAMETERIZATION$/;"	g
+SIZE_PARAMETERIZATION	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.h	/^enum SIZE_PARAMETERIZATION$/;"	g
+SIZE_POSE	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^static const int SIZE_POSE = 7;$/;"	m	class:Optimization	file:
+SIZE_POSE	LeGO-LOAM/LeGO-LOAM/src/parameters.h	/^    SIZE_POSE = 7,$/;"	e	enum:SIZE_PARAMETERIZATION
+SIZE_POSE	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^static const int SIZE_POSE = 7;$/;"	m	class:Optimization	file:
+SIZE_POSE	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^static const int SIZE_POSE = 7;$/;"	m	class:Optimization	file:
+SIZE_POSE	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^static const int SIZE_POSE = 7;$/;"	m	class:Optimization	file:
+SIZE_POSE	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^static const int SIZE_POSE = 7;$/;"	m	class:Optimization	file:
+SIZE_POSE	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.h	/^    SIZE_POSE = 7,$/;"	e	enum:SIZE_PARAMETERIZATION
+SIZE_SPEEDBIAS	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^static const int SIZE_SPEEDBIAS = 9;$/;"	m	class:Optimization	file:
+SIZE_SPEEDBIAS	LeGO-LOAM/LeGO-LOAM/src/parameters.h	/^    SIZE_SPEEDBIAS = 9,$/;"	e	enum:SIZE_PARAMETERIZATION
+SIZE_SPEEDBIAS	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^static const int SIZE_SPEEDBIAS = 9;$/;"	m	class:Optimization	file:
+SIZE_SPEEDBIAS	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^static const int SIZE_SPEEDBIAS = 9;$/;"	m	class:Optimization	file:
+SIZE_SPEEDBIAS	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^static const int SIZE_SPEEDBIAS = 9;$/;"	m	class:Optimization	file:
+SIZE_SPEEDBIAS	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^static const int SIZE_SPEEDBIAS = 9;$/;"	m	class:Optimization	file:
+SIZE_SPEEDBIAS	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.h	/^    SIZE_SPEEDBIAS = 9,$/;"	e	enum:SIZE_PARAMETERIZATION
+SOLVER_TIME	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^double SOLVER_TIME;$/;"	v
+SOLVER_TIME	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^double SOLVER_TIME;$/;"	v
+ShiftToStartIMU	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void ShiftToStartIMU(float pointTime)$/;"	f	class:FeatureAssociation
+StateOrder	LeGO-LOAM/LeGO-LOAM/src/parameters.h	/^enum StateOrder$/;"	g
+StateOrder	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.h	/^enum StateOrder$/;"	g
+TD	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^double TD, TR;$/;"	v
+TD	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^double TD, TR;$/;"	v
+TIC	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^std::vector<Eigen::Vector3d> TIC;$/;"	v
+TIC	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^std::vector<Eigen::Vector3d> TIC;$/;"	v
+TR	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^double TD, TR;$/;"	v
+TR	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^double TD, TR;$/;"	v
+ThreadsConstructA	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.cpp	/^void* ThreadsConstructA(void* threadsstruct)$/;"	f
+ThreadsStruct	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^struct ThreadsStruct$/;"	s
+TicToc	LeGO-LOAM/LeGO-LOAM/src/utility/tic_toc.h	/^    TicToc()$/;"	f	class:TicToc
+TicToc	LeGO-LOAM/LeGO-LOAM/src/utility/tic_toc.h	/^class TicToc$/;"	c
+TransformFusion	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^    TransformFusion(){$/;"	f	class:TransformFusion
+TransformFusion	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^class TransformFusion{$/;"	c	file:
+TransformToEnd	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void TransformToEnd(PointType const * const pi, PointType * const po)$/;"	f	class:FeatureAssociation
+TransformToStart	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void TransformToStart(PointType const * const pi, PointType * const po)$/;"	f	class:FeatureAssociation
+TransformToStartIMU	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void TransformToStartIMU(PointType *p)$/;"	f	class:FeatureAssociation
+Utility	LeGO-LOAM/LeGO-LOAM/src/utility/utility_rotation.h	/^class Utility$/;"	c
+VINS_RESULT_PATH	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^std::string VINS_RESULT_PATH;$/;"	v
+VINS_RESULT_PATH	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^std::string VINS_RESULT_PATH;$/;"	v
+VeloToStartIMU	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void VeloToStartIMU()$/;"	f	class:FeatureAssociation
+Visualize	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^class Visualize {$/;"	c
+Visualize	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^Visualize::Visualize()$/;"	f	class:Visualize
+Vs	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^Vector3d Vs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Vs	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^Vector3d Vs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Vs	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^Vector3d Vs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Vs	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^Vector3d Vs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+Vs	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^Vector3d Vs[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+WINDOW_HEIGHT	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    const static int WINDOW_HEIGHT = 768;$/;"	m	class:Visualize
+WINDOW_SIZE	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^static const int WINDOW_SIZE = 5;$/;"	m	class:Optimization	file:
+WINDOW_SIZE	LeGO-LOAM/LeGO-LOAM/src/parameters.h	/^const int WINDOW_SIZE = 10;$/;"	v
+WINDOW_SIZE	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^static const int WINDOW_SIZE = 10;$/;"	m	class:Optimization	file:
+WINDOW_SIZE	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^static const int WINDOW_SIZE = 10;$/;"	m	class:Optimization	file:
+WINDOW_SIZE	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^static const int WINDOW_SIZE = 10;$/;"	m	class:Optimization	file:
+WINDOW_SIZE	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^static const int WINDOW_SIZE = 10;$/;"	m	class:Optimization	file:
+WINDOW_SIZE	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.h	/^const int WINDOW_SIZE = 10;$/;"	v
+WINDOW_WIDTH	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    const static int WINDOW_WIDTH = 768;\/\/1024;$/;"	m	class:Visualize
+_UTILITY_LIDAR_ODOMETRY_H_	LeGO-LOAM/LeGO-LOAM/include/utility.h	2;"	d
+__PointPairFeatures__Visualize__	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	2;"	d
+aLoopIsClosed	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    bool aLoopIsClosed;$/;"	m	class:mapOptimization	file:
+acc_0	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    Eigen::Vector3d acc_0, gyr_0;$/;"	m	class:IntegrationBase
+acc_0	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^Eigen::Vector3d acc_0;$/;"	m	class:Optimization	file:
+acc_0	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^Eigen::Vector3d acc_0;$/;"	m	class:Optimization	file:
+acc_1	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    Eigen::Vector3d acc_1, gyr_1;$/;"	m	class:IntegrationBase
+acc_buf	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    std::vector<Eigen::Vector3d> acc_buf;$/;"	m	class:IntegrationBase
+addResidualBlockInfo	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.cpp	/^void MarginalizationInfo::addResidualBlockInfo(ResidualBlockInfo *residual_block_info)$/;"	f	class:MarginalizationInfo
+add_edge	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.cpp	/^void CameraPoseVisualization::add_edge(const Eigen::Vector3d& p0, const Eigen::Vector3d& p1){$/;"	f	class:CameraPoseVisualization
+add_loopedge	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.cpp	/^void CameraPoseVisualization::add_loopedge(const Eigen::Vector3d& p0, const Eigen::Vector3d& p1){$/;"	f	class:CameraPoseVisualization
+add_pose	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.cpp	/^void CameraPoseVisualization::add_pose(const Eigen::Vector3d& p, const Eigen::Quaterniond& q) {$/;"	f	class:CameraPoseVisualization
+adjustDistortion	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void adjustDistortion()$/;"	f	class:FeatureAssociation
+adjustOutlierCloud	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void adjustOutlierCloud(){$/;"	f	class:FeatureAssociation
+aftCoupledTrans	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^tf::StampedTransform aftCoupledTrans;$/;"	m	class:Optimization	file:
+aftCoupledTrans	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^tf::StampedTransform aftCoupledTrans;$/;"	m	class:Optimization	file:
+aftCoupledTrans	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^tf::StampedTransform aftCoupledTrans;$/;"	m	class:Optimization	file:
+aftCoupledTrans	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^tf::StampedTransform aftCoupledTrans;$/;"	m	class:Optimization	file:
+aftCoupledTrans	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^tf::StampedTransform aftCoupledTrans;$/;"	m	class:Optimization	file:
+aftMappedTrans	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    tf::StampedTransform aftMappedTrans;$/;"	m	class:mapOptimization	file:
+allPushedIndX	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    uint16_t *allPushedIndX;$/;"	m	class:ImageProjection	file:
+allPushedIndY	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    uint16_t *allPushedIndY;$/;"	m	class:ImageProjection	file:
+allocateMemory	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    void allocateMemory(){$/;"	f	class:ImageProjection
+allocateMemory	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void allocateMemory(){$/;"	f	class:mapOptimization
+allocateMemory	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^void allocateMemory()$/;"	f	class:Optimization
+allocateMemory	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^void allocateMemory()$/;"	f	class:Optimization
+allocateMemory	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^void allocateMemory()$/;"	f	class:Optimization
+allocateMemory	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^void allocateMemory()$/;"	f	class:Optimization
+allocateMemory	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^void allocateMemory()$/;"	f	class:Optimization
+ang_bottom	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const float ang_bottom = 15.0+0.1;$/;"	v
+ang_res_x	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const float ang_res_x = 0.2;$/;"	v
+ang_res_y	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const float ang_res_y = 2.0;$/;"	v
+angle	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    GLdouble angle;   \/* in degrees *\/$/;"	m	class:Visualize
+angle2	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    GLdouble angle2;   \/* in degrees *\/$/;"	m	class:Visualize
+angle3	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    GLdouble angle3;   \/* in degrees *\/$/;"	m	class:Visualize
+angular_velocity_buf	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^vector<Vector3d> angular_velocity_buf[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+angular_velocity_buf	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^vector<Vector3d> angular_velocity_buf[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+axisAngleToIso	LeGO-LOAM/LeGO-LOAM/src/internal/icp-ceres.cpp	/^Isometry3d axisAngleToIso(const double* cam){$/;"	f	namespace:ICP_Ceres
+b	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    Eigen::VectorXd b;$/;"	m	struct:ThreadsStruct
+by_value	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^struct by_value{ $/;"	s
+cPitch	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+cRoll	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+cYaw	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+calculateSmoothness	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void calculateSmoothness()$/;"	f	class:FeatureAssociation
+calculateTransformation	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    bool calculateTransformation(int iterCount){$/;"	f	class:FeatureAssociation
+calculateTransformationCorner	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    bool calculateTransformationCorner(int iterCount){$/;"	f	class:FeatureAssociation
+calculateTransformationSurf	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    bool calculateTransformationSurf(int iterCount){$/;"	f	class:FeatureAssociation
+camera_2_base_link_Trans	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^    tf::StampedTransform camera_2_base_link_Trans;$/;"	m	class:TransformFusion	file:
+centroid	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    Vector3d centroid;\/\/=Vector3d::Zero();$/;"	m	class:Visualize
+ceresOptimizer	LeGO-LOAM/LeGO-LOAM/src/internal/icp-ceres.cpp	/^void ceresOptimizer(vector< std::shared_ptr<Frame> >& frames, bool pointToPlane, bool robust){$/;"	f	namespace:ICP_Ceres
+ceresOptimizer_ceresAngleAxis	LeGO-LOAM/LeGO-LOAM/src/internal/icp-ceres.cpp	/^void ceresOptimizer_ceresAngleAxis(vector< std::shared_ptr<Frame> >& frames, bool pointToPlane,bool robust){$/;"	f	namespace:ICP_Ceres
+chatterCallback	read_odom/src/odom_listener副本.cpp	/^void chatterCallback(const nav_msgs::Odometry::ConstPtr& msg)$/;"	f
+chatterCallback_coupled	read_odom/src/odom_listener.cpp	/^void chatterCallback_coupled(const nav_msgs::Odometry::ConstPtr& msg)$/;"	f
+chatterCallback_gps	read_odom/src/odom_listener.cpp	/^void chatterCallback_gps(const sensor_msgs::NavSatFix::ConstPtr& msg)$/;"	f
+chatterCallback_imupropagate	read_odom/src/odom_listener.cpp	/^void chatterCallback_imupropagate(const nav_msgs::Odometry::ConstPtr& msg)$/;"	f
+chatterCallback_lidar	read_odom/src/odom_listener.cpp	/^void chatterCallback_lidar(const nav_msgs::Odometry::ConstPtr& msg)$/;"	f
+chatterCallback_odom	read_odom/src/odom_listener.cpp	/^void chatterCallback_odom(const nav_msgs::Odometry::ConstPtr& msg)$/;"	f
+chatterCallback_status	read_odom/src/odom_listener.cpp	/^void chatterCallback_status(const std_msgs::String::ConstPtr& msg)$/;"	f
+check	LeGO-LOAM/LeGO-LOAM/src/factor/projection_factor.cpp	/^void ProjectionFactor::check(double **parameters)$/;"	f	class:ProjectionFactor
+check	LeGO-LOAM/LeGO-LOAM/src/factor/projection_td_factor.cpp	/^void ProjectionTdFactor::check(double **parameters)$/;"	f	class:ProjectionTdFactor
+checkSystemInitialization	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void checkSystemInitialization(){$/;"	f	class:FeatureAssociation
+clearCloud	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void clearCloud(){$/;"	f	class:mapOptimization
+clearState	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^void clearState()$/;"	f	class:Optimization
+clearState	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^void clearState()$/;"	f	class:Optimization
+clearState	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^void clearState()$/;"	f	class:Optimization
+clearState	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^void clearState()$/;"	f	class:Optimization
+clearState	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^void clearState()$/;"	f	class:Optimization
+closestHistoryFrameID	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    int closestHistoryFrameID;$/;"	m	class:mapOptimization	file:
+cloudCurvature	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float cloudCurvature[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+cloudHandler	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    void cloudHandler(const sensor_msgs::PointCloud2ConstPtr& laserCloudMsg){$/;"	f	class:ImageProjection
+cloudHeader	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    std_msgs::Header cloudHeader;$/;"	m	class:FeatureAssociation	file:
+cloudHeader	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    std_msgs::Header cloudHeader;$/;"	m	class:ImageProjection	file:
+cloudKeyPoses3D	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr cloudKeyPoses3D;$/;"	m	class:mapOptimization	file:
+cloudKeyPoses3D	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^pcl::PointCloud<PointType>::Ptr cloudKeyPoses3D;$/;"	m	class:Optimization	file:
+cloudKeyPoses3D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^pcl::PointCloud<PointType>::Ptr cloudKeyPoses3D;$/;"	m	class:Optimization	file:
+cloudKeyPoses3D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^pcl::PointCloud<PointType>::Ptr cloudKeyPoses3D;$/;"	m	class:Optimization	file:
+cloudKeyPoses3D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^pcl::PointCloud<PointType>::Ptr cloudKeyPoses3D;$/;"	m	class:Optimization	file:
+cloudKeyPoses3D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^pcl::PointCloud<PointType>::Ptr cloudKeyPoses3D;$/;"	m	class:Optimization	file:
+cloudKeyPoses6D	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointTypePose>::Ptr cloudKeyPoses6D;$/;"	m	class:mapOptimization	file:
+cloudKeyPoses6D	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^pcl::PointCloud<PointTypePose>::Ptr cloudKeyPoses6D;$/;"	m	class:Optimization	file:
+cloudKeyPoses6D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^pcl::PointCloud<PointTypePose>::Ptr cloudKeyPoses6D;$/;"	m	class:Optimization	file:
+cloudKeyPoses6D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^pcl::PointCloud<PointTypePose>::Ptr cloudKeyPoses6D;$/;"	m	class:Optimization	file:
+cloudKeyPoses6D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^pcl::PointCloud<PointTypePose>::Ptr cloudKeyPoses6D;$/;"	m	class:Optimization	file:
+cloudKeyPoses6D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^pcl::PointCloud<PointTypePose>::Ptr cloudKeyPoses6D;$/;"	m	class:Optimization	file:
+cloudLabel	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    int cloudLabel[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+cloudNeighborPicked	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    int cloudNeighborPicked[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+cloudSegmentation	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    void cloudSegmentation(){$/;"	f	class:ImageProjection
+cloudSmoothness	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    std::vector<smoothness_t> cloudSmoothness;$/;"	m	class:FeatureAssociation	file:
+coeff	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    PointType pointOri, pointSel, tripod1, tripod2, tripod3, pointProj, coeff;$/;"	m	class:FeatureAssociation	file:
+coeff	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    PointType pointOri, pointSel, pointProj, coeff;$/;"	m	class:mapOptimization	file:
+coeffSel	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr coeffSel;$/;"	m	class:FeatureAssociation	file:
+coeffSel	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr coeffSel;$/;"	m	class:mapOptimization	file:
+colorEdgeSel	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^GLubyte colorEdgeSel[4]={122,254,0,15};$/;"	v
+con	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^std::condition_variable con;$/;"	m	class:Optimization	file:
+con	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^std::condition_variable con;$/;"	m	class:Optimization	file:
+constraintNoise	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    noiseModel::Diagonal::shared_ptr constraintNoise;$/;"	m	class:mapOptimization	file:
+copyPointCloud	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    void copyPointCloud(const sensor_msgs::PointCloud2ConstPtr& laserCloudMsg){$/;"	f	class:ImageProjection
+cornerCloudKeyFrames	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    vector<pcl::PointCloud<PointType>::Ptr> cornerCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+cornerOptimization	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void cornerOptimization(int iterCount){$/;"	f	class:mapOptimization
+cornerPointsLessSharp	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr cornerPointsLessSharp;$/;"	m	class:FeatureAssociation	file:
+cornerPointsSharp	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr cornerPointsSharp;$/;"	m	class:FeatureAssociation	file:
+correctPoses	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void correctPoses(){$/;"	f	class:mapOptimization
+cosImuPitchStart	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float cosImuRollStart, cosImuPitchStart, cosImuYawStart, sinImuRollStart, sinImuPitchStart, sinImuYawStart;$/;"	m	class:FeatureAssociation	file:
+cosImuRollStart	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float cosImuRollStart, cosImuPitchStart, cosImuYawStart, sinImuRollStart, sinImuPitchStart, sinImuYawStart;$/;"	m	class:FeatureAssociation	file:
+cosImuYawStart	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float cosImuRollStart, cosImuPitchStart, cosImuYawStart, sinImuRollStart, sinImuPitchStart, sinImuYawStart;$/;"	m	class:FeatureAssociation	file:
+cost_function	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    ceres::CostFunction *cost_function;$/;"	m	struct:ResidualBlockInfo
+covariance	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    Eigen::Matrix<double, 15, 15> jacobian, covariance;$/;"	m	class:IntegrationBase
+ctPitch	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+ctRoll	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+ctYaw	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+curRx	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^Eigen::Matrix3d curRx;$/;"	m	class:Optimization	file:
+curRx	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^Eigen::Matrix3d curRx;$/;"	m	class:Optimization	file:
+curRx	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^Eigen::Matrix3d curRx;$/;"	m	class:Optimization	file:
+curRx	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^Eigen::Matrix3d curRx;$/;"	m	class:Optimization	file:
+curRx	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^Eigen::Matrix3d curRx;$/;"	m	class:Optimization	file:
+curRx_inverse	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^Eigen::Matrix3d curRx_inverse;$/;"	m	class:Optimization	file:
+curRx_inverse	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^Eigen::Matrix3d curRx_inverse;$/;"	m	class:Optimization	file:
+curRx_inverse	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^Eigen::Matrix3d curRx_inverse;$/;"	m	class:Optimization	file:
+curRx_inverse	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^Eigen::Matrix3d curRx_inverse;$/;"	m	class:Optimization	file:
+curRx_inverse	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^Eigen::Matrix3d curRx_inverse;$/;"	m	class:Optimization	file:
+cur_t	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^Eigen::Vector3d cur_t;$/;"	m	class:Optimization	file:
+cur_t	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^Eigen::Vector3d cur_t;$/;"	m	class:Optimization	file:
+cur_t	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^Eigen::Vector3d cur_t;$/;"	m	class:Optimization	file:
+cur_t	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^Eigen::Vector3d cur_t;$/;"	m	class:Optimization	file:
+cur_t	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^Eigen::Vector3d cur_t;$/;"	m	class:Optimization	file:
+currentHeader	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^    std_msgs::Header currentHeader;$/;"	m	class:TransformFusion	file:
+currentRobotPosPoint	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    PointType currentRobotPosPoint;$/;"	m	class:mapOptimization	file:
+current_time	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^double current_time = -1;$/;"	m	class:Optimization	file:
+current_time	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^double current_time = -1;$/;"	m	class:Optimization	file:
+currrentPoseProcess	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^void currrentPoseProcess()$/;"	f	class:Optimization
+currrentPoseProcess	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^void currrentPoseProcess()$/;"	f	class:Optimization
+currrentPoseProcess	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^void currrentPoseProcess()$/;"	f	class:Optimization
+currrentPoseProcess	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^void currrentPoseProcess()$/;"	f	class:Optimization
+currrentPoseProcess	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^void currrentPoseProcess()$/;"	f	class:Optimization
+cursor_position_callback	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::cursor_position_callback(GLFWwindow* window, double x, double y)$/;"	f	class:Visualize
+cursor_position_callbackW	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::cursor_position_callbackW(GLFWwindow* window, double x, double y){$/;"	f	class:Visualize
+deg2rad	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    double deg2rad(double degrees)$/;"	f	class:FeatureAssociation
+deltaQ	LeGO-LOAM/LeGO-LOAM/src/utility/utility_rotation.h	/^    static Eigen::Quaternion<typename Derived::Scalar> deltaQ(const Eigen::MatrixBase<Derived> &theta)$/;"	f	class:Utility
+delta_p	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    Eigen::Vector3d delta_p;$/;"	m	class:IntegrationBase
+delta_q	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    Eigen::Quaterniond delta_q;$/;"	m	class:IntegrationBase
+delta_v	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    Eigen::Vector3d delta_v;$/;"	m	class:IntegrationBase
+detectLoopClosure	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    bool detectLoopClosure(){$/;"	f	class:mapOptimization
+display	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::display(GLFWwindow* window)$/;"	f	class:Visualize
+displayW	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::displayW(GLFWwindow* window){$/;"	f	class:Visualize
+double2vector	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^void double2vector()$/;"	f	class:Optimization
+double2vector	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^void double2vector()$/;"	f	class:Optimization
+double2vector	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^void double2vector()$/;"	f	class:Optimization
+double2vector	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^void double2vector()$/;"	f	class:Optimization
+double2vector	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^void double2vector()$/;"	f	class:Optimization
+downSizeFilter	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilter;$/;"	m	class:FeatureAssociation	file:
+downSizeFilterCorner	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilterCorner;$/;"	m	class:mapOptimization	file:
+downSizeFilterGlobalMapKeyFrames	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilterGlobalMapKeyFrames;$/;"	m	class:mapOptimization	file:
+downSizeFilterGlobalMapKeyPoses	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilterGlobalMapKeyPoses;$/;"	m	class:mapOptimization	file:
+downSizeFilterHistoryKeyFrames	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilterHistoryKeyFrames;$/;"	m	class:mapOptimization	file:
+downSizeFilterOutlier	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilterOutlier;$/;"	m	class:mapOptimization	file:
+downSizeFilterSurf	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilterSurf;$/;"	m	class:mapOptimization	file:
+downSizeFilterSurroundingKeyPoses	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::VoxelGrid<PointType> downSizeFilterSurroundingKeyPoses;$/;"	m	class:mapOptimization	file:
+downsampleCurrentScan	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void downsampleCurrentScan(){$/;"	f	class:mapOptimization
+drawCameraPose	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::drawCameraPose(Isometry3d& P,int i,Vector4d& colorLine,Vector4d& colorPlane){$/;"	f	class:Visualize
+drawCylinder	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::drawCylinder(double r, double l)$/;"	f	class:Visualize
+drawCylinderAdvanced	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::drawCylinderAdvanced(double r, double l, bool coverback, bool coverfront, bool normalInwards){$/;"	f	class:Visualize
+drawEdges	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::drawEdges(int i){$/;"	f	class:Visualize
+drawFrame	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::drawFrame(Frame* m, int i){$/;"	f	class:Visualize
+drawFrustumIntrinsics	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::drawFrustumIntrinsics(Vector4d colorLine, Vector4d colorPlane){$/;"	f	class:Visualize
+drawLines	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::drawLines(const vector<Vector3d>& v1, const vector<Vector3d>& v2)$/;"	f	class:Visualize
+drawNormals	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::drawNormals(const Frame* m, Vector3d& color){$/;"	f	class:Visualize
+drawOrigin	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::drawOrigin(){$/;"	f	class:Visualize
+drawPoints	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::drawPoints(const vector<Vector3d>& pts, const Vector3d& color, float pointSize){$/;"	f	class:Visualize
+drawPoints	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::drawPoints(const vector<Vector3d>& pts, const vector<Vector3d>& colors, float pointSize){$/;"	f	class:Visualize
+drawSpheres	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::drawSpheres(const vector<Vector3d>& pts, double radius){$/;"	f	class:Visualize
+drawText	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void drawText(string s, Vector3d posMiddle){$/;"	f
+drop_callback	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::drop_callback(GLFWwindow* window, int count, const char** paths)$/;"	f	class:Visualize
+drop_callbackW	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::drop_callbackW(GLFWwindow* window, int count, const char** paths){$/;"	f	class:Visualize
+drop_set	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    std::vector<int> drop_set;$/;"	m	struct:ResidualBlockInfo
+dt	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    double dt;$/;"	m	class:IntegrationBase
+dt_buf	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    std::vector<double> dt_buf;$/;"	m	class:IntegrationBase
+dt_buf	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^vector<double> dt_buf[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+dt_buf	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^vector<double> dt_buf[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+edgeFeatureNum	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const int edgeFeatureNum = 2;$/;"	v
+edgeThreshold	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const float edgeThreshold = 0.1;$/;"	v
+eigenQuaternionToIso	LeGO-LOAM/LeGO-LOAM/src/internal/icp-ceres.cpp	/^Isometry3d eigenQuaternionToIso(const Eigen::Quaterniond& q, const Vector3d& t){$/;"	f	namespace:ICP_Ceres
+eigen_quaternion	LeGO-LOAM/LeGO-LOAM/include/eigen_quaternion.h	/^namespace eigen_quaternion {$/;"	n
+end	LeGO-LOAM/LeGO-LOAM/src/utility/tic_toc.h	/^    std::chrono::time_point<std::chrono::system_clock> start, end;$/;"	m	class:TicToc
+endOrientation	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    float endOrientation;$/;"	m	class:ImageProjection	file:
+eps	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    const double eps = 1e-8;$/;"	m	class:MarginalizationInfo
+evaluate	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    Eigen::Matrix<double, 15, 1> evaluate(const Eigen::Vector3d &Pi, const Eigen::Quaterniond &Qi, const Eigen::Vector3d &Vi, const Eigen::Vector3d &Bai, const Eigen::Vector3d &Bgi,$/;"	f	class:IntegrationBase
+extractFeatures	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void extractFeatures()$/;"	f	class:FeatureAssociation
+extractSurroundingKeyFrames	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void extractSurroundingKeyFrames(){$/;"	f	class:mapOptimization
+factors	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    std::vector<ResidualBlockInfo *> factors;$/;"	m	class:MarginalizationInfo
+findCorrespondingCornerFeatures	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void findCorrespondingCornerFeatures(int iterCount){$/;"	f	class:FeatureAssociation
+findCorrespondingSurfFeatures	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void findCorrespondingSurfFeatures(int iterCount){$/;"	f	class:FeatureAssociation
+findStartEndAngle	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    void findStartEndAngle(){$/;"	f	class:ImageProjection
+first_imu	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^bool first_imu;$/;"	m	class:Optimization	file:
+first_imu	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^bool first_imu;$/;"	m	class:Optimization	file:
+frameCount	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    int frameCount;$/;"	m	class:FeatureAssociation	file:
+frame_count	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^int frame_count;$/;"	m	class:Optimization	file:
+frame_count	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^int frame_count;$/;"	m	class:Optimization	file:
+frame_count	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^int frame_count;$/;"	m	class:Optimization	file:
+frame_count	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^int frame_count;$/;"	m	class:Optimization	file:
+frame_count	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^int frame_count;$/;"	m	class:Optimization	file:
+frames	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    vector< shared_ptr<Frame> >* frames;$/;"	m	class:Visualize
+fullCloud	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    pcl::PointCloud<PointType>::Ptr fullCloud;$/;"	m	class:ImageProjection	file:
+fullInfoCloud	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    pcl::PointCloud<PointType>::Ptr fullInfoCloud;$/;"	m	class:ImageProjection	file:
+functions	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    std::function<void()> functions[256]; \/\/functions to call on keys$/;"	m	class:Visualize
+g2R	LeGO-LOAM/LeGO-LOAM/src/utility/utility_rotation.cpp	/^Eigen::Matrix3d Utility::g2R(const Eigen::Vector3d &g)$/;"	f	class:Utility
+getInstance	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^Visualize* Visualize::getInstance(){$/;"	f	class:Visualize
+getMeasurements	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^std::vector<sensor_msgs::ImuConstPtr> getMeasurements()$/;"	f	class:Optimization
+getMeasurements	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^std::vector<sensor_msgs::ImuConstPtr> getMeasurements()$/;"	f	class:Optimization
+getOptions	LeGO-LOAM/LeGO-LOAM/src/internal/icp-ceres.cpp	/^ceres::Solver::Options getOptions(){$/;"	f	namespace:ICP_Ceres
+getOptions	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^ceres::Solver::Options getOptions()$/;"	f	class:Optimization
+getOptions	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^ceres::Solver::Options getOptions()$/;"	f	class:Optimization
+getOptions	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^ceres::Solver::Options getOptions()$/;"	f	class:Optimization
+getOptions	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^ceres::Solver::Options getOptions()$/;"	f	class:Optimization
+getOptions	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^ceres::Solver::Options getOptions()$/;"	f	class:Optimization
+getOptionsMedium	LeGO-LOAM/LeGO-LOAM/src/internal/icp-ceres.cpp	/^ceres::Solver::Options getOptionsMedium(){$/;"	f	namespace:ICP_Ceres
+getOptionsMedium	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^ceres::Solver::Options getOptionsMedium()$/;"	f	class:Optimization
+getOptionsMedium	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^ceres::Solver::Options getOptionsMedium()$/;"	f	class:Optimization
+getOptionsMedium	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^ceres::Solver::Options getOptionsMedium()$/;"	f	class:Optimization
+getOptionsMedium	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^ceres::Solver::Options getOptionsMedium()$/;"	f	class:Optimization
+getOptionsMedium	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^ceres::Solver::Options getOptionsMedium()$/;"	f	class:Optimization
+getParameterBlocks	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.cpp	/^std::vector<double *> MarginalizationInfo::getParameterBlocks(std::unordered_map<long, double *> &addr_shift)$/;"	f	class:MarginalizationInfo
+getRotationAngleApprox	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^double Visualize::getRotationAngleApprox(double xdiff, double ydiff, double x, double y){$/;"	f	class:Visualize
+globalMapKeyFrames	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr globalMapKeyFrames;$/;"	m	class:mapOptimization	file:
+globalMapKeyFramesDS	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr globalMapKeyFramesDS;$/;"	m	class:mapOptimization	file:
+globalMapKeyPoses	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr globalMapKeyPoses;$/;"	m	class:mapOptimization	file:
+globalMapKeyPosesDS	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr globalMapKeyPosesDS;$/;"	m	class:mapOptimization	file:
+globalMapVisualizationSearchRadius	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const float globalMapVisualizationSearchRadius = 50.0;$/;"	v
+globalSize	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.cpp	/^int MarginalizationInfo::globalSize(int size) const$/;"	f	class:MarginalizationInfo
+gluPerspective	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void gluPerspective( GLdouble fovY, GLdouble aspect, GLdouble zNear, GLdouble zFar )$/;"	f
+groundCloud	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    pcl::PointCloud<PointType>::Ptr groundCloud;$/;"	m	class:ImageProjection	file:
+groundMat	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    cv::Mat groundMat;$/;"	m	class:ImageProjection	file:
+groundRemoval	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    void groundRemoval(){$/;"	f	class:ImageProjection
+groundScanInd	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const int groundScanInd = 7;$/;"	v
+gtSAMgraph	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    NonlinearFactorGraph gtSAMgraph;$/;"	m	class:mapOptimization	file:
+gyr_0	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    Eigen::Vector3d acc_0, gyr_0;$/;"	m	class:IntegrationBase
+gyr_0	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^Eigen::Vector3d gyr_0;$/;"	m	class:Optimization	file:
+gyr_0	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^Eigen::Vector3d gyr_0;$/;"	m	class:Optimization	file:
+gyr_1	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    Eigen::Vector3d acc_1, gyr_1;$/;"	m	class:IntegrationBase
+gyr_buf	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    std::vector<Eigen::Vector3d> gyr_buf;$/;"	m	class:IntegrationBase
+historyKeyframeFitnessScore	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const float historyKeyframeFitnessScore = 0.3;$/;"	v
+historyKeyframeSearchNum	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const int   historyKeyframeSearchNum = 25;$/;"	v
+historyKeyframeSearchRadius	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const float historyKeyframeSearchRadius = 5.0;$/;"	v
+imlb	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::imlb = Eigen::Vector3d(-1.0,  0.5, 1.0);$/;"	m	class:CameraPoseVisualization	file:
+imlb	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.h	/^	static const Eigen::Vector3d imlb;$/;"	m	class:CameraPoseVisualization
+imlt	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::imlt = Eigen::Vector3d(-1.0, -0.5, 1.0);$/;"	m	class:CameraPoseVisualization	file:
+imlt	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.h	/^	static const Eigen::Vector3d imlt;$/;"	m	class:CameraPoseVisualization
+imrb	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::imrb = Eigen::Vector3d( 1.0,  0.5, 1.0);$/;"	m	class:CameraPoseVisualization	file:
+imrb	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.h	/^	static const Eigen::Vector3d imrb;$/;"	m	class:CameraPoseVisualization
+imrt	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::imrt = Eigen::Vector3d( 1.0, -0.5, 1.0);$/;"	m	class:CameraPoseVisualization	file:
+imrt	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.h	/^	static const Eigen::Vector3d imrt;$/;"	m	class:CameraPoseVisualization
+imuAccX	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAccX[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAccY	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAccY[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAccZ	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAccZ[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAngularFromStartX	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularFromStartX, imuAngularFromStartY, imuAngularFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuAngularFromStartY	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularFromStartX, imuAngularFromStartY, imuAngularFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuAngularFromStartZ	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularFromStartX, imuAngularFromStartY, imuAngularFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationX	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularRotationX[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationXCur	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularRotationXCur, imuAngularRotationYCur, imuAngularRotationZCur;$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationXLast	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularRotationXLast, imuAngularRotationYLast, imuAngularRotationZLast;$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationY	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularRotationY[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationYCur	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularRotationXCur, imuAngularRotationYCur, imuAngularRotationZCur;$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationYLast	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularRotationXLast, imuAngularRotationYLast, imuAngularRotationZLast;$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationZ	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularRotationZ[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationZCur	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularRotationXCur, imuAngularRotationYCur, imuAngularRotationZCur;$/;"	m	class:FeatureAssociation	file:
+imuAngularRotationZLast	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularRotationXLast, imuAngularRotationYLast, imuAngularRotationZLast;$/;"	m	class:FeatureAssociation	file:
+imuAngularVeloX	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularVeloX[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAngularVeloY	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularVeloY[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuAngularVeloZ	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuAngularVeloZ[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuHandler	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void imuHandler(const sensor_msgs::Imu::ConstPtr& imuIn)$/;"	f	class:FeatureAssociation
+imuHandler	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void imuHandler(const sensor_msgs::Imu::ConstPtr& imuIn){$/;"	f	class:mapOptimization
+imuHandler	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^ void imuHandler(const sensor_msgs::Imu::ConstPtr& imuIn)$/;"	f	class:Optimization
+imuHandler	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^ void imuHandler(const sensor_msgs::Imu::ConstPtr& imuIn)$/;"	f	class:Optimization
+imuHandler	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^ void imuHandler(const sensor_msgs::Imu::ConstPtr& imuIn)$/;"	f	class:Optimization
+imuHandler	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^ void imuHandler(const sensor_msgs::Imu::ConstPtr& imuIn)$/;"	f	class:Optimization
+imuHandler	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^ void imuHandler(const sensor_msgs::Imu::ConstPtr& imuIn)$/;"	f	class:Optimization
+imuPitch	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuPitch[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuPitch	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float imuPitch[imuQueLength];$/;"	m	class:mapOptimization	file:
+imuPitchCur	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuRollCur, imuPitchCur, imuYawCur;$/;"	m	class:FeatureAssociation	file:
+imuPitchLast	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuRollLast, imuPitchLast, imuYawLast;$/;"	m	class:FeatureAssociation	file:
+imuPitchStart	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuRollStart, imuPitchStart, imuYawStart;$/;"	m	class:FeatureAssociation	file:
+imuPointerFront	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    int imuPointerFront;$/;"	m	class:FeatureAssociation	file:
+imuPointerFront	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    int imuPointerFront;$/;"	m	class:mapOptimization	file:
+imuPointerLast	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    int imuPointerLast;$/;"	m	class:FeatureAssociation	file:
+imuPointerLast	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    int imuPointerLast;$/;"	m	class:mapOptimization	file:
+imuPointerLastIteration	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    int imuPointerLastIteration;$/;"	m	class:FeatureAssociation	file:
+imuProcess	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^void imuProcess(std::vector <sensor_msgs::ImuConstPtr> &IMU_Cur)$/;"	f	class:Optimization
+imuProcess	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^void imuProcess()$/;"	f	class:Optimization
+imuProcess	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^void imuProcess(std::vector <sensor_msgs::ImuConstPtr> &IMU_Cur)$/;"	f	class:Optimization
+imuProcess	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^void imuProcess()$/;"	f	class:Optimization
+imuProcess	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^void imuProcess()$/;"	f	class:Optimization
+imuQueLength	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const int imuQueLength = 200;$/;"	v
+imuRoll	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuRoll[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuRoll	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float imuRoll[imuQueLength];$/;"	m	class:mapOptimization	file:
+imuRollCur	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuRollCur, imuPitchCur, imuYawCur;$/;"	m	class:FeatureAssociation	file:
+imuRollLast	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuRollLast, imuPitchLast, imuYawLast;$/;"	m	class:FeatureAssociation	file:
+imuRollStart	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuRollStart, imuPitchStart, imuYawStart;$/;"	m	class:FeatureAssociation	file:
+imuShiftFromStartX	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftFromStartX, imuShiftFromStartY, imuShiftFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuShiftFromStartXCur	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftFromStartXCur, imuShiftFromStartYCur, imuShiftFromStartZCur;$/;"	m	class:FeatureAssociation	file:
+imuShiftFromStartY	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftFromStartX, imuShiftFromStartY, imuShiftFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuShiftFromStartYCur	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftFromStartXCur, imuShiftFromStartYCur, imuShiftFromStartZCur;$/;"	m	class:FeatureAssociation	file:
+imuShiftFromStartZ	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftFromStartX, imuShiftFromStartY, imuShiftFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuShiftFromStartZCur	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftFromStartXCur, imuShiftFromStartYCur, imuShiftFromStartZCur;$/;"	m	class:FeatureAssociation	file:
+imuShiftX	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftX[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuShiftXCur	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftXCur, imuShiftYCur, imuShiftZCur;$/;"	m	class:FeatureAssociation	file:
+imuShiftXStart	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftXStart, imuShiftYStart, imuShiftZStart;$/;"	m	class:FeatureAssociation	file:
+imuShiftY	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftY[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuShiftYCur	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftXCur, imuShiftYCur, imuShiftZCur;$/;"	m	class:FeatureAssociation	file:
+imuShiftYStart	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftXStart, imuShiftYStart, imuShiftZStart;$/;"	m	class:FeatureAssociation	file:
+imuShiftZ	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftZ[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuShiftZCur	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftXCur, imuShiftYCur, imuShiftZCur;$/;"	m	class:FeatureAssociation	file:
+imuShiftZStart	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuShiftXStart, imuShiftYStart, imuShiftZStart;$/;"	m	class:FeatureAssociation	file:
+imuTime	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    double imuTime[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuTime	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    double imuTime[imuQueLength];$/;"	m	class:mapOptimization	file:
+imuTopic	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const string imuTopic = "\/imu\/data";$/;"	v
+imuVeloFromStartX	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloFromStartX, imuVeloFromStartY, imuVeloFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuVeloFromStartXCur	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloFromStartXCur, imuVeloFromStartYCur, imuVeloFromStartZCur;$/;"	m	class:FeatureAssociation	file:
+imuVeloFromStartY	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloFromStartX, imuVeloFromStartY, imuVeloFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuVeloFromStartYCur	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloFromStartXCur, imuVeloFromStartYCur, imuVeloFromStartZCur;$/;"	m	class:FeatureAssociation	file:
+imuVeloFromStartZ	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloFromStartX, imuVeloFromStartY, imuVeloFromStartZ;$/;"	m	class:FeatureAssociation	file:
+imuVeloFromStartZCur	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloFromStartXCur, imuVeloFromStartYCur, imuVeloFromStartZCur;$/;"	m	class:FeatureAssociation	file:
+imuVeloX	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloX[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuVeloXCur	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloXCur, imuVeloYCur, imuVeloZCur;$/;"	m	class:FeatureAssociation	file:
+imuVeloXStart	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloXStart, imuVeloYStart, imuVeloZStart;$/;"	m	class:FeatureAssociation	file:
+imuVeloY	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloY[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuVeloYCur	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloXCur, imuVeloYCur, imuVeloZCur;$/;"	m	class:FeatureAssociation	file:
+imuVeloYStart	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloXStart, imuVeloYStart, imuVeloZStart;$/;"	m	class:FeatureAssociation	file:
+imuVeloZ	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloZ[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuVeloZCur	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloXCur, imuVeloYCur, imuVeloZCur;$/;"	m	class:FeatureAssociation	file:
+imuVeloZStart	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuVeloXStart, imuVeloYStart, imuVeloZStart;$/;"	m	class:FeatureAssociation	file:
+imuYaw	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuYaw[imuQueLength];$/;"	m	class:FeatureAssociation	file:
+imuYawCur	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuRollCur, imuPitchCur, imuYawCur;$/;"	m	class:FeatureAssociation	file:
+imuYawLast	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuRollLast, imuPitchLast, imuYawLast;$/;"	m	class:FeatureAssociation	file:
+imuYawStart	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float imuRollStart, imuPitchStart, imuYawStart;$/;"	m	class:FeatureAssociation	file:
+imu_buf	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^queue<sensor_msgs::ImuConstPtr> imu_buf;$/;"	m	class:Optimization	file:
+imu_buf	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^queue<sensor_msgs::ImuConstPtr> imu_buf;$/;"	m	class:Optimization	file:
+ind	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^    size_t ind;$/;"	m	struct:smoothness_t
+ingoingEdgeFrame	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    int ingoingEdgeFrame=255;$/;"	m	class:Visualize
+init_imu	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^bool init_imu = 1;$/;"	m	class:Optimization	file:
+init_imu	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^bool init_imu = 1;$/;"	m	class:Optimization	file:
+initialEstimate	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    Values initialEstimate;$/;"	m	class:mapOptimization	file:
+initial_flag	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^bool initial_flag = false;$/;"	m	class:Optimization	file:
+initialization	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^void initialization()$/;"	f	class:Optimization
+initializationValue	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void initializationValue()$/;"	f	class:FeatureAssociation
+instance	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    static Visualize *instance;$/;"	m	class:Visualize
+instance	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^Visualize* Visualize::instance = 0;$/;"	m	class:Visualize	file:
+integrateTransformation	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void integrateTransformation(){$/;"	f	class:FeatureAssociation
+isDegenerate	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    bool isDegenerate;$/;"	m	class:FeatureAssociation	file:
+isDegenerate	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    bool isDegenerate;$/;"	m	class:mapOptimization	file:
+isam	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    ISAM2 *isam;$/;"	m	class:mapOptimization	file:
+isamCurrentEstimate	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    Values isamCurrentEstimate;$/;"	m	class:mapOptimization	file:
+isoToAngleAxis	LeGO-LOAM/LeGO-LOAM/src/internal/icp-ceres.cpp	/^void isoToAngleAxis(const Isometry3d& pose, double* cam){$/;"	f	namespace:ICP_Ceres
+jacobian	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    Eigen::Matrix<double, 15, 15> jacobian, covariance;$/;"	m	class:IntegrationBase
+jacobians	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    std::vector<Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>> jacobians;$/;"	m	struct:ResidualBlockInfo
+kdtreeCornerFromMap	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::KdTreeFLANN<PointType>::Ptr kdtreeCornerFromMap;$/;"	m	class:mapOptimization	file:
+kdtreeCornerLast	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::KdTreeFLANN<PointType>::Ptr kdtreeCornerLast;$/;"	m	class:FeatureAssociation	file:
+kdtreeGlobalMap	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::KdTreeFLANN<PointType>::Ptr kdtreeGlobalMap;$/;"	m	class:mapOptimization	file:
+kdtreeHistoryKeyPoses	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::KdTreeFLANN<PointType>::Ptr kdtreeHistoryKeyPoses;$/;"	m	class:mapOptimization	file:
+kdtreeSurfFromMap	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::KdTreeFLANN<PointType>::Ptr kdtreeSurfFromMap;$/;"	m	class:mapOptimization	file:
+kdtreeSurfLast	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::KdTreeFLANN<PointType>::Ptr kdtreeSurfLast;$/;"	m	class:FeatureAssociation	file:
+kdtreeSurroundingKeyPoses	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::KdTreeFLANN<PointType>::Ptr kdtreeSurroundingKeyPoses;$/;"	m	class:mapOptimization	file:
+keep_block_data	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    std::vector<double *> keep_block_data;$/;"	m	class:MarginalizationInfo
+keep_block_idx	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    std::vector<int> keep_block_idx;  \/\/local size$/;"	m	class:MarginalizationInfo
+keep_block_size	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    std::vector<int> keep_block_size; \/\/global size$/;"	m	class:MarginalizationInfo
+keyPoses6DHandler	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+keyPoses6DHandler	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+keyPoses6DHandler	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+keyPoses6DHandler	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+keyPoses6DHandler	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+keyPosesHandler	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^void keyPosesHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+keyPosesHandler	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^void keyPosesHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+keyPosesHandler	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^void keyPosesHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+keyPosesHandler	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^void keyPosesHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+keyPosesHandler	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^void keyPosesHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+keyToggle	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    bool keyToggle[256];\/\/key toggle states$/;"	m	class:Visualize
+keyboard	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::keyboard(GLFWwindow* window, int keyInt, int scancode, int action, int modifiers)$/;"	f	class:Visualize
+keyboardW	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::keyboardW (GLFWwindow* window, int key, int scancode, int action, int modifiers){$/;"	f	class:Visualize
+labelComponents	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    void labelComponents(int row, int col){$/;"	f	class:ImageProjection
+labelCount	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    int labelCount;$/;"	m	class:ImageProjection	file:
+labelMat	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    cv::Mat labelMat;$/;"	m	class:ImageProjection	file:
+laserCloudCornerFromMap	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudCornerFromMap;$/;"	m	class:mapOptimization	file:
+laserCloudCornerFromMapDS	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudCornerFromMapDS;$/;"	m	class:mapOptimization	file:
+laserCloudCornerFromMapDSNum	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    int laserCloudCornerFromMapDSNum;$/;"	m	class:mapOptimization	file:
+laserCloudCornerLast	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudCornerLast;$/;"	m	class:FeatureAssociation	file:
+laserCloudCornerLast	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudCornerLast;$/;"	m	class:mapOptimization	file:
+laserCloudCornerLastDS	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudCornerLastDS;$/;"	m	class:mapOptimization	file:
+laserCloudCornerLastDSNum	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    int laserCloudCornerLastDSNum;$/;"	m	class:mapOptimization	file:
+laserCloudCornerLastHandler	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void laserCloudCornerLastHandler(const sensor_msgs::PointCloud2ConstPtr& msg){$/;"	f	class:mapOptimization
+laserCloudCornerLastNum	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    int laserCloudCornerLastNum;$/;"	m	class:FeatureAssociation	file:
+laserCloudHandler	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void laserCloudHandler(const sensor_msgs::PointCloud2ConstPtr& laserCloudMsg){$/;"	f	class:FeatureAssociation
+laserCloudIn	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudIn;$/;"	m	class:ImageProjection	file:
+laserCloudInfoHandler	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void laserCloudInfoHandler(const cloud_msgs::cloud_infoConstPtr& msgIn)$/;"	f	class:FeatureAssociation
+laserCloudOri	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudOri;$/;"	m	class:FeatureAssociation	file:
+laserCloudOri	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudOri;$/;"	m	class:mapOptimization	file:
+laserCloudOriHandler	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^void laserCloudOriHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+laserCloudOriHandler	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^void laserCloudOriHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+laserCloudOriHandler	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^void laserCloudOriHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+laserCloudOriHandler	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^void laserCloudOriHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+laserCloudOriHandler	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^void laserCloudOriHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+laserCloudOriNum	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^int laserCloudOriNum;$/;"	m	class:Optimization	file:
+laserCloudOriNum	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^int laserCloudOriNum;$/;"	m	class:Optimization	file:
+laserCloudOriNum	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^int laserCloudOriNum;$/;"	m	class:Optimization	file:
+laserCloudOriNum	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^int laserCloudOriNum;$/;"	m	class:Optimization	file:
+laserCloudOriNum	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^int laserCloudOriNum;$/;"	m	class:Optimization	file:
+laserCloudOutlierLast	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudOutlierLast;$/;"	m	class:mapOptimization	file:
+laserCloudOutlierLastDS	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudOutlierLastDS;$/;"	m	class:mapOptimization	file:
+laserCloudOutlierLastDSNum	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    int laserCloudOutlierLastDSNum;$/;"	m	class:mapOptimization	file:
+laserCloudOutlierLastHandler	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void laserCloudOutlierLastHandler(const sensor_msgs::PointCloud2ConstPtr& msg){$/;"	f	class:mapOptimization
+laserCloudProj	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudProj;\/\/store projectoin points$/;"	m	class:mapOptimization	file:
+laserCloudProjHandler	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^void laserCloudProjHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+laserCloudProjHandler	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^void laserCloudProjHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+laserCloudProjHandler	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^void laserCloudProjHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+laserCloudProjHandler	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^void laserCloudProjHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+laserCloudProjHandler	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^void laserCloudProjHandler(const sensor_msgs::PointCloud2ConstPtr& msg)$/;"	f	class:Optimization
+laserCloudProjNum	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^int laserCloudProjNum;$/;"	m	class:Optimization	file:
+laserCloudProjNum	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^int laserCloudProjNum;$/;"	m	class:Optimization	file:
+laserCloudProjNum	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^int laserCloudProjNum;$/;"	m	class:Optimization	file:
+laserCloudProjNum	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^int laserCloudProjNum;$/;"	m	class:Optimization	file:
+laserCloudProjNum	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^int laserCloudProjNum;$/;"	m	class:Optimization	file:
+laserCloudSel	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSel;$/;"	m	class:mapOptimization	file:
+laserCloudSurfFromMap	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSurfFromMap;$/;"	m	class:mapOptimization	file:
+laserCloudSurfFromMapDS	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSurfFromMapDS;$/;"	m	class:mapOptimization	file:
+laserCloudSurfFromMapDSNum	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    int laserCloudSurfFromMapDSNum;$/;"	m	class:mapOptimization	file:
+laserCloudSurfLast	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSurfLast;$/;"	m	class:FeatureAssociation	file:
+laserCloudSurfLast	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSurfLast;$/;"	m	class:mapOptimization	file:
+laserCloudSurfLastDS	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSurfLastDS;$/;"	m	class:mapOptimization	file:
+laserCloudSurfLastDSNum	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    int laserCloudSurfLastDSNum;$/;"	m	class:mapOptimization	file:
+laserCloudSurfLastHandler	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void laserCloudSurfLastHandler(const sensor_msgs::PointCloud2ConstPtr& msg){$/;"	f	class:mapOptimization
+laserCloudSurfLastNum	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    int laserCloudSurfLastNum;$/;"	m	class:FeatureAssociation	file:
+laserCloudSurfTotalLast	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSurfTotalLast;$/;"	m	class:mapOptimization	file:
+laserCloudSurfTotalLastDS	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr laserCloudSurfTotalLastDS;$/;"	m	class:mapOptimization	file:
+laserCloudSurfTotalLastDSNum	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    int laserCloudSurfTotalLastDSNum;$/;"	m	class:mapOptimization	file:
+laserOdometry	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    nav_msgs::Odometry laserOdometry;$/;"	m	class:FeatureAssociation	file:
+laserOdometry2	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^    nav_msgs::Odometry laserOdometry2;$/;"	m	class:TransformFusion	file:
+laserOdometryHandler	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void laserOdometryHandler(const nav_msgs::Odometry::ConstPtr& laserOdometry){$/;"	f	class:mapOptimization
+laserOdometryHandler	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^    void laserOdometryHandler(const nav_msgs::Odometry::ConstPtr& laserOdometry)$/;"	f	class:TransformFusion
+laserOdometryTrans	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    tf::StampedTransform laserOdometryTrans;$/;"	m	class:FeatureAssociation	file:
+laserOdometryTrans2	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^    tf::StampedTransform laserOdometryTrans2;$/;"	m	class:TransformFusion	file:
+lastKey	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    unsigned char lastKey;$/;"	m	class:Visualize
+lastTime	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    double lastTime;$/;"	m	class:Visualize
+latestCornerKeyFrameCloud	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr latestCornerKeyFrameCloud;$/;"	m	class:mapOptimization	file:
+latestFrameID	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    int latestFrameID;$/;"	m	class:mapOptimization	file:
+latestFrameIDLoopCloure	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    int latestFrameIDLoopCloure;$/;"	m	class:mapOptimization	file:
+latestSurfKeyFrameCloud	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr latestSurfKeyFrameCloud;$/;"	m	class:mapOptimization	file:
+latestSurfKeyFrameCloudDS	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr latestSurfKeyFrameCloudDS;$/;"	m	class:mapOptimization	file:
+latest_time	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^double latest_time;$/;"	m	class:Optimization	file:
+latest_time	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^double latest_time;$/;"	m	class:Optimization	file:
+lidarHeader	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^std_msgs::Header lidarHeader;$/;"	m	class:Optimization	file:
+lidarHeader	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^std_msgs::Header lidarHeader;$/;"	m	class:Optimization	file:
+lidarHeader	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^std_msgs::Header lidarHeader;$/;"	m	class:Optimization	file:
+lidarHeader	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^std_msgs::Header lidarHeader;$/;"	m	class:Optimization	file:
+lidarHeader	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^std_msgs::Header lidarHeader;$/;"	m	class:Optimization	file:
+linear_acceleration_buf	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^vector<Vector3d> linear_acceleration_buf[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+linear_acceleration_buf	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^vector<Vector3d> linear_acceleration_buf[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+linearized_acc	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    const Eigen::Vector3d linearized_acc, linearized_gyr;$/;"	m	class:IntegrationBase
+linearized_ba	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    Eigen::Vector3d linearized_ba, linearized_bg;$/;"	m	class:IntegrationBase
+linearized_bg	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    Eigen::Vector3d linearized_ba, linearized_bg;$/;"	m	class:IntegrationBase
+linearized_gyr	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    const Eigen::Vector3d linearized_acc, linearized_gyr;$/;"	m	class:IntegrationBase
+linearized_jacobians	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    Eigen::MatrixXd linearized_jacobians;$/;"	m	class:MarginalizationInfo
+linearized_residuals	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    Eigen::VectorXd linearized_residuals;$/;"	m	class:MarginalizationInfo
+localSize	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.cpp	/^int MarginalizationInfo::localSize(int size) const$/;"	f	class:MarginalizationInfo
+localSize	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    int localSize(int size)$/;"	f	struct:ResidualBlockInfo
+loopClosureEnableFlag	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const bool loopClosureEnableFlag = true;$/;"	v
+loopClosureThread	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void loopClosureThread(){$/;"	f	class:mapOptimization
+loss_function	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    ceres::LossFunction *loss_function;$/;"	m	struct:ResidualBlockInfo
+lt0	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::lt0 = Eigen::Vector3d(-0.7, -0.5, 1.0);$/;"	m	class:CameraPoseVisualization	file:
+lt0	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.h	/^	static const Eigen::Vector3d lt0 ;$/;"	m	class:CameraPoseVisualization
+lt1	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::lt1 = Eigen::Vector3d(-0.7, -0.2, 1.0);$/;"	m	class:CameraPoseVisualization	file:
+lt1	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.h	/^	static const Eigen::Vector3d lt1 ;$/;"	m	class:CameraPoseVisualization
+lt2	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::lt2 = Eigen::Vector3d(-1.0, -0.2, 1.0);$/;"	m	class:CameraPoseVisualization	file:
+lt2	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.h	/^	static const Eigen::Vector3d lt2 ;$/;"	m	class:CameraPoseVisualization
+m	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    int m, n;$/;"	m	class:MarginalizationInfo
+m_buf	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^std::mutex m_buf;\/\/m_buf$/;"	m	class:Optimization	file:
+m_buf	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^std::mutex m_buf;\/\/m_buf$/;"	m	class:Optimization	file:
+m_image_boundary_color	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.h	/^	std_msgs::ColorRGBA m_image_boundary_color;$/;"	m	class:CameraPoseVisualization
+m_line_width	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.h	/^	double m_line_width;$/;"	m	class:CameraPoseVisualization
+m_marker_ns	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.h	/^	std::string m_marker_ns;$/;"	m	class:CameraPoseVisualization
+m_markers	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.h	/^	std::vector<visualization_msgs::Marker> m_markers;$/;"	m	class:CameraPoseVisualization
+m_optical_center_connector_color	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.h	/^	std_msgs::ColorRGBA m_optical_center_connector_color;$/;"	m	class:CameraPoseVisualization
+m_scale	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.h	/^	double m_scale;$/;"	m	class:CameraPoseVisualization
+main	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^int main(int argc, char** argv)$/;"	f
+main	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^int main(int argc, char** argv){$/;"	f
+main	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^int main(int argc, char** argv)$/;"	f
+main	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^int main(int argc, char **argv)$/;"	f
+main	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^int main(int argc, char **argv)$/;"	f
+main	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^int main(int argc, char **argv)$/;"	f
+main	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^int main(int argc, char **argv)$/;"	f
+main	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^int main(int argc, char **argv)$/;"	f
+main	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^int main(int argc, char** argv)$/;"	f
+main	read_odom/src/odom_listener.cpp	/^int main(int argc, char **argv)$/;"	f
+main	read_odom/src/odom_listener副本.cpp	/^int main(int argc, char **argv)$/;"	f
+main	read_odom/src/odom_pub.cpp	/^int main(int argc, char **argv)$/;"	f
+mapOptimization	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    mapOptimization():$/;"	f	class:mapOptimization
+mapOptimization	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^class mapOptimization{$/;"	c	file:
+map_2_camera_init_Trans	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^    tf::StampedTransform map_2_camera_init_Trans;$/;"	m	class:TransformFusion	file:
+mappingProcessInterval	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const double mappingProcessInterval = 0.3;$/;"	v
+marginalization_info	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    MarginalizationInfo* marginalization_info;$/;"	m	class:MarginalizationFactor
+marginalize	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.cpp	/^void MarginalizationInfo::marginalize()$/;"	f	class:MarginalizationInfo
+markOccludedPoints	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void markOccludedPoints()$/;"	f	class:FeatureAssociation
+matA0	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    cv::Mat matA0;$/;"	m	class:mapOptimization	file:
+matA1	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    cv::Mat matA1;$/;"	m	class:mapOptimization	file:
+matB0	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    cv::Mat matB0;$/;"	m	class:mapOptimization	file:
+matD1	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    cv::Mat matD1;$/;"	m	class:mapOptimization	file:
+matP	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    cv::Mat matP;$/;"	m	class:FeatureAssociation	file:
+matP	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    cv::Mat matP;$/;"	m	class:mapOptimization	file:
+matV1	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    cv::Mat matV1;$/;"	m	class:mapOptimization	file:
+matX0	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    cv::Mat matX0;$/;"	m	class:mapOptimization	file:
+midPointIntegration	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    void midPointIntegration(double _dt, $/;"	f	class:IntegrationBase
+modifier	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    int modifier;$/;"	m	class:Visualize
+mouseButton	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    int mouseButton;$/;"	m	class:Visualize
+mouse_button_callback	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::mouse_button_callback(GLFWwindow* window, int button, int action, int mods)$/;"	f	class:Visualize
+mouse_button_callbackW	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::mouse_button_callbackW(GLFWwindow* window, int button, int action, int mods){$/;"	f	class:Visualize
+moving	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    int moving;$/;"	m	class:Visualize
+mtx	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    std::mutex mtx;$/;"	m	class:mapOptimization	file:
+myfile2	read_odom/src/odom_listener.cpp	/^ofstream myfile2;$/;"	v
+myfile3	read_odom/src/odom_listener.cpp	/^ofstream myfile3;$/;"	v
+myfile4	read_odom/src/odom_listener.cpp	/^ofstream myfile4;$/;"	v
+myfile5	read_odom/src/odom_listener.cpp	/^ofstream myfile5;$/;"	v
+n	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    int m, n;$/;"	m	class:MarginalizationInfo
+n	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^ros::NodeHandle n;$/;"	m	class:Optimization	file:
+n	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^ros::NodeHandle n;$/;"	m	class:Optimization	file:
+n	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^ros::NodeHandle n;$/;"	m	class:Optimization	file:
+n	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^ros::NodeHandle n;$/;"	m	class:Optimization	file:
+n	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^ros::NodeHandle n;$/;"	m	class:Optimization	file:
+nanPoint	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    PointType nanPoint;$/;"	m	class:ImageProjection	file:
+nbFrames	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    int nbFrames;$/;"	m	class:Visualize
+nearHistoryCornerKeyFrameCloud	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr nearHistoryCornerKeyFrameCloud;$/;"	m	class:mapOptimization	file:
+nearHistoryCornerKeyFrameCloudDS	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr nearHistoryCornerKeyFrameCloudDS;$/;"	m	class:mapOptimization	file:
+nearHistorySurfKeyFrameCloud	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr nearHistorySurfKeyFrameCloud;$/;"	m	class:mapOptimization	file:
+nearHistorySurfKeyFrameCloudDS	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr nearHistorySurfKeyFrameCloudDS;$/;"	m	class:mapOptimization	file:
+nearestFeatureSearchSqDist	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const float nearestFeatureSearchSqDist = 25;$/;"	v
+neighborIterator	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    std::vector<std::pair<uint8_t, uint8_t> > neighborIterator;$/;"	m	class:ImageProjection	file:
+newCloudKeyPoses3D	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^bool newCloudKeyPoses3D;$/;"	m	class:Optimization	file:
+newCloudKeyPoses3D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^bool newCloudKeyPoses3D;$/;"	m	class:Optimization	file:
+newCloudKeyPoses3D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^bool newCloudKeyPoses3D;$/;"	m	class:Optimization	file:
+newCloudKeyPoses3D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^bool newCloudKeyPoses3D;$/;"	m	class:Optimization	file:
+newCloudKeyPoses3D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^bool newCloudKeyPoses3D;$/;"	m	class:Optimization	file:
+newCloudKeyPoses6D	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^bool newCloudKeyPoses6D;$/;"	m	class:Optimization	file:
+newCloudKeyPoses6D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^bool newCloudKeyPoses6D;$/;"	m	class:Optimization	file:
+newCloudKeyPoses6D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^bool newCloudKeyPoses6D;$/;"	m	class:Optimization	file:
+newCloudKeyPoses6D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^bool newCloudKeyPoses6D;$/;"	m	class:Optimization	file:
+newCloudKeyPoses6D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^bool newCloudKeyPoses6D;$/;"	m	class:Optimization	file:
+newLaserCloudCornerLast	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    bool newLaserCloudCornerLast;$/;"	m	class:mapOptimization	file:
+newLaserCloudOri	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^bool newLaserCloudOri;$/;"	m	class:Optimization	file:
+newLaserCloudOri	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^bool newLaserCloudOri;$/;"	m	class:Optimization	file:
+newLaserCloudOri	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^bool newLaserCloudOri;$/;"	m	class:Optimization	file:
+newLaserCloudOri	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^bool newLaserCloudOri;$/;"	m	class:Optimization	file:
+newLaserCloudOri	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^bool newLaserCloudOri;$/;"	m	class:Optimization	file:
+newLaserCloudOutlierLast	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    bool newLaserCloudOutlierLast;$/;"	m	class:mapOptimization	file:
+newLaserCloudProj	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^bool newLaserCloudProj;$/;"	m	class:Optimization	file:
+newLaserCloudProj	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^bool newLaserCloudProj;$/;"	m	class:Optimization	file:
+newLaserCloudProj	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^bool newLaserCloudProj;$/;"	m	class:Optimization	file:
+newLaserCloudProj	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^bool newLaserCloudProj;$/;"	m	class:Optimization	file:
+newLaserCloudProj	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^bool newLaserCloudProj;$/;"	m	class:Optimization	file:
+newLaserCloudSurfLast	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    bool newLaserCloudSurfLast;$/;"	m	class:mapOptimization	file:
+newLaserOdometry	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    bool newLaserOdometry;$/;"	m	class:mapOptimization	file:
+newOutlierCloud	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    bool newOutlierCloud;$/;"	m	class:FeatureAssociation	file:
+newSegmentedCloud	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    bool newSegmentedCloud;$/;"	m	class:FeatureAssociation	file:
+newSegmentedCloudInfo	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    bool newSegmentedCloudInfo;$/;"	m	class:FeatureAssociation	file:
+nh	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^	ros::NodeHandle nh;$/;"	m	class:FeatureAssociation	file:
+nh	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    ros::NodeHandle nh;$/;"	m	class:ImageProjection	file:
+nh	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    ros::NodeHandle nh;$/;"	m	class:mapOptimization	file:
+nh	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^    ros::NodeHandle nh;$/;"	m	class:TransformFusion	file:
+noise	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    Eigen::Matrix<double, 18, 18> noise;$/;"	m	class:IntegrationBase
+normalizeAngle	LeGO-LOAM/LeGO-LOAM/src/utility/utility_rotation.h	/^    static T normalizeAngle(const T& angle_degrees) {$/;"	f	class:Utility
+oc	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.cpp	/^const Eigen::Vector3d CameraPoseVisualization::oc = Eigen::Vector3d(0.0, 0.0, 0.0);$/;"	m	class:CameraPoseVisualization	file:
+oc	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.h	/^	static const Eigen::Vector3d oc  ;$/;"	m	class:CameraPoseVisualization
+odomAftMapped	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    nav_msgs::Odometry odomAftMapped;$/;"	m	class:mapOptimization	file:
+odomAftMappedHandler	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^    void odomAftMappedHandler(const nav_msgs::Odometry::ConstPtr& odomAftMapped)$/;"	f	class:TransformFusion
+odomCoupled	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^nav_msgs::Odometry odomCoupled;$/;"	m	class:Optimization	file:
+odomCoupled	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^nav_msgs::Odometry odomCoupled;$/;"	m	class:Optimization	file:
+odomCoupled	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^nav_msgs::Odometry odomCoupled;$/;"	m	class:Optimization	file:
+odomCoupled	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^nav_msgs::Odometry odomCoupled;$/;"	m	class:Optimization	file:
+odomCoupled	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^nav_msgs::Odometry odomCoupled;$/;"	m	class:Optimization	file:
+odometryNoise	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    noiseModel::Diagonal::shared_ptr odometryNoise;$/;"	m	class:mapOptimization	file:
+offsetX	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    GLdouble offsetX;$/;"	m	class:Visualize
+offsetY	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    GLdouble offsetY;$/;"	m	class:Visualize
+offsetZ	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    GLdouble offsetZ;$/;"	m	class:Visualize
+operator ()	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    bool operator()(const T* const cam1, const T* const cam2, T* residuals) const {$/;"	f	struct:ICPCostFunctions::PointToPlaneErrorGlobal_CeresAngleAxis
+operator ()	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    bool operator()(const T* const camera, T* residuals) const {$/;"	f	struct:ICPCostFunctions::PointToPlaneError_CeresAngleAxis
+operator ()	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    bool operator()(const T* const camera, T* residuals) const {$/;"	f	struct:ICPCostFunctions::PointToPointError_CeresAngleAxis
+operator ()	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    bool operator()(const T* const camera, const T* const camera2, T* residuals) const {$/;"	f	struct:ICPCostFunctions::PointToPointErrorGlobal_CeresAngleAxis
+operator ()	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    bool operator()(const T* const camera_rotation, const T* const camera_translation, T* residuals) const {$/;"	f	struct:ICPCostFunctions::PointToPlaneError_EigenQuaternion
+operator ()	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    bool operator()(const T* const camera_rotation, const T* const camera_translation, const T* const camera_rotation_dst, const T* const camera_translation_dst, T* residuals) const {$/;"	f	struct:ICPCostFunctions::PointToPlaneErrorGlobal
+operator ()	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    bool operator()(const T* const camera_rotation, const T* const camera_translation, const T* const camera_rotation_dst, const T* const camera_translation_dst, T* residuals) const {$/;"	f	struct:ICPCostFunctions::PointToPointErrorGlobal
+operator ()	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    bool operator()(const T* const para_Pose,  T* residuals) const {$/;"	f	struct:ICPCostFunctions::PointToPointError_EigenQuaternion
+operator ()	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    bool operator()(const T* const para_Pose_i, const T* const para_Speedbias_i, const T* const para_Pose_j ,const T* const para_Speedbias_j, T* residuals) const $/;"	f	struct:ICPCostFunctions::IMUFactor
+operator ()	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^    bool operator()(smoothness_t const &left, smoothness_t const &right) { $/;"	f	struct:by_value
+optimizationProcess	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^void optimizationProcess()$/;"	f	class:Optimization
+optimizationProcess	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^void optimizationProcess()$/;"	f	class:Optimization
+optimizationProcess	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^void optimizationProcess()$/;"	f	class:Optimization
+optimizationProcess	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^void optimizationProcess()$/;"	f	class:Optimization
+optimizationProcess	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^void optimizationProcess()$/;"	f	class:Optimization
+optimizationProcessInterval	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^const double optimizationProcessInterval=0.1;$/;"	m	class:Optimization	file:
+optimizationProcessInterval	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^const double optimizationProcessInterval=0.1;$/;"	m	class:Optimization	file:
+optimizationProcessInterval	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^const double optimizationProcessInterval=0.1;$/;"	m	class:Optimization	file:
+optimizationProcessInterval	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^const double optimizationProcessInterval=0.1;$/;"	m	class:Optimization	file:
+optimizationProcessInterval	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^const double optimizationProcessInterval=0.1;$/;"	m	class:Optimization	file:
+optimizedEstimate	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    Values optimizedEstimate;$/;"	m	class:mapOptimization	file:
+ori_buf	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^queue<sensor_msgs::PointCloud2ConstPtr> ori_buf;$/;"	m	class:Optimization	file:
+ori_buf	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^queue<sensor_msgs::PointCloud2ConstPtr> ori_buf;$/;"	m	class:Optimization	file:
+outlierCloud	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr outlierCloud;$/;"	m	class:FeatureAssociation	file:
+outlierCloud	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    pcl::PointCloud<PointType>::Ptr outlierCloud;$/;"	m	class:ImageProjection	file:
+outlierCloudHandler	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void outlierCloudHandler(const sensor_msgs::PointCloud2ConstPtr& msgIn){$/;"	f	class:FeatureAssociation
+outlierCloudKeyFrames	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    vector<pcl::PointCloud<PointType>::Ptr> outlierCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+p_dst	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    const Eigen::Vector3d p_dst;$/;"	m	struct:ICPCostFunctions::PointToPointErrorGlobal
+p_dst	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    const Eigen::Vector3d& p_dst;$/;"	m	struct:ICPCostFunctions::PointToPlaneErrorGlobal
+p_dst	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    const Eigen::Vector3d& p_dst;$/;"	m	struct:ICPCostFunctions::PointToPlaneErrorGlobal_CeresAngleAxis
+p_dst	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    const Eigen::Vector3d& p_dst;$/;"	m	struct:ICPCostFunctions::PointToPlaneError_CeresAngleAxis
+p_dst	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    const Eigen::Vector3d& p_dst;$/;"	m	struct:ICPCostFunctions::PointToPlaneError_EigenQuaternion
+p_dst	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    const Eigen::Vector3d& p_dst;$/;"	m	struct:ICPCostFunctions::PointToPointErrorGlobal_CeresAngleAxis
+p_dst	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    const Eigen::Vector3d& p_dst;$/;"	m	struct:ICPCostFunctions::PointToPointError_CeresAngleAxis
+p_dst	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    const Eigen::Vector3d& p_dst;$/;"	m	struct:ICPCostFunctions::PointToPointError_EigenQuaternion
+p_nor	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    const Eigen::Vector3d& p_nor;$/;"	m	struct:ICPCostFunctions::PointToPlaneErrorGlobal
+p_nor	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    const Eigen::Vector3d& p_nor;$/;"	m	struct:ICPCostFunctions::PointToPlaneErrorGlobal_CeresAngleAxis
+p_nor	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    const Eigen::Vector3d& p_nor;$/;"	m	struct:ICPCostFunctions::PointToPlaneError_CeresAngleAxis
+p_nor	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    const Eigen::Vector3d& p_nor;$/;"	m	struct:ICPCostFunctions::PointToPlaneError_EigenQuaternion
+p_src	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    const Eigen::Vector3d p_src;$/;"	m	struct:ICPCostFunctions::PointToPointErrorGlobal
+p_src	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    const Eigen::Vector3d& p_src;$/;"	m	struct:ICPCostFunctions::PointToPlaneErrorGlobal
+p_src	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    const Eigen::Vector3d& p_src;$/;"	m	struct:ICPCostFunctions::PointToPlaneErrorGlobal_CeresAngleAxis
+p_src	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    const Eigen::Vector3d& p_src;$/;"	m	struct:ICPCostFunctions::PointToPlaneError_CeresAngleAxis
+p_src	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    const Eigen::Vector3d& p_src;$/;"	m	struct:ICPCostFunctions::PointToPlaneError_EigenQuaternion
+p_src	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    const Eigen::Vector3d& p_src;$/;"	m	struct:ICPCostFunctions::PointToPointErrorGlobal_CeresAngleAxis
+p_src	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    const Eigen::Vector3d& p_src;$/;"	m	struct:ICPCostFunctions::PointToPointError_CeresAngleAxis
+p_src	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    const Eigen::Vector3d& p_src;$/;"	m	struct:ICPCostFunctions::PointToPointError_EigenQuaternion
+para_Pose	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^double para_Pose[WINDOW_SIZE + 1][SIZE_POSE];$/;"	m	class:Optimization	file:
+para_Pose	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^double para_Pose[WINDOW_SIZE + 1][SIZE_POSE];$/;"	m	class:Optimization	file:
+para_Pose	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^double para_Pose[WINDOW_SIZE + 1][SIZE_POSE];$/;"	m	class:Optimization	file:
+para_Pose	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^double para_Pose[WINDOW_SIZE + 1][SIZE_POSE];$/;"	m	class:Optimization	file:
+para_Pose	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^double para_Pose[WINDOW_SIZE + 1][SIZE_POSE];$/;"	m	class:Optimization	file:
+para_SpeedBias	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^double para_SpeedBias[WINDOW_SIZE + 1][SIZE_SPEEDBIAS];$/;"	m	class:Optimization	file:
+para_SpeedBias	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^double para_SpeedBias[WINDOW_SIZE + 1][SIZE_SPEEDBIAS];$/;"	m	class:Optimization	file:
+para_SpeedBias	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^double para_SpeedBias[WINDOW_SIZE + 1][SIZE_SPEEDBIAS];$/;"	m	class:Optimization	file:
+para_SpeedBias	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^double para_SpeedBias[WINDOW_SIZE + 1][SIZE_SPEEDBIAS];$/;"	m	class:Optimization	file:
+para_SpeedBias	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^double para_SpeedBias[WINDOW_SIZE + 1][SIZE_SPEEDBIAS];$/;"	m	class:Optimization	file:
+parameter_block_data	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    std::unordered_map<long, double *> parameter_block_data;$/;"	m	class:MarginalizationInfo
+parameter_block_idx	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    std::unordered_map<long, int> parameter_block_idx; \/\/local size$/;"	m	class:MarginalizationInfo
+parameter_block_idx	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    std::unordered_map<long, int> parameter_block_idx; \/\/local size$/;"	m	struct:ThreadsStruct
+parameter_block_size	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    std::unordered_map<long, int> parameter_block_size; \/\/global size$/;"	m	class:MarginalizationInfo
+parameter_block_size	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    std::unordered_map<long, int> parameter_block_size; \/\/global size$/;"	m	struct:ThreadsStruct
+parameter_blocks	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    std::vector<double *> parameter_blocks;$/;"	m	struct:ResidualBlockInfo
+path	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^nav_msgs::Path path, relo_path;$/;"	v
+pclPointToAffine3fCameraToLidar	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    Eigen::Affine3f pclPointToAffine3fCameraToLidar(PointTypePose thisPoint){$/;"	f	class:mapOptimization
+pclPointTogtsamPose3	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    Pose3 pclPointTogtsamPose3(PointTypePose thisPoint){$/;"	f	class:mapOptimization
+performLoopClosure	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void performLoopClosure(){$/;"	f	class:mapOptimization
+pitch	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^    float pitch;$/;"	m	struct:PointXYZIRPYT
+pointAssociateToMap	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void pointAssociateToMap(PointType const * const pi, PointType * const po)$/;"	f	class:mapOptimization
+pointOri	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    PointType pointOri, pointSel, tripod1, tripod2, tripod3, pointProj, coeff;$/;"	m	class:FeatureAssociation	file:
+pointOri	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    PointType pointOri, pointSel, pointProj, coeff;$/;"	m	class:mapOptimization	file:
+pointProj	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    PointType pointOri, pointSel, tripod1, tripod2, tripod3, pointProj, coeff;$/;"	m	class:FeatureAssociation	file:
+pointProj	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    PointType pointOri, pointSel, pointProj, coeff;$/;"	m	class:mapOptimization	file:
+pointSearchCornerInd1	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float pointSearchCornerInd1[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+pointSearchCornerInd2	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float pointSearchCornerInd2[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+pointSearchInd	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    std::vector<int> pointSearchInd;$/;"	m	class:FeatureAssociation	file:
+pointSearchInd	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    std::vector<int> pointSearchInd;$/;"	m	class:mapOptimization	file:
+pointSearchSqDis	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    std::vector<float> pointSearchSqDis;$/;"	m	class:FeatureAssociation	file:
+pointSearchSqDis	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    std::vector<float> pointSearchSqDis;$/;"	m	class:mapOptimization	file:
+pointSearchSurfInd1	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float pointSearchSurfInd1[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+pointSearchSurfInd2	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float pointSearchSurfInd2[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+pointSearchSurfInd3	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float pointSearchSurfInd3[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+pointSel	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    PointType pointOri, pointSel, tripod1, tripod2, tripod3, pointProj, coeff;$/;"	m	class:FeatureAssociation	file:
+pointSel	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    PointType pointOri, pointSel, pointProj, coeff;$/;"	m	class:mapOptimization	file:
+pointSelCornerInd	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    int pointSelCornerInd[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+pointSelSurfInd	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    int pointSelSurfInd[N_SCAN*Horizon_SCAN];$/;"	m	class:FeatureAssociation	file:
+pointToPlane_CeresAngleAxis	LeGO-LOAM/LeGO-LOAM/src/internal/icp-ceres.cpp	/^Isometry3d pointToPlane_CeresAngleAxis(vector<Vector3d> &src,vector<Vector3d> &dst,vector<Vector3d> &nor){$/;"	f	namespace:ICP_Ceres
+pointToPlane_EigenQuaternion	LeGO-LOAM/LeGO-LOAM/src/internal/icp-ceres.cpp	/^Isometry3d pointToPlane_EigenQuaternion(vector<Vector3d>&src,vector<Vector3d>&dst,vector<Vector3d> &nor){$/;"	f	namespace:ICP_Ceres
+pointToPoint_CeresAngleAxis	LeGO-LOAM/LeGO-LOAM/src/internal/icp-ceres.cpp	/^Isometry3d pointToPoint_CeresAngleAxis(vector<Vector3d>&src,vector<Vector3d>&dst){$/;"	f	namespace:ICP_Ceres
+pointToPoint_EigenQuaternion	LeGO-LOAM/LeGO-LOAM/src/internal/icp-ceres.cpp	/^Isometry3d pointToPoint_EigenQuaternion(vector<Vector3d>&src,vector<Vector3d>&dst){$/;"	f	namespace:ICP_Ceres
+positify	LeGO-LOAM/LeGO-LOAM/src/utility/utility_rotation.h	/^    static Eigen::Quaternion<typename Derived::Scalar> positify(const Eigen::QuaternionBase<Derived> &q)$/;"	f	class:Utility
+potentialLoopFlag	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    bool potentialLoopFlag;$/;"	m	class:mapOptimization	file:
+preMarginalize	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.cpp	/^void MarginalizationInfo::preMarginalize()$/;"	f	class:MarginalizationInfo
+prePoseNum	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    int prePoseNum;$/;"	m	class:mapOptimization	file:
+pre_integration	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    const IntegrationBase* pre_integration;$/;"	m	struct:ICPCostFunctions::IMUFactor
+pre_integration	LeGO-LOAM/LeGO-LOAM/src/factor/imu_factor.h	/^    IntegrationBase* pre_integration;$/;"	m	class:IMUFactor
+pre_integrations	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^IntegrationBase *pre_integrations[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+pre_integrations	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^IntegrationBase *pre_integrations[(WINDOW_SIZE + 1)];$/;"	m	class:Optimization	file:
+predict	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^void predict(const sensor_msgs::ImuConstPtr &imu_msg)\/\/ propogate$/;"	f	class:Optimization
+predict	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^void predict(const sensor_msgs::ImuConstPtr &imu_msg)\/\/ propogate$/;"	f	class:Optimization
+previousRobotPosPoint	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    PointType previousRobotPosPoint;$/;"	m	class:mapOptimization	file:
+printAllTimings	LeGO-LOAM/LeGO-LOAM/src/internal/CPUTimer.cpp	/^void CPUTimer::printAllTimings(){$/;"	f	class:CPUTimer
+printStatistics	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^void printStatistics(const Estimator &estimator, double t)$/;"	f
+priorNoise	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    noiseModel::Diagonal::shared_ptr priorNoise;$/;"	m	class:mapOptimization	file:
+processIMU	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^void processIMU(double dt, const Vector3d &linear_acceleration, const Vector3d &angular_velocity)$/;"	f	class:Optimization
+processIMU	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^void processIMU(double dt, const Vector3d &linear_acceleration, const Vector3d &angular_velocity)$/;"	f	class:Optimization
+projectPointCloud	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    void projectPointCloud(){$/;"	f	class:ImageProjection
+propagate	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    void propagate(double _dt, const Eigen::Vector3d &_acc_1, const Eigen::Vector3d &_gyr_1)$/;"	f	class:IntegrationBase
+pts_i	LeGO-LOAM/LeGO-LOAM/src/factor/projection_factor.h	/^    Eigen::Vector3d pts_i, pts_j;$/;"	m	class:ProjectionFactor
+pts_i	LeGO-LOAM/LeGO-LOAM/src/factor/projection_td_factor.h	/^    Eigen::Vector3d pts_i, pts_j;$/;"	m	class:ProjectionTdFactor
+pts_j	LeGO-LOAM/LeGO-LOAM/src/factor/projection_factor.h	/^    Eigen::Vector3d pts_i, pts_j;$/;"	m	class:ProjectionFactor
+pts_j	LeGO-LOAM/LeGO-LOAM/src/factor/projection_td_factor.h	/^    Eigen::Vector3d pts_i, pts_j;$/;"	m	class:ProjectionTdFactor
+pubCameraPose	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^void pubCameraPose(const Estimator &estimator, const std_msgs::Header &header)$/;"	f
+pubCornerPointsLessSharp	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Publisher pubCornerPointsLessSharp;$/;"	m	class:FeatureAssociation	file:
+pubCornerPointsSharp	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Publisher pubCornerPointsSharp;$/;"	m	class:FeatureAssociation	file:
+pubCoupledOdometry	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^ros::Publisher pubCoupledOdometry;$/;"	m	class:Optimization	file:
+pubCoupledOdometry	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^ros::Publisher pubCoupledOdometry;$/;"	m	class:Optimization	file:
+pubCoupledOdometry	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^ros::Publisher pubCoupledOdometry;$/;"	m	class:Optimization	file:
+pubCoupledOdometry	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^ros::Publisher pubCoupledOdometry;$/;"	m	class:Optimization	file:
+pubCoupledOdometry	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^ros::Publisher pubCoupledOdometry;$/;"	m	class:Optimization	file:
+pubCoupledPoses6D	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^ros::Publisher pubCoupledPoses6D;$/;"	m	class:Optimization	file:
+pubEnable	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    bool pubEnable;$/;"	m	class:mapOptimization	file:
+pubFullCloud	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    ros::Publisher pubFullCloud;$/;"	m	class:ImageProjection	file:
+pubFullInfoCloud	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    ros::Publisher pubFullInfoCloud;$/;"	m	class:ImageProjection	file:
+pubGroundCloud	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    ros::Publisher pubGroundCloud;$/;"	m	class:ImageProjection	file:
+pubHistoryKeyFrames	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Publisher pubHistoryKeyFrames;$/;"	m	class:mapOptimization	file:
+pubIcpKeyFrames	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Publisher pubIcpKeyFrames;$/;"	m	class:mapOptimization	file:
+pubImuPropogate	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^ros::Publisher pubImuPropogate;$/;"	m	class:Optimization	file:
+pubImuPropogate	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^ros::Publisher pubImuPropogate;$/;"	m	class:Optimization	file:
+pubKeyPoses	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Publisher pubKeyPoses;$/;"	m	class:mapOptimization	file:
+pubKeyPoses	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^void pubKeyPoses(const Estimator &estimator, const std_msgs::Header &header)$/;"	f
+pubKeyPoses6D	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Publisher pubKeyPoses6D;$/;"	m	class:mapOptimization	file:
+pubKeyframe	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^void pubKeyframe(const Estimator &estimator)$/;"	f
+pubLaserCloudCornerLast	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Publisher pubLaserCloudCornerLast;$/;"	m	class:FeatureAssociation	file:
+pubLaserCloudSurfLast	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Publisher pubLaserCloudSurfLast;$/;"	m	class:FeatureAssociation	file:
+pubLaserCloudSurround	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Publisher pubLaserCloudSurround;$/;"	m	class:mapOptimization	file:
+pubLaserOdometry	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Publisher pubLaserOdometry;$/;"	m	class:FeatureAssociation	file:
+pubLaserOdometry2	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^    ros::Publisher pubLaserOdometry2;$/;"	m	class:TransformFusion	file:
+pubLatestOdometry	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^void pubLatestOdometry(const Eigen::Vector3d &P, const Eigen::Quaterniond &Q, const Eigen::Vector3d &V, const std_msgs::Header &header)$/;"	f	class:Optimization
+pubLatestOdometry	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^void pubLatestOdometry(const Eigen::Vector3d &P, const Eigen::Quaterniond &Q, const Eigen::Vector3d &V, const std_msgs::Header &header)$/;"	f	class:Optimization
+pubLatestOdometry	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^void pubLatestOdometry(const Eigen::Vector3d &P, const Eigen::Quaterniond &Q, const Eigen::Vector3d &V, const std_msgs::Header &header)$/;"	f
+pubOdomAftMapped	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Publisher pubOdomAftMapped;$/;"	m	class:mapOptimization	file:
+pubOdometry	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^void pubOdometry(){$/;"	f	class:Optimization
+pubOdometry	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^void pubOdometry(){$/;"	f	class:Optimization
+pubOdometry	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^void pubOdometry(){$/;"	f	class:Optimization
+pubOdometry	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^void pubOdometry(const Estimator &estimator, const std_msgs::Header &header)$/;"	f
+pubOptOdometry	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^void pubOptOdometry(){$/;"	f	class:Optimization
+pubOptOdometry	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^void pubOptOdometry(){$/;"	f	class:Optimization
+pubOutlierCloud	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    ros::Publisher pubOutlierCloud;$/;"	m	class:ImageProjection	file:
+pubOutlierCloudLast	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Publisher pubOutlierCloudLast;$/;"	m	class:FeatureAssociation	file:
+pubPointCloud	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^void pubPointCloud(const Estimator &estimator, const std_msgs::Header &header)$/;"	f
+pubRecentKeyFrames	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Publisher pubRecentKeyFrames;$/;"	m	class:mapOptimization	file:
+pubRelocalization	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^void pubRelocalization(const Estimator &estimator)$/;"	f
+pubSegmentedCloud	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    ros::Publisher pubSegmentedCloud;$/;"	m	class:ImageProjection	file:
+pubSegmentedCloudInfo	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    ros::Publisher pubSegmentedCloudInfo;$/;"	m	class:ImageProjection	file:
+pubSegmentedCloudPure	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    ros::Publisher pubSegmentedCloudPure;$/;"	m	class:ImageProjection	file:
+pubSurfPointsFlat	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Publisher pubSurfPointsFlat;$/;"	m	class:FeatureAssociation	file:
+pubSurfPointsLessFlat	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Publisher pubSurfPointsLessFlat;$/;"	m	class:FeatureAssociation	file:
+pubTF	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^void pubTF(const Estimator &estimator, const std_msgs::Header &header)$/;"	f
+pub_camera_pose	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^ros::Publisher pub_camera_pose;$/;"	v
+pub_camera_pose_visual	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^ros::Publisher pub_camera_pose_visual;$/;"	v
+pub_extrinsic	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^ros::Publisher pub_extrinsic;$/;"	v
+pub_key_poses	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^ros::Publisher pub_key_poses;$/;"	v
+pub_keyframe_point	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^ros::Publisher pub_keyframe_point;$/;"	v
+pub_keyframe_pose	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^ros::Publisher pub_keyframe_pose;$/;"	v
+pub_margin_cloud	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^ros::Publisher pub_point_cloud, pub_margin_cloud;$/;"	v
+pub_path	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^ros::Publisher pub_path, pub_relo_path;$/;"	v
+pub_point_cloud	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^ros::Publisher pub_point_cloud, pub_margin_cloud;$/;"	v
+pub_relo_path	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^ros::Publisher pub_path, pub_relo_path;$/;"	v
+pub_relo_relative_pose	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^ros::Publisher pub_relo_relative_pose;$/;"	v
+publaserCloudOri	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Publisher publaserCloudOri;\/\/ori and proj point cloud$/;"	m	class:mapOptimization	file:
+publaserCloudProj	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Publisher publaserCloudProj;$/;"	m	class:mapOptimization	file:
+publishCloud	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void publishCloud()$/;"	f	class:FeatureAssociation
+publishCloud	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    void publishCloud(){$/;"	f	class:ImageProjection
+publishCloudsLast	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void publishCloudsLast(){$/;"	f	class:FeatureAssociation
+publishGlobalMap	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void publishGlobalMap(){$/;"	f	class:mapOptimization
+publishKeyPosesAndFrames	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void publishKeyPosesAndFrames(){$/;"	f	class:mapOptimization
+publishOdometry	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void publishOdometry(){$/;"	f	class:FeatureAssociation
+publishOriandProjCloud	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void publishOriandProjCloud(){$/;"	f	class:mapOptimization
+publishTF	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void publishTF(){$/;"	f	class:mapOptimization
+publish_by	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.cpp	/^void CameraPoseVisualization::publish_by( ros::Publisher &pub, const std_msgs::Header &header ) {$/;"	f	class:CameraPoseVisualization
+push_back	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    void push_back(double dt, const Eigen::Vector3d &acc, const Eigen::Vector3d &gyr)$/;"	f	class:IntegrationBase
+queueIndX	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    uint16_t *queueIndX;$/;"	m	class:ImageProjection	file:
+queueIndY	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    uint16_t *queueIndY;$/;"	m	class:ImageProjection	file:
+rad2deg	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    double rad2deg(double radians)$/;"	f	class:FeatureAssociation
+rangeMat	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    cv::Mat rangeMat;$/;"	m	class:ImageProjection	file:
+raw_jacobians	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    double **raw_jacobians;$/;"	m	struct:ResidualBlockInfo
+readParam	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^T readParam(ros::NodeHandle &n, std::string name)$/;"	f
+readParam	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^T readParam(ros::NodeHandle &n, std::string name)$/;"	f
+readParameters	LeGO-LOAM/LeGO-LOAM/src/parameters.cpp	/^void readParameters(ros::NodeHandle &n)$/;"	f
+readParameters	LeGO-LOAM/LeGO-LOAM/src/utility/parameters.cpp	/^void readParameters(ros::NodeHandle &n)$/;"	f
+recentCornerCloudKeyFrames	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    deque<pcl::PointCloud<PointType>::Ptr> recentCornerCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+recentOutlierCloudKeyFrames	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    deque<pcl::PointCloud<PointType>::Ptr> recentOutlierCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+recentSurfCloudKeyFrames	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    deque<pcl::PointCloud<PointType>::Ptr> recentSurfCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+refPtIdx	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    int refPtIdx=0;$/;"	m	class:Visualize
+registerPub	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^void registerPub(ros::NodeHandle &n)$/;"	f
+relo_path	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^nav_msgs::Path path, relo_path;$/;"	v
+repropagate	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    void repropagate(const Eigen::Vector3d &_linearized_ba, const Eigen::Vector3d &_linearized_bg)$/;"	f	class:IntegrationBase
+reset	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.cpp	/^void CameraPoseVisualization::reset() {$/;"	f	class:CameraPoseVisualization
+resetParameters	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    void resetParameters(){$/;"	f	class:ImageProjection
+residuals	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    Eigen::VectorXd residuals;$/;"	m	struct:ResidualBlockInfo
+roll	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^    float roll;$/;"	m	struct:PointXYZIRPYT
+row_i	LeGO-LOAM/LeGO-LOAM/src/factor/projection_td_factor.h	/^    double row_i, row_j;$/;"	m	class:ProjectionTdFactor
+row_j	LeGO-LOAM/LeGO-LOAM/src/factor/projection_td_factor.h	/^    double row_i, row_j;$/;"	m	class:ProjectionTdFactor
+run	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void run(){$/;"	f	class:mapOptimization
+run	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^void run(){$/;"	f	class:Optimization
+run	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^void run(){$/;"	f	class:Optimization
+run	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^void run(){$/;"	f	class:Optimization
+run	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^void run(){$/;"	f	class:Optimization
+run	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^void run(){$/;"	f	class:Optimization
+runFeatureAssociation	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void runFeatureAssociation()$/;"	f	class:FeatureAssociation
+s	LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h	/^    const float s;$/;"	m	struct:ICPCostFunctions::PointToPointError_EigenQuaternion
+sPitch	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+sRoll	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+sYaw	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+saveKeyFramesAndFactor	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void saveKeyFramesAndFactor(){$/;"	f	class:mapOptimization
+saveThisKeyFrame	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    bool saveThisKeyFrame = true;$/;"	m	class:mapOptimization	file:
+scan2MapOptimization	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void scan2MapOptimization(){$/;"	f	class:mapOptimization
+scanPeriod	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const float scanPeriod = 0.1;$/;"	v
+scroll_callback	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::scroll_callback(GLFWwindow* window, double xoffset, double yoffset)$/;"	f	class:Visualize
+scroll_callbackW	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::scroll_callbackW(GLFWwindow* window, double xoffset, double yoffset){$/;"	f	class:Visualize
+sectionsTotal	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const int sectionsTotal = 6;$/;"	v
+segInfo	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    cloud_msgs::cloud_info segInfo;$/;"	m	class:FeatureAssociation	file:
+segMsg	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    cloud_msgs::cloud_info segMsg;$/;"	m	class:ImageProjection	file:
+segmentAlphaX	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const float segmentAlphaX = ang_res_x \/ 180.0 * M_PI;$/;"	v
+segmentAlphaY	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const float segmentAlphaY = ang_res_y \/ 180.0 * M_PI;$/;"	v
+segmentTheta	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const float segmentTheta = 1.0472;$/;"	v
+segmentValidLineNum	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const int segmentValidLineNum = 3;$/;"	v
+segmentValidPointNum	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const int segmentValidPointNum = 5;$/;"	v
+segmentedCloud	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr segmentedCloud;$/;"	m	class:FeatureAssociation	file:
+segmentedCloud	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    pcl::PointCloud<PointType>::Ptr segmentedCloud;$/;"	m	class:ImageProjection	file:
+segmentedCloudPure	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    pcl::PointCloud<PointType>::Ptr segmentedCloudPure;$/;"	m	class:ImageProjection	file:
+selectedFrame	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    int selectedFrame=255;$/;"	m	class:Visualize
+selectedOutgoingEdgeIdx	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    int selectedOutgoingEdgeIdx=255;$/;"	m	class:Visualize
+sensorMountAngle	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const float sensorMountAngle = 0.0;$/;"	v
+setCallbackForKey	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::setCallbackForKey(char key, std::function<void ()> f){$/;"	f	class:Visualize
+setCentroid	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::setCentroid(Vector3d cent){$/;"	f	class:Visualize
+setClouds	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::setClouds(vector< shared_ptr<Frame> >* mypair){$/;"	f	class:Visualize
+setImageBoundaryColor	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.cpp	/^void CameraPoseVisualization::setImageBoundaryColor(float r, float g, float b, float a) {$/;"	f	class:CameraPoseVisualization
+setLineWidth	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.cpp	/^void CameraPoseVisualization::setLineWidth(double width) {$/;"	f	class:CameraPoseVisualization
+setOpticalCenterConnectorColor	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.cpp	/^void CameraPoseVisualization::setOpticalCenterConnectorColor(float r, float g, float b, float a) {$/;"	f	class:CameraPoseVisualization
+setScale	LeGO-LOAM/LeGO-LOAM/src/utility/CameraPoseVisualization.cpp	/^void CameraPoseVisualization::setScale(double s) {$/;"	f	class:CameraPoseVisualization
+setSelectedIndex	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::setSelectedIndex(int i){$/;"	f	class:Visualize
+setWindowFPS	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::setWindowFPS ()$/;"	f	class:Visualize
+sinImuPitchStart	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float cosImuRollStart, cosImuPitchStart, cosImuYawStart, sinImuRollStart, sinImuPitchStart, sinImuYawStart;$/;"	m	class:FeatureAssociation	file:
+sinImuRollStart	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float cosImuRollStart, cosImuPitchStart, cosImuYawStart, sinImuRollStart, sinImuPitchStart, sinImuYawStart;$/;"	m	class:FeatureAssociation	file:
+sinImuYawStart	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float cosImuRollStart, cosImuPitchStart, cosImuYawStart, sinImuRollStart, sinImuPitchStart, sinImuYawStart;$/;"	m	class:FeatureAssociation	file:
+skewSymmetric	LeGO-LOAM/LeGO-LOAM/src/utility/utility_rotation.h	/^    static Eigen::Matrix<typename Derived::Scalar, 3, 3> skewSymmetric(const Eigen::MatrixBase<Derived> &q)$/;"	f	class:Utility
+skipFrameNum	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    int skipFrameNum;$/;"	m	class:FeatureAssociation	file:
+slideWindow	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^void slideWindow()$/;"	f	class:Optimization
+slideWindow	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^void slideWindow()$/;"	f	class:Optimization
+slideWindow	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^void slideWindow()$/;"	f	class:Optimization
+slideWindow	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^void slideWindow()$/;"	f	class:Optimization
+slideWindow	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^void slideWindow()$/;"	f	class:Optimization
+smallProblem	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^bool smallProblem=true;$/;"	m	class:Optimization	file:
+smallProblem	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^bool smallProblem=false;$/;"	m	class:Optimization	file:
+smallProblem	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^bool smallProblem=false;$/;"	m	class:Optimization	file:
+smallProblem	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^bool smallProblem=false;$/;"	m	class:Optimization	file:
+smallProblem	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^bool smallProblem=false;$/;"	m	class:Optimization	file:
+smoothness_t	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^struct smoothness_t{ $/;"	s
+solve	LeGO-LOAM/LeGO-LOAM/src/internal/icp-ceres.cpp	/^void solve(ceres::Problem &problem, bool smallProblem=false){$/;"	f	namespace:ICP_Ceres
+solveOdometry	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^void solveOdometry()$/;"	f	class:Optimization
+solveOdometry	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^void solveOdometry()$/;"	f	class:Optimization
+solveOdometry	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^void solveOdometry()$/;"	f	class:Optimization
+solveOdometry	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^void solveOdometry()$/;"	f	class:Optimization
+solveOdometry	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^void solveOdometry()$/;"	f	class:Optimization
+solveProblem	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^void solveProblem(ceres::Problem &problem)$/;"	f	class:Optimization
+solveProblem	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^void solveProblem(ceres::Problem &problem)$/;"	f	class:Optimization
+solveProblem	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^void solveProblem(ceres::Problem &problem)$/;"	f	class:Optimization
+solveProblem	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^void solveProblem(ceres::Problem &problem)$/;"	f	class:Optimization
+solveProblem	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^void solveProblem(ceres::Problem &problem)$/;"	f	class:Optimization
+spin	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::spin(){$/;"	f	class:Visualize
+spin	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::spin(int i){$/;"	f	class:Visualize
+spinLast	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::spinLast(){$/;"	f	class:Visualize
+spinToggle	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^void Visualize::spinToggle(int i){$/;"	f	class:Visualize
+sqrt_info	LeGO-LOAM/LeGO-LOAM/src/factor/projection_factor.cpp	/^Eigen::Matrix2d ProjectionFactor::sqrt_info;$/;"	m	class:ProjectionFactor	file:
+sqrt_info	LeGO-LOAM/LeGO-LOAM/src/factor/projection_factor.h	/^    static Eigen::Matrix2d sqrt_info;$/;"	m	class:ProjectionFactor
+sqrt_info	LeGO-LOAM/LeGO-LOAM/src/factor/projection_td_factor.cpp	/^Eigen::Matrix2d ProjectionTdFactor::sqrt_info;$/;"	m	class:ProjectionTdFactor	file:
+sqrt_info	LeGO-LOAM/LeGO-LOAM/src/factor/projection_td_factor.h	/^    static Eigen::Matrix2d sqrt_info;$/;"	m	class:ProjectionTdFactor
+stPitch	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+stRoll	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+stYaw	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+start	LeGO-LOAM/LeGO-LOAM/src/utility/tic_toc.h	/^    std::chrono::time_point<std::chrono::system_clock> start, end;$/;"	m	class:TicToc
+startOrientation	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    float startOrientation;$/;"	m	class:ImageProjection	file:
+startTime	LeGO-LOAM/LeGO-LOAM/include/CPUTimer.h	/^  Clock::time_point startTime;$/;"	m	class:CPUTimer
+startx	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    double startx, starty;$/;"	m	class:Visualize
+starty	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    double startx, starty;$/;"	m	class:Visualize
+step_V	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    Eigen::Matrix<double, 15, 18> step_V;$/;"	m	class:IntegrationBase
+step_jacobian	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    Eigen::Matrix<double, 15, 15> step_jacobian;$/;"	m	class:IntegrationBase
+subImu	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Subscriber subImu;$/;"	m	class:FeatureAssociation	file:
+subImu	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Subscriber subImu;$/;"	m	class:mapOptimization	file:
+subImu	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^ros::Subscriber subImu;$/;"	m	class:Optimization	file:
+subImu	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^ros::Subscriber subImu;$/;"	m	class:Optimization	file:
+subImu	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^ros::Subscriber subImu;$/;"	m	class:Optimization	file:
+subImu	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^ros::Subscriber subImu;$/;"	m	class:Optimization	file:
+subImu	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^ros::Subscriber subImu;$/;"	m	class:Optimization	file:
+subKeyPoses	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^ros::Subscriber subKeyPoses;$/;"	m	class:Optimization	file:
+subKeyPoses	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^ros::Subscriber subKeyPoses;$/;"	m	class:Optimization	file:
+subKeyPoses	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^ros::Subscriber subKeyPoses;$/;"	m	class:Optimization	file:
+subKeyPoses	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^ros::Subscriber subKeyPoses;$/;"	m	class:Optimization	file:
+subKeyPoses	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^ros::Subscriber subKeyPoses;$/;"	m	class:Optimization	file:
+subKeyPoses6D	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^ros::Subscriber subKeyPoses6D;$/;"	m	class:Optimization	file:
+subKeyPoses6D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^ros::Subscriber subKeyPoses6D;$/;"	m	class:Optimization	file:
+subKeyPoses6D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^ros::Subscriber subKeyPoses6D;$/;"	m	class:Optimization	file:
+subKeyPoses6D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^ros::Subscriber subKeyPoses6D;$/;"	m	class:Optimization	file:
+subKeyPoses6D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^ros::Subscriber subKeyPoses6D;$/;"	m	class:Optimization	file:
+subLaserCloud	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Subscriber subLaserCloud;$/;"	m	class:FeatureAssociation	file:
+subLaserCloud	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    ros::Subscriber subLaserCloud;$/;"	m	class:ImageProjection	file:
+subLaserCloudCornerLast	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Subscriber subLaserCloudCornerLast;$/;"	m	class:mapOptimization	file:
+subLaserCloudInfo	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Subscriber subLaserCloudInfo;$/;"	m	class:FeatureAssociation	file:
+subLaserCloudOri	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^ros::Subscriber subLaserCloudOri;$/;"	m	class:Optimization	file:
+subLaserCloudOri	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^ros::Subscriber subLaserCloudOri;$/;"	m	class:Optimization	file:
+subLaserCloudOri	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^ros::Subscriber subLaserCloudOri;$/;"	m	class:Optimization	file:
+subLaserCloudOri	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^ros::Subscriber subLaserCloudOri;$/;"	m	class:Optimization	file:
+subLaserCloudOri	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^ros::Subscriber subLaserCloudOri;$/;"	m	class:Optimization	file:
+subLaserCloudProj	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^ros::Subscriber subLaserCloudProj;$/;"	m	class:Optimization	file:
+subLaserCloudProj	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^ros::Subscriber subLaserCloudProj;$/;"	m	class:Optimization	file:
+subLaserCloudProj	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^ros::Subscriber subLaserCloudProj;$/;"	m	class:Optimization	file:
+subLaserCloudProj	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^ros::Subscriber subLaserCloudProj;$/;"	m	class:Optimization	file:
+subLaserCloudProj	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^ros::Subscriber subLaserCloudProj;$/;"	m	class:Optimization	file:
+subLaserCloudSurfLast	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Subscriber subLaserCloudSurfLast;$/;"	m	class:mapOptimization	file:
+subLaserOdometry	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Subscriber subLaserOdometry;$/;"	m	class:mapOptimization	file:
+subLaserOdometry	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^    ros::Subscriber subLaserOdometry;$/;"	m	class:TransformFusion	file:
+subOdomAftMapped	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^    ros::Subscriber subOdomAftMapped;$/;"	m	class:TransformFusion	file:
+subOutlierCloud	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    ros::Subscriber subOutlierCloud;$/;"	m	class:FeatureAssociation	file:
+subOutlierCloudLast	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    ros::Subscriber subOutlierCloudLast;$/;"	m	class:mapOptimization	file:
+sub_factors	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    std::vector<ResidualBlockInfo *> sub_factors;$/;"	m	struct:ThreadsStruct
+sum_block_size	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.h	/^    int sum_block_size;$/;"	m	class:MarginalizationInfo
+sum_dt	LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h	/^    double sum_dt;$/;"	m	class:IntegrationBase
+sum_of_path	LeGO-LOAM/LeGO-LOAM/src/utility/visualization.cpp	/^static double sum_of_path = 0;$/;"	v	file:
+sum_t	LeGO-LOAM/LeGO-LOAM/src/factor/projection_factor.cpp	/^double ProjectionFactor::sum_t;$/;"	m	class:ProjectionFactor	file:
+sum_t	LeGO-LOAM/LeGO-LOAM/src/factor/projection_factor.h	/^    static double sum_t;$/;"	m	class:ProjectionFactor
+sum_t	LeGO-LOAM/LeGO-LOAM/src/factor/projection_td_factor.cpp	/^double ProjectionTdFactor::sum_t;$/;"	m	class:ProjectionTdFactor	file:
+sum_t	LeGO-LOAM/LeGO-LOAM/src/factor/projection_td_factor.h	/^    static double sum_t;$/;"	m	class:ProjectionTdFactor
+surfCloudKeyFrames	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    vector<pcl::PointCloud<PointType>::Ptr> surfCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+surfFeatureNum	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const int surfFeatureNum = 4;$/;"	v
+surfOptimization	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void surfOptimization(int iterCount){$/;"	f	class:mapOptimization
+surfPointsFlat	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr surfPointsFlat;$/;"	m	class:FeatureAssociation	file:
+surfPointsLessFlat	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr surfPointsLessFlat;$/;"	m	class:FeatureAssociation	file:
+surfPointsLessFlatScan	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr surfPointsLessFlatScan;$/;"	m	class:FeatureAssociation	file:
+surfPointsLessFlatScanDS	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    pcl::PointCloud<PointType>::Ptr surfPointsLessFlatScanDS;$/;"	m	class:FeatureAssociation	file:
+surfThreshold	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const float surfThreshold = 0.1;$/;"	v
+surroundingCornerCloudKeyFrames	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    deque<pcl::PointCloud<PointType>::Ptr> surroundingCornerCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+surroundingExistingKeyPosesID	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    vector<int> surroundingExistingKeyPosesID;$/;"	m	class:mapOptimization	file:
+surroundingKeyPoses	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr surroundingKeyPoses;$/;"	m	class:mapOptimization	file:
+surroundingKeyPosesDS	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr surroundingKeyPosesDS;$/;"	m	class:mapOptimization	file:
+surroundingKeyframeSearchNum	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const int   surroundingKeyframeSearchNum = 50;$/;"	v
+surroundingKeyframeSearchRadius	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const float surroundingKeyframeSearchRadius = 50.0;$/;"	v
+surroundingOutlierCloudKeyFrames	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    deque<pcl::PointCloud<PointType>::Ptr> surroundingOutlierCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+surroundingSurfCloudKeyFrames	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    deque<pcl::PointCloud<PointType>::Ptr> surroundingSurfCloudKeyFrames;$/;"	m	class:mapOptimization	file:
+systemDelay	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^extern const int systemDelay = 0;$/;"	v
+systemInitCount	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    int systemInitCount;$/;"	m	class:FeatureAssociation	file:
+systemInited	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    bool systemInited;$/;"	m	class:FeatureAssociation	file:
+systemInitedLM	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    bool systemInitedLM;$/;"	m	class:FeatureAssociation	file:
+tInX	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+tInY	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+tInZ	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float ctRoll, stRoll, ctPitch, stPitch, ctYaw, stYaw, tInX, tInY, tInZ;$/;"	m	class:mapOptimization	file:
+tX	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+tY	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+tZ	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float cRoll, sRoll, cPitch, sPitch, cYaw, sYaw, tX, tY, tZ;$/;"	m	class:mapOptimization	file:
+tangent_base	LeGO-LOAM/LeGO-LOAM/src/factor/projection_factor.h	/^    Eigen::Matrix<double, 2, 3> tangent_base;$/;"	m	class:ProjectionFactor
+tangent_base	LeGO-LOAM/LeGO-LOAM/src/factor/projection_td_factor.h	/^    Eigen::Matrix<double, 2, 3> tangent_base;$/;"	m	class:ProjectionTdFactor
+td	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^double td;$/;"	m	class:Optimization	file:
+td	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^double td;$/;"	m	class:Optimization	file:
+td_i	LeGO-LOAM/LeGO-LOAM/src/factor/projection_td_factor.h	/^    double td_i, td_j;$/;"	m	class:ProjectionTdFactor
+td_j	LeGO-LOAM/LeGO-LOAM/src/factor/projection_td_factor.h	/^    double td_i, td_j;$/;"	m	class:ProjectionTdFactor
+tfBroadcaster	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    tf::TransformBroadcaster tfBroadcaster;$/;"	m	class:FeatureAssociation	file:
+tfBroadcaster	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    tf::TransformBroadcaster tfBroadcaster;$/;"	m	class:mapOptimization	file:
+tfBroadcaster	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^tf::TransformBroadcaster tfBroadcaster;$/;"	m	class:Optimization	file:
+tfBroadcaster	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^tf::TransformBroadcaster tfBroadcaster;$/;"	m	class:Optimization	file:
+tfBroadcaster	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^tf::TransformBroadcaster tfBroadcaster;$/;"	m	class:Optimization	file:
+tfBroadcaster	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^tf::TransformBroadcaster tfBroadcaster;$/;"	m	class:Optimization	file:
+tfBroadcaster	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^tf::TransformBroadcaster tfBroadcaster;$/;"	m	class:Optimization	file:
+tfBroadcaster2	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^    tf::TransformBroadcaster tfBroadcaster2;$/;"	m	class:TransformFusion	file:
+tfBroadcasterCamera2Baselink	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^    tf::TransformBroadcaster tfBroadcasterCamera2Baselink;$/;"	m	class:TransformFusion	file:
+tfBroadcasterMap2CameraInit	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^    tf::TransformBroadcaster tfBroadcasterMap2CameraInit;$/;"	m	class:TransformFusion	file:
+tic	LeGO-LOAM/LeGO-LOAM/src/internal/CPUTimer.cpp	/^void CPUTimer::tic() {$/;"	f	class:CPUTimer
+tic	LeGO-LOAM/LeGO-LOAM/src/utility/tic_toc.h	/^    void tic()$/;"	f	class:TicToc
+time	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^    double time;$/;"	m	struct:PointXYZIRPYT
+timeKeyPoses	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^double timeKeyPoses;$/;"	m	class:Optimization	file:
+timeKeyPoses	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^double timeKeyPoses;$/;"	m	class:Optimization	file:
+timeKeyPoses	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^double timeKeyPoses;$/;"	m	class:Optimization	file:
+timeKeyPoses	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^double timeKeyPoses;$/;"	m	class:Optimization	file:
+timeKeyPoses	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^double timeKeyPoses;$/;"	m	class:Optimization	file:
+timeKeyPoses6D	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^double timeKeyPoses6D;$/;"	m	class:Optimization	file:
+timeKeyPoses6D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^double timeKeyPoses6D;$/;"	m	class:Optimization	file:
+timeKeyPoses6D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^double timeKeyPoses6D;$/;"	m	class:Optimization	file:
+timeKeyPoses6D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^double timeKeyPoses6D;$/;"	m	class:Optimization	file:
+timeKeyPoses6D	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^double timeKeyPoses6D;$/;"	m	class:Optimization	file:
+timeLaserCloudCornerLast	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    double timeLaserCloudCornerLast;$/;"	m	class:mapOptimization	file:
+timeLaserCloudOri	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^double timeLaserCloudOri;$/;"	m	class:Optimization	file:
+timeLaserCloudOri	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^double timeLaserCloudOri;$/;"	m	class:Optimization	file:
+timeLaserCloudOri	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^double timeLaserCloudOri;$/;"	m	class:Optimization	file:
+timeLaserCloudOri	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^double timeLaserCloudOri;$/;"	m	class:Optimization	file:
+timeLaserCloudOri	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^double timeLaserCloudOri;$/;"	m	class:Optimization	file:
+timeLaserCloudOutlierLast	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    double timeLaserCloudOutlierLast;$/;"	m	class:mapOptimization	file:
+timeLaserCloudProj	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^double timeLaserCloudProj;$/;"	m	class:Optimization	file:
+timeLaserCloudProj	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^double timeLaserCloudProj;$/;"	m	class:Optimization	file:
+timeLaserCloudProj	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^double timeLaserCloudProj;$/;"	m	class:Optimization	file:
+timeLaserCloudProj	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^double timeLaserCloudProj;$/;"	m	class:Optimization	file:
+timeLaserCloudProj	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^double timeLaserCloudProj;$/;"	m	class:Optimization	file:
+timeLaserCloudSurfLast	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    double timeLaserCloudSurfLast;$/;"	m	class:mapOptimization	file:
+timeLaserOdometry	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    double timeLaserOdometry;$/;"	m	class:mapOptimization	file:
+timeLastGloalMapPublish	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    double timeLastGloalMapPublish;$/;"	m	class:mapOptimization	file:
+timeLastIMU	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^double timeLastIMU = 0;$/;"	m	class:Optimization	file:
+timeLastIMU	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^double timeLastIMU = 0;$/;"	m	class:Optimization	file:
+timeLastProcessing	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    double timeLastProcessing;$/;"	m	class:mapOptimization	file:
+timeLastProcessing	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^double timeLastProcessing;$/;"	m	class:Optimization	file:
+timeLastProcessing	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^double timeLastProcessing;$/;"	m	class:Optimization	file:
+timeLastProcessing	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^double timeLastProcessing;$/;"	m	class:Optimization	file:
+timeLastProcessing	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^double timeLastProcessing;$/;"	m	class:Optimization	file:
+timeLastProcessing	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^double timeLastProcessing;$/;"	m	class:Optimization	file:
+timeLidarCur	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^double timeLidarCur;$/;"	m	class:Optimization	file:
+timeLidarLast	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^double timeLidarLast;$/;"	m	class:Optimization	file:
+timeNewOutlierCloud	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    double timeNewOutlierCloud;$/;"	m	class:FeatureAssociation	file:
+timeNewSegmentedCloud	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    double timeNewSegmentedCloud;$/;"	m	class:FeatureAssociation	file:
+timeNewSegmentedCloudInfo	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    double timeNewSegmentedCloudInfo;$/;"	m	class:FeatureAssociation	file:
+timeSaveFirstCurrentScanForLoopClosure	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    double timeSaveFirstCurrentScanForLoopClosure;$/;"	m	class:mapOptimization	file:
+timeScanCur	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    double timeScanCur;$/;"	m	class:FeatureAssociation	file:
+timingsMap	LeGO-LOAM/LeGO-LOAM/include/CPUTimer.h	/^  std::map<std::string,float> timingsMap;$/;"	m	class:CPUTimer
+tmp_Ba	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^Eigen::Vector3d tmp_Ba;$/;"	m	class:Optimization	file:
+tmp_Ba	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^Eigen::Vector3d tmp_Ba;$/;"	m	class:Optimization	file:
+tmp_Bg	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^Eigen::Vector3d tmp_Bg;$/;"	m	class:Optimization	file:
+tmp_Bg	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^Eigen::Vector3d tmp_Bg;$/;"	m	class:Optimization	file:
+tmp_P	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^Eigen::Vector3d tmp_P;$/;"	m	class:Optimization	file:
+tmp_P	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^Eigen::Vector3d tmp_P;$/;"	m	class:Optimization	file:
+tmp_Q	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^Eigen::Quaterniond tmp_Q;$/;"	m	class:Optimization	file:
+tmp_Q	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^Eigen::Quaterniond tmp_Q;$/;"	m	class:Optimization	file:
+tmp_V	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^Eigen::Vector3d tmp_V;$/;"	m	class:Optimization	file:
+tmp_V	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^Eigen::Vector3d tmp_V;$/;"	m	class:Optimization	file:
+tmp_pre_integration	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^IntegrationBase *tmp_pre_integration;$/;"	m	class:Optimization	file:
+tmp_pre_integration	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^IntegrationBase *tmp_pre_integration;$/;"	m	class:Optimization	file:
+toc	LeGO-LOAM/LeGO-LOAM/src/internal/CPUTimer.cpp	/^void CPUTimer::toc(std::string name){$/;"	f	class:CPUTimer
+toc	LeGO-LOAM/LeGO-LOAM/src/utility/tic_toc.h	/^    double toc()$/;"	f	class:TicToc
+transformAftMapped	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float transformAftMapped[6];$/;"	m	class:mapOptimization	file:
+transformAftMapped	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^    float transformAftMapped[6];$/;"	m	class:TransformFusion	file:
+transformAssociateToMap	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void transformAssociateToMap()$/;"	f	class:mapOptimization
+transformAssociateToMap	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^    void transformAssociateToMap()$/;"	f	class:TransformFusion
+transformBefMapped	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float transformBefMapped[6];$/;"	m	class:mapOptimization	file:
+transformBefMapped	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^    float transformBefMapped[6];$/;"	m	class:TransformFusion	file:
+transformCur	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float transformCur[6];$/;"	m	class:FeatureAssociation	file:
+transformIncre	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float transformIncre[6];$/;"	m	class:mapOptimization	file:
+transformIncre	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^    float transformIncre[6];$/;"	m	class:TransformFusion	file:
+transformLast	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float transformLast[6];$/;"	m	class:mapOptimization	file:
+transformMapped	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^    float transformMapped[6];$/;"	m	class:TransformFusion	file:
+transformPointCloud	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr transformPointCloud(pcl::PointCloud<PointType>::Ptr cloudIn){$/;"	f	class:mapOptimization
+transformPointCloud	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    pcl::PointCloud<PointType>::Ptr transformPointCloud(pcl::PointCloud<PointType>::Ptr cloudIn, PointTypePose* transformIn){$/;"	f	class:mapOptimization
+transformSum	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    float transformSum[6];$/;"	m	class:FeatureAssociation	file:
+transformSum	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float transformSum[6];$/;"	m	class:mapOptimization	file:
+transformSum	LeGO-LOAM/LeGO-LOAM/src/transformFusion.cpp	/^    float transformSum[6];$/;"	m	class:TransformFusion	file:
+transformTobeMapped	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    float transformTobeMapped[6];$/;"	m	class:mapOptimization	file:
+transformUpdate	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void transformUpdate()$/;"	f	class:mapOptimization
+tripod1	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    PointType pointOri, pointSel, tripod1, tripod2, tripod3, pointProj, coeff;$/;"	m	class:FeatureAssociation	file:
+tripod2	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    PointType pointOri, pointSel, tripod1, tripod2, tripod3, pointProj, coeff;$/;"	m	class:FeatureAssociation	file:
+tripod3	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    PointType pointOri, pointSel, tripod1, tripod2, tripod3, pointProj, coeff;$/;"	m	class:FeatureAssociation	file:
+uint_	LeGO-LOAM/LeGO-LOAM/src/utility/utility_rotation.h	/^    struct uint_$/;"	s	class:Utility
+unroller	LeGO-LOAM/LeGO-LOAM/src/utility/utility_rotation.h	/^    void unroller(const Lambda &f, const IterT &iter, uint_<0>)$/;"	f	class:Utility
+unroller	LeGO-LOAM/LeGO-LOAM/src/utility/utility_rotation.h	/^    void unroller(const Lambda &f, const IterT &iter, uint_<N>)$/;"	f	class:Utility
+update	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^void update()$/;"	f	class:Optimization
+updateImuRollPitchYawStartSinCos	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void updateImuRollPitchYawStartSinCos(){$/;"	f	class:FeatureAssociation
+updateInitialGuess	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void updateInitialGuess(){$/;"	f	class:FeatureAssociation
+updatePointAssociateToMapSinCos	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void updatePointAssociateToMapSinCos(){$/;"	f	class:mapOptimization
+updateTransformPointCloudSinCos	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void updateTransformPointCloudSinCos(PointTypePose *tIn){$/;"	f	class:mapOptimization
+updateTransformation	LeGO-LOAM/LeGO-LOAM/src/featureAssociation.cpp	/^    void updateTransformation(){$/;"	f	class:FeatureAssociation
+useLocalParam	LeGO-LOAM/LeGO-LOAM/src/internal/icp-ceres.cpp	19;"	d	file:
+value	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^    float value;$/;"	m	struct:smoothness_t
+vector2double	LeGO-LOAM/LeGO-LOAM/src/optimization.cpp	/^void vector2double(){$/;"	f	class:Optimization
+vector2double	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (1222).cpp	/^void vector2double(){$/;"	f	class:Optimization
+vector2double	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (copy)改了frame imu.cpp	/^void vector2double(){$/;"	f	class:Optimization
+vector2double	LeGO-LOAM/LeGO-LOAM/src/temp/optimization (跑通了窗口).cpp	/^void vector2double(){$/;"	f	class:Optimization
+vector2double	LeGO-LOAM/LeGO-LOAM/src/temp/optimization(origin)很多註釋的.cpp	/^void vector2double(){$/;"	f	class:Optimization
+velocity_i	LeGO-LOAM/LeGO-LOAM/src/factor/projection_td_factor.h	/^    Eigen::Vector3d velocity_i, velocity_j;$/;"	m	class:ProjectionTdFactor
+velocity_j	LeGO-LOAM/LeGO-LOAM/src/factor/projection_td_factor.h	/^    Eigen::Vector3d velocity_i, velocity_j;$/;"	m	class:ProjectionTdFactor
+visualizeGlobalMapThread	LeGO-LOAM/LeGO-LOAM/src/mapOptmization.cpp	/^    void visualizeGlobalMapThread(){$/;"	f	class:mapOptimization
+waitKey	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^bool Visualize::waitKey(unsigned char key){$/;"	f	class:Visualize
+waitKeyInst	LeGO-LOAM/LeGO-LOAM/src/internal/Visualize.cpp	/^bool Visualize::waitKeyInst(unsigned char key){$/;"	f	class:Visualize
+window	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    GLFWwindow* window;$/;"	m	class:Visualize
+yaw	LeGO-LOAM/LeGO-LOAM/include/utility.h	/^    float yaw;$/;"	m	struct:PointXYZIRPYT
+ypr2R	LeGO-LOAM/LeGO-LOAM/src/utility/utility_rotation.h	/^    static Eigen::Matrix<typename Derived::Scalar, 3, 3> ypr2R(const Eigen::MatrixBase<Derived> &ypr)$/;"	f	class:Utility
+zoom	LeGO-LOAM/LeGO-LOAM/include/Visualize.h	/^    GLdouble zoom;$/;"	m	class:Visualize
+~EigenQuaternionParameterization	LeGO-LOAM/LeGO-LOAM/include/eigen_quaternion.h	/^        virtual ~EigenQuaternionParameterization() {}$/;"	f	class:eigen_quaternion::EigenQuaternionParameterization
+~ImageProjection	LeGO-LOAM/LeGO-LOAM/src/imageProjection.cpp	/^    ~ImageProjection(){}$/;"	f	class:ImageProjection
+~MarginalizationInfo	LeGO-LOAM/LeGO-LOAM/src/factor/marginalization_factor.cpp	/^MarginalizationInfo::~MarginalizationInfo()$/;"	f	class:MarginalizationInfo

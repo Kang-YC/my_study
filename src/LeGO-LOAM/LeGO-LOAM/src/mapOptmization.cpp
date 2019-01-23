@@ -759,8 +759,8 @@ public:
 
 
         // //test the origin
-        int oriNum = laserCloudOri->points.size();
-        ROS_INFO("Oripub %d", oriNum);
+        // int oriNum = laserCloudOri->points.size();
+        // ROS_INFO("Oripub %d", oriNum);
         // if (oriNum == 0)
         //     return;
 
