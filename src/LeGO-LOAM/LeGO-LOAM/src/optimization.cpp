@@ -81,6 +81,7 @@ ros::Subscriber subImu;
 
 
 ros::Publisher pubCoupledOdometry;
+ros::Publisher pubImuUpdate;
 ros::Publisher pubImuPropogate;
 ros::Publisher pubCoupledPoses6D;
 
@@ -98,6 +99,12 @@ Vector3d Vs[(WINDOW_SIZE + 1)];
 Matrix3d Rs[(WINDOW_SIZE + 1)];
 Vector3d Bas[(WINDOW_SIZE + 1)];
 Vector3d Bgs[(WINDOW_SIZE + 1)];
+
+Vector3d Pi[(WINDOW_SIZE + 1)];
+Vector3d Vi[(WINDOW_SIZE + 1)];
+Matrix3d Ri[(WINDOW_SIZE + 1)];
+Vector3d Bai[(WINDOW_SIZE + 1)];
+Vector3d Bgi[(WINDOW_SIZE + 1)];
 
 double para_Pose[WINDOW_SIZE + 1][SIZE_POSE];
 double para_SpeedBias[WINDOW_SIZE + 1][SIZE_SPEEDBIAS];
@@ -137,8 +144,15 @@ vector<Vector3d> linear_acceleration_buf[(WINDOW_SIZE + 1)];
 vector<Vector3d> angular_velocity_buf[(WINDOW_SIZE + 1)];
 
 std::mutex m_buf;//m_buf
+std::mutex m_state;
 
 std::condition_variable con;
+
+double ex_roll;
+double ex_pitch;
+double ex_yaw;
+Eigen::Matrix3d R_imutolidar;
+Eigen::Quaterniond q_imutolidar;
 
 
 public:
@@ -153,6 +167,7 @@ public:
   //subImu = n.subscribe<sensor_msgs::Imu> (imuTopic, 1000, &Optimization::imuHandler, this ,ros::TransportHints().tcpNoDelay());
 
   pubCoupledOdometry = n.advertise<nav_msgs::Odometry>("/coupled_odometry", 10);
+  pubImuUpdate = n.advertise<nav_msgs::Odometry>("/imu_update", 1000);
   pubImuPropogate = n.advertise<nav_msgs::Odometry>("/imu_propagate", 1000);
 
   odomCoupled.header.frame_id = "/camera_init";
@@ -188,10 +203,18 @@ void clearState()
     Rs[i].setIdentity();
     Ps[i].setZero();
     Vs[i].setZero();
-    //Bas[i].setZero();
+    Bas[i].setZero();
     Bgs[i].setZero();
-    Bas[i] = {0.2,-0.2,0.01};
+   // Bas[i] = {0.2,-0.2,0.01};
     // Bgs[i].setZero();
+    
+    Ri[i].setIdentity();
+    Pi[i].setZero();
+    Vi[i].setZero();
+    Bai[i].setZero();
+    Bgi[i].setZero();
+
+    R_imutolidar.setIdentity();
 
     dt_buf[i].clear();
     linear_acceleration_buf[i].clear();
@@ -211,7 +234,7 @@ void clearState()
   
 
   tmp_P.setZero();
-  //tmp_Q.setIdentity();
+  tmp_Q= {1,0,0,0};
   tmp_V.setZero();
   tmp_Ba.setZero();
   tmp_Bg.setZero();
@@ -228,6 +251,16 @@ void clearState()
 
   frame_count=0;
   ROS_INFO("clear success");
+
+  ex_roll = 1 * PI /180;
+  ex_pitch = 0 * PI/180;
+  ex_yaw = -1* PI/180;
+
+  Eigen::AngleAxisd rollAngle(ex_roll, Eigen::Vector3d::UnitX());
+  Eigen::AngleAxisd pitchAngle(ex_pitch, Eigen::Vector3d::UnitY());
+  Eigen::AngleAxisd yawAngle(ex_yaw, Eigen::Vector3d::UnitZ());
+  q_imutolidar  = yawAngle * pitchAngle *  rollAngle;
+  R_imutolidar= q_imutolidar.toRotationMatrix();//from world frame (ypr)
 
 }
 
@@ -301,6 +334,8 @@ void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg)
 
     timeLastIMU = imuIn->header.stamp.toSec();
    // ROS_DEBUG("timeLastIMU %f", timeLastIMU);
+   
+    std::lock_guard<std::mutex> lg(m_state);
     
     predict(imuIn);
     std_msgs::Header imu_header = imuIn->header;
@@ -327,7 +362,7 @@ void predict(const sensor_msgs::ImuConstPtr &imu_msg)// propogate
     double dz = imu_msg->linear_acceleration.z;
     Eigen::Vector3d linear_acceleration{dx, dy, dz};
 
-    //ROS_DEBUG("linear_acceleration %f %f %f", dx, dy, dz);
+    ROS_DEBUG("linear_acceleration %f %f %f", dx, dy, dz);
 
     double rx = imu_msg->angular_velocity.x;
     double ry = imu_msg->angular_velocity.y;
@@ -341,18 +376,23 @@ void predict(const sensor_msgs::ImuConstPtr &imu_msg)// propogate
     Eigen::Vector3d un_acc_1 = tmp_Q * (linear_acceleration - tmp_Ba) - G;//当前时刻加速度
 
     Eigen::Vector3d un_acc = 0.5 * (un_acc_0 + un_acc_1);//中值 上一时刻加速度和当前时刻计算
+    ROS_DEBUG("temp un_acc %f %f %f", un_acc[0], un_acc[1], un_acc[2]);
 
     tmp_P = tmp_P + dt * tmp_V + 0.5 * dt * dt * un_acc;//预测位置 p=p+vt+0.5*a*t2
     tmp_V = tmp_V + dt * un_acc;//预测速度 v=v+a*t
 
+    Vector3d tmp_euler =  tmp_Q.toRotationMatrix().eulerAngles(2,1,0);
+    //eulerAngles(2,1,0);
+
     acc_0 = linear_acceleration;
     gyr_0 = angular_velocity;
-    //ROS_DEBUG("tmp_P %f %f %f", tmp_P.x(), tmp_P.y(), tmp_P.z());
+    ROS_DEBUG("tmp_P %f %f %f", tmp_P.x(), tmp_P.y(), tmp_P.z());
+    ROS_DEBUG("tmp_Q %f %f %f", tmp_euler[0]*180/3.14, tmp_euler[1]*180/3.14, tmp_euler[2]*180/3.14 );
     // ROS_DEBUG("tmp_V %f %f %f", tmp_V.x(), tmp_V.y(), tmp_V.z());
     // 
     std_msgs::Header imu_header = imu_msg->header;
     imu_header.frame_id = "camera_init";
-    pubLatestOdometry(tmp_P, tmp_Q, tmp_V, imu_header);
+   // pubLatestOdometry(tmp_P, tmp_Q, tmp_V, imu_header);
 }
 
 void pubLatestOdometry(const Eigen::Vector3d &P, const Eigen::Quaterniond &Q, const Eigen::Vector3d &V, const std_msgs::Header &header)
@@ -372,7 +412,7 @@ void pubLatestOdometry(const Eigen::Vector3d &P, const Eigen::Quaterniond &Q, co
     odometry.twist.twist.linear.x = V.x();
     odometry.twist.twist.linear.y = V.y();
     odometry.twist.twist.linear.z = V.z();
-    pubImuPropogate.publish(odometry);
+    pubImuUpdate.publish(odometry);
 
     odometry.header.frame_id = "/camera_init";
     odometry.child_frame_id = "/aft_coupled";
@@ -501,7 +541,9 @@ void currrentPoseProcess()
   curRx         = q.toRotationMatrix();//from world frame (ypr)
   cur_t<< x,y,z ;
   
+  //cout<<"lidar roll pitch yaw"<< roll << pitch << yaw;
   ROS_DEBUG("Ps lidar %f %f %f  ",x, y, z);
+  ROS_INFO("Rs lidar %f %f %f  ",roll*180/3.14, pitch*180/3.14, yaw*180/3.14);
   
   if(frame_count <= WINDOW_SIZE){// framecount==index 0-9
     Ps[frame_count] = cur_t;
@@ -686,12 +728,37 @@ void currrentPoseProcess()
 
 }
 
+// void exCalibration()
+// {
+//   ex_roll = 1 * PI /180;
+//   ex_pitch = -3 * PI/180;
+//   ex_yaw = -1* PI/180;
+
+//   Eigen::AngleAxisd rollAngle(ex_roll, Eigen::Vector3d::UnitX());
+//   Eigen::AngleAxisd pitchAngle(ex_pitch, Eigen::Vector3d::UnitY());
+//   Eigen::AngleAxisd yawAngle(ex_yaw, Eigen::Vector3d::UnitZ());
+//   q_imutolidar  = yawAngle * pitchAngle *  rollAngle;
+//   R_imutolidar= q_imutolidar.toRotationMatrix();//from world frame (ypr)
+
+
+//   // float ctRoll = cos(roll);
+//   // float stRoll = sin(roll);
+
+//   // float ctPitch = cos(pitch);
+//   // float stPitch = sin(pitch);
+
+//   // float ctYaw = cos(yaw);
+//   // float stYaw = sin(yaw);
+
+
+// }
+
 
 
 void imuProcess(std::vector <sensor_msgs::ImuConstPtr> &IMU_Cur)
 {
    ROS_DEBUG("imuProcess %d" , frame_count);
-  for (auto &imu_msg : IMU_Cur){
+    for (auto &imu_msg : IMU_Cur){
     double dx = 0, dy = 0, dz = 0, rx = 0, ry = 0, rz = 0;
     double imu_t = imu_msg->header.stamp.toSec();
     double lidar_t = timeLaserCloudOri + td;//img=img+td
@@ -713,7 +780,7 @@ void imuProcess(std::vector <sensor_msgs::ImuConstPtr> &IMU_Cur)
         ry = imu_msg->angular_velocity.y;
         rz = imu_msg->angular_velocity.z;
         processIMU(dt, Vector3d(dx, dy, dz), Vector3d(rx, ry, rz));//imu propogate 得位置 速度初始值 直到img时刻
-                   // printf("imu: dt:%f a: %f %f %f w: %f %f %f\n",dt, dx, dy, dz, rx, ry, rz);
+     //  printf("imu: dt:%f a: %f %f %f w: %f %f %f\n",dt, dx, dy, dz, rx, ry, rz);
 
     }
     else//imu>img
@@ -733,7 +800,7 @@ void imuProcess(std::vector <sensor_msgs::ImuConstPtr> &IMU_Cur)
         ry = w1 * ry + w2 * imu_msg->angular_velocity.y;
         rz = w1 * rz + w2 * imu_msg->angular_velocity.z;
         processIMU(dt_1, Vector3d(dx, dy, dz), Vector3d(rx, ry, rz));
-                    //printf("dimu: dt:%f a: %f %f %f w: %f %f %f\n",dt_1, dx, dy, dz, rx, ry, rz);
+                   // printf("dimu: dt:%f a: %f %f %f w: %f %f %f\n",dt_1, dx, dy, dz, rx, ry, rz);
     }
   }
 }
@@ -760,26 +827,33 @@ void processIMU(double dt, const Vector3d &linear_acceleration, const Vector3d &
            //ROS_DEBUG("Pre_integrations222 %d" ,frame_count);
            // tmp_pre_integration->push_back(dt, linear_acceleration, angular_velocity);
 
-      //   dt_buf[frame_count].push_back(dt);
-      //   linear_acceleration_buf[frame_count].push_back(linear_acceleration);
-      //   angular_velocity_buf[frame_count].push_back(angular_velocity);
+        dt_buf[frame_count].push_back(dt);
+        linear_acceleration_buf[frame_count].push_back(linear_acceleration);
+        angular_velocity_buf[frame_count].push_back(angular_velocity);
 
-      //   int j = frame_count;         
-      //   Vector3d un_acc_0 = Rs[j] * (acc_0 - Bas[j]) - G;//按前一帧
-      //   Vector3d un_gyr = 0.5 * (gyr_0 + angular_velocity) - Bgs[j];//前一帧与当前帧结合
-      //  // Rs[j] *= Utility::deltaQ(un_gyr * dt).toRotationMatrix();
-      //   Vector3d un_acc_1 = Rs[j] * (linear_acceleration - Bas[j]) - G;
-      //   Vector3d un_acc = 0.5 * (un_acc_0 + un_acc_1);
-      // //  Ps[j] += dt * Vs[j] + 0.5 * dt * dt * un_acc;
-      //   Vs[j] += dt * un_acc;//当前帧的姿态 位置 速度 
+        int j = frame_count;         
+        Vector3d un_acc_0 = Ri[j] * R_imutolidar * (acc_0 - Bai[j]) - G;//按前一帧
+        Vector3d un_gyr = 0.5 * (gyr_0 + angular_velocity) - Bgi[j];//前一帧与当前帧结合
+        Ri[j] *= Utility::deltaQ(un_gyr * dt).toRotationMatrix();
+        Vector3d un_acc_1 = Ri[j] *R_imutolidar * (linear_acceleration - Bai[j]) - G;
+        Vector3d un_acc = 0.5 * (un_acc_0 + un_acc_1);
+        ROS_DEBUG("un_acc %f %f %f", un_acc[0],un_acc[1],un_acc[2]);
+        Pi[j] +=  dt * Vi[j] + 0.5 * dt * dt * un_acc;
+        Vi[j] +=  dt * un_acc;//当前帧的姿态 位置 速度
 
-        //ROS_DEBUG("Ps imu %f" ,Ps[frame_count].x());
+        Vector3d Ri_euler =  Ri[j].eulerAngles(2,1,0);
+    
+
+        ROS_DEBUG("Pi imu %f %f %f" ,Pi[frame_count].x(),Pi[frame_count].y(),Pi[frame_count].z());
+        ROS_DEBUG("Ri imu %f %f %f" ,Ri_euler[0]*180/3.14, Ri_euler[1]*180/3.14 , Ri_euler[2]*180/3.14);
+        //pubImuOdometry();
     }
     acc_0 = linear_acceleration;
     gyr_0 = angular_velocity;  
 
     //ROS_DEBUG("Pre_integrations %f", pre_integrations[frame_count]->delta_p[0]);
 }
+
 
 
 void update()
@@ -815,6 +889,7 @@ void optimizationProcess()
       solveOdometry();
       double2vector();
       pubOptOdometry();
+      pubImuOdometry();
       slideWindow();
 
     }
@@ -828,6 +903,7 @@ void optimizationProcess()
     solveOdometry();
     double2vector();
     pubOptOdometry();
+    pubImuOdometry();
     slideWindow();
 
   }
@@ -904,7 +980,7 @@ void solveOdometry()
   ceres::Problem problem;
   ceres::LossFunction *loss_function_imu = new ceres::CauchyLoss(1.5);
 
-  ceres::LossFunction *loss_function_lidar = new ceres::CauchyLoss(1);
+  ceres::LossFunction *loss_function_lidar = new ceres::CauchyLoss(5);
   //vector2double();
   
   // for (int i = 0; i < WINDOW_SIZE + 1; i++)
@@ -942,7 +1018,7 @@ void solveOdometry()
       // cout<<"dis:"<<dis<<endl;
 
       // test the rotation
-      if(k < 3 && ind == WINDOW_SIZE){
+      if(k < 3 && ind == WINDOW_SIZE-1){
       double point[3] = {ori[0], ori[1], ori[2]};
       double q[4]     = {para_Pose[ind][6],para_Pose[ind][3],para_Pose[ind][4],para_Pose[ind][5]};//!!!!!w x y z 
       double p[3];
@@ -966,10 +1042,10 @@ void solveOdometry()
 
 
       
-      //ceres::CostFunction* lidar_cost_function = ICPCostFunctions::PointToPointError_EigenQuaternion::Create(proj,ori,s);
-      ceres::CostFunction* lidar_cost_function = ICPCostFunctions::PointToPointError_EigenQuaternion::Create(proj,ori);
+      ceres::CostFunction* lidar_cost_function = ICPCostFunctions::PointToPointError_EigenQuaternion::Create(proj,ori,s);
+      //ceres::CostFunction* lidar_cost_function = ICPCostFunctions::PointToPointError_EigenQuaternion::Create(proj,ori);
       
-      problem.AddResidualBlock(lidar_cost_function, NULL, para_Pose[ind]);
+      problem.AddResidualBlock(lidar_cost_function, loss_function_lidar, para_Pose[ind]);
       
       }
   }
@@ -988,7 +1064,7 @@ void solveOdometry()
 
   //       problem.AddResidualBlock(imu_factor, loss_function_imu, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
      
-  //   }
+  //    }
     
     
   //   
@@ -1089,6 +1165,14 @@ void slideWindow()
       Bas[i].swap(Bas[i + 1]);
       Bgs[i].swap(Bgs[i + 1]);
 
+
+      Ri[i].swap(Ri[i + 1]);
+      //Headers[i] = Headers[i + 1];
+      Pi[i].swap(Pi[i + 1]);
+      Vi[i].swap(Vi[i + 1]);
+      Bai[i].swap(Bai[i + 1]);
+      Bgi[i].swap(Bgi[i + 1]);
+
       std::swap(pre_integrations[i], pre_integrations[i + 1]);
       dt_buf[i].swap(dt_buf[i + 1]);
       linear_acceleration_buf[i].swap(linear_acceleration_buf[i + 1]);
@@ -1101,6 +1185,12 @@ void slideWindow()
     Bas[WINDOW_SIZE] = Bas[WINDOW_SIZE - 1];
     Bgs[WINDOW_SIZE] = Bgs[WINDOW_SIZE - 1];
 
+
+    Pi[WINDOW_SIZE]  = Pi[WINDOW_SIZE - 1];
+    Vi[WINDOW_SIZE]  = Vi[WINDOW_SIZE - 1];
+    Ri[WINDOW_SIZE]  = Ri[WINDOW_SIZE - 1];
+    Bai[WINDOW_SIZE] = Bai[WINDOW_SIZE - 1];
+    Bgi[WINDOW_SIZE] = Bgi[WINDOW_SIZE - 1];
 
      delete pre_integrations[WINDOW_SIZE];
      pre_integrations[WINDOW_SIZE] = new IntegrationBase{acc_0, gyr_0, Bas[WINDOW_SIZE], Bgs[WINDOW_SIZE]};
@@ -1153,6 +1243,37 @@ void pubOptOdometry(){
   ROS_DEBUG("pubOdometry %d %f", frame_count, Ps[WINDOW_SIZE].x());
 
 }
+
+
+
+void pubImuOdometry()
+{
+    Quaterniond tmp_imu_Q;
+    tmp_imu_Q = Quaterniond(Ri[WINDOW_SIZE]);
+
+    nav_msgs::Odometry odometry;
+    odometry.header.stamp = ros::Time().fromSec(timeKeyPoses);
+    //odometry.header = header;
+    odometry.header.frame_id = "camera_init";
+    odometry.pose.pose.position.x = Pi[WINDOW_SIZE].y();
+    odometry.pose.pose.position.y = Pi[WINDOW_SIZE].z();
+    odometry.pose.pose.position.z = Pi[WINDOW_SIZE].x();
+    odometry.pose.pose.orientation.x = tmp_imu_Q.x();
+    odometry.pose.pose.orientation.y = tmp_imu_Q.y();
+    odometry.pose.pose.orientation.z = tmp_imu_Q.z();
+    odometry.pose.pose.orientation.w = tmp_imu_Q.w();
+    odometry.twist.twist.linear.x = Vi[WINDOW_SIZE].x();
+    odometry.twist.twist.linear.y = Vi[WINDOW_SIZE].y();
+    odometry.twist.twist.linear.z = Vi[WINDOW_SIZE].z();
+    pubImuPropogate.publish(odometry);
+
+    odometry.header.frame_id = "/camera_init";
+    odometry.child_frame_id = "/aft_coupled";
+
+    ROS_DEBUG("imuOdometry %d %f", frame_count, Pi[WINDOW_SIZE].x());
+
+}
+
 
 // std::vector<std::pair<std::vector<sensor_msgs::ImuConstPtr>, sensor_msgs::PointCloud2ConstPtr>>
 // getMeasurements()
@@ -1254,13 +1375,17 @@ void run(){
     
     std::vector <sensor_msgs::ImuConstPtr> IMU_Cur = getMeasurements();
 
+    //exCalibration();
+
     currrentPoseProcess();
 
     imuProcess(IMU_Cur);
 
     optimizationProcess();
 
+    m_state.lock();
     update();
+    m_state.unlock();
 
     
   }

@@ -190,7 +190,21 @@ Visualization Manager:
       Topic: /imu_propagate
       Value: true
       
-
+  
+    - Angle Tolerance: 0.1
+      Class: rviz/Odometry
+      Shape:
+        Color: 255; 255; 0
+        Shaft Radius: 0.1
+        Head Radius: 0.3
+      Enabled: true
+      Keep: 10000
+      Length: 2
+      Name: Odometry
+      Position Tolerance: 0.1
+      Topic: /imu_update
+      Value: true
+      
 
 
   Enabled: true
