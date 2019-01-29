@@ -253,13 +253,13 @@ void clearState()
   ROS_INFO("clear success");
 
   ex_roll = 1 * PI /180;
-  ex_pitch = 0 * PI/180;
-  ex_yaw = -1* PI/180;
+  ex_pitch = -4 * PI/180;
+  ex_yaw = -1.5* PI/180;
 
   Eigen::AngleAxisd rollAngle(ex_roll, Eigen::Vector3d::UnitX());
   Eigen::AngleAxisd pitchAngle(ex_pitch, Eigen::Vector3d::UnitY());
   Eigen::AngleAxisd yawAngle(ex_yaw, Eigen::Vector3d::UnitZ());
-  q_imutolidar  = yawAngle * pitchAngle *  rollAngle;
+  q_imutolidar  = yawAngle * pitchAngle * rollAngle ;
   R_imutolidar= q_imutolidar.toRotationMatrix();//from world frame (ypr)
 
 }
@@ -338,9 +338,9 @@ void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg)
     std::lock_guard<std::mutex> lg(m_state);
     
     predict(imuIn);
-    std_msgs::Header imu_header = imuIn->header;
-    imu_header.frame_id = "camera_init";
-    pubLatestOdometry(tmp_P, tmp_Q, tmp_V, imu_header);
+    // std_msgs::Header imu_header = imuIn->header;
+    // imu_header.frame_id = "camera_init";
+    // pubLatestOdometry(tmp_P, tmp_Q, tmp_V, imu_header);
         
 }
 
@@ -381,7 +381,9 @@ void predict(const sensor_msgs::ImuConstPtr &imu_msg)// propogate
     tmp_P = tmp_P + dt * tmp_V + 0.5 * dt * dt * un_acc;//预测位置 p=p+vt+0.5*a*t2
     tmp_V = tmp_V + dt * un_acc;//预测速度 v=v+a*t
 
-    Vector3d tmp_euler =  tmp_Q.toRotationMatrix().eulerAngles(2,1,0);
+    //Vector3d tmp_euler =  tmp_Q.toRotationMatrix().eulerAngles(2,1,0);
+
+    Vector3d tmp_euler =  tmp_Q.toRotationMatrix().eulerAngles(0,1,2);
     //eulerAngles(2,1,0);
 
     acc_0 = linear_acceleration;
@@ -392,7 +394,7 @@ void predict(const sensor_msgs::ImuConstPtr &imu_msg)// propogate
     // 
     std_msgs::Header imu_header = imu_msg->header;
     imu_header.frame_id = "camera_init";
-   // pubLatestOdometry(tmp_P, tmp_Q, tmp_V, imu_header);
+    pubLatestOdometry(tmp_P, tmp_Q, tmp_V, imu_header);
 }
 
 void pubLatestOdometry(const Eigen::Vector3d &P, const Eigen::Quaterniond &Q, const Eigen::Vector3d &V, const std_msgs::Header &header)
@@ -868,8 +870,16 @@ void update()
   gyr_0 = gyr_0;
 
   queue<sensor_msgs::ImuConstPtr> tmp_imu_buf = imu_buf;
+
   for (sensor_msgs::ImuConstPtr tmp_imu_msg; !tmp_imu_buf.empty(); tmp_imu_buf.pop())
-        predict(tmp_imu_buf.front());
+  {
+    predict(tmp_imu_buf.front());
+    // std_msgs::Header imu_header = tmp_imu_buf.front()->header;
+    // imu_header.frame_id = "camera_init";
+    // pubLatestOdometry(tmp_P, tmp_Q, tmp_V, imu_header);
+
+  }
+        
 
       ROS_DEBUG("update ");
 
@@ -985,11 +995,20 @@ void solveOdometry()
   
   // for (int i = 0; i < WINDOW_SIZE + 1; i++)
   //   {
-  //       ceres::LocalParameterization *local_parameterization = new PoseLocalParameterization();
-  //       problem.AddParameterBlock(para_Pose[i], SIZE_POSE, local_parameterization);//SIZE_POSE = 7  SIZE_SPEEDBIAS = 9
-  //       problem.AddParameterBlock(para_SpeedBias[i], SIZE_SPEEDBIAS);
+  //      // ceres::LocalParameterization *local_parameterization = new PoseLocalParameterization();
+  //       //problem.AddParameterBlock(para_Pose[i], SIZE_POSE, local_parameterization);//SIZE_POSE = 7  SIZE_SPEEDBIAS = 9
+  //       //problem.AddParameterBlock(para_SpeedBias[i], SIZE_SPEEDBIAS);
   //     // problem.SetParameterBlockConstant(para_Pose[i]);
+  //      problem.SetParameterBlockConstant(para_SpeedBias[i]);
   //   }
+    //  for (int i = 0; i < WINDOW_SIZE + 1; i++)
+    // {
+    //     ceres::LocalParameterization *local_parameterization = new PoseLocalParameterization();
+    //     problem.AddParameterBlock(para_Pose[i], SIZE_POSE, local_parameterization);//SIZE_POSE = 7  SIZE_SPEEDBIAS = 9
+    //     problem.SetParameterBlockConstant(para_Pose[i]);
+    //     problem.AddParameterBlock(para_SpeedBias[i], SIZE_SPEEDBIAS);
+    // }
+
 
 
 
@@ -1081,6 +1100,14 @@ void solveOdometry()
   //       problem.AddResidualBlock(imu_function, loss_function_imu, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
       
   //   }
+ // for (int i = 0; i < WINDOW_SIZE + 1; i++)
+ //    {
+ //       // ceres::LocalParameterization *local_parameterization = new PoseLocalParameterization();
+ //        //problem.AddParameterBlock(para_Pose[i], SIZE_POSE, local_parameterization);//SIZE_POSE = 7  SIZE_SPEEDBIAS = 9
+ //        //problem.AddParameterBlock(para_SpeedBias[i], SIZE_SPEEDBIAS);
+ //      // problem.SetParameterBlockConstant(para_Pose[i]);
+ //       problem.SetParameterBlockConstant(para_SpeedBias[i]);
+ //    }
 
 
 
@@ -1113,6 +1140,9 @@ void vector2double(){
         para_SpeedBias[i][8] = Bgs[i].z();
     }
     ROS_DEBUG("P-origin %f %f %f",Ps[WINDOW_SIZE][0],Ps[WINDOW_SIZE][1],Ps[WINDOW_SIZE][2]);
+
+    Vector3d origin_euler =  Rs[WINDOW_SIZE].eulerAngles(0,1,2);
+    ROS_DEBUG("R-origin %f %f %f",origin_euler[0],origin_euler[1],origin_euler[2]);
     ROS_DEBUG("V-origin %f %f %f",Vs[WINDOW_SIZE][0],Vs[WINDOW_SIZE][1],Vs[WINDOW_SIZE][2]);
     ROS_DEBUG("Bas-origin %f %f %f",Bas[WINDOW_SIZE][0],Bas[WINDOW_SIZE][1],Bas[WINDOW_SIZE][2]);
     ROS_DEBUG("Bgs-origin %f %f %f",Bgs[WINDOW_SIZE][0],Bgs[WINDOW_SIZE][1],Bgs[WINDOW_SIZE][2]);
@@ -1144,6 +1174,8 @@ void double2vector()
                           para_SpeedBias[i][8]);
     }
     ROS_DEBUG("P-coupled %f %f %f",Ps[WINDOW_SIZE][0],Ps[WINDOW_SIZE][1],Ps[WINDOW_SIZE][2]);
+     Vector3d coupled_euler =  Rs[WINDOW_SIZE].eulerAngles(0,1,2);
+    ROS_DEBUG("R-coupled %f %f %f",coupled_euler[0],coupled_euler[1],coupled_euler[2]);
     ROS_DEBUG("V-coupled %f %f %f",Vs[WINDOW_SIZE][0],Vs[WINDOW_SIZE][1],Vs[WINDOW_SIZE][2]);
     ROS_DEBUG("Bas-coupled %f %f %f",Bas[WINDOW_SIZE][0],Bas[WINDOW_SIZE][1],Bas[WINDOW_SIZE][2]);
     ROS_DEBUG("Bgs-coupled %f %f %f",Bgs[WINDOW_SIZE][0],Bgs[WINDOW_SIZE][1],Bgs[WINDOW_SIZE][2]);
