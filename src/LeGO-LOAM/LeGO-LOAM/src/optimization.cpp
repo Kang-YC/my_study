@@ -319,7 +319,7 @@ void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg)
 }
 
 
- void imuHandler(const sensor_msgs::Imu::ConstPtr& imuIn)
+ void imuHandler(const sensor_msgs::ImuConstPtr& imuIn)
 {
   if (imuIn->header.stamp.toSec() <= timeLastIMU)
     {
@@ -335,7 +335,9 @@ void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg)
     timeLastIMU = imuIn->header.stamp.toSec();
    // ROS_DEBUG("timeLastIMU %f", timeLastIMU);
    
-    std::lock_guard<std::mutex> lg(m_state);
+    std::lock_guard<std::mutex> lg(m_state);//??????
+
+    //exCalibration(imuIn);
     
     predict(imuIn);
     // std_msgs::Header imu_header = imuIn->header;
@@ -343,6 +345,42 @@ void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg)
     // pubLatestOdometry(tmp_P, tmp_Q, tmp_V, imu_header);
         
 }
+
+
+// void exCalibration(const sensor_msgs::ImuConstPtr &imu_msg)
+// {
+//   // ex_roll = 1 * PI /180;
+//   // ex_pitch = -3 * PI/180;
+//   // ex_yaw = -1* PI/180;
+
+//   // Eigen::AngleAxisd rollAngle(ex_roll, Eigen::Vector3d::UnitX());
+//   // Eigen::AngleAxisd pitchAngle(ex_pitch, Eigen::Vector3d::UnitY());
+//   // Eigen::AngleAxisd yawAngle(ex_yaw, Eigen::Vector3d::UnitZ());
+//   // q_imutolidar  = yawAngle * pitchAngle *  rollAngle;
+//   // R_imutolidar= q_imutolidar.toRotationMatrix();//from world frame (ypr)
+
+//   //sensor_msgs::ImuPtr ex_imu_msg = imu_msg; not avaliable
+
+//   double dx = imu_msg->linear_acceleration.x;
+//   double dy = imu_msg->linear_acceleration.y;
+//   double dz = imu_msg->linear_acceleration.z;
+//   Eigen::Vector3d linear_acceleration{dx, dy, dz};
+
+//   ROS_INFO("linear_acceleration origin %f %f %f", dx, dy, dz);
+
+//   linear_acceleration = R_imutolidar * linear_acceleration;
+
+//   ROS_INFO("linear_acceleration cali %f %f %f", linear_acceleration[0], linear_acceleration[1], linear_acceleration[2]);
+
+//   // ex_imu_msg->linear_acceleration.x = linear_acceleration.x;
+//   // ex_imu_msg->linear_acceleration.y = linear_acceleration.y;
+//   // ex_imu_msg->linear_acceleration.z = linear_acceleration.z;
+
+//   return ;
+
+
+// }
+
 
 
 void predict(const sensor_msgs::ImuConstPtr &imu_msg)// propogate
@@ -369,11 +407,14 @@ void predict(const sensor_msgs::ImuConstPtr &imu_msg)// propogate
     double rz = imu_msg->angular_velocity.z;
     Eigen::Vector3d angular_velocity{rx, ry, rz};
 
-    Eigen::Vector3d un_acc_0 = tmp_Q * (acc_0 - tmp_Ba) - G;//世界坐标系下 上一时刻的 un_acc_0为车加速度（消除了重力） acc_0为读到的
+
+    Eigen::Vector3d un_acc_0 = tmp_Q * q_imutolidar *(acc_0 - tmp_Ba) - G;
+    //Eigen::Vector3d un_acc_0 = tmp_Q * (acc_0 - tmp_Ba) - G;//世界坐标系下 上一时刻的 un_acc_0为车加速度（消除了重力） acc_0为读到的
     Eigen::Vector3d un_gyr = 0.5 * (gyr_0 + angular_velocity) - tmp_Bg;//角速度 un_gyr为车的
     tmp_Q = tmp_Q * Utility::deltaQ(un_gyr * dt);//q=q*delta(w*t)
 
-    Eigen::Vector3d un_acc_1 = tmp_Q * (linear_acceleration - tmp_Ba) - G;//当前时刻加速度
+    Eigen::Vector3d un_acc_1 = tmp_Q *q_imutolidar* (linear_acceleration - tmp_Ba) - G;//当前时刻加速度
+    //Eigen::Vector3d un_acc_1 = tmp_Q * (linear_acceleration - tmp_Ba) - G;
 
     Eigen::Vector3d un_acc = 0.5 * (un_acc_0 + un_acc_1);//中值 上一时刻加速度和当前时刻计算
     ROS_DEBUG("temp un_acc %f %f %f", un_acc[0], un_acc[1], un_acc[2]);
@@ -730,30 +771,7 @@ void currrentPoseProcess()
 
 }
 
-// void exCalibration()
-// {
-//   ex_roll = 1 * PI /180;
-//   ex_pitch = -3 * PI/180;
-//   ex_yaw = -1* PI/180;
 
-//   Eigen::AngleAxisd rollAngle(ex_roll, Eigen::Vector3d::UnitX());
-//   Eigen::AngleAxisd pitchAngle(ex_pitch, Eigen::Vector3d::UnitY());
-//   Eigen::AngleAxisd yawAngle(ex_yaw, Eigen::Vector3d::UnitZ());
-//   q_imutolidar  = yawAngle * pitchAngle *  rollAngle;
-//   R_imutolidar= q_imutolidar.toRotationMatrix();//from world frame (ypr)
-
-
-//   // float ctRoll = cos(roll);
-//   // float stRoll = sin(roll);
-
-//   // float ctPitch = cos(pitch);
-//   // float stPitch = sin(pitch);
-
-//   // float ctYaw = cos(yaw);
-//   // float stYaw = sin(yaw);
-
-
-// }
 
 
 
@@ -893,7 +911,7 @@ void optimizationProcess()
     if(frame_count == WINDOW_SIZE)
     {
       vector2double();
-      initialization();
+      //initialization();
 
       initial_flag = true;
       solveOdometry();
