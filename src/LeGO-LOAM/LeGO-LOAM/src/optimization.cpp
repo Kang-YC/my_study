@@ -560,25 +560,25 @@ void currrentPoseProcess()
   }
 
 
-  // if(frame_count!=0)
-  // {
-  //   Eigen::Vector3d V_temp = (Ps[frame_count]-Ps[frame_count-1])/dt;
-  //   ROS_DEBUG("Vs[WINDOW_SIZE] %f %f %f  ",V_temp[0], V_temp[1], V_temp[2]);
-  //   ROS_DEBUG("dt %f  ",dt);
+  if(frame_count!=0)
+  {
+    Eigen::Vector3d V_temp = (Ps[frame_count]-Ps[frame_count-1])/dt;
+    ROS_DEBUG("Vs[WINDOW_SIZE] %f %f %f  ",V_temp[0], V_temp[1], V_temp[2]);
+    ROS_DEBUG("dt %f  ",dt);
     
 
-  //   if(frame_count <= WINDOW_SIZE)
-  //   {// framecount==index 0-9
-  //   Vs[frame_count] =V_temp;
-  //  // ROS_DEBUG("Ps[currentInd] %f %f %f  ",Ps[currentInd][0], Ps[currentInd][1], Ps[currentInd][2]);
-  //   }
-  //   else
-  //   {
-  //    Vs[WINDOW_SIZE] =V_temp;
-  //    ROS_DEBUG("Vs[WINDOW_SIZE] %f %f %f  ",Vs[WINDOW_SIZE][0], Vs[WINDOW_SIZE][1], Vs[WINDOW_SIZE][2]);
-  //   }
+    if(frame_count <= WINDOW_SIZE)
+    {// framecount==index 0-9
+    Vs[frame_count] =V_temp;
+   // ROS_DEBUG("Ps[currentInd] %f %f %f  ",Ps[currentInd][0], Ps[currentInd][1], Ps[currentInd][2]);
+    }
+    else
+    {
+     Vs[WINDOW_SIZE] =V_temp;
+     ROS_DEBUG("Vs[WINDOW_SIZE] %f %f %f  ",Vs[WINDOW_SIZE][0], Vs[WINDOW_SIZE][1], Vs[WINDOW_SIZE][2]);
+    }
 
-  // }
+  }
   
 
   //ROS_INFO("frame_count %d", frame_count);
@@ -893,7 +893,7 @@ void optimizationProcess()
     if(frame_count == WINDOW_SIZE)
     {
       vector2double();
-      //initialization();
+      initialization();
 
       initial_flag = true;
       solveOdometry();
