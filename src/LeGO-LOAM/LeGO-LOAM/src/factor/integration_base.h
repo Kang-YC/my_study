@@ -14,9 +14,9 @@ class IntegrationBase
   // double ACC_W = 1e-2 ;//accelerometer bias random work noise standard deviation.  #0.02
   // double GYR_W = 1e-3;//gyroscope bias random work noise standard deviation.     #4.0e-5
 
-  double ACC_N = 0.04;// accelerometer measurement noise standard deviation. #0.2   0.04
+  double ACC_N = 0.08;// accelerometer measurement noise standard deviation. #0.2   0.04
   double GYR_N = 0.004;//gyroscope measurement noise standard deviation.     #0.05  0.004
-  double ACC_W = 1e-3 ;//accelerometer bias random work noise standard deviation.  #0.02
+  double ACC_W = 4e-5 ;//accelerometer bias random work noise standard deviation.  #0.02
   double GYR_W = 2.0e-6;//gyroscope bias random work noise standard deviation.     #4.0e-5
 
   public:
