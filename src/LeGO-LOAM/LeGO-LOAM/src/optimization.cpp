@@ -21,6 +21,10 @@
 #include "factor/imu_factor.h"
 #include "factor/integration_base.h"
 
+#include <stdexcept>
+#include <sstream>
+#include <fstream>
+
 #include <mutex>
 
 #include <condition_variable>
@@ -128,7 +132,7 @@ Eigen::Vector3d tmp_Ba;
 Eigen::Vector3d tmp_Bg;
 Eigen::Vector3d acc_0;
 Eigen::Vector3d gyr_0;
-Vector3d G = {0, 0, 9.8};
+Vector3d G = {0, 0, 9.794};
 
 queue<sensor_msgs::ImuConstPtr> imu_buf;
 queue<sensor_msgs::PointCloud2ConstPtr> ori_buf;
@@ -153,6 +157,16 @@ double ex_pitch;
 double ex_yaw;
 Eigen::Matrix3d R_imutolidar;
 Eigen::Quaterniond q_imutolidar;
+
+double loss_lidar;
+double loss_imu;
+double s_thres;
+bool imuAutodiff;
+bool initial_enable;
+
+
+int num_threads;
+double function_tolerance;
 
 
 public:
@@ -180,7 +194,8 @@ public:
 
 
   allocateMemory();
-  clearState();
+  readParameter("/home/kang/dev/VI_Loam/para.txt");
+  initState();
   ROS_INFO("init success");
   }
 
@@ -195,8 +210,122 @@ void allocateMemory()
 }
 
 
+void readParameter(const char* filename)
+{
+  
+    std::stringstream buffer;
+    std::string line;
+    std::string paramName;
+    std::string paramValuestr;
 
-void clearState()
+    double paraValue = 0;
+    int paraInt = 0;
+    bool paraFlag = false;
+
+    std::ifstream fin(filename);
+    if (!fin.good())
+    {
+        std::string msg("parameters file not found");
+        msg.append(filename);
+        throw std::runtime_error(msg);
+    }
+    while (fin.good())
+    {
+        getline(fin,line);
+        if(line[0] != '#')
+        {
+            buffer.clear();
+            buffer << line;
+            buffer >> paramName;
+
+            if(paramName.compare("ex_roll") == 0)
+            {
+                buffer >>paraValue;
+                ex_roll = paraValue *PI /180;
+                cout<<ex_roll<<endl;
+            }
+            else if(paramName.compare("ex_pitch") == 0)
+            {
+                buffer >>paraValue;
+                ex_pitch = paraValue*PI /180;
+                cout<<ex_pitch<<endl;
+            }
+            else if(paramName.compare("ex_yaw") == 0)
+            {
+                buffer >>paraValue;
+                ex_yaw = paraValue*PI /180;
+                cout<<ex_yaw<<endl;
+            }
+             else if(paramName.compare("td") == 0)
+            {
+                buffer >>paraValue;
+                td = paraValue;
+                cout<<td<<endl;
+            }
+              else if(paramName.compare("G") == 0)
+            {
+                buffer >>paraValue;
+                G[2] = paraValue;
+                cout<<G[2]<<endl;
+            }
+              else if(paramName.compare("loss_lidar") == 0)
+            {
+                buffer >>paraValue;
+                loss_lidar = paraValue;
+                cout<<loss_lidar<<endl;
+            }
+              else if(paramName.compare("loss_imu") == 0)
+            {
+                buffer >>paraValue;
+                loss_imu = paraValue;
+                cout<<loss_imu<<endl;
+            }
+             else if(paramName.compare("s_thres") == 0)
+            {
+                buffer >>paraValue;
+                s_thres = paraValue;
+                cout<<s_thres<<endl;
+            }
+              else if(paramName.compare("smallProblem") == 0)
+            {
+                buffer >>paraFlag;
+                smallProblem = paraFlag;
+                cout<<smallProblem<<endl;
+            }
+             else if(paramName.compare("imuAutodiff") == 0)
+            {
+                buffer >>paraFlag;
+                imuAutodiff = paraFlag;
+                cout<<imuAutodiff<<endl;
+            }
+            else if(paramName.compare("initial_enable") == 0)
+            {
+                buffer >>paraFlag;
+                initial_enable = paraFlag;
+                cout<<initial_enable<<endl;
+            }
+               else if(paramName.compare("num_threads") == 0)
+            {
+                buffer >>paraInt;
+                num_threads = paraInt;
+                cout<<num_threads<<endl;
+            }
+                 else if(paramName.compare("function_tolerance") == 0)
+            {
+                buffer >>paraValue;
+                function_tolerance = paraValue;
+                cout<<function_tolerance<<endl;
+            }
+            else
+                throw std::runtime_error(std::string("unknown parameter"));
+        }
+
+    }
+
+    fin.close();
+}
+
+void initState()
 {
   for (int i = 0; i < WINDOW_SIZE + 1; i++)
   {
@@ -252,9 +381,9 @@ void clearState()
   frame_count=0;
   ROS_INFO("clear success");
 
-  ex_roll = 1 * PI /180;
-  ex_pitch = -5 * PI/180;
-  ex_yaw = -1.5* PI/180;
+  // ex_roll = 1 * PI /180;
+  // ex_pitch = -5 * PI/180;
+  // ex_yaw = -1.5* PI/180;
 
   Eigen::AngleAxisd rollAngle(ex_roll, Eigen::Vector3d::UnitX());
   Eigen::AngleAxisd pitchAngle(ex_pitch, Eigen::Vector3d::UnitY());
@@ -263,6 +392,8 @@ void clearState()
   R_imutolidar= q_imutolidar.toRotationMatrix();//from world frame (ypr)
 
 }
+
+
 
 void laserCloudOriHandler(const sensor_msgs::PointCloud2ConstPtr& msg)
 {
@@ -339,7 +470,7 @@ void keyPoses6DHandler(const sensor_msgs::PointCloud2ConstPtr& msg)
 
     //exCalibration(imuIn);
     
-    //predict(imuIn);//  latest imu
+    predict(imuIn);//  latest imu
     // std_msgs::Header imu_header = imuIn->header;
     // imu_header.frame_id = "camera_init";
     // pubLatestOdometry(tmp_P, tmp_Q, tmp_V, imu_header);
@@ -429,7 +560,7 @@ void predict(const sensor_msgs::ImuConstPtr &imu_msg)// propogate
 
     acc_0 = linear_acceleration;
     gyr_0 = angular_velocity;
-    // ROS_DEBUG("tmp_P %f %f %f", tmp_P.x(), tmp_P.y(), tmp_P.z());
+    ROS_DEBUG("tmp_P %f %f %f", tmp_P.x(), tmp_P.y(), tmp_P.z());
     // ROS_DEBUG("tmp_Q %f %f %f", tmp_euler[0]*180 /PI, tmp_euler[1]*180/PI, tmp_euler[2]*180/PI );
     // ROS_DEBUG("tmp_V %f %f %f", tmp_V.x(), tmp_V.y(), tmp_V.z());
     // 
@@ -519,9 +650,9 @@ ceres::Solver::Options getOptionsMedium()
     options.max_num_iterations = 50;
    // options.initial_trust_region_radius = options.max_trust_region_radius;
 
-    options.num_threads = 10;
+    options.num_threads = num_threads;
 
-    options.function_tolerance = 1e-5;
+    options.function_tolerance = function_tolerance;
 
     cout << "Ceres Solver getOptionsMedium()" << endl;
     cout << "Ceres preconditioner type: " << options.preconditioner_type << endl;
@@ -803,8 +934,6 @@ void imuProcess(std::vector <sensor_msgs::ImuConstPtr> &IMU_Cur)
         Eigen::Vector3d linear_acceleration{dx, dy, dz};
         linear_acceleration = R_imutolidar * linear_acceleration;
         
-        
-        Eigen::Vector3d un_acc_0 = tmp_Q * q_imutolidar *(acc_0 - tmp_Ba) - G;
         processIMU(dt, linear_acceleration, Vector3d(rx, ry, rz));//imu propogate 得位置 速度初始值 直到img时刻
      //  printf("imu: dt:%f a: %f %f %f w: %f %f %f\n",dt, dx, dy, dz, rx, ry, rz);
 
@@ -825,6 +954,9 @@ void imuProcess(std::vector <sensor_msgs::ImuConstPtr> &IMU_Cur)
         rx = w1 * rx + w2 * imu_msg->angular_velocity.x;
         ry = w1 * ry + w2 * imu_msg->angular_velocity.y;
         rz = w1 * rz + w2 * imu_msg->angular_velocity.z;
+
+        Eigen::Vector3d linear_acceleration{dx, dy, dz};
+        linear_acceleration = R_imutolidar * linear_acceleration;
         processIMU(dt_1, Vector3d(dx, dy, dz), Vector3d(rx, ry, rz));
                    // printf("dimu: dt:%f a: %f %f %f w: %f %f %f\n",dt_1, dx, dy, dz, rx, ry, rz);
     }
@@ -917,6 +1049,7 @@ void optimizationProcess()
     if(frame_count == WINDOW_SIZE)
     {
       vector2double();
+      if(initial_enable)
       initialization();
 
       initial_flag = true;
@@ -953,7 +1086,7 @@ void initialization()
 
   ROS_DEBUG("initialization %d", frame_count);
   ceres::Problem problem;
-  ceres::LossFunction *loss_function_initial = new ceres::CauchyLoss(2);
+  ceres::LossFunction *loss_function_initial = new ceres::CauchyLoss(3);
 
   for (int i = 0; i < WINDOW_SIZE + 1; i++)
     {
@@ -1012,16 +1145,16 @@ void solveOdometry()
   
   ROS_DEBUG("solveOdometry %d", frame_count);
   ceres::Problem problem;
-  ceres::LossFunction *loss_function_imu = new ceres::CauchyLoss(1.5);
+  ceres::LossFunction *loss_function_imu = new ceres::CauchyLoss(loss_imu);
 
-  ceres::LossFunction *loss_function_lidar = new ceres::CauchyLoss(5);
+  ceres::LossFunction *loss_function_lidar = new ceres::CauchyLoss(loss_lidar);
   //vector2double();
   
   // for (int i = 0; i < WINDOW_SIZE + 1; i++)
   //   {
-  //      // ceres::LocalParameterization *local_parameterization = new PoseLocalParameterization();
-  //       //problem.AddParameterBlock(para_Pose[i], SIZE_POSE, local_parameterization);//SIZE_POSE = 7  SIZE_SPEEDBIAS = 9
-  //       //problem.AddParameterBlock(para_SpeedBias[i], SIZE_SPEEDBIAS);
+  //      ceres::LocalParameterization *local_parameterization = new PoseLocalParameterization();
+  //       problem.AddParameterBlock(para_Pose[i], SIZE_POSE, local_parameterization);//SIZE_POSE = 7  SIZE_SPEEDBIAS = 9
+  //       problem.AddParameterBlock(para_SpeedBias[i], SIZE_SPEEDBIAS);
   //     // problem.SetParameterBlockConstant(para_Pose[i]);
   //      problem.SetParameterBlockConstant(para_SpeedBias[i]);
   //   }
@@ -1056,7 +1189,7 @@ void solveOdometry()
 
       float s = CloudKeyFramesProj[ind]->points[k].intensity;
 
-      if (s < 0.5)
+      if (s < s_thres)
         continue;
       // cout<<"dis:"<<dis<<endl;
 
@@ -1097,24 +1230,30 @@ void solveOdometry()
 
 
 
-  // for (int i = 0; i < WINDOW_SIZE; i++)
-  //   {
-
-  //       int j = i + 1;
-  //       if (pre_integrations[j]->sum_dt > 10.0)
-  //           continue;
-  //       IMUFactor* imu_factor = new IMUFactor(pre_integrations[j]);//预积分误差
-
-  //       problem.AddResidualBlock(imu_factor, loss_function_imu, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
-     
-  //    }
+ 
     
     
   //   
   //imu autodiff
   //
-  
-  for (int i = 0; i < WINDOW_SIZE; i++)
+  if(imuAutodiff)
+  {
+         for (int i = 0; i < WINDOW_SIZE; i++)
+    {
+
+        int j = i + 1;
+        if (pre_integrations[j]->sum_dt > 10.0)
+            continue;
+        IMUFactor* imu_factor = new IMUFactor(pre_integrations[j]);//预积分误差
+
+        problem.AddResidualBlock(imu_factor, loss_function_imu, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
+     
+     }
+
+  }
+  else
+  {
+     for (int i = 0; i < WINDOW_SIZE; i++)
     {
 
         int j = i + 1;
@@ -1124,6 +1263,10 @@ void solveOdometry()
         problem.AddResidualBlock(imu_function, loss_function_imu, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
       
     }
+
+
+  }
+
  for (int i = 0; i < WINDOW_SIZE + 1; i++)
     {
        // ceres::LocalParameterization *local_parameterization = new PoseLocalParameterization();

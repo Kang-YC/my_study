@@ -18,6 +18,7 @@ ofstream myfile2;
 ofstream myfile3;
 ofstream myfile4;
 ofstream myfile5;
+ofstream myfile6;
 /**
  * This tutorial demonstrates simple receipt of position and speed of the Evarobot over the ROS system.
  */
@@ -136,6 +137,27 @@ double roll, pitch, yaw;
 }
 
 
+void chatterCallback_imuupdate(const nav_msgs::Odometry::ConstPtr& msg)
+{
+double roll, pitch, yaw;
+  geometry_msgs::Quaternion geoQuat = msg->pose.pose.orientation;
+  tf::Matrix3x3(tf::Quaternion(geoQuat.z, -geoQuat.x, -geoQuat.y, geoQuat.w)).getRPY(roll, pitch, yaw);
+  /*ROS_INFO_NAMED("odomrec", "Seq: %d ", msg->header.seq);
+  ROS_INFO_NAMED("odomrec", "Position-> x: %f , y: %f , z: %f ", msg->pose.pose.position.x,msg->pose.pose.position.y, msg->pose.pose.position.z);
+  ROS_INFO_NAMED("odomrec", "Orientation-> x: [%f], y: [%f], z: [%f], w: [%f]", msg->pose.pose.orientation.x, msg->pose.pose.orientation.y, msg->pose.pose.orientation.z, msg->pose.pose.orientation.w);
+  ROS_INFO_NAMED("odomrec", "Vel-> Linear: [%f], Angular: [%f]", msg->twist.twist.linear.x,msg->twist.twist.angular.z);*/
+  //ROS_INFO_NAMED("odomrec", "Position-> x: %f, y: %f, z: %f ", msg->pose.pose.position.x,msg->pose.pose.position.y, msg->pose.pose.position.z);
+  //ROS_INFO_NAMED("odomrec", "Orientation-> roll: %f, pitch: %f, yaw: %f ", roll, pitch, yaw);
+  myfile6<< msg-> header.stamp<<",";
+  myfile6 <<msg->pose.pose.position.x << "," << msg->pose.pose.position.y << "," << msg->pose.pose.position.z;
+ 
+  //myfile << msg->pose.pose.orientation.x << ";" << msg->pose.pose.orientation.y << ";" << msg->pose.pose.orientation.z << ";" << msg->pose.pose.orientation.w;
+  //myfile << msg->twist.twist.linear.x,msg->twist.twist.angular.z;
+  myfile6<< "\n";
+}
+
+
+
 int main(int argc, char **argv)
 {
   /**
@@ -167,6 +189,8 @@ int main(int argc, char **argv)
   myfile4.precision(10);
   myfile5.open("/home/kang/data/imu_propagate.txt");
   myfile5.precision(10);
+  myfile6.open("/home/kang/data/imu_update.txt");
+  myfile6.precision(10);
   /**
    * The subscribe() call is how you tell ROS that you want to receive messages
    * on a given topic.  This invokes a call to the ROS
@@ -189,7 +213,8 @@ int main(int argc, char **argv)
   ros::Subscriber sub_odom = n.subscribe("gps/odom", 1000, chatterCallback_odom);
   ros::Subscriber gps_status = n.subscribe("gps/pos_type", 1000, chatterCallback_status);
   ros::Subscriber sub_coupled = n.subscribe("coupled_odometry", 1000, chatterCallback_coupled); 
-  ros::Subscriber sub_imu = n.subscribe("imu_propagate", 1000, chatterCallback_imupropagate);
+  ros::Subscriber sub_imu_propagate = n.subscribe("imu_propagate", 1000, chatterCallback_imupropagate);
+  ros::Subscriber sub_imu_update = n.subscribe("imu_update", 1000, chatterCallback_imuupdate);
 
   /**
    * ros::spin() will enter a loop, pumping callbacks.  With this version, all
@@ -203,6 +228,7 @@ int main(int argc, char **argv)
   myfile3.close();
   myfile4.close();
   myfile5.close();
+  myfile6.close();
   return 0;
 }
 
