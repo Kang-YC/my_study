@@ -23,6 +23,10 @@ string
 -
 iomanip
 -
+sensor_msgs/Imu.h
+/home/kang/dev/VI_Loam/src/read_odom/src/sensor_msgs/Imu.h
+std_msgs/String.h
+/home/kang/dev/VI_Loam/src/read_odom/src/std_msgs/String.h
 
 /opt/ros/kinetic/include/geometry_msgs/Point.h
 string
@@ -936,6 +940,30 @@ ros/forwards.h
 
 /opt/ros/kinetic/include/rosconsole/macros_generated.h
 
+/opt/ros/kinetic/include/sensor_msgs/Imu.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
+-
+geometry_msgs/Quaternion.h
+-
+geometry_msgs/Vector3.h
+-
+geometry_msgs/Vector3.h
+-
+
 /opt/ros/kinetic/include/sensor_msgs/NavSatFix.h
 string
 -
@@ -973,6 +1001,22 @@ ros/message_operations.h
 -
 
 /opt/ros/kinetic/include/std_msgs/Header.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
+/opt/ros/kinetic/include/std_msgs/String.h
 string
 -
 vector

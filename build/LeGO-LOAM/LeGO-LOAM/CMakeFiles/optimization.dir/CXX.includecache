@@ -6,24 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/kang/dev/VI_Loam/devel/include/cloud_msgs/cloud_info.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-std_msgs/Header.h
--
-
 /home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/include/CPUTimer.h
 iostream
 -
@@ -59,6 +41,8 @@ ceres/rotation.h
 -
 eigen_quaternion.h
 /home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/include/eigen_quaternion.h
+../src/factor/integration_base.h
+/home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h
 
 /home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/include/utility.h
 ros/ros.h
@@ -205,6 +189,14 @@ pose_local_parameterization.h
 /home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/pose_local_parameterization.h
 factor/imu_factor.h
 /home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/factor/imu_factor.h
+factor/integration_base.h
+/home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/factor/integration_base.h
+stdexcept
+-
+sstream
+-
+fstream
+-
 mutex
 -
 condition_variable

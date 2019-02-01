@@ -240,7 +240,6 @@ LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/factor/pose_local_parameteri
  /usr/local/include/ceres/types.h
  /usr/local/include/ceres/version.h
 LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/optimization.cpp.o
- /home/kang/dev/VI_Loam/devel/include/cloud_msgs/cloud_info.h
  /home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/include/CPUTimer.h
  /home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/include/eigen_quaternion.h
  /home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/include/icp-ceres.h

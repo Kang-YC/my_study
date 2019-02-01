@@ -259,6 +259,18 @@ Ceres_DIR:PATH=/usr/local/lib/cmake/Ceres
 //Path to a program.
 DOXYGEN_EXECUTABLE:FILEPATH=DOXYGEN_EXECUTABLE-NOTFOUND
 
+//Enable the use of Eigen as a sparse linear algebra library for
+//\n   solving the nonlinear least squares problems. Enabling this
+//\n   option will result in an LGPL licensed version of Ceres Solver
+//\n   as the Simplicial Cholesky factorization in Eigen is licensed
+// under the LGPL.
+//\n   This does not affect the covariance estimation algorithm,
+// as it
+//\n   depends on the sparse QR factorization algorithm, which is
+// licensed
+//\n   under the MPL.
+EIGENSPARSE:BOOL=ON
+
 //Path to a file.
 EIGEN_INCLUDE_DIRS:PATH=/usr/include/eigen3
 
@@ -558,6 +570,9 @@ RT_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/librt.so
 
 //Enable debian style python package layout
 SETUPTOOLS_DEB_LAYOUT:BOOL=ON
+
+//Enable SuiteSparse.
+SUITESPARSE:BOOL=OFF
 
 //The directory containing a CMake configuration file for Sophus.
 Sophus_DIR:PATH=/home/kang/library/Sophus/build
