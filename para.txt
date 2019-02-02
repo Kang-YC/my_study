@@ -6,6 +6,12 @@ loss_imu 1.5
 s_thres 0.5
 smallProblem 0
 imuAutodiff 1
+setBiasConst 1
 initial_enable 1
 num_threads 10
 function_tolerance 1e-5
+G 9.794
+ACC_N 0.08
+ACC_W 0.004
+GYR_N 4e-4
+GYR_W 2e-6

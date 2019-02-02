@@ -28,6 +28,7 @@
 #include <mutex>
 
 #include <condition_variable>
+#include "readpara.h"
 
 using namespace std;
 using namespace Eigen;
@@ -131,13 +132,12 @@ Eigen::Vector3d tmp_V;
 Eigen::Vector3d tmp_Ba;
 Eigen::Vector3d tmp_Bg;
 Eigen::Vector3d acc_0;
-Eigen::Vector3d gyr_0;
-Vector3d G = {0, 0, 9.794};
+Eigen::Vector3d gyr_0;;
 
 queue<sensor_msgs::ImuConstPtr> imu_buf;
 queue<sensor_msgs::PointCloud2ConstPtr> ori_buf;
 
-double td;
+
 
 
 IntegrationBase *pre_integrations[(WINDOW_SIZE + 1)];
@@ -152,21 +152,23 @@ std::mutex m_state;
 
 std::condition_variable con;
 
-double ex_roll;
-double ex_pitch;
-double ex_yaw;
+
 Eigen::Matrix3d R_imutolidar;
 Eigen::Quaterniond q_imutolidar;
 
-double loss_lidar;
-double loss_imu;
-double s_thres;
-bool imuAutodiff;
-bool initial_enable;
+// double ex_roll;
+// double ex_pitch;
+// double ex_yaw;
+// double loss_lidar;
+// double loss_imu;
+// double s_thres;
+// bool imuAutodiff;
+// bool initial_enable;
 
-
-int num_threads;
-double function_tolerance;
+// Vector3d G = {0, 0, 9.794};
+// double td;
+// int num_threads;
+// double function_tolerance;
 
 
 public:
@@ -210,120 +212,120 @@ void allocateMemory()
 }
 
 
-void readParameter(const char* filename)
-{
+// void readParameter(const char* filename)
+// {
   
-    std::stringstream buffer;
-    std::string line;
-    std::string paramName;
-    std::string paramValuestr;
+//     std::stringstream buffer;
+//     std::string line;
+//     std::string paramName;
+//     std::string paramValuestr;
 
-    double paraValue = 0;
-    int paraInt = 0;
-    bool paraFlag = false;
+//     double paraValue = 0;
+//     int paraInt = 0;
+//     bool paraFlag = false;
 
-    std::ifstream fin(filename);
-    if (!fin.good())
-    {
-        std::string msg("parameters file not found");
-        msg.append(filename);
-        throw std::runtime_error(msg);
-    }
-    while (fin.good())
-    {
-        getline(fin,line);
-        if(line[0] != '#')
-        {
-            buffer.clear();
-            buffer << line;
-            buffer >> paramName;
+//     std::ifstream fin(filename);
+//     if (!fin.good())
+//     {
+//         std::string msg("parameters file not found");
+//         msg.append(filename);
+//         throw std::runtime_error(msg);
+//     }
+//     while (fin.good())
+//     {
+//         getline(fin,line);
+//         if(line[0] != '#')
+//         {
+//             buffer.clear();
+//             buffer << line;
+//             buffer >> paramName;
 
-            if(paramName.compare("ex_roll") == 0)
-            {
-                buffer >>paraValue;
-                ex_roll = paraValue *PI /180;
-                cout<<ex_roll<<endl;
-            }
-            else if(paramName.compare("ex_pitch") == 0)
-            {
-                buffer >>paraValue;
-                ex_pitch = paraValue*PI /180;
-                cout<<ex_pitch<<endl;
-            }
-            else if(paramName.compare("ex_yaw") == 0)
-            {
-                buffer >>paraValue;
-                ex_yaw = paraValue*PI /180;
-                cout<<ex_yaw<<endl;
-            }
-             else if(paramName.compare("td") == 0)
-            {
-                buffer >>paraValue;
-                td = paraValue;
-                cout<<td<<endl;
-            }
-              else if(paramName.compare("G") == 0)
-            {
-                buffer >>paraValue;
-                G[2] = paraValue;
-                cout<<G[2]<<endl;
-            }
-              else if(paramName.compare("loss_lidar") == 0)
-            {
-                buffer >>paraValue;
-                loss_lidar = paraValue;
-                cout<<loss_lidar<<endl;
-            }
-              else if(paramName.compare("loss_imu") == 0)
-            {
-                buffer >>paraValue;
-                loss_imu = paraValue;
-                cout<<loss_imu<<endl;
-            }
-             else if(paramName.compare("s_thres") == 0)
-            {
-                buffer >>paraValue;
-                s_thres = paraValue;
-                cout<<s_thres<<endl;
-            }
-              else if(paramName.compare("smallProblem") == 0)
-            {
-                buffer >>paraFlag;
-                smallProblem = paraFlag;
-                cout<<smallProblem<<endl;
-            }
-             else if(paramName.compare("imuAutodiff") == 0)
-            {
-                buffer >>paraFlag;
-                imuAutodiff = paraFlag;
-                cout<<imuAutodiff<<endl;
-            }
-            else if(paramName.compare("initial_enable") == 0)
-            {
-                buffer >>paraFlag;
-                initial_enable = paraFlag;
-                cout<<initial_enable<<endl;
-            }
-               else if(paramName.compare("num_threads") == 0)
-            {
-                buffer >>paraInt;
-                num_threads = paraInt;
-                cout<<num_threads<<endl;
-            }
-                 else if(paramName.compare("function_tolerance") == 0)
-            {
-                buffer >>paraValue;
-                function_tolerance = paraValue;
-                cout<<function_tolerance<<endl;
-            }
-            else
-                throw std::runtime_error(std::string("unknown parameter"));
-        }
+//             if(paramName.compare("ex_roll") == 0)
+//             {
+//                 buffer >>paraValue;
+//                 ex_roll = paraValue *PI /180;
+//                 cout<<ex_roll<<endl;
+//             }
+//             else if(paramName.compare("ex_pitch") == 0)
+//             {
+//                 buffer >>paraValue;
+//                 ex_pitch = paraValue*PI /180;
+//                 cout<<ex_pitch<<endl;
+//             }
+//             else if(paramName.compare("ex_yaw") == 0)
+//             {
+//                 buffer >>paraValue;
+//                 ex_yaw = paraValue*PI /180;
+//                 cout<<ex_yaw<<endl;
+//             }
+//              else if(paramName.compare("td") == 0)
+//             {
+//                 buffer >>paraValue;
+//                 td = paraValue;
+//                 cout<<td<<endl;
+//             }
+//               else if(paramName.compare("G") == 0)
+//             {
+//                 buffer >>paraValue;
+//                 G[2] = paraValue;
+//                 cout<<G[2]<<endl;
+//             }
+//               else if(paramName.compare("loss_lidar") == 0)
+//             {
+//                 buffer >>paraValue;
+//                 loss_lidar = paraValue;
+//                 cout<<loss_lidar<<endl;
+//             }
+//               else if(paramName.compare("loss_imu") == 0)
+//             {
+//                 buffer >>paraValue;
+//                 loss_imu = paraValue;
+//                 cout<<loss_imu<<endl;
+//             }
+//              else if(paramName.compare("s_thres") == 0)
+//             {
+//                 buffer >>paraValue;
+//                 s_thres = paraValue;
+//                 cout<<s_thres<<endl;
+//             }
+//               else if(paramName.compare("smallProblem") == 0)
+//             {
+//                 buffer >>paraFlag;
+//                 smallProblem = paraFlag;
+//                 cout<<smallProblem<<endl;
+//             }
+//              else if(paramName.compare("imuAutodiff") == 0)
+//             {
+//                 buffer >>paraFlag;
+//                 imuAutodiff = paraFlag;
+//                 cout<<imuAutodiff<<endl;
+//             }
+//             else if(paramName.compare("initial_enable") == 0)
+//             {
+//                 buffer >>paraFlag;
+//                 initial_enable = paraFlag;
+//                 cout<<initial_enable<<endl;
+//             }
+//                else if(paramName.compare("num_threads") == 0)
+//             {
+//                 buffer >>paraInt;
+//                 num_threads = paraInt;
+//                 cout<<num_threads<<endl;
+//             }
+//                  else if(paramName.compare("function_tolerance") == 0)
+//             {
+//                 buffer >>paraValue;
+//                 function_tolerance = paraValue;
+//                 cout<<function_tolerance<<endl;
+//             }
+//             else
+//                 throw std::runtime_error(std::string("unknown parameter"));
+//         }
 
-    }
+//     }
 
-    fin.close();
-}
+//     fin.close();
+// }
 
 void initState()
 {
@@ -1051,7 +1053,6 @@ void optimizationProcess()
       vector2double();
       if(initial_enable)
       initialization();
-
       initial_flag = true;
       solveOdometry();
       double2vector();
@@ -1238,22 +1239,7 @@ void solveOdometry()
   //
   if(imuAutodiff)
   {
-         for (int i = 0; i < WINDOW_SIZE; i++)
-    {
-
-        int j = i + 1;
-        if (pre_integrations[j]->sum_dt > 10.0)
-            continue;
-        IMUFactor* imu_factor = new IMUFactor(pre_integrations[j]);//预积分误差
-
-        problem.AddResidualBlock(imu_factor, loss_function_imu, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
-     
-     }
-
-  }
-  else
-  {
-     for (int i = 0; i < WINDOW_SIZE; i++)
+       for (int i = 0; i < WINDOW_SIZE; i++)
     {
 
         int j = i + 1;
@@ -1264,10 +1250,26 @@ void solveOdometry()
       
     }
 
+  }
+  else
+  {
+       for (int i = 0; i < WINDOW_SIZE; i++)
+    {
+
+        int j = i + 1;
+        if (pre_integrations[j]->sum_dt > 10.0)
+            continue;
+        IMUFactor* imu_factor = new IMUFactor(pre_integrations[j]);//预积分误差
+
+        problem.AddResidualBlock(imu_factor, loss_function_imu, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
+     
+     }
+  
 
   }
-
- for (int i = 0; i < WINDOW_SIZE + 1; i++)
+  if(setBiasConst)
+  {
+     for (int i = 0; i < WINDOW_SIZE + 1; i++)
     {
        // ceres::LocalParameterization *local_parameterization = new PoseLocalParameterization();
         //problem.AddParameterBlock(para_Pose[i], SIZE_POSE, local_parameterization);//SIZE_POSE = 7  SIZE_SPEEDBIAS = 9
@@ -1276,7 +1278,7 @@ void solveOdometry()
        problem.SetParameterBlockConstant(para_SpeedBias[i]);
     }
 
-
+  }
 
    solveProblem(problem);
    

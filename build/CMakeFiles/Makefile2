@@ -2026,7 +2026,7 @@ LeGO-LOAM/LeGO-LOAM/preinstall:
 LeGO-LOAM/LeGO-LOAM/CMakeFiles/transformFusion.dir/all:
 	$(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/transformFusion.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/transformFusion.dir/depend
 	$(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/transformFusion.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/transformFusion.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kang/dev/VI_Loam/build/CMakeFiles --progress-num=34,35 "Built target transformFusion"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kang/dev/VI_Loam/build/CMakeFiles --progress-num=35,36 "Built target transformFusion"
 .PHONY : LeGO-LOAM/LeGO-LOAM/CMakeFiles/transformFusion.dir/all
 
 # Include target in all.
@@ -3152,7 +3152,7 @@ clean: LeGO-LOAM/LeGO-LOAM/CMakeFiles/actionlib_generate_messages_lisp.dir/clean
 LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/all:
 	$(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/depend
 	$(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kang/dev/VI_Loam/build/CMakeFiles --progress-num=29,30,31,32,33 "Built target optimization"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kang/dev/VI_Loam/build/CMakeFiles --progress-num=29,30,31,32,33,34 "Built target optimization"
 .PHONY : LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/all
 
 # Include target in all.
@@ -3162,7 +3162,7 @@ all: LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/all
 
 # Build rule for subdir invocation for target.
 LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kang/dev/VI_Loam/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kang/dev/VI_Loam/build/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/kang/dev/VI_Loam/build/CMakeFiles 0
 .PHONY : LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/rule

@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/factor/pose_local_parameterization.cpp" "/home/kang/dev/VI_Loam/build/LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/factor/pose_local_parameterization.cpp.o"
   "/home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/optimization.cpp" "/home/kang/dev/VI_Loam/build/LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/optimization.cpp.o"
   "/home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/parameters.cpp" "/home/kang/dev/VI_Loam/build/LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/parameters.cpp.o"
+  "/home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/readpara.cpp" "/home/kang/dev/VI_Loam/build/LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/readpara.cpp.o"
   "/home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/utility/utility_rotation.cpp" "/home/kang/dev/VI_Loam/build/LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/utility/utility_rotation.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

@@ -1197,6 +1197,33 @@ src/parameters.cpp.s:
 	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/parameters.cpp.s
 .PHONY : src/parameters.cpp.s
 
+src/readpara.o: src/readpara.cpp.o
+
+.PHONY : src/readpara.o
+
+# target to build an object file
+src/readpara.cpp.o:
+	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/readpara.cpp.o
+.PHONY : src/readpara.cpp.o
+
+src/readpara.i: src/readpara.cpp.i
+
+.PHONY : src/readpara.i
+
+# target to preprocess a source file
+src/readpara.cpp.i:
+	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/readpara.cpp.i
+.PHONY : src/readpara.cpp.i
+
+src/readpara.s: src/readpara.cpp.s
+
+.PHONY : src/readpara.s
+
+# target to generate assembly for a file
+src/readpara.cpp.s:
+	cd /home/kang/dev/VI_Loam/build && $(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/readpara.cpp.s
+.PHONY : src/readpara.cpp.s
+
 src/transformFusion.o: src/transformFusion.cpp.o
 
 .PHONY : src/transformFusion.o
@@ -1340,6 +1367,9 @@ help:
 	@echo "... src/parameters.o"
 	@echo "... src/parameters.i"
 	@echo "... src/parameters.s"
+	@echo "... src/readpara.o"
+	@echo "... src/readpara.i"
+	@echo "... src/readpara.s"
 	@echo "... src/transformFusion.o"
 	@echo "... src/transformFusion.i"
 	@echo "... src/transformFusion.s"

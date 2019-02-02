@@ -2,6 +2,7 @@
 
 #include "../utility/utility_rotation.h"
 #include "../parameters.h"
+#include "../readpara.h"
 
 #include <ceres/ceres.h>
 using namespace Eigen;
@@ -12,12 +13,12 @@ class IntegrationBase
   // double ACC_N = 0.2;// accelerometer measurement noise standard deviation. #0.2   0.04
   // double GYR_N = 0.01;//gyroscope measurement noise standard deviation.     #0.05  0.004
   // double ACC_W = 1e-2 ;//accelerometer bias random work noise standard deviation.  #0.02
-  // double GYR_W = 1e-3;//gyroscope bias random work noise standard deviation.     #4.0e-5
+  // // double GYR_W = 1e-3;//gyroscope bias random work noise standard deviation.     #4.0e-5
 
-  double ACC_N = 0.08;// accelerometer measurement noise standard deviation. #0.2   0.04
-  double GYR_N = 0.004;//gyroscope measurement noise standard deviation.     #0.05  0.004
-  double ACC_W = 4e-5 ;//accelerometer bias random work noise standard deviation.  #0.02
-  double GYR_W = 2.0e-6;//gyroscope bias random work noise standard deviation.     #4.0e-5
+  // double ACC_N = 0.08;// accelerometer measurement noise standard deviation. #0.2   0.04
+  // double GYR_N = 0.004;//gyroscope measurement noise standard deviation.     #0.05  0.004
+  // double ACC_W = 4e-5 ;//accelerometer bias random work noise standard deviation.  #0.02
+  // double GYR_W = 2.0e-6;//gyroscope bias random work noise standard deviation.     #4.0e-5
 
   public:
     IntegrationBase() = delete;
@@ -37,7 +38,7 @@ class IntegrationBase
         noise.block<3, 3>(12, 12) =  (ACC_W * ACC_W) * Eigen::Matrix3d::Identity();
         noise.block<3, 3>(15, 15) =  (GYR_W * GYR_W) * Eigen::Matrix3d::Identity();
 
-        // std::cout<<"ACC_N"<<ACC_N<<endl;
+        std::cout<<"ACC_N"<<ACC_N<<endl;
     }
 
     void push_back(double dt, const Eigen::Vector3d &acc, const Eigen::Vector3d &gyr)

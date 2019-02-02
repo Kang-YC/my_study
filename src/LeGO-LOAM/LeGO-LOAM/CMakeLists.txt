@@ -109,7 +109,9 @@ add_executable(optimization
   src/optimization.cpp
   src/factor/pose_local_parameterization.cpp
   src/utility/utility_rotation.cpp
+  src/readpara.cpp
   src/parameters.cpp
+  
 
   )
 target_link_libraries(optimization ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES} ${CERES_LIBRARIES} ${Sophus_LIBRARIES})

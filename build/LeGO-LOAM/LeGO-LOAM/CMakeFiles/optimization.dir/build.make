@@ -129,9 +129,33 @@ LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/utility/utility_rotation.cpp
 LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/utility/utility_rotation.cpp.o.provides.build: LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/utility/utility_rotation.cpp.o
 
 
+LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/readpara.cpp.o: LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/flags.make
+LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/readpara.cpp.o: /home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/readpara.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kang/dev/VI_Loam/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/readpara.cpp.o"
+	cd /home/kang/dev/VI_Loam/build/LeGO-LOAM/LeGO-LOAM && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/optimization.dir/src/readpara.cpp.o -c /home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/readpara.cpp
+
+LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/readpara.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/optimization.dir/src/readpara.cpp.i"
+	cd /home/kang/dev/VI_Loam/build/LeGO-LOAM/LeGO-LOAM && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/readpara.cpp > CMakeFiles/optimization.dir/src/readpara.cpp.i
+
+LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/readpara.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/optimization.dir/src/readpara.cpp.s"
+	cd /home/kang/dev/VI_Loam/build/LeGO-LOAM/LeGO-LOAM && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/readpara.cpp -o CMakeFiles/optimization.dir/src/readpara.cpp.s
+
+LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/readpara.cpp.o.requires:
+
+.PHONY : LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/readpara.cpp.o.requires
+
+LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/readpara.cpp.o.provides: LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/readpara.cpp.o.requires
+	$(MAKE) -f LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/readpara.cpp.o.provides.build
+.PHONY : LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/readpara.cpp.o.provides
+
+LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/readpara.cpp.o.provides.build: LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/readpara.cpp.o
+
+
 LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/parameters.cpp.o: LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/flags.make
 LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/parameters.cpp.o: /home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/parameters.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kang/dev/VI_Loam/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/parameters.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kang/dev/VI_Loam/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/parameters.cpp.o"
 	cd /home/kang/dev/VI_Loam/build/LeGO-LOAM/LeGO-LOAM && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/optimization.dir/src/parameters.cpp.o -c /home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/parameters.cpp
 
 LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/parameters.cpp.i: cmake_force
@@ -158,6 +182,7 @@ optimization_OBJECTS = \
 "CMakeFiles/optimization.dir/src/optimization.cpp.o" \
 "CMakeFiles/optimization.dir/src/factor/pose_local_parameterization.cpp.o" \
 "CMakeFiles/optimization.dir/src/utility/utility_rotation.cpp.o" \
+"CMakeFiles/optimization.dir/src/readpara.cpp.o" \
 "CMakeFiles/optimization.dir/src/parameters.cpp.o"
 
 # External object files for target optimization
@@ -166,6 +191,7 @@ optimization_EXTERNAL_OBJECTS =
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/optimization.cpp.o
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/factor/pose_local_parameterization.cpp.o
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/utility/utility_rotation.cpp.o
+/home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/readpara.cpp.o
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/parameters.cpp.o
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build.make
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /opt/ros/kinetic/lib/libcv_bridge.so
@@ -876,7 +902,7 @@ optimization_EXTERNAL_OBJECTS =
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/x86_64-linux-gnu/libsuitesparseconfig.so
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: /usr/lib/x86_64-linux-gnu/librt.so
 /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization: LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kang/dev/VI_Loam/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kang/dev/VI_Loam/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable /home/kang/dev/VI_Loam/devel/lib/lego_loam/optimization"
 	cd /home/kang/dev/VI_Loam/build/LeGO-LOAM/LeGO-LOAM && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/optimization.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -887,6 +913,7 @@ LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/build: /home/kang/dev/VI_Loam/de
 LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/requires: LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/optimization.cpp.o.requires
 LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/requires: LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/factor/pose_local_parameterization.cpp.o.requires
 LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/requires: LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/utility/utility_rotation.cpp.o.requires
+LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/requires: LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/readpara.cpp.o.requires
 LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/requires: LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/src/parameters.cpp.o.requires
 
 .PHONY : LeGO-LOAM/LeGO-LOAM/CMakeFiles/optimization.dir/requires

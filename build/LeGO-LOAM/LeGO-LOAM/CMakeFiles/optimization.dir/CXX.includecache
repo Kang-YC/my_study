@@ -6,6 +6,24 @@
 
 #IncludeRegexTransform: 
 
+/home/kang/dev/VI_Loam/devel/include/cloud_msgs/cloud_info.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
+-
+
 /home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/include/CPUTimer.h
 iostream
 -
@@ -137,6 +155,8 @@ ceres/ceres.h
 /home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/utility/utility_rotation.h
 ../parameters.h
 /home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/parameters.h
+../readpara.h
+/home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/readpara.h
 ceres/ceres.h
 -
 
@@ -201,6 +221,8 @@ mutex
 -
 condition_variable
 -
+readpara.h
+/home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/readpara.h
 
 /home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/parameters.cpp
 parameters.h
@@ -220,6 +242,26 @@ opencv2/opencv.hpp
 opencv2/core/eigen.hpp
 -
 fstream
+-
+
+/home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/readpara.cpp
+readpara.h
+/home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/readpara.h
+iostream
+-
+stdexcept
+-
+sstream
+-
+fstream
+-
+
+/home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/readpara.h
+ros/ros.h
+-
+eigen3/Eigen/Dense
+-
+opencv2/core/eigen.hpp
 -
 
 /home/kang/dev/VI_Loam/src/LeGO-LOAM/LeGO-LOAM/src/utility/utility_rotation.cpp
