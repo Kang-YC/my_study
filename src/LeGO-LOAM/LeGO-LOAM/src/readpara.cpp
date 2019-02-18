@@ -31,6 +31,8 @@ double PI = 3.1415926;
 
 double ACC_N, ACC_W;
 double GYR_N, GYR_W;
+double LIDAR_N;
+
 
 void readParameter(const char* filename)
 {
@@ -167,6 +169,12 @@ void readParameter(const char* filename)
                 buffer >>paraFlag;
                 setBiasConst = paraFlag;
                 cout<<"setBiasConst: "<<setBiasConst<<endl;
+            }
+               else if(paramName.compare("LIDAR_N") == 0)
+            {
+                buffer >>paraValue;
+                LIDAR_N = paraValue;
+                cout<<"LIDAR_N: "<<LIDAR_N<<endl;
             }
             else
                 throw std::runtime_error(std::string("unknown parameter"));

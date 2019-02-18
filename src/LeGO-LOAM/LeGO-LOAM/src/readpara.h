@@ -9,6 +9,7 @@ using namespace Eigen;
 
 extern double ACC_N, ACC_W;
 extern double GYR_N, GYR_W;
+extern double LIDAR_N;
 
 
 extern double ex_roll;

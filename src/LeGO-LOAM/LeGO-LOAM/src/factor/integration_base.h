@@ -38,7 +38,7 @@ class IntegrationBase
         noise.block<3, 3>(12, 12) =  (ACC_W * ACC_W) * Eigen::Matrix3d::Identity();
         noise.block<3, 3>(15, 15) =  (GYR_W * GYR_W) * Eigen::Matrix3d::Identity();
 
-        std::cout<<"ACC_N"<<ACC_N<<endl;
+      //  std::cout<<"ACC_N"<<ACC_N<<endl;
     }
 
     void push_back(double dt, const Eigen::Vector3d &acc, const Eigen::Vector3d &gyr)

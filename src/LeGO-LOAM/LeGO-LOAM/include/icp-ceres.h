@@ -403,7 +403,7 @@ struct PointToPointError_EigenQuaternion{
     const Eigen::Vector3d& p_dst;
     const Eigen::Vector3d& p_src;
     const float s;
-    double LIDAR_N =1000;
+   // double LIDAR_N =1000;
 
     PointToPointError_EigenQuaternion(const Eigen::Vector3d &dst, const Eigen::Vector3d &src, const float &s_) :
         p_dst(dst), p_src(src),s(s_)

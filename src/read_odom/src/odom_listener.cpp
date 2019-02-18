@@ -6,11 +6,15 @@
 #include <tf/transform_datatypes.h>
 #include <string>
 #include <iomanip>
+#include <Eigen/Core>
+#include <Eigen/Dense>
 
 
 #include "sensor_msgs/Imu.h"
 #include "std_msgs/String.h"
 using namespace std;
+using namespace Eigen;
+const double PI = 3.1415926;
 
 
 ofstream myfile1;
@@ -29,9 +33,12 @@ ofstream myfile6;
  */
 void chatterCallback_lidar(const nav_msgs::Odometry::ConstPtr& msg)
 {
-double roll, pitch, yaw;
+  double roll, pitch, yaw;
   geometry_msgs::Quaternion geoQuat = msg->pose.pose.orientation;
   tf::Matrix3x3(tf::Quaternion(geoQuat.z, -geoQuat.x, -geoQuat.y, geoQuat.w)).getRPY(roll, pitch, yaw);
+  roll = roll*180 /PI;
+  pitch = -pitch*180 /PI;
+  yaw = -yaw*180 /PI;
   /*ROS_INFO_NAMED("odomrec", "Seq: %d ", msg->header.seq);
   ROS_INFO_NAMED("odomrec", "Position-> x: %f , y: %f , z: %f ", msg->pose.pose.position.x,msg->pose.pose.position.y, msg->pose.pose.position.z);
   ROS_INFO_NAMED("odomrec", "Orientation-> x: [%f], y: [%f], z: [%f], w: [%f]", msg->pose.pose.orientation.x, msg->pose.pose.orientation.y, msg->pose.pose.orientation.z, msg->pose.pose.orientation.w);
@@ -40,6 +47,7 @@ double roll, pitch, yaw;
   //ROS_INFO_NAMED("odomrec", "Orientation-> roll: %f, pitch: %f, yaw: %f ", roll, pitch, yaw);
   myfile1<< msg-> header.stamp<<",";
   myfile1 <<msg->pose.pose.position.x << "," << msg->pose.pose.position.y << "," << msg->pose.pose.position.z;
+  myfile1 <<"," << roll << "," << pitch << "," << yaw ;
  
 	//myfile << msg->pose.pose.orientation.x << ";" << msg->pose.pose.orientation.y << ";" << msg->pose.pose.orientation.z << ";" << msg->pose.pose.orientation.w;
 	//myfile << msg->twist.twist.linear.x,msg->twist.twist.angular.z;
@@ -66,16 +74,23 @@ void chatterCallback_gps(const sensor_msgs::NavSatFix::ConstPtr& msg)
 
 void chatterCallback_odom(const nav_msgs::Odometry::ConstPtr& msg)
 {
-  double odom_roll,odom_pitch,odom_yaw;
-  geometry_msgs::Quaternion geoQuat = msg->pose.pose.orientation;
-  tf::Matrix3x3(tf::Quaternion(geoQuat.z, -geoQuat.x, -geoQuat.y, geoQuat.w)).getRPY(odom_roll, odom_roll, odom_roll);
+  
+  // geometry_msgs::Quaternion geoQuat = msg->pose.pose.orientation;
+  // tf::Matrix3x3(tf::Quaternion(geoQuat.z, -geoQuat.x, -geoQuat.y, geoQuat.w)).getRPY(odom_roll, odom_roll, odom_roll);
   //ROS_INFO_NAMED("Odom", "Orientation-> roll: %f, pitch: %f, yaw: %f ", odom_roll, odom_pitch, odom_yaw);
+  double roll, pitch, yaw;
+  tf::Quaternion orientation;
+  tf::quaternionMsgToTF(msg->pose.pose.orientation, orientation);
+  tf::Matrix3x3(orientation).getRPY(roll, pitch, yaw);
+  roll = roll*180 /PI;
+  pitch = pitch*180 /PI;
+  yaw = yaw*180 /PI;
   ROS_DEBUG("odom success");
  
   //myfile3<<"Odom;";
   myfile3<< msg-> header.stamp<<",";
   myfile3 <<msg->pose.pose.position.x<< "," <<msg->pose.pose.position.y<< ","<<msg->pose.pose.position.z;
-  myfile3 <<","<< odom_roll << "," << odom_pitch << "," << odom_yaw;
+  myfile3 <<","<< roll << "," << pitch << "," << yaw;
   myfile3 << "\n";
 }
 
@@ -100,9 +115,21 @@ void chatterCallback_status(const std_msgs::String::ConstPtr& msg)
 
 void chatterCallback_coupled(const nav_msgs::Odometry::ConstPtr& msg)
 {
-double roll, pitch, yaw;
-  geometry_msgs::Quaternion geoQuat = msg->pose.pose.orientation;
-  tf::Matrix3x3(tf::Quaternion(geoQuat.z, -geoQuat.x, -geoQuat.y, geoQuat.w)).getRPY(roll, pitch, yaw);
+  double roll, pitch, yaw;
+  // Eigen::Quaterniond tmp_Q ;
+  // tmp_Q={msg->pose.pose.orientation.w,msg->pose.pose.orientation.x,msg->pose.pose.orientation.y,msg->pose.pose.orientation.z};  
+  // Vector3d coupled_euler =  tmp_Q.toRotationMatrix().eulerAngles(0,1,2);
+  tf::Quaternion orientation;
+  tf::quaternionMsgToTF(msg->pose.pose.orientation, orientation);
+  tf::Matrix3x3(orientation).getRPY(roll, pitch, yaw);
+ // Vector3d coupled_euler =  tmp_Q.toRotationMatrix().eulerAngles(2,1,0);
+  roll = roll*180 /PI;
+  pitch = pitch*180 /PI;
+  yaw = yaw*180 /PI;
+
+  // roll = coupled_euler[0]*180 /PI;
+  // pitch = coupled_euler[1]*180 /PI;
+  // yaw = coupled_euler[2]*180 /PI;
   /*ROS_INFO_NAMED("odomrec", "Seq: %d ", msg->header.seq);
   ROS_INFO_NAMED("odomrec", "Position-> x: %f , y: %f , z: %f ", msg->pose.pose.position.x,msg->pose.pose.position.y, msg->pose.pose.position.z);
   ROS_INFO_NAMED("odomrec", "Orientation-> x: [%f], y: [%f], z: [%f], w: [%f]", msg->pose.pose.orientation.x, msg->pose.pose.orientation.y, msg->pose.pose.orientation.z, msg->pose.pose.orientation.w);
@@ -111,6 +138,7 @@ double roll, pitch, yaw;
   //ROS_INFO_NAMED("odomrec", "Orientation-> roll: %f, pitch: %f, yaw: %f ", roll, pitch, yaw);
   myfile4<< msg-> header.stamp<<",";
   myfile4 <<msg->pose.pose.position.x << "," << msg->pose.pose.position.y << "," << msg->pose.pose.position.z;
+  myfile4 <<"," <<roll << "," << pitch << "," << yaw;
  
   //myfile << msg->pose.pose.orientation.x << ";" << msg->pose.pose.orientation.y << ";" << msg->pose.pose.orientation.z << ";" << msg->pose.pose.orientation.w;
   //myfile << msg->twist.twist.linear.x,msg->twist.twist.angular.z;
@@ -119,7 +147,7 @@ double roll, pitch, yaw;
 
 void chatterCallback_imupropagate(const nav_msgs::Odometry::ConstPtr& msg)
 {
-double roll, pitch, yaw;
+  double roll, pitch, yaw;
   geometry_msgs::Quaternion geoQuat = msg->pose.pose.orientation;
   tf::Matrix3x3(tf::Quaternion(geoQuat.z, -geoQuat.x, -geoQuat.y, geoQuat.w)).getRPY(roll, pitch, yaw);
   /*ROS_INFO_NAMED("odomrec", "Seq: %d ", msg->header.seq);
@@ -139,18 +167,25 @@ double roll, pitch, yaw;
 
 void chatterCallback_imuupdate(const nav_msgs::Odometry::ConstPtr& msg)
 {
-double roll, pitch, yaw;
-  geometry_msgs::Quaternion geoQuat = msg->pose.pose.orientation;
-  tf::Matrix3x3(tf::Quaternion(geoQuat.z, -geoQuat.x, -geoQuat.y, geoQuat.w)).getRPY(roll, pitch, yaw);
+// double roll, pitch, yaw;
+//   geometry_msgs::Quaternion geoQuat = msg->pose.pose.orientation;
+//   tf::Matrix3x3(tf::Quaternion(geoQuat.z, -geoQuat.x, -geoQuat.y, geoQuat.w)).getRPY(roll, pitch, yaw);
   /*ROS_INFO_NAMED("odomrec", "Seq: %d ", msg->header.seq);
   ROS_INFO_NAMED("odomrec", "Position-> x: %f , y: %f , z: %f ", msg->pose.pose.position.x,msg->pose.pose.position.y, msg->pose.pose.position.z);
   ROS_INFO_NAMED("odomrec", "Orientation-> x: [%f], y: [%f], z: [%f], w: [%f]", msg->pose.pose.orientation.x, msg->pose.pose.orientation.y, msg->pose.pose.orientation.z, msg->pose.pose.orientation.w);
   ROS_INFO_NAMED("odomrec", "Vel-> Linear: [%f], Angular: [%f]", msg->twist.twist.linear.x,msg->twist.twist.angular.z);*/
   //ROS_INFO_NAMED("odomrec", "Position-> x: %f, y: %f, z: %f ", msg->pose.pose.position.x,msg->pose.pose.position.y, msg->pose.pose.position.z);
   //ROS_INFO_NAMED("odomrec", "Orientation-> roll: %f, pitch: %f, yaw: %f ", roll, pitch, yaw);
+  double roll, pitch, yaw;
+  tf::Quaternion orientation;
+  tf::quaternionMsgToTF(msg->pose.pose.orientation, orientation);
+  tf::Matrix3x3(orientation).getRPY(roll, pitch, yaw);
+  roll = roll*180 /PI;
+  pitch = pitch*180 /PI;
+  yaw = yaw*180 /PI;
   myfile6<< msg-> header.stamp<<",";
   myfile6 <<msg->pose.pose.position.x << "," << msg->pose.pose.position.y << "," << msg->pose.pose.position.z;
- 
+  myfile6 <<"," <<roll << "," << pitch << "," << yaw;
   //myfile << msg->pose.pose.orientation.x << ";" << msg->pose.pose.orientation.y << ";" << msg->pose.pose.orientation.z << ";" << msg->pose.pose.orientation.w;
   //myfile << msg->twist.twist.linear.x,msg->twist.twist.angular.z;
   myfile6<< "\n";

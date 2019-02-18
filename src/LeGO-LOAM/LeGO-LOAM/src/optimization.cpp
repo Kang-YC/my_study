@@ -541,12 +541,14 @@ void predict(const sensor_msgs::ImuConstPtr &imu_msg)// propogate
     Eigen::Vector3d angular_velocity{rx, ry, rz};
 
 
-    Eigen::Vector3d un_acc_0 = tmp_Q * q_imutolidar *(acc_0 - tmp_Ba) - G;
+ //   Eigen::Vector3d un_acc_0 = tmp_Q * q_imutolidar *(acc_0 - tmp_Ba) - G;
+    Eigen::Vector3d un_acc_0 = tmp_Q * (q_imutolidar *acc_0 - tmp_Ba) - G; //ba = q*ba
     //Eigen::Vector3d un_acc_0 = tmp_Q * (acc_0 - tmp_Ba) - G;//世界坐标系下 上一时刻的 un_acc_0为车加速度（消除了重力） acc_0为读到的
     Eigen::Vector3d un_gyr = 0.5 * (gyr_0 + angular_velocity) - tmp_Bg;//角速度 un_gyr为车的
     tmp_Q = tmp_Q * Utility::deltaQ(un_gyr * dt);//q=q*delta(w*t)
 
-    Eigen::Vector3d un_acc_1 = tmp_Q *q_imutolidar* (linear_acceleration - tmp_Ba) - G;//当前时刻加速度
+    //Eigen::Vector3d un_acc_1 = tmp_Q *q_imutolidar* (linear_acceleration - tmp_Ba) - G;//当前时刻加速度
+    Eigen::Vector3d un_acc_1 = tmp_Q *(q_imutolidar* linear_acceleration - tmp_Ba) - G;
     //Eigen::Vector3d un_acc_1 = tmp_Q * (linear_acceleration - tmp_Ba) - G;
 
     Eigen::Vector3d un_acc = 0.5 * (un_acc_0 + un_acc_1);//中值 上一时刻加速度和当前时刻计算
@@ -992,10 +994,12 @@ void processIMU(double dt, const Vector3d &linear_acceleration, const Vector3d &
         angular_velocity_buf[frame_count].push_back(angular_velocity);
 
         int j = frame_count;         
-        Vector3d un_acc_0 = Ri[j] * R_imutolidar * (acc_0 - Bai[j]) - G;//按前一帧
+       // Vector3d un_acc_0 = Ri[j] * R_imutolidar * (acc_0 - Bai[j]) - G;//按前一帧
+        Vector3d un_acc_0 = Ri[j] * (acc_0 - Bai[j]) - G;//按前一帧
         Vector3d un_gyr = 0.5 * (gyr_0 + angular_velocity) - Bgi[j];//前一帧与当前帧结合
         Ri[j] *= Utility::deltaQ(un_gyr * dt).toRotationMatrix();
-        Vector3d un_acc_1 = Ri[j] *R_imutolidar * (linear_acceleration - Bai[j]) - G;
+      //  Vector3d un_acc_1 = Ri[j] *R_imutolidar * (linear_acceleration - Bai[j]) - G;
+        Vector3d un_acc_1 = Ri[j]  * (linear_acceleration - Bai[j]) - G;
         Vector3d un_acc = 0.5 * (un_acc_0 + un_acc_1);
       //  ROS_DEBUG("un_acc %f %f %f", un_acc[0],un_acc[1],un_acc[2]);
         Pi[j] +=  dt * Vi[j] + 0.5 * dt * dt * un_acc;
@@ -1130,7 +1134,7 @@ void initialization()
     }
       ROS_DEBUG("initialization V %f %f %f", Vs[WINDOW_SIZE][0], Vs[WINDOW_SIZE][1], Vs[WINDOW_SIZE][2]);
       ROS_DEBUG("initialization Bas %f %f %f", Bas[WINDOW_SIZE][0], Bas[WINDOW_SIZE][1], Bas[WINDOW_SIZE][2]);
-      ROS_DEBUG("initialization Bas %f %f %f", Bgs[WINDOW_SIZE][0], Bgs[WINDOW_SIZE][1], Bgs[WINDOW_SIZE][2]);
+      ROS_DEBUG("initialization Bgs %f %f %f", Bgs[WINDOW_SIZE][0], Bgs[WINDOW_SIZE][1], Bgs[WINDOW_SIZE][2]);
 
 
 
@@ -1314,6 +1318,8 @@ void vector2double(){
     ROS_DEBUG("R-origin %f %f %f",origin_euler[0],origin_euler[1],origin_euler[2]);
     ROS_DEBUG("V-origin %f %f %f",Vs[WINDOW_SIZE][0],Vs[WINDOW_SIZE][1],Vs[WINDOW_SIZE][2]);
     ROS_DEBUG("Bas-origin %f %f %f",Bas[WINDOW_SIZE][0],Bas[WINDOW_SIZE][1],Bas[WINDOW_SIZE][2]);
+
+    ROS_DEBUG("Bas-origin real %f %f %f",(R_imutolidar.inverse()*Bas[WINDOW_SIZE])[0],(R_imutolidar.inverse()*Bas[WINDOW_SIZE])[1],(R_imutolidar.inverse()*Bas[WINDOW_SIZE])[2]);
     ROS_DEBUG("Bgs-origin %f %f %f",Bgs[WINDOW_SIZE][0],Bgs[WINDOW_SIZE][1],Bgs[WINDOW_SIZE][2]);
 
 }

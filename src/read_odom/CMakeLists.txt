@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(read_odom)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -O3")
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
 
@@ -134,6 +135,23 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/read_odom_node.cpp)
+MESSAGE("---------------Eigen-------------------")
+FIND_PACKAGE(Eigen3 REQUIRED)
+INCLUDE_DIRECTORIES(${EIGEN3_INCLUDE_DIR})
+SET(EIGEN_INCLUDE_DIR ${EIGEN3_INCLUDE_DIR}) #needed for ceres for old version of cmake/FindEigen scripts
+MESSAGE("Eigen3_INCLUDE_DIR ${EIGEN3_INCLUDE_DIR}")
+
+
+OPTION(SUITESPARSE "Enable SuiteSparse." OFF)
+OPTION(EIGENSPARSE
+  "Enable the use of Eigen as a sparse linear algebra library for
+   solving the nonlinear least squares problems. Enabling this
+   option will result in an LGPL licensed version of Ceres Solver
+   as the Simplicial Cholesky factorization in Eigen is licensed under the LGPL.
+   This does not affect the covariance estimation algorithm, as it
+   depends on the sparse QR factorization algorithm, which is licensed
+   under the MPL."
+  ON)
 
 add_executable(odom_listener src/odom_listener.cpp)
 add_dependencies(odom_listener nav_msgs_generate_messages_cpp)
