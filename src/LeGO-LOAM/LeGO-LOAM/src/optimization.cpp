@@ -179,7 +179,7 @@ public:
   subKeyPoses = n.subscribe<sensor_msgs::PointCloud2>("/key_pose_origin", 5, &Optimization::keyPosesHandler, this);
   subLaserCloudOri = n.subscribe<sensor_msgs::PointCloud2>("/laser_cloud_ori", 5, &Optimization::laserCloudOriHandler, this);
   subLaserCloudProj = n.subscribe<sensor_msgs::PointCloud2>("/laser_cloud_proj", 5, &Optimization::laserCloudProjHandler, this);
-  subImu = n.subscribe<sensor_msgs::Imu> ("/mti/sensor/imu", 1000, &Optimization::imuHandler, this ,ros::TransportHints().tcpNoDelay());
+  subImu = n.subscribe<sensor_msgs::Imu> ("/imu/data", 1000, &Optimization::imuHandler, this ,ros::TransportHints().tcpNoDelay());
   //subImu = n.subscribe<sensor_msgs::Imu> (imuTopic, 1000, &Optimization::imuHandler, this ,ros::TransportHints().tcpNoDelay());
 
   pubCoupledOdometry = n.advertise<nav_msgs::Odometry>("/coupled_odometry", 10);
@@ -739,7 +739,7 @@ void currrentPoseProcess()
   if(frame_count!=0)
   {
     Eigen::Vector3d V_temp = (Ps[frame_count]-Ps[frame_count-1])/dt;
-    ROS_DEBUG("Vs[WINDOW_SIZE] %f %f %f  ",V_temp[0], V_temp[1], V_temp[2]);
+    ROS_DEBUG("Vs %f %f %f  ",V_temp[0], V_temp[1], V_temp[2]);
     ROS_DEBUG("dt %f  ",dt);
     
 
@@ -751,7 +751,7 @@ void currrentPoseProcess()
     else
     {
      Vs[WINDOW_SIZE] =V_temp;
-     ROS_DEBUG("Vs[WINDOW_SIZE] %f %f %f  ",Vs[WINDOW_SIZE][0], Vs[WINDOW_SIZE][1], Vs[WINDOW_SIZE][2]);
+     ROS_DEBUG("Vs %f %f %f  ",Vs[WINDOW_SIZE][0], Vs[WINDOW_SIZE][1], Vs[WINDOW_SIZE][2]);
     }
 
   }
@@ -1008,8 +1008,8 @@ void processIMU(double dt, const Vector3d &linear_acceleration, const Vector3d &
         Vector3d Ri_euler =  Ri[j].eulerAngles(2,1,0);
     
 
-      //  ROS_DEBUG("Pi imu %f %f %f" ,Pi[frame_count].x(),Pi[frame_count].y(),Pi[frame_count].z());
-      //  ROS_DEBUG("Ri imu %f %f %f" ,Ri_euler[0]*180/3.14, Ri_euler[1]*180/3.14 , Ri_euler[2]*180/3.14);
+       ROS_DEBUG("Pi imu %f %f %f" ,Pi[frame_count].x(),Pi[frame_count].y(),Pi[frame_count].z());
+       ROS_DEBUG("Ri imu %f %f %f" ,Ri_euler[0]*180/3.14, Ri_euler[1]*180/3.14 , Ri_euler[2]*180/3.14);
         //pubImuOdometry();
     }
     acc_0 = linear_acceleration;
