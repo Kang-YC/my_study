@@ -45,9 +45,9 @@ void chatterCallback_lidar(const nav_msgs::Odometry::ConstPtr& msg)
   ROS_INFO_NAMED("odomrec", "Vel-> Linear: [%f], Angular: [%f]", msg->twist.twist.linear.x,msg->twist.twist.angular.z);*/
   //ROS_INFO_NAMED("odomrec", "Position-> x: %f, y: %f, z: %f ", msg->pose.pose.position.x,msg->pose.pose.position.y, msg->pose.pose.position.z);
   //ROS_INFO_NAMED("odomrec", "Orientation-> roll: %f, pitch: %f, yaw: %f ", roll, pitch, yaw);
-  myfile1<< msg-> header.stamp<<",";
-  myfile1 <<msg->pose.pose.position.x << "," << msg->pose.pose.position.y << "," << msg->pose.pose.position.z;
-  myfile1 <<"," << roll << "," << pitch << "," << yaw ;
+  myfile1<< msg-> header.stamp<<" ";
+  myfile1 <<msg->pose.pose.position.x << " " << 0<< " " << msg->pose.pose.position.z;
+  myfile1 <<" " << msg->pose.pose.orientation.x << " " << msg->pose.pose.orientation.y << " " << msg->pose.pose.orientation.z<<" "<<msg->pose.pose.orientation.w ;
  
 	//myfile << msg->pose.pose.orientation.x << ";" << msg->pose.pose.orientation.y << ";" << msg->pose.pose.orientation.z << ";" << msg->pose.pose.orientation.w;
 	//myfile << msg->twist.twist.linear.x,msg->twist.twist.angular.z;
@@ -88,10 +88,13 @@ void chatterCallback_odom(const nav_msgs::Odometry::ConstPtr& msg)
   ROS_DEBUG("odom success");
  
   //myfile3<<"Odom;";
-  myfile3<< msg-> header.stamp<<",";
-  myfile3 <<msg->pose.pose.position.x<< "," <<msg->pose.pose.position.y<< ","<<msg->pose.pose.position.z;
-  myfile3 <<","<< roll << "," << pitch << "," << yaw;
-  myfile3 << "\n";
+  myfile3<< msg-> header.stamp<<" ";
+  myfile3 <<msg->pose.pose.position.x<< " " <<msg->pose.pose.position.y<< " "<<msg->pose.pose.position.z;
+ myfile3 <<" " << msg->pose.pose.orientation.x << " " << msg->pose.pose.orientation.y << " " << msg->pose.pose.orientation.z<<" "<<msg->pose.pose.orientation.w ;
+ 
+	//myfile << msg->pose.pose.orientation.x << ";" << msg->pose.pose.orientation.y << ";" << msg->pose.pose.orientation.z << ";" << msg->pose.pose.orientation.w;
+	//myfile << msg->twist.twist.linear.x,msg->twist.twist.angular.z;
+	myfile3<< "\n";
 }
 
 
@@ -136,13 +139,13 @@ void chatterCallback_coupled(const nav_msgs::Odometry::ConstPtr& msg)
   ROS_INFO_NAMED("odomrec", "Vel-> Linear: [%f], Angular: [%f]", msg->twist.twist.linear.x,msg->twist.twist.angular.z);*/
   //ROS_INFO_NAMED("odomrec", "Position-> x: %f, y: %f, z: %f ", msg->pose.pose.position.x,msg->pose.pose.position.y, msg->pose.pose.position.z);
   //ROS_INFO_NAMED("odomrec", "Orientation-> roll: %f, pitch: %f, yaw: %f ", roll, pitch, yaw);
-  myfile4<< msg-> header.stamp<<",";
-  myfile4 <<msg->pose.pose.position.x << "," << msg->pose.pose.position.y << "," << msg->pose.pose.position.z;
-  myfile4 <<"," <<roll << "," << pitch << "," << yaw;
+ myfile4<< msg-> header.stamp<<" ";
+  myfile4 <<msg->pose.pose.position.x<< " " <<0<< " "<<msg->pose.pose.position.z;
+ myfile4 <<" " << msg->pose.pose.orientation.x << " " << msg->pose.pose.orientation.y << " " << msg->pose.pose.orientation.z<<" "<<msg->pose.pose.orientation.w ;
  
-  //myfile << msg->pose.pose.orientation.x << ";" << msg->pose.pose.orientation.y << ";" << msg->pose.pose.orientation.z << ";" << msg->pose.pose.orientation.w;
-  //myfile << msg->twist.twist.linear.x,msg->twist.twist.angular.z;
-  myfile4<< "\n";
+	//myfile << msg->pose.pose.orientation.x << ";" << msg->pose.pose.orientation.y << ";" << msg->pose.pose.orientation.z << ";" << msg->pose.pose.orientation.w;
+	//myfile << msg->twist.twist.linear.x,msg->twist.twist.angular.z;
+	myfile4<< "\n";
 }
 
 void chatterCallback_imupropagate(const nav_msgs::Odometry::ConstPtr& msg)
@@ -214,7 +217,7 @@ int main(int argc, char **argv)
    */
   ros::NodeHandle n;
 
-	myfile1.open("/home/kang/data/lidar.txt");
+	myfile1.open("/home/kang/data/lego.txt");
   myfile1.precision(10);
   myfile2.open("/home/kang/data/gps.csv");
   myfile2.precision(10);
