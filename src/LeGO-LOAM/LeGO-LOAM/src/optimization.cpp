@@ -545,7 +545,7 @@ void predict(const sensor_msgs::ImuConstPtr &imu_msg)// propogate
     double dz = imu_msg->linear_acceleration.z;
     Eigen::Vector3d linear_acceleration{dx, dy, dz};
     ROS_DEBUG("linear_acceleration %f %f %f", dx, dy, dz);
-    linear_acceleration = q_imutolidar*linear_acceleration;
+    linear_acceleration = q_imutolidar*linear_acceleration*scale;
 
     ROS_DEBUG("linear_acceleration1 %f %f %f %f", linear_acceleration[0], linear_acceleration[1], linear_acceleration[2] ,dt);
 
@@ -554,17 +554,17 @@ void predict(const sensor_msgs::ImuConstPtr &imu_msg)// propogate
     double rz = imu_msg->angular_velocity.z;
     Eigen::Vector3d angular_velocity{rx, ry, rz};
     ROS_INFO("angular_velocity %f %f %f", rx, ry, rz);
-    angular_velocity = q_imutolidar * angular_velocity;
+    angular_velocity = q_imutolidar * angular_velocity* scale;
     ROS_INFO("angular_velocity1 %f %f %f", angular_velocity[0], angular_velocity[1], angular_velocity[2]);
 
-    double s = 2;
+
 
 
  //   Eigen::Vector3d un_acc_0 = tmp_Q * q_imutolidar *(acc_0 - tmp_Ba) - G;
     Eigen::Vector3d un_acc_0 = tmp_Q * (acc_0 - tmp_Ba) - G; //ba = q*ba
     //Eigen::Vector3d un_acc_0 = tmp_Q * (acc_0 - tmp_Ba) - G;//世界坐标系下 上一时刻的 un_acc_0为车加速度（消除了重力） acc_0为读到的
     Eigen::Vector3d un_gyr = 0.5 * (gyr_0 + angular_velocity) - tmp_Bg;//角速度 un_gyr为车的
-    tmp_Q = tmp_Q * Utility::deltaQ(un_gyr * dt * s);//q=q*delta(w*t)
+    tmp_Q = tmp_Q * Utility::deltaQ(un_gyr * dt );//q=q*delta(w*t)
 
     //Eigen::Vector3d un_acc_1 = tmp_Q *q_imutolidar* (linear_acceleration - tmp_Ba) - G;//当前时刻加速度
     Eigen::Vector3d un_acc_1 = tmp_Q *( linear_acceleration - tmp_Ba) - G;
@@ -746,7 +746,7 @@ void currrentPoseProcess()
   ROS_INFO("Ps lidar %f %f %f %f  ",x, y, z, timeLidarCur);
   ROS_DEBUG("Rs lidar %f %f %f" ,curRx_euler[0]*180/3.14, curRx_euler[1]*180/3.14 , curRx_euler[2]*180/3.14);
   
-  if(frame_count <= WINDOW_SIZE){// framecount==index 0-9
+  if(frame_count < WINDOW_SIZE){// framecount==index 0-9
     Ps[frame_count] = cur_t;
     Rs[frame_count] = curRx;
    // ROS_DEBUG("Ps[currentInd] %f %f %f  ",Ps[currentInd][0], Ps[currentInd][1], Ps[currentInd][2]);
@@ -761,20 +761,25 @@ void currrentPoseProcess()
 
   if(frame_count!=0)
   {
+
+    if(frame_count < WINDOW_SIZE)
+    {// framecount==index 0-9
     Eigen::Vector3d V_temp = (Ps[frame_count]-Ps[frame_count-1])/dt;  
     ROS_DEBUG("Vs %f %f %f  ",V_temp[0], V_temp[1], V_temp[2]);
     ROS_DEBUG("dt %f  ",dt);
-    
-
-    if(frame_count <= WINDOW_SIZE)
-    {// framecount==index 0-9
     Vs[frame_count] =V_temp;
    // ROS_DEBUG("Ps[currentInd] %f %f %f  ",Ps[currentInd][0], Ps[currentInd][1], Ps[currentInd][2]);
     }
     else
     {
+     Eigen::Vector3d V_temp = (Ps[WINDOW_SIZE]-Ps[WINDOW_SIZE-1])/dt;  
+     
+     ROS_DEBUG("Ps1 dt %f %f %f %f %f %f %f ",dt,Ps[WINDOW_SIZE][0],Ps[WINDOW_SIZE][1],Ps[WINDOW_SIZE][2],Ps[WINDOW_SIZE-1][0],Ps[WINDOW_SIZE-1][1],Ps[WINDOW_SIZE-1][2]);
+     
+     
      Vs[WINDOW_SIZE] =V_temp;
      ROS_DEBUG("Vs %f %f %f  ",Vs[WINDOW_SIZE][0], Vs[WINDOW_SIZE][1], Vs[WINDOW_SIZE][2]);
+     
     }
 
   }
@@ -960,8 +965,8 @@ void imuProcess(std::vector <sensor_msgs::ImuConstPtr> &IMU_Cur)
 
         Eigen::Vector3d linear_acceleration{dx, dy, dz};
         Eigen::Vector3d angular_velocity{rx, ry, rz};
-        linear_acceleration = R_imutolidar * linear_acceleration;
-        angular_velocity = R_imutolidar * angular_velocity;
+        linear_acceleration = R_imutolidar * linear_acceleration*scale;
+        angular_velocity = R_imutolidar * angular_velocity *scale;
         
         processIMU(dt, linear_acceleration, angular_velocity);//imu propogate 得位置 速度初始值 直到img时刻
      //  printf("imu: dt:%f a: %f %f %f w: %f %f %f\n",dt, dx, dy, dz, rx, ry, rz);
@@ -985,9 +990,9 @@ void imuProcess(std::vector <sensor_msgs::ImuConstPtr> &IMU_Cur)
         rz = w1 * rz + w2 * imu_msg->angular_velocity.z;
 
         Eigen::Vector3d linear_acceleration{dx, dy, dz};
-        linear_acceleration = R_imutolidar * linear_acceleration;
+        linear_acceleration = R_imutolidar * linear_acceleration *scale;
         Eigen::Vector3d angular_velocity{rx, ry, rz};
-        angular_velocity = R_imutolidar * angular_velocity;
+        angular_velocity = R_imutolidar * angular_velocity *scale;
 
         processIMU(dt_1, linear_acceleration, angular_velocity);
                    // printf("dimu: dt:%f a: %f %f %f w: %f %f %f\n",dt_1, dx, dy, dz, rx, ry, rz);
@@ -1022,15 +1027,14 @@ void processIMU(double dt, const Vector3d &linear_acceleration, const Vector3d &
         angular_velocity_buf[frame_count].push_back(angular_velocity);
 
         int j = frame_count;
-
-        double s = 2;         
+       
        // Vector3d un_acc_0 = Ri[j] * R_imutolidar * (acc_0 - Bai[j]) - G;//按前一帧
         Vector3d un_acc_0 = Ri[j] * (acc_0 - Bai[j]) - G;//按前一帧
         Vector3d un_gyr = 0.5 * (gyr_0 + angular_velocity) - Bgi[j];//前一帧与当前帧结合
-        Ri[j] *= Utility::deltaQ(un_gyr * dt * s).toRotationMatrix();
+        Ri[j] *= Utility::deltaQ(un_gyr * dt ).toRotationMatrix();
       //  Vector3d un_acc_1 = Ri[j] *R_imutolidar * (linear_acceleration - Bai[j]) - G;
         Vector3d un_acc_1 = Ri[j]  * (linear_acceleration - Bai[j]) - G;
-        Vector3d un_acc = 0.5 * (un_acc_0 + un_acc_1) *s;
+        Vector3d un_acc = 0.5 * (un_acc_0 + un_acc_1);
       //  ROS_DEBUG("un_acc %f %f %f", un_acc[0],un_acc[1],un_acc[2]);
         Pi[j] +=  dt * Vi[j] + 0.5 * dt * dt * un_acc;
         Vi[j] +=  dt * un_acc;//当前帧的姿态 位置 速度
@@ -1274,48 +1278,48 @@ void solveOdometry()
   //   
   //imu autodiff
   //
-  if(imuAutodiff)
-  {
-       for (int i = 0; i < WINDOW_SIZE; i++)
-    {
+  // if(imuAutodiff)
+  // {
+  //      for (int i = 0; i < WINDOW_SIZE; i++)
+  //   {
 
-        int j = i + 1;
-        if (pre_integrations[j]->sum_dt > 10.0)
-            continue;
-        ceres::CostFunction* imu_function = ICPCostFunctions::IMUFactor::Create(pre_integrations[j]);
-        problem.AddResidualBlock(imu_function, loss_function_imu, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
+  //       int j = i + 1;
+  //       if (pre_integrations[j]->sum_dt > 10.0)
+  //           continue;
+  //       ceres::CostFunction* imu_function = ICPCostFunctions::IMUFactor::Create(pre_integrations[j]);
+  //       problem.AddResidualBlock(imu_function, loss_function_imu, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
       
-    }
+  //   }
 
-  }
-  else
-  {
-       for (int i = 0; i < WINDOW_SIZE; i++)
-    {
+  // }
+  // else
+  // {
+  //      for (int i = 0; i < WINDOW_SIZE; i++)
+  //   {
 
-        int j = i + 1;
-        if (pre_integrations[j]->sum_dt > 10.0)
-            continue;
-        IMUFactor* imu_factor = new IMUFactor(pre_integrations[j]);//预积分误差
+  //       int j = i + 1;
+  //       if (pre_integrations[j]->sum_dt > 10.0)
+  //           continue;
+  //       IMUFactor* imu_factor = new IMUFactor(pre_integrations[j]);//预积分误差
 
-        problem.AddResidualBlock(imu_factor, loss_function_imu, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
+  //       problem.AddResidualBlock(imu_factor, loss_function_imu, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
      
-     }
+  //    }
   
 
-  }
-  if(setBiasConst)
-  {
-     for (int i = 0; i < WINDOW_SIZE + 1; i++)
-    {
-       // ceres::LocalParameterization *local_parameterization = new PoseLocalParameterization();
-        //problem.AddParameterBlock(para_Pose[i], SIZE_POSE, local_parameterization);//SIZE_POSE = 7  SIZE_SPEEDBIAS = 9
-        //problem.AddParameterBlock(para_SpeedBias[i], SIZE_SPEEDBIAS);
-      // problem.SetParameterBlockConstant(para_Pose[i]);
-       problem.SetParameterBlockConstant(para_SpeedBias[i]);
-    }
+  // }
+  // if(setBiasConst)
+  // {
+  //    for (int i = 0; i < WINDOW_SIZE + 1; i++)
+  //   {
+  //      // ceres::LocalParameterization *local_parameterization = new PoseLocalParameterization();
+  //       //problem.AddParameterBlock(para_Pose[i], SIZE_POSE, local_parameterization);//SIZE_POSE = 7  SIZE_SPEEDBIAS = 9
+  //       //problem.AddParameterBlock(para_SpeedBias[i], SIZE_SPEEDBIAS);
+  //     // problem.SetParameterBlockConstant(para_Pose[i]);
+  //      problem.SetParameterBlockConstant(para_SpeedBias[i]);
+  //   }
 
-  }
+  // }
 
    solveProblem(problem);
    

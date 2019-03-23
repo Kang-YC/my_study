@@ -34,6 +34,7 @@ extern double function_tolerance;
 extern Eigen::Vector3d G ;
 
 extern double td;
+extern double scale;
 
 
 void readParameter(const char* filename);

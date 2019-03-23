@@ -33,6 +33,8 @@ double ACC_N, ACC_W;
 double GYR_N, GYR_W;
 double LIDAR_N;
 
+double scale;
+
 
 void readParameter(const char* filename)
 {
@@ -175,6 +177,12 @@ void readParameter(const char* filename)
                 buffer >>paraValue;
                 LIDAR_N = paraValue;
                 cout<<"LIDAR_N: "<<LIDAR_N<<endl;
+            }
+               else if(paramName.compare("scale") == 0)
+            {
+                buffer >>paraValue;
+                scale = paraValue;
+                cout<<"scale: "<<scale<<endl;
             }
             else
                 throw std::runtime_error(std::string("unknown parameter"));
