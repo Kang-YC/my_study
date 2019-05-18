@@ -1,0 +1,19 @@
+struct pose_z
+{
+  byte good;
+  point2d_z utm;
+  double heading;
+  double pitch;
+}
+
+struct navigation_z {
+  int16_t rtk_status;
+  double latitude;
+  double longitude;
+  double speed_3d;
+}
+
+struct navigation_msg_z {
+  msg_header_z header;
+  navigation_z data;
+}

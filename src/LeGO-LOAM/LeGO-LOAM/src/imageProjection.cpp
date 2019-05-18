@@ -226,7 +226,7 @@ public:
         float diffX, diffY, diffZ, angle;
 
         for (size_t j = 0; j < Horizon_SCAN; ++j){
-            for (size_t i = 0; i < groundScanInd; ++i){
+            for (size_t i = 0; i < groundScanInd; ++i){//groundScanInd=7
 
                 lowerInd = j + ( i )*Horizon_SCAN;
                 upperInd = j + (i+1)*Horizon_SCAN;
@@ -252,8 +252,8 @@ public:
 
         for (size_t i = 0; i < N_SCAN; ++i){
             for (size_t j = 0; j < Horizon_SCAN; ++j){
-                if (groundMat.at<int8_t>(i,j) == 1 || rangeMat.at<float>(i,j) == FLT_MAX){
-                    labelMat.at<int>(i,j) = -1;
+                if (groundMat.at<int8_t>(i,j) == 1 || rangeMat.at<float>(i,j) == FLT_MAX){//biggest float
+                    labelMat.at<int>(i,j) = -1;//ground
                 }
             }
         }
@@ -280,7 +280,7 @@ public:
 
             for (size_t j = 0; j < Horizon_SCAN; ++j) {
                 if (labelMat.at<int>(i,j) > 0 || groundMat.at<int8_t>(i,j) == 1){
-                    if (labelMat.at<int>(i,j) == 999999){
+                    if (labelMat.at<int>(i,j) == 999999){//outlier
                         if (i > groundScanInd && j % 5 == 0){
                             outlierCloud->push_back(fullCloud->points[j + i*Horizon_SCAN]);
                             continue;

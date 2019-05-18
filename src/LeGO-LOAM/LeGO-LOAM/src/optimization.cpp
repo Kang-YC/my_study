@@ -1042,8 +1042,8 @@ void processIMU(double dt, const Vector3d &linear_acceleration, const Vector3d &
         Vector3d Ri_euler =  Ri[j].eulerAngles(0,1,2);
     
 
-       ROS_DEBUG("Pi imu %f %f %f" ,Pi[frame_count].x(),Pi[frame_count].y(),Pi[frame_count].z());
-       ROS_DEBUG("Ri imu %f %f %f" ,Ri_euler[0]*180/3.14, Ri_euler[1]*180/3.14 , Ri_euler[2]*180/3.14);
+       // ROS_DEBUG("Pi imu %f %f %f" ,Pi[frame_count].x(),Pi[frame_count].y(),Pi[frame_count].z());
+       // ROS_DEBUG("Ri imu %f %f %f" ,Ri_euler[0]*180/3.14, Ri_euler[1]*180/3.14 , Ri_euler[2]*180/3.14);
         //pubImuOdometry();
     }
     acc_0 = linear_acceleration;
@@ -1126,7 +1126,7 @@ void initialization()
   if(frame_count < WINDOW_SIZE)
     return;
 
-  ROS_DEBUG("initialization %d", frame_count);
+  ROS_INFO("initialization %d", frame_count);
   ceres::Problem problem;
   ceres::LossFunction *loss_function_initial = new ceres::CauchyLoss(3);
 
@@ -1165,8 +1165,13 @@ void initialization()
         Bgs[i] = Vector3d(para_SpeedBias[i][6],
                           para_SpeedBias[i][7],
                           para_SpeedBias[i][8]);
+        ROS_INFO("repropagate %d", frame_count);
+        if(i!=0)
+        {
+          pre_integrations[i]->repropagate(Bas[i], Bgs[i]);
+        }
+        
 
-        pre_integrations[i]->repropagate(Bas[i], Bgs[i]);
 
     }
       ROS_DEBUG("initialization V %f %f %f", Vs[WINDOW_SIZE][0], Vs[WINDOW_SIZE][1], Vs[WINDOW_SIZE][2]);
@@ -1208,9 +1213,9 @@ void solveOdometry()
     //     problem.AddParameterBlock(para_SpeedBias[i], SIZE_SPEEDBIAS);
     // }
 
-
-
-
+if(lidarSolve)
+{
+  
   for(int i=0; i< WINDOW_SIZE+1 ;i++)
   {
 
@@ -1267,6 +1272,10 @@ void solveOdometry()
       
       }
   }
+
+}
+
+
   
 
 
@@ -1278,48 +1287,53 @@ void solveOdometry()
   //   
   //imu autodiff
   //
-  // if(imuAutodiff)
-  // {
-  //      for (int i = 0; i < WINDOW_SIZE; i++)
-  //   {
+  if(imuSolve)
+  {
+    if(imuAutodiff)
+  {
+       for (int i = 0; i < WINDOW_SIZE; i++)
+    {
 
-  //       int j = i + 1;
-  //       if (pre_integrations[j]->sum_dt > 10.0)
-  //           continue;
-  //       ceres::CostFunction* imu_function = ICPCostFunctions::IMUFactor::Create(pre_integrations[j]);
-  //       problem.AddResidualBlock(imu_function, loss_function_imu, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
+        int j = i + 1;
+        if (pre_integrations[j]->sum_dt > 10.0)
+            continue;
+        ceres::CostFunction* imu_function = ICPCostFunctions::IMUFactor::Create(pre_integrations[j]);
+        problem.AddResidualBlock(imu_function, loss_function_imu, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
       
-  //   }
+    }
 
-  // }
-  // else
-  // {
-  //      for (int i = 0; i < WINDOW_SIZE; i++)
-  //   {
+  }
+  else
+  {
+       for (int i = 0; i < WINDOW_SIZE; i++)
+    {
 
-  //       int j = i + 1;
-  //       if (pre_integrations[j]->sum_dt > 10.0)
-  //           continue;
-  //       IMUFactor* imu_factor = new IMUFactor(pre_integrations[j]);//预积分误差
+        int j = i + 1;
+        if (pre_integrations[j]->sum_dt > 10.0)
+            continue;
+        IMUFactor* imu_factor = new IMUFactor(pre_integrations[j]);//预积分误差
 
-  //       problem.AddResidualBlock(imu_factor, loss_function_imu, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
+        problem.AddResidualBlock(imu_factor, loss_function_imu, para_Pose[i], para_SpeedBias[i], para_Pose[j], para_SpeedBias[j]);
      
-  //    }
+     }
   
 
-  // }
-  // if(setBiasConst)
-  // {
-  //    for (int i = 0; i < WINDOW_SIZE + 1; i++)
-  //   {
-  //      // ceres::LocalParameterization *local_parameterization = new PoseLocalParameterization();
-  //       //problem.AddParameterBlock(para_Pose[i], SIZE_POSE, local_parameterization);//SIZE_POSE = 7  SIZE_SPEEDBIAS = 9
-  //       //problem.AddParameterBlock(para_SpeedBias[i], SIZE_SPEEDBIAS);
-  //     // problem.SetParameterBlockConstant(para_Pose[i]);
-  //      problem.SetParameterBlockConstant(para_SpeedBias[i]);
-  //   }
+  }
+  if(setBiasConst)
+  {
+     for (int i = 0; i < WINDOW_SIZE + 1; i++)
+    {
+       // ceres::LocalParameterization *local_parameterization = new PoseLocalParameterization();
+        //problem.AddParameterBlock(para_Pose[i], SIZE_POSE, local_parameterization);//SIZE_POSE = 7  SIZE_SPEEDBIAS = 9
+        //problem.AddParameterBlock(para_SpeedBias[i], SIZE_SPEEDBIAS);
+      // problem.SetParameterBlockConstant(para_Pose[i]);
+       problem.SetParameterBlockConstant(para_SpeedBias[i]);
+    }
 
-  // }
+  }
+
+  }
+  
 
    solveProblem(problem);
    
@@ -1566,6 +1580,7 @@ std::vector<sensor_msgs::ImuConstPtr> getMeasurements()
 {
     
       std::vector<sensor_msgs::ImuConstPtr> IMUs;
+      ROS_INFO("IMU getMeasurements");
       //int sum_of_wait = 0;
         if (imu_buf.empty() )
         {
@@ -1590,22 +1605,27 @@ std::vector<sensor_msgs::ImuConstPtr> getMeasurements()
         //feature_buf.pop();
         
         double count=0;
+        double count_buf = imu_buf.size();
+       // ROS_INFO("imu_buf %f" ,count_buf);
+
              
         while (imu_buf.front()->header.stamp.toSec() < timeLaserCloudOri + td)//imu front<img+t throw imu
         {
             IMUs.emplace_back(imu_buf.front());
             imu_buf.pop();
+            if(imu_buf.empty())
+              break;
             count++;
            // ROS_INFO("IMU COUNT %f",count);
 
         }
-        IMUs.emplace_back(imu_buf.front());
+       // IMUs.emplace_back(imu_buf.front());
 
         if (IMUs.empty())
             ROS_WARN("no imu between two image");
         //最后一帧为IMU与img时间相等  前面为之间的IMU
         count = IMUs.size();
-        ROS_INFO("IMU COUNT TOTAL %f" ,count);
+      //  ROS_INFO("IMU COUNT TOTAL %f" ,count);
         return IMUs;  
 
 }

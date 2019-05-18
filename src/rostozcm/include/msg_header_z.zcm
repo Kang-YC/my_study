@@ -1,0 +1,5 @@
+struct msg_header_z
+{
+  int64_t timestamp;
+  pose_z pose; // car position and pose in UTM coordinate
+}

@@ -34,6 +34,8 @@ double GYR_N, GYR_W;
 double LIDAR_N;
 
 double scale;
+bool imuSolve;
+bool lidarSolve;
 
 
 void readParameter(const char* filename)
@@ -183,6 +185,18 @@ void readParameter(const char* filename)
                 buffer >>paraValue;
                 scale = paraValue;
                 cout<<"scale: "<<scale<<endl;
+            }
+               else if(paramName.compare("imuSolve") == 0)
+            {
+                buffer >>paraFlag;
+                imuSolve = paraFlag;
+                cout<<"imuSolve: "<<imuSolve<<endl;
+            }
+                else if(paramName.compare("lidarSolve") == 0)
+            {
+                buffer >>paraFlag;
+                lidarSolve = paraFlag;
+                cout<<"lidarSolve: "<<lidarSolve<<endl;
             }
             else
                 throw std::runtime_error(std::string("unknown parameter"));

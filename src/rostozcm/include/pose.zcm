@@ -1,0 +1,7 @@
+struct pose
+{
+	double x;
+	double y;
+	double z;
+	double w;
+}

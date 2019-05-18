@@ -1,0 +1,46 @@
+evo_ape tum  odom.tum coupled.txt -a -p 画绝对误差  -a调整方向 -p画图 -s尺度 plot_mode=xy画xy方向
+evo_rpe tum  odom.tum coupled.txt -a -p
+evo_ape tum  odom.tum lidar.txt coupled.txt -a -p --plot_mode=xy
+
+
+
+evo_traj bag 2019``` /navsat/odom --save_as_tum
+
+evo_traj tum -p --ref odom.tum lego.txt coupled.txt -a --plot_mode=xy 画轨迹
+
+保存下來 後面對比
+evo_ape tum  odom.tum coupled.txt -a -p --plot_mode=xy --save_results ./coupled.zip 
+evo_ape tum  odom.tum lego.txt -a -p --plot_mode=xy --save_results ./lego.zip 
+evo_res ./*.zip -p --save_table ./tavle.csv
+
+evo_ape tum  odom.tum coupled.txt -a -p --t_max_diff 0.5 時間誤差的
+evo_ape tum  odom.tum lidar.txt -a -p --t_max_diff 0.01 --verbose 詳細信息
+
+loam
+evo_traj tum -p --ref odom.tum loam.txt lego.txt coupled.txt -a --plot_mode=xy
+
+evo_ape tum  odom.tum loam.txt -a -p --plot_mode=xy --save_results ./loam.zip
+
+evo_res ./*.zip -p --save_table ./tavle.csv
+
+loam與coupled
+
+evo_ape tum  odom.tum LI-LOAM.txt -a -p --plot_mode=xy --save_results ./LI-LOAM.zip 
+
+evo_ape tum  odom.tum LOAM.txt -a -p --plot_mode=xy --save_results ./LOAM.zip
+
+evo_traj tum -p --ref odom.tum LOAM.txt LI-LOAM.txt  -a --plot_mode=xy
+
+evo_res ./*.zip -p --save_table ./tavle.csv
+
+都有
+evo_ape tum  odom.tum LI-LOAM.txt -a -p --plot_mode=xy --save_results ./LI-LOAM.zip 
+
+evo_ape tum  odom.tum LOAM.txt -a -p --plot_mode=xy --save_results ./LOAM.zip
+
+evo_ape tum  odom.tum LeGO-LOAM.txt -a -p --plot_mode=xy --save_results ./LeGO-LOAM.zip
+
+evo_traj tum -p --ref odom.tum   LOAM.txt LeGO-LOAM.txt LI-LOAM.txt -a --plot_mode=xy
+
+evo_res  ./LeGO-LOAM.zip ./LOAM.zip ./LI-LOAM.zip -p --save_table ./tavle.csv
+

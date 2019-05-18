@@ -1,0 +1,39 @@
+//We define here the information of bounding boxes around objects.
+struct point2i_z {
+  int16_t col;//integer x coordinate (or the integer number of columns of bounding box)
+  int16_t row;//integer y coordinate (or the integer number of rows of bounding box)
+}
+
+struct point2d_z {
+  double x;//double x coordinate (or the double number of columns of bounding box)
+  double y;//double y coordinate (or the double number of rows of bounding box)
+}
+
+struct point2f_z {
+  float x;//float x coordinate (or the float number of columns of bounding box)
+  float y;//float y coordinate (or the float number of rows of bounding box)
+}
+
+struct anchor_type_z {
+  int16_t anchor_type;
+  const int16_t ANCHOR_LEFT_TOP = 0;//0 is on behalf of the anchor locating on the left top of the bounding box
+  const int16_t ANCHOR_CENTER = 1;//1 is on behalf of the anchor locating on the center of the bounding box
+}
+
+struct bbox2i_z {
+  point2i_z anchor;//the int coordinate of anchor
+  point2i_z size;//the int size of anchor
+  anchor_type_z anchor_type;
+}
+
+struct bbox2d_z {
+  point2d_z anchor;//the double coordinate of anchor
+  point2d_z size;//the double size of anchor
+  anchor_type_z anchor_type;
+}
+
+struct bbox2f_z {
+  point2f_z anchor;//the float coordinate of anchor
+  point2f_z size;//the float size of anchor
+  anchor_type_z anchor_type;
+}

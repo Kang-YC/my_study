@@ -24,6 +24,8 @@ extern double s_thres;
 extern bool imuAutodiff;
 extern bool setBiasConst;
 extern bool initial_enable;
+extern bool imuSolve;
+extern bool lidarSolve;
 
 extern bool smallProblem;
 
